@@ -21962,7 +21962,7 @@ document.getElementById('clear-filters').addEventListener('click',reset);
 document.querySelectorAll('.definition-row').forEach(row=>row.addEventListener('click',e=>{
  const link=e.target.closest('a');
  if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
- if(link&&link.getAttribute('href')!=='#'+row.id)return;
+ if(link)return;
  const control=e.target.closest('button,input,select,textarea');
  if(control&&!control.matches('.definition-toggle'))return;
  const selection=window.getSelection();
