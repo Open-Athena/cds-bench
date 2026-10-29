@@ -1,7 +1,9 @@
 # Synthetic evaluation data
 
 The task definitions and exact prompt templates are read from `index.html`.
-The generator does not modify the benchmark specification.
+The generator does not modify the benchmark specification. Python source is in
+`src/cds_bench/`; `uv sync` installs the package so the commands below work
+from the repository root.
 
 ```sh
 uv sync --locked
