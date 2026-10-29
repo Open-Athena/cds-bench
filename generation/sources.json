@@ -1,0 +1,146 @@
+[
+  {
+    "accession": "GCF_000005845.2",
+    "organism": "Escherichia coli str. K-12 substr. MG1655",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_cds_from_genomic.fna.gz",
+    "sha256": "a5efdd03ccf26b27d8319b4e8bcfdde1da7df1b2a4baaf3edd1431c21128a0cd"
+  },
+  {
+    "accession": "GCF_000006985.1",
+    "organism": "Chlorobaculum tepidum TLS",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/006/985/GCF_000006985.1_ASM698v1/GCF_000006985.1_ASM698v1_cds_from_genomic.fna.gz",
+    "sha256": "415d24d3308ce74d7626642ce12efaf8ece286e038e80c221883b095a5bc889c"
+  },
+  {
+    "accession": "GCF_000007985.2",
+    "organism": "Geobacter sulfurreducens PCA",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/985/GCF_000007985.2_ASM798v2/GCF_000007985.2_ASM798v2_cds_from_genomic.fna.gz",
+    "sha256": "b5b094a835de2252af18e8d747ddd9d5e19b3f14fc878d662d14f902919f38ca"
+  },
+  {
+    "accession": "GCF_000008625.1",
+    "organism": "Aquifex aeolicus VF5",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/008/625/GCF_000008625.1_ASM862v1/GCF_000008625.1_ASM862v1_cds_from_genomic.fna.gz",
+    "sha256": "697c07cd3764c8f84615bf1ab544f8e2e7415e442a8fe40315723e2e39e8cb39"
+  },
+  {
+    "accession": "GCF_000009045.1",
+    "organism": "Bacillus subtilis subsp. subtilis str. 168",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/045/GCF_000009045.1_ASM904v1/GCF_000009045.1_ASM904v1_cds_from_genomic.fna.gz",
+    "sha256": "a69e6ead19f674d211e5f2b397adaa49053220e35a46ded83e55fa0a0cfb1d57"
+  },
+  {
+    "accession": "GCF_000009725.1",
+    "organism": "Synechocystis sp. PCC 6803",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/725/GCF_000009725.1_ASM972v1/GCF_000009725.1_ASM972v1_cds_from_genomic.fna.gz",
+    "sha256": "2e7525f91171276fb5d7609c655f4bd4128a0c10ac01017abdb321b1c5a348df"
+  },
+  {
+    "accession": "GCF_000011325.1",
+    "organism": "Corynebacterium glutamicum ATCC 13032",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/011/325/GCF_000011325.1_ASM1132v1/GCF_000011325.1_ASM1132v1_cds_from_genomic.fna.gz",
+    "sha256": "0c8ac7c197e7b1a3c751519962b5a3043ec2400eab9e3bedf75d58a0518defeb"
+  },
+  {
+    "accession": "GCF_000012685.1",
+    "organism": "Myxococcus xanthus DK 1622",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/012/685/GCF_000012685.1_ASM1268v1/GCF_000012685.1_ASM1268v1_cds_from_genomic.fna.gz",
+    "sha256": "55fb1c85bfbd41040c3c57092f2363ecdee74cea530bf930772961444ae3ef1c"
+  },
+  {
+    "accession": "GCF_000016645.1",
+    "organism": "Flavobacterium johnsoniae UW101",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/016/645/GCF_000016645.1_ASM1664v1/GCF_000016645.1_ASM1664v1_cds_from_genomic.fna.gz",
+    "sha256": "1f88f7c692ad854506c13dd2fb7293ed966fe587c1e490c24f4b5ce4639bbb99"
+  },
+  {
+    "accession": "GCF_000022005.1",
+    "organism": "Caulobacter vibrioides NA1000",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/005/GCF_000022005.1_ASM2200v1/GCF_000022005.1_ASM2200v1_cds_from_genomic.fna.gz",
+    "sha256": "26431debd26f84da60c22fe87df4e66abb71b8c6f807fa3ff08486cf250e377e"
+  },
+  {
+    "accession": "GCF_000091545.1",
+    "organism": "Thermus thermophilus HB8",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/091/545/GCF_000091545.1_ASM9154v1/GCF_000091545.1_ASM9154v1_cds_from_genomic.fna.gz",
+    "sha256": "ad3f05651ce5c1ea1b62e3e4a97c24634cb431d23875958e30d7c4a7add360c3"
+  },
+  {
+    "accession": "GCF_000146165.2",
+    "organism": "Shewanella oneidensis MR-1",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/165/GCF_000146165.2_ASM14616v2/GCF_000146165.2_ASM14616v2_cds_from_genomic.fna.gz",
+    "sha256": "8bb9881b342134bf8c1addf3acccc0b809d0e753fe1d841fbdac451c24a71d0d"
+  },
+  {
+    "accession": "GCF_000196555.1",
+    "organism": "Bifidobacterium longum subsp. longum JCM 1217",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/196/555/GCF_000196555.1_ASM19655v1/GCF_000196555.1_ASM19655v1_cds_from_genomic.fna.gz",
+    "sha256": "c280211ace895dd518c26c673c647af036912eac39dfb039fa614a6fd9399c89"
+  },
+  {
+    "accession": "GCF_000203835.1",
+    "organism": "Streptomyces coelicolor A3(2)",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/203/835/GCF_000203835.1_ASM20383v1/GCF_000203835.1_ASM20383v1_cds_from_genomic.fna.gz",
+    "sha256": "26933408792efbefd26504bacc6aca0823a76b5cefbc836f6e82292ed7145ed3"
+  },
+  {
+    "accession": "GCF_000230655.2",
+    "organism": "Thermotoga maritima MSB8",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/230/655/GCF_000230655.2_ASM23065v3/GCF_000230655.2_ASM23065v3_cds_from_genomic.fna.gz",
+    "sha256": "aad0b79c95a9afbd7fcdea1b92f2ed830476ed407348cdc623130748a9371a66"
+  },
+  {
+    "accession": "GCF_000412675.1",
+    "organism": "Pseudomonas putida NBRC 14164",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/412/675/GCF_000412675.1_ASM41267v1/GCF_000412675.1_ASM41267v1_cds_from_genomic.fna.gz",
+    "sha256": "a566077e0bc395efcd39f7b9d30984e6db6106127836313de9f6ef9eb73c0f2b"
+  },
+  {
+    "accession": "GCF_003176835.1",
+    "organism": "Lactococcus lactis subsp. lactis",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/176/835/GCF_003176835.1_ASM317683v1/GCF_003176835.1_ASM317683v1_cds_from_genomic.fna.gz",
+    "sha256": "4da02448a9aee87a013a85bc356783eff0a26c4bed60425e2460eeb90c31258c"
+  },
+  {
+    "accession": "GCF_003324715.1",
+    "organism": "Cereibacter sphaeroides 2.4.1",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/003/324/715/GCF_003324715.1_ASM332471v1/GCF_003324715.1_ASM332471v1_cds_from_genomic.fna.gz",
+    "sha256": "f22d8df41baa19fb0c7842c06f4ffc59a9c1bd928bdd56462da6787e893ec5d8"
+  },
+  {
+    "accession": "GCF_004063735.1",
+    "organism": "Paracoccus denitrificans",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/004/063/735/GCF_004063735.1_ASM406373v1/GCF_004063735.1_ASM406373v1_cds_from_genomic.fna.gz",
+    "sha256": "d96c39cda2f2509c31e4bb04a1758bfa21c755f5a9528a76eec43e77ac6e71da"
+  },
+  {
+    "accession": "GCF_009913655.1",
+    "organism": "Lactiplantibacillus plantarum",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/913/655/GCF_009913655.1_ASM991365v1/GCF_009913655.1_ASM991365v1_cds_from_genomic.fna.gz",
+    "sha256": "03b22ce67f143e632c92257c5adb325672a995138a41f5a761b4c34df66b7dc9"
+  },
+  {
+    "accession": "GCF_014131755.1",
+    "organism": "Bacteroides thetaiotaomicron",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/014/131/755/GCF_014131755.1_ASM1413175v1/GCF_014131755.1_ASM1413175v1_cds_from_genomic.fna.gz",
+    "sha256": "89a842bd09369cc6cc0421c4e4d3c0ef59936c186d7893adaea4e8e6816b0c76"
+  },
+  {
+    "accession": "GCF_016584445.1",
+    "organism": "Rhodopseudomonas palustris",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/016/584/445/GCF_016584445.1_ASM1658444v1/GCF_016584445.1_ASM1658444v1_cds_from_genomic.fna.gz",
+    "sha256": "e50395f5eb0fa32e48dff771b28b79a66485b215ae32de49250ae0dff7dad2a0"
+  },
+  {
+    "accession": "GCF_017607425.1",
+    "organism": "Rhizorhabdus wittichii",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/017/607/425/GCF_017607425.1_ASM1760742v1/GCF_017607425.1_ASM1760742v1_cds_from_genomic.fna.gz",
+    "sha256": "1a8d20fa217bb9044723d1620ebcad8c73dd5e081eb484d5e5e19bddd22a8581"
+  },
+  {
+    "accession": "GCF_020546685.1",
+    "organism": "Deinococcus radiodurans R1 = ATCC 13939 = DSM 20539",
+    "url": "https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/020/546/685/GCF_020546685.1_ASM2054668v1/GCF_020546685.1_ASM2054668v1_cds_from_genomic.fna.gz",
+    "sha256": "2ca7be920b3882bcbef2f333bc94cd6462d0f6f7c311b6470c98d26fb83cfcf7"
+  }
+]
