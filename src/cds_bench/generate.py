@@ -1,4 +1,4 @@
-"""Generate ten solvable instances per task and both exact prompt variants."""
+"""Generate ten solvable instances per task with distinct prompt variants."""
 
 import argparse
 import hashlib
@@ -10,7 +10,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from .catalog import ROOT, SPEC_SHA256, TASKS, render
+from .catalog import ROOT, SPEC_SHA256, TASKS, render, variants
 from .instances import Reject, make
 from .sampling import Sampler, fit
 from .solve import clean, solve
@@ -64,6 +64,7 @@ def generate(source_directory: Path, output: Path, count: int = 10, seed: int = 
     )
     records, report, seen_cds = [], {}, set()
     for task_id, definition in TASKS.items():
+        task_variants = variants(task_id)
         rejected = Counter()
         instances = []
         for index in range(count):
@@ -99,7 +100,7 @@ def generate(source_directory: Path, output: Path, count: int = 10, seed: int = 
                 seen_cds.update(cds)
                 instance_id = f"{task_id}/{index + 1:02}"
                 instances.append({"instance_id": instance_id, "inputs": inputs, "answer": answer})
-                for variant in ["easy", "hard"]:
+                for variant in task_variants:
                     records.append(
                         {
                             "id": f"{instance_id}/{variant}",
@@ -117,7 +118,11 @@ def generate(source_directory: Path, output: Path, count: int = 10, seed: int = 
                 break
             else:
                 raise RuntimeError(f"Could not generate {task_id}/{index}: {rejected}")
-        report[task_id] = {"instances": count, "rejected_draws": dict(sorted(rejected.items()))}
+        report[task_id] = {
+            "instances": count,
+            "variants": list(task_variants),
+            "rejected_draws": dict(sorted(rejected.items())),
+        }
         (output / "instances").mkdir(exist_ok=True)
         (output / "instances" / (task_id + ".json")).write_text(
             json.dumps(instances, indent=2) + "\n"
@@ -131,8 +136,12 @@ def generate(source_directory: Path, output: Path, count: int = 10, seed: int = 
         "seed": seed,
         "spec_sha256": SPEC_SHA256,
         "task_count": len(TASKS),
-        "instance_count": len(records) // 2,
+        "instance_count": sum(task["instances"] for task in report.values()),
         "prompt_count": len(records),
+        "paired_task_count": sum(len(task["variants"]) == 2 for task in report.values()),
+        "single_variant_tasks": [
+            task_id for task_id, task in report.items() if task["variants"] == ["easy"]
+        ],
         "tasks": report,
         "records_sha256": hashlib.sha256((output / "records.jsonl").read_bytes()).hexdigest(),
         "splits": splits,
