@@ -43,9 +43,15 @@ timeouts and empty candidate sets never become an `IMPOSSIBLE` answer.
 
 The default seed is 20261029. Each task/example has an independent PCG64 stream
 derived from that seed and its identifier. The output contains ten instances
-per task, with paired easy/hard prompts: 840 instances and 1,680 rows in two
-evaluation splits, `easy` and `hard`, with 840 rows each. Row IDs and fields
-are identical to those in the original combined release. Changing `--count`
+per task: 840 instances and 1,630 prompt rows in two evaluation splits,
+`easy` (840 rows) and `hard` (790 rows). There are 79 task types with paired
+easy/hard prompts. Five task types need no additional reference material, so
+their identical hard copies are omitted and their prompts appear only in `easy`.
+Paired comparisons between splits should use the 79 task types in both splits.
+The [variant audit](variant-audit.json) records the check of all 84 task types.
+Surviving row IDs, prompts, inputs, and answers are unchanged from dataset
+revision `b48333ec757cf66fd09d758d120c4f47a0256b5d`. That revision remains
+available for reproducing earlier evaluations. Changing `--count`
 or `--seed` generates another release. Re-running the locked environment
 reproduces `records.jsonl`, `data/easy.parquet`, and `data/hard.parquet` byte
 for byte. Generation reports and individual solved instances are under `build/`.
@@ -61,9 +67,9 @@ sequence-spacing normalization follow the benchmark's existing rules.
 | Field | Meaning |
 |---|---|
 | `id` | Unique prompt identifier, including its variant. |
-| `instance_id` | Question identifier shared by its easy and hard variants. |
+| `instance_id` | Question identifier shared by its variants, when both exist. |
 | `task_id` | Published individual or composition task identifier. |
-| `variant` | `easy` or `hard`, indicating supplied reference support. |
+| `variant` | `easy` or `hard`, indicating supplied reference support. Tasks with identical variants appear only in `easy`. |
 | `prompt` | Complete model-visible prompt rendered from the site template. |
 | `answer` | Canonical final answer payload. |
 | `output_format` | `scalar` or `json`, as defined by the task. |

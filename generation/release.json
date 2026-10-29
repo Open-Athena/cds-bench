@@ -1,22 +1,25 @@
 {
   "seed": 20261029,
-  "spec_sha256": "c70f564c3bbf4c1585d9687c0d25f532243b297b1fb46350c7be04df734e8c22",
+  "spec_sha256": "2a71d354e1d96c5b5714617c862ddae12c1763dc17f55a553e58f3d9a8ac2233",
   "task_count": 84,
   "instances_per_task": 10,
   "instance_count": 840,
-  "prompt_count": 1680,
+  "prompt_count": 1630,
   "source_assemblies": 24,
   "accepted_source_cds": 95514,
-  "records_sha256": "99640f4697d039db8f6ce2388033e52454ad31a92f88f794c781932ce97c857e",
+  "records_sha256": "5aba8d10cea7d7e2ae3e47944c4f9f56c2c5ca1bb028c149e34d5a02b9e62509",
   "fitted_models_sha256": "52a37cf26e9f6c8818bce1bac1d5400c9b9627a92f236aed712e362b7950a7b3",
   "rejected_draws": 41,
   "validation": {
     "independently_recomputed_answers": 840,
     "published_example_regressions": 84,
-    "local_checks_passed": 928,
+    "local_checks_passed": 934,
     "byte_identical_locked_environment_rebuild": true,
     "hairpin_weakening_stem_pairs": 3,
-    "hairpin_weakening_minimum_loop_bases": 4
+    "hairpin_weakening_minimum_loop_bases": 4,
+    "audited_task_types": 84,
+    "retained_records_unchanged": 1630,
+    "removed_identical_hard_records": 50
   },
   "splits": {
     "easy": {
@@ -24,8 +27,17 @@
       "parquet_sha256": "d756b2655e4242812045def8ff4e4485f945280e5e6af2b4a845223102b7460e"
     },
     "hard": {
-      "num_rows": 840,
-      "parquet_sha256": "e3a5745782a4ffe564c55c798d6098f15b233fd4466df35014e973c6800705d8"
+      "num_rows": 790,
+      "parquet_sha256": "aa724480707b2132abbe8c4f21e979701866a5ada36812476e2b7bb89b6cc1fa"
     }
-  }
+  },
+  "paired_task_count": 79,
+  "single_variant_tasks": [
+    "coords.nt_to_codon",
+    "variant.apply",
+    "variant.frame_status",
+    "rna.dotbracket_to_pairs",
+    "construct.inframe_deletion"
+  ],
+  "previous_dataset_revision": "b48333ec757cf66fd09d758d120c4f47a0256b5d"
 }

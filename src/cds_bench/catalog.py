@@ -10,22 +10,36 @@ ROOT = Path(__file__).resolve().parents[2]
 SPEC = (ROOT / "index.html").read_text()
 SPEC_SHA256 = hashlib.sha256(SPEC.encode()).hexdigest()
 DATA = json.loads(
-    re.search(r'<script type="application/json" id="task-data">(.*?)</script>', SPEC, re.S)[1]
+    re.search(r'<script type="application/json" id="task-data">(.*?)</script>', SPEC, re.DOTALL)[1]
 )
 TASKS = {
     t.get("task_type", t.get("composition_type")): t for t in DATA["tasks"] + DATA["compositions"]
 }
 
 
-def template(task_id: str, variant: str) -> str:
+def _template(task_id: str, variant: str) -> str | None:
     prefix = "composition" if task_id.startswith(("pipeline.", "joint.")) else "task"
     element = f"{prefix}-{task_id}-{variant}"
     match = re.search(
-        r'<pre[^>]*id="' + re.escape(element) + r'"[^>]*><code>(.*?)</code></pre>', SPEC, re.S
+        r'<pre[^>]*id="' + re.escape(element) + r'"[^>]*><code>(.*?)</code></pre>', SPEC, re.DOTALL
     )
-    if match is None:
-        raise ValueError(f"Missing prompt template: {element}")
-    return html.unescape(match[1]).strip()
+    return html.unescape(match[1]).strip() if match else None
+
+
+def template(task_id: str, variant: str) -> str:
+    prompt = _template(task_id, variant)
+    if prompt is None:
+        raise ValueError(f"Missing prompt template: {task_id}/{variant}")
+    return prompt
+
+
+def variants(task_id: str) -> tuple[str, ...]:
+    """Keep one easy prompt when there is no distinct hard template."""
+    easy = template(task_id, "easy")
+    hard = _template(task_id, "hard")
+    if hard is None or easy.split() == hard.split():
+        return ("easy",)
+    return ("easy", "hard")
 
 
 def render(task_id: str, variant: str, inputs: dict) -> str:
