@@ -36,6 +36,26 @@ def canonical(value):
     )
 
 
+def write_splits(records: list[dict], output: Path) -> dict:
+    """Partition unchanged records by prompt variant, preserving row order."""
+    directory = output / "data"
+    directory.mkdir(parents=True, exist_ok=True)
+    schema = pa.schema([(field, pa.string()) for field in FIELDS])
+    splits = {}
+    for variant in ["easy", "hard"]:
+        rows = [record for record in records if record["variant"] == variant]
+        path = directory / f"{variant}.parquet"
+        pq.write_table(pa.Table.from_pylist(rows, schema=schema), path, compression="zstd")
+        splits[variant] = {
+            "num_rows": len(rows),
+            "parquet_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        }
+    if sum(split["num_rows"] for split in splits.values()) != len(records):
+        raise ValueError("Unexpected prompt variant")
+    (directory / "test.parquet").unlink(missing_ok=True)
+    return splits
+
+
 def generate(source_directory: Path, output: Path, count: int = 10, seed: int = SEED):
     output.mkdir(parents=True, exist_ok=True)
     models = fit(source_directory)
@@ -103,10 +123,7 @@ def generate(source_directory: Path, output: Path, count: int = 10, seed: int = 
             json.dumps(instances, indent=2) + "\n"
         )
         print(f"{task_id}: {count} instances; {sum(rejected.values())} rejected draws", flush=True)
-    schema = pa.schema([(field, pa.string()) for field in FIELDS])
-    table = pa.Table.from_pylist(records, schema=schema)
-    (output / "data").mkdir(exist_ok=True)
-    pq.write_table(table, output / "data/test.parquet", compression="zstd")
+    splits = write_splits(records, output)
     with (output / "records.jsonl").open("w") as handle:
         for record in records:
             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -118,7 +135,7 @@ def generate(source_directory: Path, output: Path, count: int = 10, seed: int = 
         "prompt_count": len(records),
         "tasks": report,
         "records_sha256": hashlib.sha256((output / "records.jsonl").read_bytes()).hexdigest(),
-        "parquet_sha256": hashlib.sha256((output / "data/test.parquet").read_bytes()).hexdigest(),
+        "splits": splits,
     }
     (output / "generation-report.json").write_text(json.dumps(summary, indent=2) + "\n")
     return records

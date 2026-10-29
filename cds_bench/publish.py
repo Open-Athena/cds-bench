@@ -25,7 +25,12 @@ def main():
     staging.mkdir(parents=True, exist_ok=True)
     (staging / "data").mkdir(exist_ok=True)
     (staging / "sources").mkdir(exist_ok=True)
-    shutil.copyfile(args.dataset / "data/test.parquet", staging / "data/test.parquet")
+    for variant in ["easy", "hard"]:
+        assert report["splits"][variant]["num_rows"] == 840
+        shutil.copyfile(
+            args.dataset / f"data/{variant}.parquet", staging / f"data/{variant}.parquet"
+        )
+    (staging / "data/test.parquet").unlink(missing_ok=True)
     for path in sorted(args.sources.glob("*.fna.gz")):
         shutil.copyfile(path, staging / "sources" / path.name)
     schema = (
@@ -40,8 +45,10 @@ language:
 configs:
 - config_name: default
   data_files:
-  - split: test
-    path: data/test.parquet
+  - split: easy
+    path: data/easy.parquet
+  - split: hard
+    path: data/hard.parquet
 ---
 
 # CDS-bench
@@ -50,9 +57,8 @@ Synthetic evaluation data for [CDS-bench](https://openathena.ai/cds-bench/).
 See the benchmark site for task definitions, prompt variants, and scoring.
 
 This release has 840 instances (10 per task), each rendered as easy and hard
-prompts with the same answer: 1,680 rows in the `test` split. Evaluate the
-variants separately; they are two reference-support conditions for the same
-questions.
+prompts with the same answer: 840 rows in `easy` and 840 rows in `hard`.
+The splits are two reference-support conditions for the same questions.
 
 All fields are strings. `answer` is the final answer payload, without the
 `Final answer:` marker or an explanation. Structured answers are JSON text.
@@ -72,7 +78,8 @@ records the source accessions, checksums, sampling rules, and fixed seed. The
         repo_id=args.repo,
         repo_type="dataset",
         folder_path=staging,
-        commit_message="Add 840 synthetic CDS-bench evaluation instances",
+        delete_patterns=["data/test.parquet"],
+        commit_message="Separate easy and hard evaluation splits",
     )
     print(commit.commit_url)
 

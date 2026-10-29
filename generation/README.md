@@ -41,10 +41,12 @@ timeouts and empty candidate sets never become an `IMPOSSIBLE` answer.
 
 The default seed is 20261029. Each task/example has an independent PCG64 stream
 derived from that seed and its identifier. The output contains ten instances
-per task, with paired easy/hard prompts: 840 instances, 1,680 rows, one `test`
-split. Changing `--count` or `--seed` generates another release. Re-running the
-locked environment reproduces `records.jsonl` and `data/test.parquet` byte for
-byte. Generation reports and individual solved instances are under `build/`.
+per task, with paired easy/hard prompts: 840 instances and 1,680 rows in two
+evaluation splits, `easy` and `hard`, with 840 rows each. Row IDs and fields
+are identical to those in the original combined release. Changing `--count`
+or `--seed` generates another release. Re-running the locked environment
+reproduces `records.jsonl`, `data/easy.parquet`, and `data/hard.parquet` byte
+for byte. Generation reports and individual solved instances are under `build/`.
 
 ## Dataset schema
 
