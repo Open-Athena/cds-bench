@@ -6,7 +6,7 @@ Complete runs contain 116 attempts: one instance from 30 task types, easy/hard, 
 
 [Summary and settings](summary.json) · [Per-task outcomes](by-task.csv) · [Final predictions](results.json) · [Prompt instances](cases.json) · [GPT-OSS diagnostics](gpt-oss-diagnostics.json)
 
-Raw API requests, reasoning and Python programs/results remain untracked. Costs exclude preflight and interrupted requests; unknown charges are not assumed to be zero.
+Sanitized API requests, reasoning and Python programs/results are in the [public HF trace archive](https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces); originals remain untracked locally. Costs exclude preflight and interrupted requests; unknown charges are not assumed to be zero.
 
 Rebuild from the saved local pilot, with no inference:
 

@@ -76,7 +76,9 @@ answers, scores and aggregate metrics before exporting final predictions, settin
 self-contained report to `evaluations/model-pilot-20261029`. It makes no inference
 requests. Interrupted attempts and discarded duplicate-hard cases remain excluded.
 Provider diagnostics and earlier ten-example checks stay separate from the pilot scores.
-Raw requests, reasoning and Python traces remain local and untracked. `tables.py` defines
+Original requests, reasoning and Python traces remain untracked locally. Sanitized
+copies are published in the public [PR #2 trace archive](https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces).
+`tables.py` defines
 the shared result columns used by both reports and the PR original post.
 
 `audit --partial` checks only completed attempts during a run. A separately labeled diagnostic accepts inline final-answer markers and outer JSON fences; it never changes primary scores. The endpoint's quantization and public-weight availability are not established by this evaluation.
@@ -101,7 +103,8 @@ The validated native thinking/tool transport, temperature 0.7, seed 20261029,
 32,768 aggregate generated tokens, 1,800-second API wall deadline and concurrency
 60 are retained. The scorer, Python/NumPy sandbox and eight-call limit are unchanged.
 Requests are not retried; an interrupted attempt requires review before continuing.
-Raw traces and the access file remain private. The API exposes token usage but no
+The access file and credentials remain private; sanitized traces are in the public
+archive. The API exposes token usage but no
 per-request monetary price.
 
 The local watcher refreshes the existing report and runs the completion audit:
@@ -125,3 +128,14 @@ with unchanged settings and no scored retries. Failures remain in the results.
 The report includes task scatter plots for Nemotron versus Snowball, using
 the radar group colors and identical completed cases on both axes. The PR
 exports the two Easy conditions in one figure with a shared legend.
+
+## Public trace archive
+
+[eczech/cds-bench-pr-2-traces](https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces)
+preserves full runs, pilots, smoke checks, explicit retries, interrupted attempts
+and provider/tool diagnostics. Its `requests`, `attempts`, `tools`, `runs` and
+`artifacts` configurations support analysis; compressed bundles retain the
+sanitized source JSON, SSE streams, programs, outputs and operational records.
+The dataset includes the exporter, validator, bundle checksums and coverage audit.
+Original local files stay untracked and unchanged. Future exports for PR #2
+should update the same dataset, retaining source-relative IDs and Hub revisions.
