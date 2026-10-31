@@ -1,6 +1,6 @@
-Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)** and **Nemotron 3.5 Lightning**, with and without offline Python. Each condition has ten examples per task: 84 easy task types and 79 hard task types. Each model has 3,260 matching completed attempts, with identical retained prompts and reference answers.
+Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)**, **Nemotron 3.5 Lightning** and **Snowball v0.1**, with and without offline Python. The dataset has ten examples per task: 84 easy task types and 79 hard task types, or 3,260 planned attempts per model. Retained prompts and reference answers are identical across models.
 
-**9,780 scored attempts.** Python improves observed accuracy for all three models in both easy and hard conditions; GPT-6 Luna (high) scores highest in all four conditions. Pilot responses are not reused.
+**Snowball v0.1: 684/3,260 finished (running).** The other three models each have 3,260 completed matching attempts. **10,464 scored attempts** in total; pilot responses are not reused.
 
 Evaluation-only PR. **Do not merge.**
 
@@ -10,9 +10,9 @@ The HTML reports are self-contained; download and open them in a browser.
 
 **Accuracy by condition**
 
-![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=4a1d81e96dc5)
+![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=50c21d9c59c1)
 
-Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=4a1d81e96dc5) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=50c21d9c59c1) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
 
 <details>
 <summary>Full results: accuracy, median time, cost and truncation</summary>
@@ -32,6 +32,10 @@ Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/head
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;no&nbsp;tools | 185/790 | 23.4% | 157.4s | $3.10986 | 163 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 537/840 | 63.9% | 28.3s | $1.83524 | 4 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 397/790 | 50.3% | 40.7s | $2.37400 | 7 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 153/684 | 22.4% | 105.4s | Unavailable | 76 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 0/0 | n/a | n/a | Unavailable | 0 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 0/0 | n/a | n/a | Unavailable | 0 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 0/0 | n/a | n/a | Unavailable | 0 |
 
 All failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.
 
@@ -39,11 +43,11 @@ All failures remain in the denominator. Median time includes tool round trips an
 
 **Task performance: All conditions (pooled)**
 
-![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=13ee42d4b131)
+![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=bb7a6445c9ed)
 
-Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=13ee42d4b131) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=bb7a6445c9ed) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
 
-Each spoke pools the retained conditions for one task. Subtitles average all 84 task accuracies equally; five tasks have only easy variants. Groups and tasks share the same order across models. The [report’s condition selector and task key](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.
+Each spoke pools completed attempts for one task. Subtitles average available task accuracies equally; five tasks have only easy variants. Missing results are unscored, not zero. Groups and tasks share the same order across models. The [report’s condition selector and task key](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.
 
 Scores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.
 
@@ -64,8 +68,14 @@ Scores count incorrect answers, formatting failures, timeouts, token caps and AP
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;no&nbsp;tools | 260 | 137 | 43 | 163 | 2 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 87 | 194 | 3 | 4 | 15 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 146 | 237 | 3 | 7 | 0 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 117 | 322 | 0 | 76 | 16 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 0 | 0 | 0 | 0 | 0 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 0 | 0 | 0 | 0 | 0 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 0 | 0 | 0 | 0 | 0 |
 
 Recorded charges: **$10.24787 Nemotron 3.5 Lightning**, **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 53 Nemotron 3.5 Lightning, 29 Qwen and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
+
+Snowball’s internal API exposes token usage but no per-request monetary price. Its cost is unavailable, not zero; GPU allocation cost is not attributed to individual requests.
 
 Qwen reports usage beyond the requested 32,768-token budget for 24 attempts, up to 64,923 tokens. The [audit](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/audit.json) lists these exceptions. Actual provider-reported usage is not strictly matched to Luna’s requested cap.
 
@@ -114,18 +124,20 @@ Costs cover these scored subsets, excluding compatibility checks, removed duplic
 
 **Request and execution settings**
 
+Snowball v0.1 is a 67B MoE model with 2B active parameters per token. Full checkpoint: [open-athena/Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3), revision `adc0078a19a4383bc998fcdb43867b3360baf5f3`. Its full run uses the validated native API setup; no new deployment or pilot-response reuse.
+
 | Setting | Value |
 |---|---|
-| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; `nvidia/nemotron-3.5-lightning` / `deepinfra/bf16`; no fallback |
-| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Nemotron 3.5 Lightning: `{"enabled":true,"exclude":false}`; no effort selector |
-| Full output / timeout | 32,768 aggregate generated tokens/example; **300 seconds/API request**. Pilot exceptions are noted above |
-| Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |
+| Full models / providers | Luna / OpenAI; Qwen / `alibaba/us-east-1`; Nemotron / `deepinfra/bf16`; Snowball v0.1 / internal Marin API. Exact model identifiers are below; no fallback |
+| Full reasoning | Luna/Qwen: `high`; Nemotron: reasoning enabled; Snowball: native `enable_thinking=true`. No effort selector is verified for Nemotron or Snowball |
+| Full output / timeout | 32,768 aggregate generated tokens/example. OpenRouter: **300 seconds/API request**; Snowball: **1,800 seconds/API request** |
+| Tools / web | One local Python function; no web tools. OpenRouter uses `auto` or an empty tools array with `none`. Snowball uses its native tool-call format |
 | Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |
 | Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |
-| Sampling | Full runs use ten concurrent examples and provider-default temperature. Seed 20261029 for Luna/Qwen, omitted for Nemotron 3.5 Lightning. Pilot scheduling exceptions are in its report |
+| Sampling | OpenRouter: concurrency 10, provider-default temperature. Snowball: concurrency 60, temperature 0.7. Seed 20261029 for Luna/Qwen/Snowball; omitted for Nemotron |
 
 <details>
-<summary>Exact Python function supplied to OpenRouter</summary>
+<summary>Exact Python function supplied to the models</summary>
 
 ```json
 [
@@ -153,7 +165,7 @@ Costs cover these scored subsets, excluding compatibility checks, removed duplic
 ]
 ```
 
-The no-tools condition sends an empty tools array. No hosted shell or web tool is registered. Separate GPT-OSS compatibility experiments are described in the pilot report.
+OpenRouter receives an empty tools array for no-tools cases. Snowball omits the function definitions from its chat template. No hosted shell or web tool is registered.
 
 </details>
 
@@ -272,11 +284,25 @@ The no-tools condition sends an empty tools array. No hosted shell or web tool i
     "stream_options": {
       "include_usage": true
     }
+  },
+  "snowball-v01": {
+    "model": "[private serving model ID]",
+    "max_tokens": 32768,
+    "temperature": 0.7,
+    "seed": 20261029,
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    },
+    "skip_special_tokens": false,
+    "chat_template_kwargs": {
+      "enable_thinking": true
+    }
   }
 }
 ```
 
-The tools condition adds the function above and uses `auto`, then `none` after the call limit. Each round receives the remaining token budget. Returned reasoning records are preserved between turns. Pilot-specific routing and settings are in its report.
+OpenRouter adds the function above and uses `auto`, then `none` after the call limit. Snowball supplies the same function through its native chat template, as detailed below. Each round receives the remaining token budget. Returned reasoning is preserved between turns. Private Snowball access identifiers are redacted.
 
 </details>
 
@@ -302,5 +328,50 @@ Full-evaluation dataset revision: `26f63e8e488022bed14e12af0f1e44d87a28e14f`. Fi
 The deterministic scorer and benchmark definitions are unchanged. No scored inference requests are retried. A separate formatting diagnostic accepts an inline final-answer marker and removes one outer JSON fence; it never changes primary scores. GPT-OSS exploratory compatibility checks are separate from scored pilot attempts.
 
 Failed Qwen request metadata omitted by the legacy trial is reconstructed from saved response and billing files for reporting. Raw traces, final answers and scores are unchanged. Public artifacts include prompts, final predictions, settings and metrics. Raw API requests, reasoning and tool programs/results remain local and untracked.
+
+</details>
+
+<details>
+<summary>Snowball native thinking and tool-call transport</summary>
+
+The existing service has no automatic function-call parser. The client supplies the exact Python function through the release’s own chat template, parses only native JSON tool-call blocks, executes programs verbatim in the same sandbox, and returns results through tool-role messages. Native thinking is preserved and replayed. At the eight-call limit the function definitions are omitted.
+
+```json
+{
+  "skip_special_tokens": false,
+  "chat_template_kwargs": {
+    "enable_thinking": true,
+    "xml_tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "python",
+          "description": "Execute Python 3.12.9 code with the standard library and NumPy 2.5.4. Biopython is not installed. Networking and subprocesses are disabled; only runtime files and this example's working directory are readable. Use print() to return results. Each call starts a fresh interpreter; files in the working directory persist within this example. Limits: 30 seconds per call, 16384 characters each of stdout/stderr, and at most 8 calls per example. Returns stdout, stderr, exit_code, timed_out, and output_truncated.",
+          "strict": true,
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Python code to execute."
+              }
+            },
+            "required": [
+              "code"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    ]
+  },
+  "stop": [
+    "</tool_call>"
+  ],
+  "include_stop_str_in_output": true
+}
+```
+
+The private capability URL and serving model ID remain local. A real Python round trip is checked before scoring, independently of strict final-answer formatting. No generated code or answer is repaired. The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted.
 
 </details>

@@ -14,7 +14,7 @@ from pathlib import Path
 
 from cds_bench.catalog import TASKS
 from cds_bench.eval_luna.io import save
-from cds_bench.eval_luna.report import aggregate, public_record
+from cds_bench.eval_luna.report import aggregate as standard_aggregate, public_record
 from cds_bench.eval_luna.score import score_result
 
 from .run import CONDITIONS, LUNA_RAW, LUNA_RESULTS, OUTPUT, PLANNED, RAW, ROOT
@@ -24,13 +24,23 @@ from .deepinfra_run import RAW as DEEPINFRA_RAW
 from .lightning_supervise import latest_failure_was_rate_limit
 from .tables import HEADERS, cells, html_grouped_table
 from . import radar
+from . import snowball_full
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
-MODELS = {"luna": "GPT-6 Luna (high)", "qwen": "Qwen 3.7 Flash (high)", "deepinfra": "Nemotron 3.5 Lightning"}
+MODELS = {"luna": "GPT-6 Luna (high)", "qwen": "Qwen 3.7 Flash (high)",
+          "deepinfra": "Nemotron 3.5 Lightning", "snowball-v01": "Snowball v0.1"}
 BRANCH = "eval/luna-high-baseline"
 REPOSITORY = "Open-Athena/cds-bench"
 PR_TITLE = "CDS-bench: full baseline evaluation and model pilot"
 REPORT_PATH = str(OUTPUT.relative_to(ROOT))
+
+
+def aggregate(rows, model=None):
+    result = standard_aggregate(rows)
+    if model == 'snowball-v01':
+        result['cost_usd'] = None
+        result['reasoning_tokens'] = None
+    return result
 
 
 def read(path, default=None):
@@ -76,6 +86,7 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
     for model, source, source_rows in [
         ("luna", LUNA_RAW, read(LUNA_RESULTS)), ("qwen", raw, records(raw)),
         ("deepinfra", deepinfra_raw, records(deepinfra_raw)),
+        ("snowball-v01", snowball_full.RAW, snowball_full.records()),
     ]:
         for original in source_rows:
             key = original["instance_id"], original["variant"]
@@ -87,12 +98,12 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
             all_rows.append(row)
     assert len({(r["model"], r["instance_id"], r["condition"]) for r in all_rows}) == len(all_rows)
     condition_names = list(PLANNED)
-    summaries = {m: {c: aggregate([r for r in all_rows if r["model"] == m and r["condition"] == c]) for c in condition_names} for m in MODELS}
-    totals = {m: aggregate([r for r in all_rows if r["model"] == m]) for m in MODELS}
+    summaries = {m: {c: aggregate([r for r in all_rows if r["model"] == m and r["condition"] == c], m) for c in condition_names} for m in MODELS}
+    totals = {m: aggregate([r for r in all_rows if r["model"] == m], m) for m in MODELS}
     assert totals["luna"]["attempted"] == 3260
-    by_task = {t: {m: {c: aggregate([r for r in all_rows if r["task_id"] == t and r["model"] == m and r["condition"] == c]) for c in condition_names} for m in MODELS} for t in TASKS}
+    by_task = {t: {m: {c: aggregate([r for r in all_rows if r["task_id"] == t and r["model"] == m and r["condition"] == c], m) for c in condition_names} for m in MODELS} for t in TASKS}
     families = sorted({v.get("family", "composition") for v in TASKS.values()})
-    by_family = {f: {m: {c: aggregate([r for r in all_rows if TASKS[r["task_id"]].get("family", "composition") == f and r["model"] == m and r["condition"] == c]) for c in condition_names} for m in MODELS} for f in families}
+    by_family = {f: {m: {c: aggregate([r for r in all_rows if TASKS[r["task_id"]].get("family", "composition") == f and r["model"] == m and r["condition"] == c], m) for c in condition_names} for m in MODELS} for f in families}
     diagnostics = {m: {c: sum(r["format_diagnostic_exact"] for r in all_rows if r["model"] == m and r["condition"] == c) for c in condition_names} for m in MODELS}
     luna_lookup = {(r["instance_id"], r["condition"]): r for r in all_rows if r["model"] == "luna"}
     paired = {}
@@ -126,6 +137,30 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
                "request_settings": {"luna": read(LUNA_RAW / "config.json")["parameters_no_tools"], "qwen": config["parameters_no_tools"], "deepinfra": deepinfra_config["parameters_no_tools"] if deepinfra_config else None},
                "job": job, "qwen_job": qwen_job, "recovery": read(deepinfra_raw / "recovery-status.json", {}),
                "stopped_after_provider_rate_limits": job['state'] == 'failed' and any(word in (job.get('error') or '') for word in ['five consecutive API failures', 'rate limits', 'unavailable']) and latest_failure_was_rate_limit(deepinfra_raw)}
+    snowball_config = snowball_full.public_config()
+    snowball_job = read(snowball_full.RAW / 'job-status.json', {'state':'prepared','completed':0})
+    snowball_job = dict(snowball_job)
+    if snowball_job.get('error'):
+        snowball_job['error'] = 'Operational failure; detailed diagnostics remain in the private execution log.'
+    snowball_audit = read(snowball_full.RAW / 'audit.json', {})
+    summary.update(snowball_completed=totals['snowball-v01']['attempted'], snowball_planned=3260,
+                   snowball_completion_audit='passed' if snowball_audit.get('complete') else 'pending',
+                   active_model='snowball-v01', snowball_job=snowball_job, deepinfra_job=job,
+                   job=snowball_job, state='auditing' if snowball_job['state']=='complete' and not snowball_audit.get('complete') else snowball_job['state'])
+    summary['model_states']['snowball-v01'] = summary['state']
+    summary['deepinfra_recovery'] = summary['recovery']
+    summary['recovery'] = {}
+    summary['stopped_after_provider_rate_limits'] = False
+    summary['request_settings']['snowball-v01'] = snowball_config['parameters_no_tools'] if snowball_config else None
+    summary['snowball_configuration'] = snowball_config
+    summary['paired_snowball'] = {}
+    for condition in condition_names:
+        pairs = [(luna_lookup[r['instance_id'],condition],r) for r in all_rows if r['model']=='snowball-v01' and r['condition']==condition]
+        summary['paired_snowball'][condition] = {
+            'completed_pairs':len(pairs), 'both_correct':sum(a['passed'] and b['passed'] for a,b in pairs),
+            'luna_only':sum(a['passed'] and not b['passed'] for a,b in pairs),
+            'snowball_only':sum(b['passed'] and not a['passed'] for a,b in pairs),
+            'both_failed':sum(not a['passed'] and not b['passed'] for a,b in pairs)}
     summary["recovered_failed_request_metadata"] = sum(bool(r.get("request_metadata_recovered")) for r in all_rows)
     summary["token_budget"] = {
         "requested_per_example": 32768,
@@ -134,10 +169,15 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
         "deepinfra_reported_over_budget_attempts": sum(r["completion_tokens"] > 32768 for r in all_rows if r["model"] == "deepinfra"),
         "deepinfra_largest_reported_usage": max((r["completion_tokens"] for r in all_rows if r["model"] == "deepinfra"), default=0),
     }
-    public = [dict({k: v for k, v in public_record(r).items() if r["model"] not in {"lightning", "deepinfra"} or k in r}, model=r["model"], format_diagnostic_exact=r["format_diagnostic_exact"], request_metadata_recovered=bool(r.get("request_metadata_recovered"))) for r in all_rows]
+    public = []
+    for row in all_rows:
+        exported = dict({k:v for k,v in public_record(row).items() if row['model'] not in {'lightning','deepinfra','snowball-v01'} or k in row},
+                        model=row['model'], format_diagnostic_exact=row['format_diagnostic_exact'],
+                        request_metadata_recovered=bool(row.get('request_metadata_recovered')))
+        public.append(snowball_full.public_row(exported) if row['model']=='snowball-v01' else exported)
     save(output / "summary.json", summary)
     save(output / "results.json", public)
-    save(output / "config.json", {"qwen": config, "luna_original": read(LUNA_RAW / "config.json"), "deepinfra": deepinfra_config})
+    save(output / "config.json", {"qwen": config, "luna_original": read(LUNA_RAW / "config.json"), "deepinfra": deepinfra_config, 'snowball-v01':snowball_config})
     with (output / "by-task.csv").open("w") as f:
         writer = csv.DictWriter(f, fieldnames=["task_id", "family", "model", "condition", "planned", "attempted", "correct", "accuracy", "wrong", "format", "timeout", "token_cap", "error", "cost_usd", "median_seconds"], lineterminator="\n")
         writer.writeheader()
@@ -154,15 +194,17 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
     render(output, summary, config, data, public)
     (output / "pr-body.md").write_text(pr_body(summary, config))
     (output / "README.md").write_text(
-        f"# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation\n\nNemotron 3.5 Lightning: {totals['deepinfra']['attempted']}/3,260 fresh attempts ({job['state']}). Luna and Qwen: 3,260 matched completed attempts each.\n\n"
+        f"# Full CDS-bench model evaluation\n\nSnowball v0.1: {totals['snowball-v01']['attempted']}/3,260 fresh attempts ({summary['state']}). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.\n\n"
         "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
         "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
+        "Snowball v0.1 is a 67B MoE model with 2B active parameters per token. The full run uses 32,768 aggregate generated tokens, a 1,800-second API request deadline, temperature 0.7 and concurrency 60. Its native thinking/tool transport and private access configuration match the validated pilot. No per-request monetary price is exposed.\n\n"
+        "Checkpoint: [open-athena/Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3), revision `adc0078a19a4383bc998fcdb43867b3360baf5f3`.\n\n"
         "Accuracy by condition: [PNG](overall.png) · [SVG](overall.svg).\n\n"
         "[Pooled task radar](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report selector also shows each of the four evaluation conditions. Task codes and group colors stay fixed across views, with links to the full-name/ID key and existing details.\n\n"
         "[30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
         "Failed Qwen request counts, timeout flags, usage, and charges are reconstructed from saved response metadata where the collector omitted them. Raw files and scores are unchanged; no requests are retried.\n"
     )
-    print(json.dumps({"state": job["state"], "deepinfra_completed": totals["deepinfra"]["attempted"], "deepinfra_cost_usd": totals["deepinfra"]["cost_usd"]}), flush=True)
+    print(json.dumps({'state':summary['state'], 'snowball_completed':totals['snowball-v01']['attempted'], 'planned':3260}), flush=True)
     return summary
 
 
@@ -175,10 +217,10 @@ def plot(output, summaries):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
-    fig, ax = plt.subplots(figsize=(8.8, 3.8), layout="constrained")
-    for offset, (model, name), color in zip([-0.24, 0, 0.24], MODELS.items(), ["#466784", "#688775", "#786b94"]):
+    fig, ax = plt.subplots(figsize=(11.2, 4.2), layout="constrained")
+    for offset, (model, name), color in zip([-0.30, -0.10, 0.10, 0.30], MODELS.items(), ["#466784", "#688775", "#786b94", "#b47f5e"]):
         values = [100 * (summaries[model][c]["accuracy"] or 0) for c in PLANNED]
-        bars = ax.bar(np.arange(4) + offset, values, width=0.22, label=name, color=color)
+        bars = ax.bar(np.arange(4) + offset, values, width=0.18, label=name, color=color)
         for bar, c in zip(bars, PLANNED):
             r = summaries[model][c]
             percent = f"{100 * r['accuracy']:.1f}%" if r['attempted'] else "n/a"
@@ -191,13 +233,15 @@ def plot(output, summaries):
     ax.set_xticks(range(4), LABELS)
     ax.set_ylim(0, 108)
     ax.set_ylabel("Correct answers (%) among finished attempts")
-    fig.legend(frameon=False, loc="outside upper center", ncol=3, columnspacing=1.8, handlelength=1.8)
+    fig.legend(frameon=False, loc="outside upper center", ncol=4, columnspacing=1.5, handlelength=1.8)
     ax.grid(axis="y", color="#e1e5e8")
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
     fig.savefig(output / "overall.png", dpi=160)
     with matplotlib.rc_context({"svg.fonttype": "none", "svg.hashsalt": "cds-bench-overview"}):
         fig.savefig(output / "overall.svg", metadata={"Date": None})
+    svg = output / 'overall.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     plt.close(fig)
 
 
@@ -226,8 +270,8 @@ def pr_body(summary, config):
     }
     completed = sum(summary["totals"][model]["attempted"] for model in MODELS)
     lines = [
-        "Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)** and **Nemotron 3.5 Lightning**, with and without offline Python. Each condition has ten examples per task: 84 easy task types and 79 hard task types. Each model has 3,260 matching completed attempts, with identical retained prompts and reference answers.",
-        f"\n**{completed:,} scored attempts.** Python improves observed accuracy for all three models in both easy and hard conditions; GPT-6 Luna (high) scores highest in all four conditions. Pilot responses are not reused.",
+        "Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)**, **Nemotron 3.5 Lightning** and **Snowball v0.1**, with and without offline Python. The dataset has ten examples per task: 84 easy task types and 79 hard task types, or 3,260 planned attempts per model. Retained prompts and reference answers are identical across models.",
+        f"\n**Snowball v0.1: {summary['snowball_completed']:,}/3,260 finished ({summary['state']}).** The other three models each have 3,260 completed matching attempts. **{completed:,} scored attempts** in total; pilot responses are not reused.",
         "\nEvaluation-only PR. **Do not merge.**",
         f"\n[Full report (HTML)]({base}/report.html) · [Per-task results (CSV)]({base}/by-task.csv) · [Final predictions (JSON)]({base}/results.json)",
         "\nThe HTML reports are self-contained; download and open them in a browser.",
@@ -241,7 +285,7 @@ def pr_body(summary, config):
         "\nAll failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.\n\n</details>",
         "\n**Task performance: All conditions (pooled)**",
         *figure("task-radar", "CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model"),
-        f"\nEach spoke pools the retained conditions for one task. Subtitles average all 84 task accuracies equally; five tasks have only easy variants. Groups and tasks share the same order across models. The [report’s condition selector and task key]({base}/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.",
+        f"\nEach spoke pools completed attempts for one task. Subtitles average available task accuracies equally; five tasks have only easy variants. Missing results are unscored, not zero. Groups and tasks share the same order across models. The [report’s condition selector and task key]({base}/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.",
         "\nScores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.",
         "\n<details>\n<summary>Full-evaluation failures, billing and token-budget exceptions</summary>\n",
         markdown_table(
@@ -253,6 +297,7 @@ def pr_body(summary, config):
     ]
     lines += [
         f"\nRecorded charges: **${deepinfra['cost_usd']:.5f} Nemotron 3.5 Lightning**, **${q['cost_usd']:.5f} Qwen**, **${luna['cost_usd']:.5f} retained Luna**. Billing is incomplete for {deepinfra['unreconciled_examples']} Nemotron 3.5 Lightning, {q['unreconciled_examples']} Qwen and {luna['unreconciled_examples']} retained Luna attempts. Unknown charges are not assumed to be zero.",
+        "\nSnowball’s internal API exposes token usage but no per-request monetary price. Its cost is unavailable, not zero; GPU allocation cost is not attributed to individual requests.",
         f"\nQwen reports usage beyond the requested 32,768-token budget for {summary['token_budget']['qwen_reported_over_budget_attempts']} attempts, up to {summary['token_budget']['qwen_largest_reported_usage']:,} tokens. The [audit]({base}/audit.json) lists these exceptions. Actual provider-reported usage is not strictly matched to Luna’s requested cap.",
         "\n</details>",
         "\n**30-task pilot**",
@@ -287,16 +332,17 @@ def pr_body(summary, config):
                 lines.insert(-1, f"\n**{snowball['name']}** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip was verified before scoring. Uses {snowball['aggregate_completion_token_budget']:,} aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [{snowball['full_name']}]({p['url']}), `{p['repo']}` at revision `{p['revision']}`. Its transport and execution checks are documented in the pilot report.")
     lines += [
         "\n**Request and execution settings**",
+        "\nSnowball v0.1 is a 67B MoE model with 2B active parameters per token. Full checkpoint: [open-athena/Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3), revision `adc0078a19a4383bc998fcdb43867b3360baf5f3`. Its full run uses the validated native API setup; no new deployment or pilot-response reuse.",
         "\n| Setting | Value |\n|---|---|",
-        "| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; `nvidia/nemotron-3.5-lightning` / `deepinfra/bf16`; no fallback |",
-        '| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Nemotron 3.5 Lightning: `{"enabled":true,"exclude":false}`; no effort selector |',
-        "| Full output / timeout | 32,768 aggregate generated tokens/example; **300 seconds/API request**. Pilot exceptions are noted above |",
-        '| Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |',
+        "| Full models / providers | Luna / OpenAI; Qwen / `alibaba/us-east-1`; Nemotron / `deepinfra/bf16`; Snowball v0.1 / internal Marin API. Exact model identifiers are below; no fallback |",
+        '| Full reasoning | Luna/Qwen: `high`; Nemotron: reasoning enabled; Snowball: native `enable_thinking=true`. No effort selector is verified for Nemotron or Snowball |',
+        "| Full output / timeout | 32,768 aggregate generated tokens/example. OpenRouter: **300 seconds/API request**; Snowball: **1,800 seconds/API request** |",
+        '| Tools / web | One local Python function; no web tools. OpenRouter uses `auto` or an empty tools array with `none`. Snowball uses its native tool-call format |',
         "| Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |",
         "| Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |",
-        "| Sampling | Full runs use ten concurrent examples and provider-default temperature. Seed 20261029 for Luna/Qwen, omitted for Nemotron 3.5 Lightning. Pilot scheduling exceptions are in its report |",
-        "\n<details>\n<summary>Exact Python function supplied to OpenRouter</summary>\n\n```json\n" + json.dumps(config["tools_condition"]["tools"], indent=2) + "\n```\n\nThe no-tools condition sends an empty tools array. No hosted shell or web tool is registered. Separate GPT-OSS compatibility experiments are described in the pilot report.\n\n</details>",
-        "\n<details>\n<summary>Exact full-evaluation request settings</summary>\n\n```json\n" + json.dumps(summary["request_settings"], indent=2) + "\n```\n\nThe tools condition adds the function above and uses `auto`, then `none` after the call limit. Each round receives the remaining token budget. Returned reasoning records are preserved between turns. Pilot-specific routing and settings are in its report.\n\n</details>",
+        "| Sampling | OpenRouter: concurrency 10, provider-default temperature. Snowball: concurrency 60, temperature 0.7. Seed 20261029 for Luna/Qwen/Snowball; omitted for Nemotron |",
+        "\n<details>\n<summary>Exact Python function supplied to the models</summary>\n\n```json\n" + json.dumps(config["tools_condition"]["tools"], indent=2) + "\n```\n\nOpenRouter receives an empty tools array for no-tools cases. Snowball omits the function definitions from its chat template. No hosted shell or web tool is registered.\n\n</details>",
+        "\n<details>\n<summary>Exact full-evaluation request settings</summary>\n\n```json\n" + json.dumps(summary["request_settings"], indent=2) + "\n```\n\nOpenRouter adds the function above and uses `auto`, then `none` after the call limit. Snowball supplies the same function through its native chat template, as detailed below. Each round receives the remaining token budget. Returned reasoning is preserved between turns. Private Snowball access identifiers are redacted.\n\n</details>",
         "\n<details>\n<summary>Local Python execution and network isolation</summary>\n\nThe controller executes returned Python programs locally and sends stdout/stderr, exit code and timeout status back as tool results. Network isolation is an OS policy, not an OpenRouter parameter; the controller retains API access.\n\n```sh\n/usr/bin/sandbox-exec -f \"$workdir/sandbox.sb\" \\\n  \"$runtime/bin/python\" -I -B -c \"$launcher\"\n```\n\nThe policy denies `network*` and `process-fork`, restricts reads to runtime/system paths and the current example workdir, and restricts writes to that workdir. Benchmark answers and credentials are inaccessible. Startup checks verify these restrictions.\n\n</details>",
         "\n<details>\n<summary>Dataset matching, scoring and saved artifacts</summary>\n",
         f"Full-evaluation dataset revision: `{config['dataset']['revision']}`. Five duplicated hard variants were removed after the original Luna run. Its original 3,360-attempt artifacts remain intact; the combined comparison excludes only those 100 historical attempts. Retained prompts and reference answers match byte for byte. The pilot’s 30 task types contain two of those duplicated hard variants, so its comparison retains 116 attempts/model.",
@@ -304,21 +350,27 @@ def pr_body(summary, config):
         "\nFailed Qwen request metadata omitted by the legacy trial is reconstructed from saved response and billing files for reporting. Raw traces, final answers and scores are unchanged. Public artifacts include prompts, final predictions, settings and metrics. Raw API requests, reasoning and tool programs/results remain local and untracked.",
         "\n</details>",
     ]
+    native = summary.get('snowball_configuration')
+    if native:
+        lines.append('\n<details>\n<summary>Snowball native thinking and tool-call transport</summary>\n\nThe existing service has no automatic function-call parser. The client supplies the exact Python function through the release’s own chat template, parses only native JSON tool-call blocks, executes programs verbatim in the same sandbox, and returns results through tool-role messages. Native thinking is preserved and replayed. At the eight-call limit the function definitions are omitted.\n\n```json\n'+json.dumps(native['native_request_fields'],indent=2)+'\n```\n\nThe private capability URL and serving model ID remain local. A real Python round trip is checked before scoring, independently of strict final-answer formatting. No generated code or answer is repaired. The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted.\n\n</details>')
     return "\n".join(lines) + "\n"
 
 def render(output, summary, config, data, rows):
     import base64
     esc = html.escape
-    parts = ["""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning full evaluation</title><style>
+    parts = ["""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: full model evaluation</title><style>
 body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}small,.muted{color:#64727e}small{display:block}.scroll{overflow-x:auto}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 0}img{max-width:100%;height:auto}[hidden]{display:none!important}nav{margin:12px 0 20px}.good{background:#e5efe8}.bad{background:#f3e8e9}
 .indexed-table tbody+tbody{border-top:2px solid #bfc9d2}.indexed-table tbody th{background:white;font-weight:400}.indexed-table .index-group{vertical-align:middle;font-weight:600;min-width:130px;max-width:210px;border-right:1px solid #dce2e7}.indexed-table .index-item{min-width:100px;max-width:210px}.indexed-table td{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}.indexed-table thead th:nth-child(n+3){text-align:right}
 .task-radar-svg{display:block;width:100%;height:auto;min-width:1200px}.task-radar-figure{margin:0}.task-radar-figure figcaption{color:#64727e;font-size:13px;margin-top:8px}.radar-swatch{display:inline-block;width:10px;height:10px;margin-right:8px}.radar-key td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}.radar-key-group th{font-weight:600}
 .radar-control select{margin-left:8px}
-</style><main><h1>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
+</style><main><h1>CDS-bench: full model evaluation</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
-    parts.append(f"<p>Full evaluation: <b>Nemotron 3.5 Lightning {deepinfra['attempted']}/3,260 ({esc(summary['state'].replace('waiting-provider', 'waiting for DeepInfra'))})</b>. Luna and Qwen each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
+    parts.append(f"<p>Full evaluation: <b>Snowball v0.1 {summary['snowball_completed']:,}/3,260 ({esc(summary['state'])})</b>. GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. Retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
+    parts.append('<p class="muted">Snowball uses 32,768 aggregate generated tokens, a 1,800-second API wall deadline, temperature 0.7 and concurrency 60. The OpenRouter models use a 300-second deadline and concurrency 10. Snowball’s native thinking/tool transport matches its validated pilot; no per-request monetary price is exposed.</p>')
     if summary['state'] == 'complete':
-        parts.append('<p>Nemotron 3.5 Lightning completion audit: <b>'+esc(summary['deepinfra_completion_audit'])+'</b>.</p>')
+        parts.append('<p>Snowball completion audit: <b>'+esc(summary['snowball_completion_audit'])+'</b>. <a href="snowball-v01-full-audit.json">Inspect audit</a>.</p>')
+    elif summary['state'] == 'auditing':
+        parts.append('<p><b>Inference finished; completion audit pending.</b></p>')
     if summary['state'] == 'failed':
         cause = 'DeepInfra upstream rate limits (HTTP 429).' if summary['stopped_after_provider_rate_limits'] else 'The evaluator stopped after an operational failure.'
         parts.append('<p role="status"><b>Requests stopped.</b> '+cause+' Completed attempts, including failures, are retained.</p>')
@@ -344,11 +396,11 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
             r = summary["conditions"][m][c]
             parts.append(f'<tr><td>{name}<small>{label}</small></td>'+''.join(f'<td>{r[k]}</td>' for k in ['wrong','format','timeout','token_cap','error','examples_using_python','completion_tokens'])+'</tr>')
     budget = summary["token_budget"]
-    parts.append('</table></div><p>Timeouts are the 300-second API deadline. Token caps exhaust the aggregate generated-token budget. Provider/connection failures remain separate. Timed-out responses may omit usage; reconciled generation charges are retained when available.</p>')
+    parts.append('</table></div><p>Timeouts exceed the API wall deadline: 300 seconds for OpenRouter and 1,800 seconds for Snowball. Token caps exhaust the aggregate generated-token budget. Provider/connection failures remain separate. Timed-out responses may omit usage; reconciled generation charges are retained when available.</p>')
     parts.append(f"<p>Failed-request bookkeeping is reconstructed from saved response metadata for {summary['recovered_failed_request_metadata']} attempts. Raw traces, answers, and scores are unchanged.</p>")
     parts.append(f"<p>The controller requests at most 32,768 generated tokens per example. Qwen reports usage above that allowance for {budget['qwen_reported_over_budget_attempts']} attempts, with a maximum of {budget['qwen_largest_reported_usage']:,} tokens. The audit lists these exceptions; actual provider-reported usage is not strictly matched to Luna's requested cap.</p></details>")
     parts.append('<details><summary>Paired comparisons with Luna on completed cases</summary><table><tr><th>Model / condition</th><th>Pairs</th><th>Both correct</th><th>Luna only</th><th>Other model only</th><th>Both failed</th></tr>')
-    for model, metrics, only in [('qwen', summary['paired_models'], 'qwen_only'), ('deepinfra', summary['paired_deepinfra'], 'deepinfra_only')]:
+    for model, metrics, only in [('qwen', summary['paired_models'], 'qwen_only'), ('deepinfra', summary['paired_deepinfra'], 'deepinfra_only'), ('snowball-v01', summary['paired_snowball'], 'snowball_only')]:
         for c, label in zip(PLANNED, LABELS):
             r = metrics[c]
             parts.append(f'<tr><td>{esc(MODELS[model])}<small>{label}</small></td>'+''.join(f'<td>{r[k]}</td>' for k in ['completed_pairs','both_correct','luna_only',only,'both_failed'])+'</tr>')
@@ -374,17 +426,21 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
                 text = '—' if c.startswith('hard') and task in config['dataset']['removed_hard_tasks'] else f'{r["correct"]}/{r["attempted"]}'
                 parts.append(f'<td>{text}</td>')
         parts.append(f'</tr><tr class="task-detail"><td colspan="{1+len(MODELS)*len(LABELS)}"></td></tr>')
-    parts.append('</tbody></table></div><h2 id="settings">Settings and data</h2><p>Luna and Qwen request <code>high</code> reasoning. Nemotron 3.5 Lightning uses <code>nvidia/nemotron-3.5-lightning</code> on <code>deepinfra/bf16</code>, with reasoning enabled and no effort selector. Seed is omitted, matching its pilot. Qwen uses <code>alibaba/us-east-1</code>; Luna used the standard OpenAI endpoint. No provider fallback. The limit is 32,768 generated tokens across all turns, 300 seconds per API request, and eight Python calls per example.</p><p>Python 3.12.9 + NumPy 2.5.4; no Biopython. Local <code>/usr/bin/sandbox-exec</code> denies networking and process forks and restricts filesystem access. Network denial is not an OpenRouter parameter. Web plugins are disabled and no web tool is registered. Raw requests, reasoning, and tool traces remain untracked.</p>')
+    parts.append('</tbody></table></div><h2 id="settings">Settings and data</h2><p>Luna and Qwen request <code>high</code> reasoning. Nemotron 3.5 Lightning uses <code>nvidia/nemotron-3.5-lightning</code> on <code>deepinfra/bf16</code>, with reasoning enabled and no effort selector. Seed is omitted, matching its pilot. Qwen uses <code>alibaba/us-east-1</code>; Luna used the standard OpenAI endpoint. No provider fallback. All full runs allow 32,768 generated tokens across all turns and eight Python calls per example. OpenRouter requests have a 300-second deadline; Snowball requests have a 1,800-second wall deadline. Snowball uses native thinking, temperature 0.7, seed 20261029 and concurrency 60.</p><p>Python 3.12.9 + NumPy 2.5.4; no Biopython. Local <code>/usr/bin/sandbox-exec</code> denies networking and process forks and restricts filesystem access. Network denial is not an OpenRouter parameter. Web plugins are disabled and no web tool is registered. Raw requests, reasoning, and tool traces remain untracked.</p>')
     parts.append('<details><summary>Exact Python tool definition</summary><pre>'+esc(json.dumps(config['tools_condition']['tools'],indent=2))+'</pre></details>')
+    native = summary.get('snowball_configuration')
+    if native:
+        p = native['provenance']
+        parts.append('<details><summary>Snowball v0.1 checkpoint and native API</summary><p>67B total parameters and 2B active per token. Checkpoint: <a href="'+esc(p['url'])+'">'+esc(native['full_name'])+'</a>, <code>'+esc(p['repo'])+'</code>, revision <code>'+esc(p['revision'])+'</code>.</p><p>The existing Marin service uses the release’s own chat template. The exact Python function is supplied through xml_tools; only native JSON tool-call blocks are parsed. Programs and final answers are not repaired. Thinking is preserved and replayed, and Python output is returned through tool-role messages. The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted. The capability URL and serving model ID stay private. Cost is unavailable.</p><pre>'+esc(json.dumps(native['native_request_fields'],indent=2))+'</pre></details>')
     parts.append('<details><summary>Dataset version, exact request settings, and billing metadata</summary><p>The current dataset removes five duplicated hard variants. The 100 corresponding historical Luna attempts are excluded only from this comparison. Its original 3,360-attempt report is preserved. Every retained prompt and answer was verified against the old traces.</p><pre>'+esc(json.dumps({'request_settings':summary['request_settings'],'dataset':config['dataset'],'billing':summary['billing'],'qwen_preflight_billing':summary['preflight_billing'],'deepinfra_preflight_billing':summary['deepinfra_preflight_billing']},indent=2))+'</pre></details>')
     parts.append('<p><a href="summary.json">Summary</a> · <a href="by-task.csv">Per-task CSV</a> · <a href="results.json">Predictions</a> · <a href="config.json">Configurations</a></p>')
-    payload = {'snapshot':{k:summary[k] for k in ['generated_at','state','qwen_completed','deepinfra_completed']},
+    payload = {'snapshot':{k:summary[k] for k in ['generated_at','state','qwen_completed','deepinfra_completed','snowball_completed']},
                'models':MODELS,'conditions':list(PLANNED),'labels':LABELS,'records':rows,
                'cases':{v:rs for v,rs in data.items()}}
     parts.append('<script id="data" type="application/json">'+json.dumps(payload,ensure_ascii=False).replace('<','\\u003c')+'</script>')
     parts.append("""<script>
 const d=JSON.parse(document.getElementById('data').textContent),caseMap=new Map(),recordMap=new Map();for(const [v,rows]of Object.entries(d.cases))for(const r of rows)caseMap.set(r.instance_id+'|'+v,r);for(const r of d.records)recordMap.set(r.model+'|'+r.condition+'|'+r.instance_id,r);function node(tag,text){const x=document.createElement(tag);if(text!==undefined)x.textContent=text;return x}function details(title,text){const x=node('details');x.append(node('summary',title),node('pre',text));return x}
-function expand(row,force){const child=row.nextElementSibling,open=force===undefined?!child.classList.contains('open'):force;child.classList.toggle('open',open);row.setAttribute('aria-expanded',open);if(!open||child.dataset.loaded)return;child.dataset.loaded='1';const cell=child.firstElementChild,select=node('select'),view=node('div'),ids=d.cases.easy.filter(x=>x.task_id===row.dataset.task).map(x=>x.instance_id);for(const id of ids){const o=node('option',id);o.value=id;select.append(o)}const label=node('label','Instance ');label.append(select);cell.append(label,view);function show(){view.replaceChildren();const id=select.value;for(const variant of ['easy','hard']){const c=caseMap.get(id+'|'+variant);if(!c)continue;view.append(details(variant+' prompt',c.prompt));view.append(details(variant+' expected answer',c.answer));for(const tools of [false,true]){const condition=variant+(tools?'-tools':'-no-tools');for(const [m,name]of Object.entries(d.models)){const r=recordMap.get(m+'|'+condition+'|'+id);let text='Not completed';if(r)text=(r.final_answer??r.error??'No final answer')+'\\n\\n'+r.elapsed_seconds.toFixed(1)+'s; '+r.tool_calls+' Python calls; $'+r.cost_usd.toFixed(6);view.append(details(name+' · '+condition+' · '+(r?r.outcome:'pending'),text))}}}}select.addEventListener('change',show);show()}
+function expand(row,force){const child=row.nextElementSibling,open=force===undefined?!child.classList.contains('open'):force;child.classList.toggle('open',open);row.setAttribute('aria-expanded',open);if(!open||child.dataset.loaded)return;child.dataset.loaded='1';const cell=child.firstElementChild,select=node('select'),view=node('div'),ids=d.cases.easy.filter(x=>x.task_id===row.dataset.task).map(x=>x.instance_id);for(const id of ids){const o=node('option',id);o.value=id;select.append(o)}const label=node('label','Instance ');label.append(select);cell.append(label,view);function show(){view.replaceChildren();const id=select.value;for(const variant of ['easy','hard']){const c=caseMap.get(id+'|'+variant);if(!c)continue;view.append(details(variant+' prompt',c.prompt));view.append(details(variant+' expected answer',c.answer));for(const tools of [false,true]){const condition=variant+(tools?'-tools':'-no-tools');for(const [m,name]of Object.entries(d.models)){const r=recordMap.get(m+'|'+condition+'|'+id);let text='Not completed';if(r)text=(r.final_answer??r.error??'No final answer')+'\\n\\n'+r.elapsed_seconds.toFixed(1)+'s; '+r.tool_calls+' Python calls; '+(r.cost_usd===null?'cost unavailable':'$'+r.cost_usd.toFixed(6));view.append(details(name+' · '+condition+' · '+(r?r.outcome:'pending'),text))}}}}select.addEventListener('change',show);show()}
 for(const row of document.querySelectorAll('.task-row')){row.addEventListener('click',e=>expand(row,e.target.closest('a')?true:undefined));row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();expand(row)}})}document.getElementById('filter').addEventListener('input',e=>{for(const row of document.querySelectorAll('.task-row')){row.hidden=!row.dataset.search.includes(e.target.value.toLowerCase());row.nextElementSibling.hidden=row.hidden}});function anchor(){const row=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(row?.classList.contains('task-row'))expand(row,true)}addEventListener('hashchange',anchor);anchor();
 const viewKey='cds-report-view:'+location.pathname;
 function refreshReport(){

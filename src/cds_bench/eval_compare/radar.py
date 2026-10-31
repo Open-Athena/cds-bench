@@ -1,4 +1,4 @@
-"""Three task-level radar panels from saved metrics, with a shared linked key."""
+"""Task-level radar panels from saved metrics, with a shared linked key."""
 
 import html
 import json
@@ -142,8 +142,16 @@ def _plot_view(output, data):
         cursor += gap
 
     with mpl.rc_context({"svg.fonttype": "none", "svg.hashsalt": f"cds-bench-task-radar-{condition}"}):
-        fig, axes = plt.subplots(1, 3, figsize=(18, 7.2), subplot_kw={"projection": "polar"})
-        fig.subplots_adjust(left=0.015, right=0.985, bottom=0.18, top=0.88, wspace=0.11)
+        columns = len(models) if len(models)<=3 else 2
+        rows = math.ceil(len(models)/columns)
+        fig, axes = plt.subplots(rows, columns, figsize=(6*columns, 7.2 if rows==1 else 6.2*rows),
+                                 squeeze=False, subplot_kw={"projection": "polar"})
+        fig.subplots_adjust(left=0.025, right=0.975, bottom=0.18 if rows==1 else 0.11,
+                            top=0.88 if rows==1 else 0.91, wspace=0.11, hspace=0.30)
+        axes = axes.ravel()
+        for unused in axes[len(models):]:
+            unused.set_visible(False)
+        axes = axes[:len(models)]
         for ax, (model, name) in zip(axes, models.items(), strict=True):
             ax.set_theta_zero_location("N")
             ax.set_theta_direction(-1)
@@ -184,19 +192,25 @@ def _plot_view(output, data):
             ax.plot(angles + [angles[0] + 2 * math.pi], contour + contour[:1], color="#344554", linewidth=1.1, zorder=4)
             ax.fill(angles + [angles[0] + 2 * math.pi], contour + contour[:1], color="#344554", alpha=0.055, zorder=2)
             center = (ax.get_position().x0 + ax.get_position().x1) / 2
-            fig.text(center, 0.967, name, ha="center", va="top", fontsize=13, color="#25313c")
+            title_y = 0.967 if rows==1 else ax.get_position().y1+0.045
+            subtitle_y = 0.925 if rows==1 else ax.get_position().y1+0.017
+            fig.text(center, title_y, name, ha="center", va="top", fontsize=13, color="#25313c")
             stats = data["model_summaries"][model]
             subtitle = (f'Mean task accuracy: {stats["mean_accuracy"]:.1%}'
                         if stats["task_count"] else "No completed attempts")
-            fig.text(center, 0.925, subtitle, ha="center", fontsize=10, color="#64727e")
+            expected_count = 79 if condition.startswith('hard') else 84
+            if 0<stats['task_count']<expected_count:
+                subtitle += f' ({stats["task_count"]}/{expected_count} tasks)'
+            fig.text(center, subtitle_y, subtitle, ha="center", fontsize=10, color="#64727e")
         handles = [Patch(facecolor=g["color"], label=f'{g["code"]}  {g["name"]}') for g in groups]
         # Matplotlib fills legend columns; keep the displayed group order row-first.
         handles = [handles[i] for column in range(5) for i in range(column, len(handles), 5)]
         fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.045), ncol=5,
                    frameon=False, fontsize=9.5, handlelength=0.9, columnspacing=1.8)
         count = next(iter(data["model_summaries"].values()))["task_count"]
-        footer = (f'{data["condition_label"]} · {count}/84 tasks scored · fixed pooled task order · 0–100% scale'
-                  + (" · gray labels and curve gaps indicate N/A" if count < 84 else ""))
+        partial = any(t['models'][m]['attempted']<max(r['attempted'] for r in t['models'].values()) for t in tasks for m in models)
+        footer = (f'{data["condition_label"]} · completed attempts only · fixed pooled task order · 0–100% scale'
+                  + (" · gray labels and gaps indicate N/A" if count<84 or partial else ""))
         fig.text(0.5, 0.016, footer,
                  ha="center", fontsize=9, color="#64727e")
         fig.savefig(output / f"{filename}.png", dpi=200, facecolor="white")
@@ -210,17 +224,19 @@ def _plot_view(output, data):
     root = tree.getroot()
     root.set("role", "group")
     root.set("data-radar-condition", condition)
-    root.set("aria-label", f'{data["condition_label"]}: {count} scored tasks, with one radar panel per model and linked task codes')
+    root.set("aria-label", f'{data["condition_label"]}: 84 task axes, completed attempts only, with one radar panel per model and linked task codes')
     lookup = {t["task_id"]: t for t in tasks}
     for element in root.iter(f"{{{SVG}}}g"):
         identity = element.get("id", "")
         if not identity.startswith("radar-label-"):
             continue
-        model, task_id = identity.removeprefix("radar-label-").split("-", 1)
+        model = next(m for m in sorted(models,key=len,reverse=True) if identity.startswith(f'radar-label-{m}-'))
+        task_id = identity.removeprefix(f'radar-label-{model}-')
         task = lookup[task_id]
         link = element.find(f"{{{SVG}}}a")
         score = task["models"][model]
-        value = f'{score["correct"]}/{score["attempted"]}' if score["attempted"] else 'N/A: no retained hard variant'
+        missing_hard = condition.startswith('hard') and all(r['attempted']==0 for r in task['models'].values())
+        value = f'{score["correct"]}/{score["attempted"]}' if score["attempted"] else 'N/A: no retained hard variant' if missing_hard else 'N/A: no completed attempts'
         description = f'{task["code"]}: {task["title"]} ({task_id}). {models[model]}: {value}.'
         link.set("href", f"report.html#task-{task_id}")
         link.set(f"{{{XLINK}}}href", f"report.html#task-{task_id}")
@@ -274,16 +290,19 @@ def _view_section(output, data):
     svg = ((output / f"{filename}.svg").read_text()
            .replace('<svg ', '<svg class="task-radar-svg" ', 1)
            .replace('href="report.html#task-', 'href="#task-'))
+    partial = any(t['models'][m]['attempted']<max(r['attempted'] for r in t['models'].values()) for g in data['groups'] for t in g['tasks'] for m in data['models'])
     if condition == "all":
-        description = '84 tasks scored. Each task pools 40 attempts per model, or 20 for the five tasks without a hard variant.'
+        description = '84 task types. A completed model pools 40 attempts per task, or 20 for the five tasks without a hard variant.'
     elif condition.startswith("hard"):
-        description = '79 tasks scored, with ten attempts per task and model. The five tasks without a hard variant are N/A, not zero: their labels are gray and their points are omitted.'
+        description = '79 retained task types, with ten attempts per task for a completed model. The five tasks without a hard variant are N/A, not zero: their labels are gray and their points are omitted.'
     else:
-        description = '84 tasks scored, with ten attempts per task and model.'
+        description = '84 task types, with ten attempts per task for a completed model.'
+    if partial:
+        description += ' In-progress models include only finished attempts; missing results are unscored and appear as gray labels and gaps.'
     hidden = '' if condition == 'all' else ' hidden'
     parts = [f'<section data-radar-view="{condition}" aria-label="{esc(data["condition_label"])}"{hidden}>',
              f'<p class="radar-view-description"><strong>{esc(data["condition_label"])}</strong>. {description} All failures count.</p>',
-             '<figure class="task-radar-figure"><div class="scroll">' + svg + '</div><figcaption>Colors mark task groups. Hover a code for the full name, ID and score; click it to open the existing task details. On a narrow screen, scroll horizontally to see all three panels.</figcaption></figure>',
+             '<figure class="task-radar-figure"><div class="scroll">' + svg + '</div><figcaption>Colors mark task groups. Hover a code for the full name, ID and score; click it to open the existing task details. On a narrow screen, scroll horizontally to see all panels.</figcaption></figure>',
              f'<p><a href="{filename}.svg">SVG</a> · <a href="{filename}.png">PNG</a> · <a href="{filename}.json">Task order and scores</a></p>',
              f'<details id="radar-task-key-{condition}"><summary>Task key: all 84 codes, full names and IDs</summary>',
              '<div class="scroll"><table class="radar-key"><thead><tr><th>Code</th><th>Task</th><th>Mean accuracy</th></tr></thead>']

@@ -95,3 +95,13 @@ The validated native thinking/tool transport, temperature 0.7, seed 20261029,
 Requests are not retried; an interrupted attempt requires review before continuing.
 Raw traces and the access file remain private. The API exposes token usage but no
 per-request monetary price.
+
+The local watcher refreshes the existing report and runs the completion audit:
+
+```sh
+PYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.snowball_watch
+```
+
+It reads saved run files and creates no scheduled chat messages. It does not
+publish remotely; reviewed snapshots are committed and the existing PR post is
+updated separately.
