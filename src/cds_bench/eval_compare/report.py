@@ -181,7 +181,13 @@ def plot(output, summaries):
         bars = ax.bar(np.arange(4) + offset, values, width=0.22, label=name, color=color)
         for bar, c in zip(bars, PLANNED):
             r = summaries[model][c]
-            ax.text(bar.get_x() + bar.get_width()/2, bar.get_height()+1, f"{r['correct']}/{r['attempted']}", ha="center", fontsize=8)
+            percent = f"{100 * r['accuracy']:.1f}%" if r['attempted'] else "n/a"
+            ax.annotate(
+                f"{percent}\n{r['correct']}/{r['attempted']}",
+                (bar.get_x() + bar.get_width()/2, bar.get_height()),
+                xytext=(0, 3), textcoords="offset points", ha="center", va="bottom",
+                fontsize=8, linespacing=1.15,
+            )
     ax.set_xticks(range(4), LABELS)
     ax.set_ylim(0, 108)
     ax.set_ylabel("Correct answers (%) among finished attempts")
