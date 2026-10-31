@@ -1,12 +1,12 @@
 {
   "models": {
-    "luna": "Luna high",
+    "luna": "GPT-6 Luna (high)",
     "beam": "Beam 1.0 501B A23B",
     "deepseek": "DeepSeek V4.1 Flash 1017",
     "nemotron": "Nemotron 3 Ultra 550B A55B",
     "nemotron-lightning": "Nemotron 3.5 Lightning (io.net)",
     "nemotron-lightning-coreweave": "Nemotron 3.5 Lightning (CoreWeave)",
-    "qwen-flash": "Qwen3.7 Flash",
+    "qwen-flash": "Qwen 3.7 Flash (high)",
     "north-mini-code": "North Mini Code",
     "gpt-oss-20b": "GPT-OSS 20B",
     "gemma": "Gemma 4 31B",
@@ -1369,7 +1369,7 @@
   },
   "configurations": {
     "luna": {
-      "name": "Luna high",
+      "name": "GPT-6 Luna (high)",
       "model": "openai/gpt-6-luna",
       "provider": {
         "only": [
@@ -2006,7 +2006,7 @@
       }
     },
     "qwen-flash": {
-      "name": "Qwen3.7 Flash",
+      "name": "Qwen 3.7 Flash (high)",
       "model": "qwen/qwen3.7-flash",
       "provider": {
         "only": [
@@ -2726,7 +2726,7 @@
       }
     },
     {
-      "name": "Luna high / OpenAI",
+      "name": "GPT-6 Luna (high) / OpenAI",
       "attempted": 10,
       "correct": 9,
       "cost_usd": 0.023747875,
@@ -2812,7 +2812,7 @@
     }
   ],
   "coreweave_extension": {
-    "name": "Nemotron Lightning / CoreWeave: additional samples",
+    "name": "Nemotron 3.5 Lightning / CoreWeave: additional samples",
     "state": "stopped",
     "totals": {
       "attempted": 353,

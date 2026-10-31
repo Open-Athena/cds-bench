@@ -1,6 +1,6 @@
-# Luna, Qwen and Nemotron Lightning: full CDS-bench evaluation
+# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation
 
-Lightning / DeepInfra: 3260/3,260 fresh attempts (complete). Luna and Qwen: 3,260 matched completed attempts each.
+Lightning: 3260/3,260 fresh attempts (complete). Luna and Qwen: 3,260 matched completed attempts each.
 
 Download [report.html](report.html) and open it in a browser. It is self-contained.
 

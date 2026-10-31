@@ -21,13 +21,13 @@ from .collector import records
 from .lightning_run import RAW as LIGHTNING_RAW
 from .deepinfra_run import RAW as DEEPINFRA_RAW
 from .lightning_supervise import latest_failure_was_rate_limit
-from .tables import html_results
+from .tables import HEADERS, cells, html_grouped_table
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
-MODELS = {"luna": "Luna high", "qwen": "Qwen3.7 Flash high", "deepinfra": "Nemotron Lightning (DeepInfra)"}
+MODELS = {"luna": "GPT-6 Luna (high)", "qwen": "Qwen 3.7 Flash (high)", "deepinfra": "Nemotron 3.5 Lightning"}
 BRANCH = "eval/luna-high-baseline"
 REPOSITORY = "Open-Athena/cds-bench"
-PR_TITLE = "CDS-bench: model pilot and full Luna/Qwen/Nemotron evaluation"
+PR_TITLE = "CDS-bench: model pilot and full Luna/Qwen/Nemotron 3.5 Lightning evaluation"
 REPORT_PATH = str(OUTPUT.relative_to(ROOT))
 
 
@@ -151,7 +151,7 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
     render(output, summary, config, data, public)
     (output / "pr-body.md").write_text(pr_body(summary, config))
     (output / "README.md").write_text(
-        f"# Luna, Qwen and Nemotron Lightning: full CDS-bench evaluation\n\nLightning / DeepInfra: {totals['deepinfra']['attempted']}/3,260 fresh attempts ({job['state']}). Luna and Qwen: 3,260 matched completed attempts each.\n\n"
+        f"# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation\n\nLightning: {totals['deepinfra']['attempted']}/3,260 fresh attempts ({job['state']}). Luna and Qwen: 3,260 matched completed attempts each.\n\n"
         "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
         "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
         "[30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
@@ -195,17 +195,17 @@ def pr_body(summary, config):
     base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{REPORT_PATH}"
     pilot_base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{PILOT_OUTPUT.relative_to(ROOT)}"
     q, luna, deepinfra = (summary["totals"][m] for m in ["qwen", "luna", "deepinfra"])
-    full_names = {"luna": "Luna", "qwen": "Qwen Flash", "deepinfra": "Lightning DI"}
+    full_names = MODELS
     pilot_names = {
-        "luna": "Luna", "beam": "Beam 501B A23B", "deepseek": "DeepSeek Flash",
-        "nemotron": "Nemotron Ultra", "qwen-flash": "Qwen Flash",
-        "nemotron-lightning": "Lightning io.net", "nemotron-lightning-coreweave": "Lightning CoreWeave",
+        "luna": MODELS["luna"], "beam": "Beam 501B A23B", "deepseek": "DeepSeek Flash",
+        "nemotron": "Nemotron Ultra", "qwen-flash": MODELS["qwen"],
+        "nemotron-lightning": "Nemotron 3.5 Lightning io.net", "nemotron-lightning-coreweave": "Nemotron 3.5 Lightning CoreWeave",
         "north-mini-code": "North Mini Code", "gpt-oss-20b": "GPT-OSS 20B",
         "gemma": "Gemma 31B", "gemma-moe": "Gemma 26B A4B", "liquid": "LFM 24B A2B",
     }
     lines = [
-        "Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen/Nemotron evaluation**. This is an evaluation-only PR; **do not merge**.",
-        f"\n**Nemotron Lightning / DeepInfra: {deepinfra['attempted']:,}/3,260 fresh attempts ({summary['state'].replace('waiting-provider', 'waiting for DeepInfra')})**. Luna and Qwen each have 3,260 completed matching attempts. Each condition has ten examples per task: 840 easy and 790 hard. Pilot responses are not reused.",
+        "Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen/Nemotron 3.5 Lightning evaluation**. This is an evaluation-only PR; **do not merge**.",
+        f"\n**Nemotron 3.5 Lightning: {deepinfra['attempted']:,}/3,260 fresh attempts ({summary['state'].replace('waiting-provider', 'waiting for DeepInfra')})**. Luna and Qwen each have 3,260 completed matching attempts. Each condition has ten examples per task: 840 easy and 790 hard. Pilot responses are not reused.",
         f"\n[Full evaluation report (HTML)]({base}/report.html) · [Pilot report (HTML)]({pilot_base}/report.html) · [Full per-task results]({base}/by-task.csv) · [Pilot per-task results]({pilot_base}/by-task.csv)",
         "\nThe HTML reports are self-contained; download and open them in a browser.",
         "\n**Full evaluation results**",
@@ -213,7 +213,7 @@ def pr_body(summary, config):
             ((full_names[model], label), summary["conditions"][model][c], 32768)
             for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
         ]),
-        "\nLuna and Qwen request `high` reasoning. Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Lightning conditions include only finished attempts.",
+        "\nLuna and Qwen request `high` reasoning. Nemotron 3.5 Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Nemotron 3.5 Lightning conditions include only finished attempts.",
         "\n<details>\n<summary>Full-evaluation failures, billing and token-budget exceptions</summary>\n",
         markdown_table(
             ["Model", "Condition", "Wrong", "Format", "Timeout", "Cap", "API"],
@@ -223,7 +223,7 @@ def pr_body(summary, config):
         ),
     ]
     lines += [
-        f"\nRecorded charges: **${deepinfra['cost_usd']:.5f} Lightning / DeepInfra**, **${q['cost_usd']:.5f} Qwen**, **${luna['cost_usd']:.5f} retained Luna**. Billing is incomplete for {deepinfra['unreconciled_examples']} DeepInfra, {q['unreconciled_examples']} Qwen and {luna['unreconciled_examples']} retained Luna attempts. Unknown charges are not assumed to be zero.",
+        f"\nRecorded charges: **${deepinfra['cost_usd']:.5f} Nemotron 3.5 Lightning**, **${q['cost_usd']:.5f} Qwen**, **${luna['cost_usd']:.5f} retained Luna**. Billing is incomplete for {deepinfra['unreconciled_examples']} Nemotron 3.5 Lightning, {q['unreconciled_examples']} Qwen and {luna['unreconciled_examples']} retained Luna attempts. Unknown charges are not assumed to be zero.",
         f"\nQwen reports usage beyond the requested 32,768-token budget for {summary['token_budget']['qwen_reported_over_budget_attempts']} attempts, up to {summary['token_budget']['qwen_largest_reported_usage']:,} tokens. The [audit]({base}/audit.json) lists these exceptions. Actual provider-reported usage is not strictly matched to Luna’s requested cap.",
         "\n</details>",
         "\n**30-task pilot**",
@@ -239,12 +239,12 @@ def pr_body(summary, config):
             rows.append(((pilot_names[model], condition), pilot["totals"][model], settings["aggregate_completion_token_budget"]))
         extension = pilot.get("coreweave_extension")
         if extension:
-            rows.append((("Lightning CoreWeave extra", "Easy, no tools"), extension["totals"], 32768))
+            rows.append((("Nemotron 3.5 Lightning CoreWeave extra", "Easy, no tools"), extension["totals"], 32768))
         lines += [
             f"\n<details>\n<summary>Pilot results: {len(PILOT_MODELS)} model/provider runs, with accuracy, timing and costs</summary>\n",
             markdown_results(rows),
             "\n**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. The CoreWeave extra row retains all 353 completed attempts from the stopped expansion, separately from its original 116-attempt pilot. Ten interrupted attempts are excluded. [Inspect the additional samples](" + pilot_base + "/report.html#coreweave-extra). Full model names, provider routing and failure counts are in the pilot report.",
-            "\nLFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron Lightning enable reasoning without an effort selector; the other models request `high`. Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.",
+            "\nLFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron 3.5 Lightning enable reasoning without an effort selector; the other models request `high`. Nemotron 3.5 Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.",
             "\nCosts cover these scored subsets, excluding compatibility checks, removed duplicate-hard cases, interrupted requests and follow-up diagnostics. Missing charges remain explicit. The reports separate incorrect values, formatting failures, timeouts, token caps and API/protocol errors. Earlier ten-example GLM/Luna checks are a separate report appendix, not pooled here.",
             "\n</details>",
         ]
@@ -252,12 +252,12 @@ def pr_body(summary, config):
         "\n**Request and execution settings**",
         "\n| Setting | Value |\n|---|---|",
         "| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; `nvidia/nemotron-3.5-lightning` / `deepinfra/bf16`; no fallback |",
-        '| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Lightning: `{"enabled":true,"exclude":false}`; no effort selector |',
+        '| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Nemotron 3.5 Lightning: `{"enabled":true,"exclude":false}`; no effort selector |',
         "| Output / timeout | 32,768 aggregate generated tokens/example (8,192 for LFM); **300 seconds/API request** |",
         '| Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |',
         "| Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |",
         "| Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |",
-        "| Sampling | Full runs use ten concurrent examples and provider-default temperature. Seed 20261029 for Luna/Qwen, omitted for Lightning. Pilot scheduling exceptions are in its report |",
+        "| Sampling | Full runs use ten concurrent examples and provider-default temperature. Seed 20261029 for Luna/Qwen, omitted for Nemotron 3.5 Lightning. Pilot scheduling exceptions are in its report |",
         "\n<details>\n<summary>Exact Python function supplied to OpenRouter</summary>\n\n```json\n" + json.dumps(config["tools_condition"]["tools"], indent=2) + "\n```\n\nThe no-tools condition sends an empty tools array. No hosted shell or web tool is registered. Separate GPT-OSS compatibility experiments are described in the pilot report.\n\n</details>",
         "\n<details>\n<summary>Exact full-evaluation request settings</summary>\n\n```json\n" + json.dumps(summary["request_settings"], indent=2) + "\n```\n\nThe tools condition adds the function above and uses `auto`, then `none` after the call limit. Each round receives the remaining token budget. Returned reasoning records are preserved between turns. Pilot-specific routing and settings are in its report.\n\n</details>",
         "\n<details>\n<summary>Local Python execution and network isolation</summary>\n\nThe controller executes returned Python programs locally and sends stdout/stderr, exit code and timeout status back as tool results. Network isolation is an OS policy, not an OpenRouter parameter; the controller retains API access.\n\n```sh\n/usr/bin/sandbox-exec -f \"$workdir/sandbox.sb\" \\\n  \"$runtime/bin/python\" -I -B -c \"$launcher\"\n```\n\nThe policy denies `network*` and `process-fork`, restricts reads to runtime/system paths and the current example workdir, and restricts writes to that workdir. Benchmark answers and credentials are inaccessible. Startup checks verify these restrictions.\n\n</details>",
@@ -272,12 +272,14 @@ def pr_body(summary, config):
 def render(output, summary, config, data, rows):
     import base64
     esc = html.escape
-    parts = ["""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: Luna, Qwen and Nemotron full evaluation</title><style>
-body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}small,.muted{color:#64727e}small{display:block}.scroll{overflow-x:auto}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 0}img{max-width:100%;height:auto}[hidden]{display:none!important}nav{margin:12px 0 20px}.good{background:#e5efe8}.bad{background:#f3e8e9}</style><main><h1>CDS-bench: Luna, Qwen and Nemotron Lightning</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
+    parts = ["""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning full evaluation</title><style>
+body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}small,.muted{color:#64727e}small{display:block}.scroll{overflow-x:auto}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 0}img{max-width:100%;height:auto}[hidden]{display:none!important}nav{margin:12px 0 20px}.good{background:#e5efe8}.bad{background:#f3e8e9}
+.indexed-table tbody+tbody{border-top:2px solid #bfc9d2}.indexed-table tbody th{background:white;font-weight:400}.indexed-table .index-group{vertical-align:middle;font-weight:600;min-width:130px;max-width:210px;border-right:1px solid #dce2e7}.indexed-table .index-item{min-width:100px;max-width:210px}.indexed-table td{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}.indexed-table thead th:nth-child(n+3){text-align:right}
+</style><main><h1>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
-    parts.append(f"<p>Full evaluation: <b>Lightning / DeepInfra {deepinfra['attempted']}/3,260 ({esc(summary['state'].replace('waiting-provider', 'waiting for DeepInfra'))})</b>. Luna and Qwen each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
+    parts.append(f"<p>Full evaluation: <b>Nemotron 3.5 Lightning {deepinfra['attempted']}/3,260 ({esc(summary['state'].replace('waiting-provider', 'waiting for DeepInfra'))})</b>. Luna and Qwen each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
     if summary['state'] == 'complete':
-        parts.append('<p>DeepInfra completion audit: <b>'+esc(summary['deepinfra_completion_audit'])+'</b>.</p>')
+        parts.append('<p>Nemotron 3.5 Lightning completion audit: <b>'+esc(summary['deepinfra_completion_audit'])+'</b>.</p>')
     if summary['state'] == 'failed':
         cause = 'DeepInfra upstream rate limits (HTTP 429).' if summary['stopped_after_provider_rate_limits'] else 'The evaluator stopped after an operational failure.'
         parts.append('<p role="status"><b>Requests stopped.</b> '+cause+' Completed attempts, including failures, are retained.</p>')
@@ -288,12 +290,13 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
         parts.append('<p class="muted">Rate-limit recovery resumes only unissued examples after separate availability checks. Ten-way parallelism and model settings are unchanged; earlier failed attempts remain counted.</p>')
     parts.append(f'<p class="muted">Updated <time id="last-update" datetime="{esc(summary["generated_at"])}">{esc(summary["generated_at"])}</time>. <span id="update-status">Saved snapshot.</span> <button id="refresh-now" type="button">Refresh now</button></p>')
     parts.append('<h2 id="overview">Overview</h2>')
-    parts.append(html_results([
-        (f"{name}: {label}", summary["conditions"][model][c], 32768)
-        for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
+    parts.append(html_grouped_table(["Model", "Condition", *HEADERS[1:]], [
+        (name, [[label, *cells("", summary["conditions"][model][c], 32768)[1:]]
+                for c, label in zip(PLANNED, LABELS)])
+        for model, name in MODELS.items()
     ]))
     parts.append('<p class="muted">All failures remain in the denominator. Original Luna artifacts are preserved separately. The <a href="../model-pilot-20261029/report.html">30-task model/provider pilot</a> is a separate report; its responses are not reused here.</p>')
-    parts.append(f"<p class=muted>Billing is incomplete for {deepinfra['unreconciled_examples']} DeepInfra, {q['unreconciled_examples']} Qwen and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
+    parts.append(f"<p class=muted>Billing is incomplete for {deepinfra['unreconciled_examples']} Nemotron 3.5 Lightning, {q['unreconciled_examples']} Qwen and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
     image = base64.b64encode((output / "overall.png").read_bytes()).decode()
     parts.append(f'<img alt="Accuracy by model and condition" src="data:image/png;base64,{image}">')
     parts.append('<details><summary>Failure categories, token usage, and costs</summary><div class="scroll"><table><tr><th>Model / condition</th><th>Incorrect</th><th>Format</th><th>Timeout</th><th>Token cap</th><th>API error</th><th>Used Python</th><th>Reported generated tokens</th></tr>')
@@ -315,11 +318,13 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
         for c, label in zip(PLANNED, LABELS):
             r = summary["conditions"][m][c]; extra = summary["format_diagnostic_additional_exact"][m][c]
             parts.append(f'<tr><td>{name}<small>{label}</small></td><td>{r["correct"]}/{r["attempted"]}</td><td>{extra}</td><td>{r["correct"]+extra}/{r["attempted"]}</td></tr>')
-    parts.append('</table></details><h2 id="families">By family</h2><div class="scroll"><table><tr><th>Family / model</th>'+''.join(f'<th>{label}</th>' for label in LABELS)+'</tr>')
-    for family, metrics in summary["by_family"].items():
-        for m, name in MODELS.items():
-            parts.append(f'<tr><td>{esc(family)}<small>{name}</small></td>'+''.join(f'<td>{metrics[m][c]["correct"]}/{metrics[m][c]["attempted"]}</td>' for c in PLANNED)+'</tr>')
-    parts.append('</table></div><h2 id="tasks">By task</h2><p>Expand a row to inspect all ten instances, actual prompts, expected answers, and each model’s final prediction. Counts are correct / finished; — means that hard variant was removed.</p><input id="filter" placeholder="Filter task names or families"><div class="scroll"><table><thead><tr><th rowspan="2">Task</th>'+''.join(f'<th colspan="{len(MODELS)}">{label}</th>' for label in LABELS)+'</tr><tr>'+''.join('<th>Luna</th><th>Qwen</th><th>Lightning DI</th>' for _ in LABELS)+'</tr></thead><tbody>')
+    parts.append('</table></details><h2 id="families">By family</h2>')
+    parts.append(html_grouped_table(["Family", "Model", *LABELS], [
+        (family, [[name, *[f'{metrics[m][c]["correct"]}/{metrics[m][c]["attempted"]}' for c in PLANNED]]
+                  for m, name in MODELS.items()])
+        for family, metrics in summary["by_family"].items()
+    ]))
+    parts.append('<h2 id="tasks">By task</h2><p>Expand a row to inspect all ten instances, actual prompts, expected answers, and each model’s final prediction. Counts are correct / finished; — means that hard variant was removed.</p><input id="filter" placeholder="Filter task names or families"><div class="scroll"><table><thead><tr><th rowspan="2">Task</th>'+''.join(f'<th colspan="{len(MODELS)}">{label}</th>' for label in LABELS)+'</tr><tr>'+''.join(f'<th>{esc(name)}</th>' for _ in LABELS for name in MODELS.values())+'</tr></thead><tbody>')
     for task, definition in TASKS.items():
         title = definition["title"]
         parts.append(f'<tr class="task-row" id="task-{task}" data-task="{task}" data-search="{esc((task+" "+title+" "+definition.get("family", "composition")).lower())}" tabindex="0" aria-expanded="false"><td><a href="#task-{task}">{esc(title)}</a><small>{task}</small></td>')
@@ -329,7 +334,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
                 text = '—' if c.startswith('hard') and task in config['dataset']['removed_hard_tasks'] else f'{r["correct"]}/{r["attempted"]}'
                 parts.append(f'<td>{text}</td>')
         parts.append(f'</tr><tr class="task-detail"><td colspan="{1+len(MODELS)*len(LABELS)}"></td></tr>')
-    parts.append('</tbody></table></div><h2 id="settings">Settings and data</h2><p>Luna and Qwen request <code>high</code> reasoning. Lightning uses <code>nvidia/nemotron-3.5-lightning</code> on <code>deepinfra/bf16</code>, with reasoning enabled and no effort selector. Seed is omitted, matching its pilot. Qwen uses <code>alibaba/us-east-1</code>; Luna used the standard OpenAI endpoint. No provider fallback. The limit is 32,768 generated tokens across all turns, 300 seconds per API request, and eight Python calls per example.</p><p>Python 3.12.9 + NumPy 2.5.4; no Biopython. Local <code>/usr/bin/sandbox-exec</code> denies networking and process forks and restricts filesystem access. Network denial is not an OpenRouter parameter. Web plugins are disabled and no web tool is registered. Raw requests, reasoning, and tool traces remain untracked.</p>')
+    parts.append('</tbody></table></div><h2 id="settings">Settings and data</h2><p>Luna and Qwen request <code>high</code> reasoning. Nemotron 3.5 Lightning uses <code>nvidia/nemotron-3.5-lightning</code> on <code>deepinfra/bf16</code>, with reasoning enabled and no effort selector. Seed is omitted, matching its pilot. Qwen uses <code>alibaba/us-east-1</code>; Luna used the standard OpenAI endpoint. No provider fallback. The limit is 32,768 generated tokens across all turns, 300 seconds per API request, and eight Python calls per example.</p><p>Python 3.12.9 + NumPy 2.5.4; no Biopython. Local <code>/usr/bin/sandbox-exec</code> denies networking and process forks and restricts filesystem access. Network denial is not an OpenRouter parameter. Web plugins are disabled and no web tool is registered. Raw requests, reasoning, and tool traces remain untracked.</p>')
     parts.append('<details><summary>Exact Python tool definition</summary><pre>'+esc(json.dumps(config['tools_condition']['tools'],indent=2))+'</pre></details>')
     parts.append('<details><summary>Dataset version, exact request settings, and billing metadata</summary><p>The current dataset removes five duplicated hard variants. The 100 corresponding historical Luna attempts are excluded only from this comparison. Its original 3,360-attempt report is preserved. Every retained prompt and answer was verified against the old traces.</p><pre>'+esc(json.dumps({'request_settings':summary['request_settings'],'dataset':config['dataset'],'billing':summary['billing'],'qwen_preflight_billing':summary['preflight_billing'],'deepinfra_preflight_billing':summary['deepinfra_preflight_billing']},indent=2))+'</pre></details>')
     parts.append('<p><a href="summary.json">Summary</a> · <a href="by-task.csv">Per-task CSV</a> · <a href="results.json">Predictions</a> · <a href="config.json">Configurations</a></p>')

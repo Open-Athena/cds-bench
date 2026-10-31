@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T04:43:29.172276+00:00",
+  "generated_at": "2026-10-31T09:02:26.607957+00:00",
   "state": "complete",
   "qwen_completed": 3260,
   "qwen_planned": 3260,
@@ -13,9 +13,9 @@
     "deepinfra": "complete"
   },
   "models": {
-    "luna": "Luna high",
-    "qwen": "Qwen3.7 Flash high",
-    "deepinfra": "Nemotron Lightning (DeepInfra)"
+    "luna": "GPT-6 Luna (high)",
+    "qwen": "Qwen 3.7 Flash (high)",
+    "deepinfra": "Nemotron 3.5 Lightning"
   },
   "planned_per_condition": {
     "easy-no-tools": 840,

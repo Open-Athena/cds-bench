@@ -23,11 +23,11 @@ OUTPUT = ROOT / "evaluations/model-pilot-20261029"
 CONDITIONS = ["easy-no-tools", "hard-no-tools", "easy-tools", "hard-tools"]
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
 MODELS = {
-    "luna": "Luna high", "beam": "Beam 1.0 501B A23B",
+    "luna": "GPT-6 Luna (high)", "beam": "Beam 1.0 501B A23B",
     "deepseek": "DeepSeek V4.1 Flash 1017", "nemotron": "Nemotron 3 Ultra 550B A55B",
     "nemotron-lightning": "Nemotron 3.5 Lightning (io.net)",
     "nemotron-lightning-coreweave": "Nemotron 3.5 Lightning (CoreWeave)",
-    "qwen-flash": "Qwen3.7 Flash", "north-mini-code": "North Mini Code",
+    "qwen-flash": "Qwen 3.7 Flash (high)", "north-mini-code": "North Mini Code",
     "gpt-oss-20b": "GPT-OSS 20B", "gemma": "Gemma 4 31B",
     "gemma-moe": "Gemma 4 26B A4B", "liquid": "LFM 2.5 24B A2B",
 }
@@ -135,7 +135,7 @@ def build(source=SOURCE, output=OUTPUT):
         "references": source_diagnostics["references"],
     }
     appendix = []
-    for folder, name in [("glm-5.3-smoke", "GLM 5.3 / Morph FP8"), ("glm-5.3-wafer-us", "GLM 5.3 / Wafer US"), ("gpt-6-luna-high-smoke", "Luna high / OpenAI")]:
+    for folder, name in [("glm-5.3-smoke", "GLM 5.3 / Morph FP8"), ("glm-5.3-wafer-us", "GLM 5.3 / Wafer US"), ("gpt-6-luna-high-smoke", "GPT-6 Luna (high) / OpenAI")]:
         raw = ROOT / "scratch" / folder
         if not (raw / "summary.json").exists():
             continue

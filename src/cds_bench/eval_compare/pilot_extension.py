@@ -12,7 +12,7 @@ from .collector import records
 from .lightning_run import RAW, ROOT
 from .tables import html_results
 
-NAME = 'Nemotron Lightning / CoreWeave: additional samples'
+NAME = 'Nemotron 3.5 Lightning / CoreWeave: additional samples'
 
 
 def build(output, pilot_rows):
