@@ -12,6 +12,10 @@ Evaluation-only PR. **Do not merge.**
 
 The HTML reports are self-contained; download and open them in a browser.
 
+With Python available, Snowball invoked it on 177/1,630 examples (10.9%), versus 1,544/1,630 (94.7%) for Nemotron. These are optional tool-use conditions; supplying a tool does not require the model to call it.
+
+For Easy/Python, 33 task types have at least two examples with a Python call and two without one. Averaging accuracy equally across these same task types gives 54.8% with calls versus 23.2% without (+31.6 percentage points). This compares different examples within each task and is observational, not a causal estimate of tool benefit. [Per-task breakdown](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#snowball-tools).
+
 **Accuracy by condition**
 
 ![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=12b1d05ac1cd)
@@ -344,9 +348,17 @@ Failed Qwen request metadata omitted by the legacy trial is reconstructed from s
 </details>
 
 <details>
-<summary>Snowball native thinking and tool-call transport</summary>
+<summary>Snowball tool calling: process, exact API tool definition and limitations</summary>
 
-The existing service has no automatic function-call parser. The client supplies the exact Python function through the release’s own chat template, parses only native JSON tool-call blocks, executes programs verbatim in the same sandbox, and returns results through tool-role messages. Native thinking is preserved and replayed. At the eight-call limit the function definitions are omitted.
+The service is not configured for standard automatic function parsing; the initial standard auto-tool probe returned HTTP 400. The controller passes the exact function below through chat_template_kwargs.xml_tools, with enable_thinking=true and skip_special_tokens=false. The checkpoint's own template describes calls as JSON objects with name and arguments fields between opening and closing tool_call tags. Generation stops at the closing tool_call tag, including that delimiter. The client parses the JSON, executes code verbatim locally, and supplies the result as a tool-role message containing stdout, stderr, exit_code, timed_out and output_truncated. Prior native reasoning and calls are replayed before the model continues. Tool use is optional; strict:true is embedded in the definition, but this native route does not enforce a decoding grammar. At eight calls the definitions are omitted.
+
+The original full run recorded 240 successful program executions and 14 program failures. Exit zero is not evidence that the program or final answer was correct.
+
+A later review found nine complete JSON calls inside unfinished thinking blocks. The original parser treated them as reasoning and returned no call; seven contain syntactically valid Python and two contain placeholder programs. These remain failed original attempts, including in the no-call subgroup. No scores were changed. This is a known adapter limitation.
+
+The checkpoint template also advertises a direct Python-code channel using the python_tag and eom_id special tokens, with ipython replies. That alternative was not used or tested here. It advertises a stateful notebook, whereas this evaluation uses a fresh interpreter per call. Server-side parsing and a forced initial Python call are other possible diagnostics, not features of this baseline. The private capability URL and serving model ID are omitted. A real execution/result round trip passed before scoring.
+
+Exact tool-related API fields, including the complete Python function definition:
 
 ```json
 {
@@ -384,6 +396,6 @@ The existing service has no automatic function-call parser. The client supplies 
 }
 ```
 
-The private capability URL and serving model ID remain local. A real Python round trip is checked before scoring, independently of strict final-answer formatting. No generated code or answer is repaired. The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted.
+The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted.
 
 </details>

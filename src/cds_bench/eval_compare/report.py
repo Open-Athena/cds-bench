@@ -24,7 +24,7 @@ from .deepinfra_run import RAW as DEEPINFRA_RAW
 from .lightning_supervise import latest_failure_was_rate_limit
 from .tables import HEADERS, cells, html_grouped_table, models_by_task_accuracy
 from . import radar, scatter
-from . import snowball_full
+from . import snowball_full, snowball_tools
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
 MODELS = {"luna": "GPT-6 Luna (high)", "deepinfra": "Nemotron 3.5 Lightning",
@@ -180,6 +180,7 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
                         model=row['model'], format_diagnostic_exact=row['format_diagnostic_exact'],
                         request_metadata_recovered=bool(row.get('request_metadata_recovered')))
         public.append(snowball_full.public_row(exported) if row['model']=='snowball-v01' else exported)
+    summary['snowball_tool_use'] = snowball_tools.build(output, all_rows, MODELS)
     save(output / "summary.json", summary)
     save(output / "results.json", public)
     save(output / "config.json", {"qwen": config, "luna_original": read(LUNA_RAW / "config.json"), "deepinfra": deepinfra_config, 'snowball-v01':snowball_config})
@@ -285,6 +286,8 @@ def pr_body(summary, config):
         "\n[Public request, reasoning and tool traces (HF)](https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces) cover full runs, pilots, retries, interrupted attempts and provider diagnostics. Credentials and private endpoints are redacted.",
         *([f"\n[Snowball completion audit passed]({base}/snowball-v01-full-audit.json): all 3,260 cases verified, with no scored retries or pilot-response reuse."] if summary['snowball_completion_audit']=='passed' else []),
         "\nThe HTML reports are self-contained; download and open them in a browser.",
+        "\n" + snowball_tools.short_text(summary['snowball_tool_use']),
+        "\n" + snowball_tools.comparison_text(summary['snowball_tool_use']) + f" [Per-task breakdown]({base}/report.html#snowball-tools).",
         "\n**Accuracy by condition**",
         *figure("overall", "CDS-bench accuracy by model and evaluation condition"),
         "\n<details>\n<summary>Full results: accuracy, median time, cost and truncation</summary>\n",
@@ -365,7 +368,7 @@ def pr_body(summary, config):
     ]
     native = summary.get('snowball_configuration')
     if native:
-        lines.append('\n<details>\n<summary>Snowball native thinking and tool-call transport</summary>\n\nThe existing service has no automatic function-call parser. The client supplies the exact Python function through the release’s own chat template, parses only native JSON tool-call blocks, executes programs verbatim in the same sandbox, and returns results through tool-role messages. Native thinking is preserved and replayed. At the eight-call limit the function definitions are omitted.\n\n```json\n'+json.dumps(native['native_request_fields'],indent=2)+'\n```\n\nThe private capability URL and serving model ID remain local. A real Python round trip is checked before scoring, independently of strict final-answer formatting. No generated code or answer is repaired. The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted.\n\n</details>')
+        lines.append('\n<details>\n<summary>Snowball tool calling: process, exact API tool definition and limitations</summary>\n\n'+snowball_tools.native_explanation(summary['snowball_tool_use'])+'\n\nExact tool-related API fields, including the complete Python function definition:\n\n```json\n'+json.dumps(native['native_request_fields'],indent=2)+'\n```\n\nThe full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted.\n\n</details>')
     return "\n".join(lines) + "\n"
 
 def render(output, summary, config, data, rows):
@@ -376,7 +379,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
 .indexed-table tbody+tbody{border-top:2px solid #bfc9d2}.indexed-table tbody th{background:white;font-weight:400}.indexed-table .index-group{vertical-align:middle;font-weight:600;min-width:130px;max-width:210px;border-right:1px solid #dce2e7}.indexed-table .index-item{min-width:100px;max-width:210px}.indexed-table td{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}.indexed-table thead th:nth-child(n+3){text-align:right}
 .task-radar-svg{display:block;width:100%;height:auto;min-width:1200px}.task-radar-figure{margin:0}.task-radar-figure figcaption{color:#64727e;font-size:13px;margin-top:8px}.radar-swatch{display:inline-block;width:10px;height:10px;margin-right:8px}.radar-key td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}.radar-key-group th{font-weight:600}
 .radar-control select{margin-left:8px}
-</style><main><h1>CDS-bench: full model evaluation</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#task-scatter">Task comparison</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
+</style><main><h1>CDS-bench: full model evaluation</h1><nav><a href="#overview">Overview</a> · <a href="#snowball-tools">Snowball tools</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#task-scatter">Task comparison</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
     parts.append(f"<p>Full evaluation: <b>Snowball v0.1 {summary['snowball_completed']:,}/3,260 ({esc(summary['state'])})</b>. GPT-6 Luna, Nemotron 3.5 Lightning and Qwen 3.7 Flash each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. Retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
     parts.append('<p class="muted">Snowball uses 32,768 aggregate generated tokens, a 1,800-second API wall deadline, temperature 0.7 and concurrency 60. The OpenRouter models use a 300-second deadline and concurrency 10. Snowball’s native thinking/tool transport matches its validated pilot; no per-request monetary price is exposed.</p>')
@@ -405,6 +408,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
     parts.append(f"<p class=muted>Billing is incomplete for {deepinfra['unreconciled_examples']} Nemotron 3.5 Lightning, {q['unreconciled_examples']} Qwen and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
     image = base64.b64encode((output / "overall.png").read_bytes()).decode()
     parts.append(f'<img alt="Accuracy by model and condition" src="data:image/png;base64,{image}">')
+    parts.append(snowball_tools.html_section(summary['snowball_tool_use']))
     parts.append('<details><summary>Failure categories, token usage, and costs</summary><div class="scroll"><table><tr><th>Model / condition</th><th>Incorrect</th><th>Format</th><th>Timeout</th><th>Token cap</th><th>API error</th><th>Used Python</th><th>Reported generated tokens</th></tr>')
     for m, name in MODELS.items():
         for c, label in zip(PLANNED, LABELS):
@@ -449,7 +453,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
     native = summary.get('snowball_configuration')
     if native:
         p = native['provenance']
-        parts.append('<details><summary>Snowball v0.1 checkpoint and native API</summary><p>67B total parameters and 2B active per token. Checkpoint: <a href="'+esc(p['url'])+'">'+esc(native['full_name'])+'</a>, <code>'+esc(p['repo'])+'</code>, revision <code>'+esc(p['revision'])+'</code>.</p><p>The existing Marin service uses the release’s own chat template. The exact Python function is supplied through xml_tools; only native JSON tool-call blocks are parsed. Programs and final answers are not repaired. Thinking is preserved and replayed, and Python output is returned through tool-role messages. The full run has a separate 15-second connection-setup limit. After a connection-timeout burst, only unissued cases resumed with unchanged settings; earlier failures remain counted. The capability URL and serving model ID stay private. Cost is unavailable.</p><pre>'+esc(json.dumps(native['native_request_fields'],indent=2))+'</pre></details>')
+        parts.append('<details><summary>Snowball v0.1 checkpoint and native API</summary><p>67B total parameters and 2B active per token. Checkpoint: <a href="'+esc(p['url'])+'">'+esc(native['full_name'])+'</a>, <code>'+esc(p['repo'])+'</code>, revision <code>'+esc(p['revision'])+'</code>.</p>'+''.join('<p>'+esc(text)+'</p>' for text in snowball_tools.native_explanation(summary['snowball_tool_use']).split('\n\n'))+'<pre>'+esc(json.dumps(native['native_request_fields'],indent=2))+'</pre></details>')
     parts.append('<details><summary>Dataset version, exact request settings, and billing metadata</summary><p>The current dataset removes five duplicated hard variants. The 100 corresponding historical Luna attempts are excluded only from this comparison. Its original 3,360-attempt report is preserved. Every retained prompt and answer was verified against the old traces.</p><pre>'+esc(json.dumps({'request_settings':summary['request_settings'],'dataset':config['dataset'],'billing':summary['billing'],'qwen_preflight_billing':summary['preflight_billing'],'deepinfra_preflight_billing':summary['deepinfra_preflight_billing']},indent=2))+'</pre></details>')
     parts.append('<p><a href="summary.json">Summary</a> · <a href="by-task.csv">Per-task CSV</a> · <a href="results.json">Predictions</a> · <a href="config.json">Configurations</a></p>')
     payload = {'snapshot':{k:summary[k] for k in ['generated_at','state','qwen_completed','deepinfra_completed','snowball_completed']},
