@@ -15,6 +15,7 @@ from cds_bench.eval_luna.report import aggregate, public_record
 from cds_bench.eval_luna.score import score_result
 
 from .tables import html_results
+from . import pilot_extension
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE = ROOT / "scratch/open-weights-pilot-20261029-01"
@@ -160,6 +161,7 @@ def build(source=SOURCE, output=OUTPUT):
         if r["completion_tokens"] > configs[r["model"]]["aggregate_completion_token_budget"]
     ]
     output.mkdir(parents=True, exist_ok=True)
+    summary["coreweave_extension"] = pilot_extension.build(output, rows)
     save(output / "summary.json", summary)
     save(output / "results.json", rows)
     save(output / "cases.json", selected)
@@ -172,7 +174,7 @@ def build(source=SOURCE, output=OUTPUT):
     render(output, summary, rows, selected, diagnostics)
     (output / "README.md").write_text(
         "# CDS-bench: 30-task model pilot\n\nDownload [report.html](report.html) and open it in a browser. The report is self-contained and includes model/provider settings, four-condition scores, failure categories, timing, task-level results and GPT-OSS compatibility checks.\n\n"
-        "Complete runs contain 116 attempts: one instance from 30 task types, easy/hard, without tools/with offline Python, excluding two duplicate hard variants. Partial runs are marked explicitly. Scores and raw traces are unchanged. Earlier ten-example checks and GPT-OSS diagnostics are separate.\n\n"
+        "Complete runs contain 116 attempts: one instance from 30 task types, easy/hard, without tools/with offline Python, excluding two duplicate hard variants. Partial runs are marked explicitly. The stopped CoreWeave expansion is retained as 353 additional exploratory attempts in [its own report](coreweave-extra.html), separate from the original 116-attempt pilot. Scores and raw traces are unchanged. Earlier ten-example checks and GPT-OSS diagnostics are separate.\n\n"
         "[Summary and settings](summary.json) · [Per-task outcomes](by-task.csv) · [Final predictions](results.json) · [Prompt instances](cases.json) · [GPT-OSS diagnostics](gpt-oss-diagnostics.json)\n\n"
         "Raw API requests, reasoning and Python programs/results remain untracked. Costs exclude preflight and interrupted requests; unknown charges are not assumed to be zero.\n\n"
         "Rebuild from the saved local pilot, with no inference:\n\n```sh\nPYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.pilot\n```\n"
@@ -185,7 +187,7 @@ def render(output, summary, rows, cases, diagnostics):
     configs, totals = summary["configurations"], summary["totals"]
     parts = ['''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: 30-task model pilot</title><style>
 body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}main{max-width:1400px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px;margin-top:30px}h3{font-size:16px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}.scroll{overflow-x:auto}small,.muted{color:#64727e}small{display:block}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 12px 10px 0}nav{margin:12px 0 20px}[hidden]{display:none!important}.partial{font-weight:600}
-</style></head><body><main><h1>CDS-bench: 30-task model pilot</h1><nav><a href="#overview">Overview</a> · <a href="#conditions">Four conditions</a> · <a href="#models">Model/provider notes</a> · <a href="#gpt-oss">GPT-OSS tools</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings</a> · <a href="../luna-qwen-high-20261029/report.html">Full evaluation</a></nav>
+</style></head><body><main><h1>CDS-bench: 30-task model pilot</h1><nav><a href="#overview">Overview</a> · <a href="#conditions">Four conditions</a> · <a href="#coreweave-extra">Additional CoreWeave samples</a> · <a href="#models">Model/provider notes</a> · <a href="#gpt-oss">GPT-OSS tools</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings</a> · <a href="../luna-qwen-high-20261029/report.html">Full evaluation</a></nav>
 <p>One instance from each of 30 judgment-selected task types, covering translation, RNA, sequence statistics, constrained design, assays and compositions. Each instance is evaluated in easy/hard form, without tools and with offline Python. Two identical hard variants are omitted, leaving 30 easy and 28 hard prompts, or 116 attempts per complete model. This is a small model/provider comparison, not a representative estimate over the full benchmark. Full-evaluation requests are separate.</p>
 <h2 id="overview">Overview</h2><p>All failures remain in the denominator. An asterisk marks a stopped run, whose completed subset is not directly comparable to a complete run. Times are complete-example medians, including failures and tool round trips. Token budgets include reasoning and all tool turns.</p>''']
     top = [
@@ -215,7 +217,9 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
         parts.append('<tr><td>'+esc(MODELS[m])+'</td>'+''.join(f'<td>{r["correct"]}/{r["attempted"]}</td>' if r['attempted'] else '<td>Not reached</td>' for r in summary['conditions'][m].values())+'</tr>')
     parts.append('</table><details><summary>Detailed metrics for every model and condition</summary>')
     parts.append(html_results([(MODELS[m]+': '+label,summary['conditions'][m][c],configs[m]['aggregate_completion_token_budget']) for m in MODELS for c,label in zip(CONDITIONS,LABELS)]))
-    parts.append('</details><h2 id="models">Model/provider notes</h2>')
+    parts.append('</details>')
+    parts.append(pilot_extension.section(summary['coreweave_extension']))
+    parts.append('<h2 id="models">Model/provider notes</h2>')
     notes = {
         'luna': 'Completed all four conditions. This is the original pilot, restricted to the same 116 retained cases; the historical responses are unchanged.',
         'beam': f'Completed all four conditions. {totals["beam"]["python_failures"]} of {totals["beam"]["python_calls"]} attempted Python calls failed in the retained cases. Returned programs sometimes contained trailing PY delimiters, XML argument tags or stray quotes. Programs were executed verbatim. The pilot does not separate model behavior from provider parsing. All six answer-format failures become exact matches under the separate formatting diagnostic.',

@@ -1,6 +1,6 @@
-Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen evaluation**. This is an evaluation-only PR; **do not merge**.
+Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen/Nemotron evaluation**. This is an evaluation-only PR; **do not merge**.
 
-**Full evaluation: 3,260/3,260 Qwen attempts (complete)**, compared with 3,260 matching historical Luna attempts. Each condition has ten examples per task: 840 easy and 790 hard. All Qwen requests are fresh; pilot responses are not reused.
+**Nemotron Lightning / DeepInfra: 3,260/3,260 fresh attempts (complete)**. Luna and Qwen each have 3,260 completed matching attempts. Each condition has ten examples per task: 840 easy and 790 hard. Pilot responses are not reused.
 
 [Full evaluation report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html) · [Pilot report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) · [Full per-task results](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/by-task.csv) · [Pilot per-task results](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/by-task.csv)
 
@@ -18,8 +18,12 @@ The HTML reports are self-contained; download and open them in a browser.
 | Qwen&nbsp;Flash | Hard,&nbsp;no&nbsp;tools | 199/790 | 25.2% | 250.8s | $2.99366 | 310 |
 | Qwen&nbsp;Flash | Easy,&nbsp;Python | 386/840 | 46.0% | 52.2s | $1.27409 | 13 |
 | Qwen&nbsp;Flash | Hard,&nbsp;Python | 332/790 | 42.0% | 70.6s | $1.49165 | 23 |
+| Lightning&nbsp;DI | Easy,&nbsp;no&nbsp;tools | 203/840 | 24.2% | 161.5s | $2.92877 | 124 |
+| Lightning&nbsp;DI | Hard,&nbsp;no&nbsp;tools | 185/790 | 23.4% | 157.4s | $3.10986 | 163 |
+| Lightning&nbsp;DI | Easy,&nbsp;Python | 537/840 | 63.9% | 28.3s | $1.83524 | 4 |
+| Lightning&nbsp;DI | Hard,&nbsp;Python | 397/790 | 50.3% | 40.7s | $2.37400 | 7 |
 
-Both full-evaluation models use `high` reasoning, a requested 32,768-token budget per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures.
+Luna and Qwen request `high` reasoning. Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Lightning conditions include only finished attempts.
 
 <details>
 <summary>Full-evaluation failures, billing and token-budget exceptions</summary>
@@ -34,8 +38,12 @@ Both full-evaluation models use `high` reasoning, a requested 32,768-token budge
 | Qwen&nbsp;Flash | Hard,&nbsp;no&nbsp;tools | 65 | 163 | 44 | 310 | 9 |
 | Qwen&nbsp;Flash | Easy,&nbsp;Python | 75 | 359 | 3 | 13 | 4 |
 | Qwen&nbsp;Flash | Hard,&nbsp;Python | 112 | 309 | 4 | 23 | 10 |
+| Lightning&nbsp;DI | Easy,&nbsp;no&nbsp;tools | 251 | 139 | 86 | 124 | 37 |
+| Lightning&nbsp;DI | Hard,&nbsp;no&nbsp;tools | 260 | 137 | 43 | 163 | 2 |
+| Lightning&nbsp;DI | Easy,&nbsp;Python | 87 | 194 | 3 | 4 | 15 |
+| Lightning&nbsp;DI | Hard,&nbsp;Python | 146 | 237 | 3 | 7 | 0 |
 
-Recorded charges: **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 29 Qwen attempts and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
+Recorded charges: **$10.24787 Lightning / DeepInfra**, **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 53 DeepInfra, 29 Qwen and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
 
 Qwen reports usage beyond the requested 32,768-token budget for 24 attempts, up to 64,923 tokens. The [audit](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/audit.json) lists these exceptions. Actual provider-reported usage is not strictly matched to Luna’s requested cap.
 
@@ -64,8 +72,9 @@ The [pilot HTML report](https://github.com/Open-Athena/cds-bench/blob/eval/luna-
 | Gemma&nbsp;31B | Partial | 5/24 | 20.8% | 300.0s | $0.04795 | 0 |
 | Gemma&nbsp;26B&nbsp;A4B | Partial | 8/100 | 8.0% | 220.2s | $0.35711 | 6 |
 | LFM&nbsp;24B&nbsp;A2B | All&nbsp;four | 9/116 | 7.8% | 20.8s | $0.65148 | 99 |
+| Lightning&nbsp;CoreWeave&nbsp;extra | Easy,&nbsp;no&nbsp;tools | 75/353 | 21.2% | 95.5s | $1.50838 | 134 |
 
-**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. Full model names, provider routing and failure counts are in the pilot report.
+**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. The CoreWeave extra row retains all 353 completed attempts from the stopped expansion, separately from its original 116-attempt pilot. Ten interrupted attempts are excluded. [Inspect the additional samples](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html#coreweave-extra). Full model names, provider routing and failure counts are in the pilot report.
 
 LFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron Lightning enable reasoning without an effort selector; the other models request `high`. Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.
 
@@ -77,13 +86,13 @@ Costs cover these scored subsets, excluding compatibility checks, removed duplic
 
 | Setting | Value |
 |---|---|
-| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; no fallback |
-| Full reasoning | `{"effort":"high","exclude":false}`; pilot exceptions are documented above |
+| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; `nvidia/nemotron-3.5-lightning` / `deepinfra/bf16`; no fallback |
+| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Lightning: `{"enabled":true,"exclude":false}`; no effort selector |
 | Output / timeout | 32,768 aggregate generated tokens/example (8,192 for LFM); **300 seconds/API request** |
 | Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |
 | Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |
 | Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |
-| Sampling | Seed 20261029 where supported, omitted on Bedrock and both Lightning runs; provider-default temperature; initially ten concurrent examples, with free-endpoint pacing. io.net continued only unissued cases at concurrency three |
+| Sampling | Full runs use ten concurrent examples and provider-default temperature. Seed 20261029 for Luna/Qwen, omitted for Lightning. Pilot scheduling exceptions are in its report |
 
 <details>
 <summary>Exact Python function supplied to OpenRouter</summary>
@@ -123,39 +132,116 @@ The no-tools condition sends an empty tools array. No hosted shell or web tool i
 
 ```json
 {
-  "model": "qwen/qwen3.7-flash",
-  "max_tokens": 32768,
-  "seed": 20261029,
-  "reasoning": {
-    "effort": "high",
-    "exclude": false
-  },
-  "tool_choice": "none",
-  "tools": [],
-  "plugins": [
-    {
-      "id": "web",
-      "enabled": false
+  "luna": {
+    "model": "openai/gpt-6-luna",
+    "max_tokens": 32768,
+    "seed": 20261029,
+    "reasoning": {
+      "effort": "high",
+      "exclude": false
     },
-    {
-      "id": "response-healing",
-      "enabled": false
-    },
-    {
-      "id": "file-parser",
-      "enabled": false
-    }
-  ],
-  "provider": {
-    "only": [
-      "alibaba/us-east-1"
+    "tool_choice": "none",
+    "tools": [],
+    "plugins": [
+      {
+        "id": "web",
+        "enabled": false
+      },
+      {
+        "id": "response-healing",
+        "enabled": false
+      },
+      {
+        "id": "file-parser",
+        "enabled": false
+      }
     ],
-    "allow_fallbacks": false,
-    "require_parameters": true
+    "provider": {
+      "only": [
+        "openai"
+      ],
+      "ignore": [
+        "openai/flex",
+        "openai/fast"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
   },
-  "stream": true,
-  "stream_options": {
-    "include_usage": true
+  "qwen": {
+    "model": "qwen/qwen3.7-flash",
+    "max_tokens": 32768,
+    "seed": 20261029,
+    "reasoning": {
+      "effort": "high",
+      "exclude": false
+    },
+    "tool_choice": "none",
+    "tools": [],
+    "plugins": [
+      {
+        "id": "web",
+        "enabled": false
+      },
+      {
+        "id": "response-healing",
+        "enabled": false
+      },
+      {
+        "id": "file-parser",
+        "enabled": false
+      }
+    ],
+    "provider": {
+      "only": [
+        "alibaba/us-east-1"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "deepinfra": {
+    "model": "nvidia/nemotron-3.5-lightning",
+    "max_tokens": 32768,
+    "reasoning": {
+      "enabled": true,
+      "exclude": false
+    },
+    "tool_choice": "none",
+    "tools": [],
+    "plugins": [
+      {
+        "id": "web",
+        "enabled": false
+      },
+      {
+        "id": "response-healing",
+        "enabled": false
+      },
+      {
+        "id": "file-parser",
+        "enabled": false
+      }
+    ],
+    "provider": {
+      "only": [
+        "deepinfra/bf16"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
   }
 }
 ```

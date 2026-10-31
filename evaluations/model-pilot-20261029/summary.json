@@ -2810,5 +2810,182 @@
       "requested_tokens": 32768,
       "reported_tokens": 32791
     }
-  ]
+  ],
+  "coreweave_extension": {
+    "name": "Nemotron Lightning / CoreWeave: additional samples",
+    "state": "stopped",
+    "totals": {
+      "attempted": 353,
+      "correct": 75,
+      "wrong": 75,
+      "format": 59,
+      "timeout": 0,
+      "token_cap": 134,
+      "error": 10,
+      "accuracy": 0.21246458923512748,
+      "median_seconds": 95.54579000000376,
+      "total_example_seconds": 32745.354399749485,
+      "examples_using_python": 0,
+      "python_calls": 0,
+      "python_failures": 0,
+      "api_requests": 353,
+      "prompt_tokens": 237809,
+      "completion_tokens": 7458681,
+      "reasoning_tokens": 7380364,
+      "cost_usd": 1.50838283,
+      "unreconciled_examples": 10
+    },
+    "conditions": {
+      "easy-no-tools": {
+        "attempted": 353,
+        "correct": 75,
+        "wrong": 75,
+        "format": 59,
+        "timeout": 0,
+        "token_cap": 134,
+        "error": 10,
+        "accuracy": 0.21246458923512748,
+        "median_seconds": 95.54579000000376,
+        "total_example_seconds": 32745.354399749485,
+        "examples_using_python": 0,
+        "python_calls": 0,
+        "python_failures": 0,
+        "api_requests": 353,
+        "prompt_tokens": 237809,
+        "completion_tokens": 7458681,
+        "reasoning_tokens": 7380364,
+        "cost_usd": 1.50838283,
+        "unreconciled_examples": 10
+      },
+      "hard-no-tools": {
+        "attempted": 0,
+        "correct": 0,
+        "wrong": 0,
+        "format": 0,
+        "timeout": 0,
+        "token_cap": 0,
+        "error": 0,
+        "accuracy": null,
+        "median_seconds": null,
+        "total_example_seconds": 0,
+        "examples_using_python": 0,
+        "python_calls": 0,
+        "python_failures": 0,
+        "api_requests": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "reasoning_tokens": 0,
+        "cost_usd": 0,
+        "unreconciled_examples": 0
+      },
+      "easy-tools": {
+        "attempted": 0,
+        "correct": 0,
+        "wrong": 0,
+        "format": 0,
+        "timeout": 0,
+        "token_cap": 0,
+        "error": 0,
+        "accuracy": null,
+        "median_seconds": null,
+        "total_example_seconds": 0,
+        "examples_using_python": 0,
+        "python_calls": 0,
+        "python_failures": 0,
+        "api_requests": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "reasoning_tokens": 0,
+        "cost_usd": 0,
+        "unreconciled_examples": 0
+      },
+      "hard-tools": {
+        "attempted": 0,
+        "correct": 0,
+        "wrong": 0,
+        "format": 0,
+        "timeout": 0,
+        "token_cap": 0,
+        "error": 0,
+        "accuracy": null,
+        "median_seconds": null,
+        "total_example_seconds": 0,
+        "examples_using_python": 0,
+        "python_calls": 0,
+        "python_failures": 0,
+        "api_requests": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "reasoning_tokens": 0,
+        "cost_usd": 0,
+        "unreconciled_examples": 0
+      }
+    },
+    "task_count": 46,
+    "interrupted_excluded": 10,
+    "repeated_pilot_case_conditions": 12,
+    "parameters_no_tools": {
+      "model": "nvidia/nemotron-3.5-lightning",
+      "max_tokens": 32768,
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "tool_choice": "none",
+      "tools": [],
+      "plugins": [
+        {
+          "id": "web",
+          "enabled": false
+        },
+        {
+          "id": "response-healing",
+          "enabled": false
+        },
+        {
+          "id": "file-parser",
+          "enabled": false
+        }
+      ],
+      "provider": {
+        "only": [
+          "coreweave/bf16"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      }
+    },
+    "concurrency": 10,
+    "request_timeout_seconds": 300,
+    "aggregate_completion_token_budget": 32768,
+    "dataset": {
+      "repo": "open-athena/cds-bench",
+      "revision": "26f63e8e488022bed14e12af0f1e44d87a28e14f",
+      "parquet_sha256": {
+        "easy": "d756b2655e4242812045def8ff4e4485f945280e5e6af2b4a845223102b7460e",
+        "hard": "aa724480707b2132abbe8c4f21e979701866a5ada36812476e2b7bb89b6cc1fa"
+      },
+      "rows_per_split": {
+        "easy": 840,
+        "hard": 790
+      },
+      "removed_hard_tasks": [
+        "construct.inframe_deletion",
+        "coords.nt_to_codon",
+        "rna.dotbracket_to_pairs",
+        "variant.apply",
+        "variant.frame_status"
+      ]
+    },
+    "pooled_with_original_pilot": false,
+    "validation": {
+      "original_scores_verified": true,
+      "aggregate_metrics_verified": true,
+      "no_inference_or_retries": true
+    }
+  }
 }
