@@ -76,3 +76,22 @@ the shared result columns used by both reports and the PR original post.
 The Qwen client and legacy trial have different request-exception classes. Failed requests remain failures, but their raw result files omit some request metadata. `collector.py` reconstructs counts, timeout flags, usage, and charges from saved response files for reporting. It leaves raw traces and scores untouched. The frozen driver's circuit breaker does not recognize these omitted error flags; the completion check monitors operational failures separately.
 
 The controller requests a maximum of 32,768 generated tokens across all turns. Some Qwen responses report usage above that allowance. The audit lists each exception, verifies the requested allowance and that no later request follows exhaustion, and reports `token_budgets_verified=false` when exceptions exist. Actual provider-reported usage is therefore not strictly matched to Luna's requested cap.
+## Full Snowball v0.1 evaluation
+
+Use the existing private Marin service; this runner does not deploy a model.
+Pass the local access file without copying its capability URL into the repository:
+
+```sh
+PYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.snowball_run --access-file /path/to/access.json
+```
+
+The pinned `open-athena/Marin-Snowball-67B-A2B-v0.1` release at
+`adc0078a19a4383bc998fcdb43867b3360baf5f3` receives 3,260 fresh attempts.
+The four passes contain 840 easy and 790 hard cases, without tools and with
+the existing offline Python function. Pilot responses are not reused.
+The validated native thinking/tool transport, temperature 0.7, seed 20261029,
+32,768 aggregate generated tokens, 1,800-second API wall deadline and concurrency
+60 are retained. The scorer, Python/NumPy sandbox and eight-call limit are unchanged.
+Requests are not retried; an interrupted attempt requires review before continuing.
+Raw traces and the access file remain private. The API exposes token usage but no
+per-request monetary price.
