@@ -22,6 +22,7 @@ from .lightning_run import RAW as LIGHTNING_RAW
 from .deepinfra_run import RAW as DEEPINFRA_RAW
 from .lightning_supervise import latest_failure_was_rate_limit
 from .tables import HEADERS, cells, html_grouped_table
+from . import radar
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
 MODELS = {"luna": "GPT-6 Luna (high)", "qwen": "Qwen 3.7 Flash (high)", "deepinfra": "Nemotron 3.5 Lightning"}
@@ -148,12 +149,14 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
                                      "condition": condition, "planned": planned,
                                      **{k: metric[k] for k in metric if k in writer.fieldnames}})
     plot(output, summaries)
+    radar.plot(output, summary, MODELS)
     render(output, summary, config, data, public)
     (output / "pr-body.md").write_text(pr_body(summary, config))
     (output / "README.md").write_text(
-        f"# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation\n\nLightning: {totals['deepinfra']['attempted']}/3,260 fresh attempts ({job['state']}). Luna and Qwen: 3,260 matched completed attempts each.\n\n"
+        f"# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation\n\nNemotron 3.5 Lightning: {totals['deepinfra']['attempted']}/3,260 fresh attempts ({job['state']}). Luna and Qwen: 3,260 matched completed attempts each.\n\n"
         "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
         "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
+        "[84-task radar figure](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report includes clickable task codes and a full-name/ID key.\n\n"
         "[30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
         "Failed Qwen request counts, timeout flags, usage, and charges are reconstructed from saved response metadata where the collector omitted them. Raw files and scores are unchanged; no requests are retried.\n"
     )
@@ -170,7 +173,7 @@ def plot(output, summaries):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     import numpy as np
-    fig, ax = plt.subplots(figsize=(8.8, 3.5), layout="constrained")
+    fig, ax = plt.subplots(figsize=(8.8, 3.8), layout="constrained")
     for offset, (model, name), color in zip([-0.24, 0, 0.24], MODELS.items(), ["#466784", "#688775", "#786b94"]):
         values = [100 * (summaries[model][c]["accuracy"] or 0) for c in PLANNED]
         bars = ax.bar(np.arange(4) + offset, values, width=0.22, label=name, color=color)
@@ -180,7 +183,7 @@ def plot(output, summaries):
     ax.set_xticks(range(4), LABELS)
     ax.set_ylim(0, 108)
     ax.set_ylabel("Correct answers (%) among finished attempts")
-    ax.legend(frameon=False, loc="upper right")
+    fig.legend(frameon=False, loc="outside upper center", ncol=3, columnspacing=1.8, handlelength=1.8)
     ax.grid(axis="y", color="#e1e5e8")
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
@@ -213,6 +216,7 @@ def pr_body(summary, config):
             ((full_names[model], label), summary["conditions"][model][c], 32768)
             for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
         ]),
+        f"\nThe [84-task radar comparison]({base}/report.html#task-radar) gives each model a panel with the same group colors and task order, plus a linked task-name/ID key. Scores pool the retained conditions for each task; groups and tasks are ordered by mean task accuracy across models.",
         "\nLuna and Qwen request `high` reasoning. Nemotron 3.5 Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Nemotron 3.5 Lightning conditions include only finished attempts.",
         "\n<details>\n<summary>Full-evaluation failures, billing and token-budget exceptions</summary>\n",
         markdown_table(
@@ -275,7 +279,8 @@ def render(output, summary, config, data, rows):
     parts = ["""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning full evaluation</title><style>
 body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}small,.muted{color:#64727e}small{display:block}.scroll{overflow-x:auto}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 0}img{max-width:100%;height:auto}[hidden]{display:none!important}nav{margin:12px 0 20px}.good{background:#e5efe8}.bad{background:#f3e8e9}
 .indexed-table tbody+tbody{border-top:2px solid #bfc9d2}.indexed-table tbody th{background:white;font-weight:400}.indexed-table .index-group{vertical-align:middle;font-weight:600;min-width:130px;max-width:210px;border-right:1px solid #dce2e7}.indexed-table .index-item{min-width:100px;max-width:210px}.indexed-table td{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}.indexed-table thead th:nth-child(n+3){text-align:right}
-</style><main><h1>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
+.task-radar-svg{display:block;width:100%;height:auto;min-width:1200px}.task-radar-figure{margin:0}.task-radar-figure figcaption{color:#64727e;font-size:13px;margin-top:8px}.radar-swatch{display:inline-block;width:10px;height:10px;margin-right:8px}.radar-key td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}.radar-key-group th{font-weight:600}
+</style><main><h1>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
     parts.append(f"<p>Full evaluation: <b>Nemotron 3.5 Lightning {deepinfra['attempted']}/3,260 ({esc(summary['state'].replace('waiting-provider', 'waiting for DeepInfra'))})</b>. Luna and Qwen each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
     if summary['state'] == 'complete':
@@ -324,6 +329,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
                   for m, name in MODELS.items()])
         for family, metrics in summary["by_family"].items()
     ]))
+    parts.append(radar.section(output, summary, MODELS))
     parts.append('<h2 id="tasks">By task</h2><p>Expand a row to inspect all ten instances, actual prompts, expected answers, and each model’s final prediction. Counts are correct / finished; — means that hard variant was removed.</p><input id="filter" placeholder="Filter task names or families"><div class="scroll"><table><thead><tr><th rowspan="2">Task</th>'+''.join(f'<th colspan="{len(MODELS)}">{label}</th>' for label in LABELS)+'</tr><tr>'+''.join(f'<th>{esc(name)}</th>' for _ in LABELS for name in MODELS.values())+'</tr></thead><tbody>')
     for task, definition in TASKS.items():
         title = definition["title"]

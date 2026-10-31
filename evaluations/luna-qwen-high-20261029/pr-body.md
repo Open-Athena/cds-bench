@@ -23,6 +23,8 @@ The HTML reports are self-contained; download and open them in a browser.
 | Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 537/840 | 63.9% | 28.3s | $1.83524 | 4 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 397/790 | 50.3% | 40.7s | $2.37400 | 7 |
 
+The [84-task radar comparison](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) gives each model a panel with the same group colors and task order, plus a linked task-name/ID key. Scores pool the retained conditions for each task; groups and tasks are ordered by mean task accuracy across models.
+
 Luna and Qwen request `high` reasoning. Nemotron 3.5 Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Nemotron 3.5 Lightning conditions include only finished attempts.
 
 <details>
