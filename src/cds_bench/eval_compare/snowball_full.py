@@ -9,7 +9,7 @@ from cds_bench.eval_luna.io import save
 from cds_bench.eval_luna.report import outcome
 from cds_bench.eval_luna.score import score_result
 
-from .snowball_run import MODEL_KEY, MODEL_REPO, MODEL_REVISION, PLANNED, RAW, ROOT
+from .snowball_run import MODEL_KEY, MODEL_REPO, MODEL_REVISION, PILOT, PLANNED, RAW, ROOT
 
 
 def read(path, default=None):
@@ -74,6 +74,9 @@ def audit(raw=RAW, output=None):
     rows = records(raw)
     assert len(rows)==len({(r['instance_id'],r['condition']) for r in rows})==3260
     assert Counter(r['condition'] for r in rows)==PLANNED
+    pilot_ids = {i for r in read(PILOT/'results.json', []) for i in r.get('response_ids', []) if i}
+    full_ids = {i for r in rows for i in r.get('response_ids', []) if i}
+    assert pilot_ids and full_ids and not pilot_ids.intersection(full_ids)
     expected = {(c['instance_id'],v+('-tools' if t else '-no-tools'))
                 for v,rs in dataset.items() for c in rs for t in [False,True]}
     assert {(r['instance_id'],r['condition']) for r in rows}==expected
@@ -87,6 +90,7 @@ def audit(raw=RAW, output=None):
     request_count = reasoning_replays = tool_replays = 0
     for row in rows:
         directory = Path(row['trace_directory'])
+        assert directory.resolve().is_relative_to(raw.resolve()/'traces')
         case = cases[row['instance_id'],row['variant']]
         assert read(directory / 'case.json')==case
         assert (directory / 'prompt.md').read_text()==case['prompt']+'\n'
@@ -112,6 +116,8 @@ def audit(raw=RAW, output=None):
             assert request['chat_template_kwargs']['enable_thinking'] is True
             assert 'tools' not in request and 'tool_choice' not in request
             tools = request['chat_template_kwargs'].get('xml_tools')
+            if row['tools_enabled'] and number==1:
+                assert tools==config['tools_condition']['tools']
             if tools:
                 assert row['tools_enabled'] and tools==config['tools_condition']['tools']
                 assert request['stop']==['</tool_call>'] and request['include_stop_str_in_output'] is True

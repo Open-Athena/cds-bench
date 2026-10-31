@@ -1,18 +1,20 @@
 Full CDS-bench baselines for **GPT-6 Luna (high)**, **Nemotron 3.5 Lightning**, **Qwen 3.7 Flash (high)** and **Snowball v0.1**, with and without offline Python. The dataset has ten examples per task: 84 easy task types and 79 hard task types, or 3,260 planned attempts per model. Retained prompts and reference answers are identical across models.
 
-**Snowball v0.1: 2,797/3,260 finished (running).** The other three models each have 3,260 completed matching attempts. **12,577 scored attempts** in total; pilot responses are not reused.
+**Snowball v0.1: 3,260/3,260 finished (complete).** The other three models each have 3,260 completed matching attempts. **13,040 scored attempts** in total; pilot responses are not reused.
 
 Evaluation-only PR. **Do not merge.**
 
 [Full report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html) · [Per-task results (CSV)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/by-task.csv) · [Final predictions (JSON)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/results.json)
 
+[Snowball completion audit passed](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/snowball-v01-full-audit.json): all 3,260 cases verified, with no scored retries or pilot-response reuse.
+
 The HTML reports are self-contained; download and open them in a browser.
 
 **Accuracy by condition**
 
-![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=7ca87f4707ce)
+![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=12b1d05ac1cd)
 
-Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=7ca87f4707ce) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=12b1d05ac1cd) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
 
 <details>
 <summary>Full results: accuracy, median time, cost and truncation</summary>
@@ -35,7 +37,7 @@ Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/head
 | Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 179/840 | 21.3% | 109.6s | Unavailable | 109 |
 | Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 158/790 | 20.0% | 119.5s | Unavailable | 103 |
 | Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 221/840 | 26.3% | 110.4s | Unavailable | 91 |
-| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 107/327 | 32.7% | 97.7s | Unavailable | 17 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 180/790 | 22.8% | 122.2s | Unavailable | 96 |
 
 Models are ordered by pooled mean task accuracy, giving each task equal weight; the order stays fixed across conditions. All failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.
 
@@ -43,9 +45,9 @@ Models are ordered by pooled mean task accuracy, giving each task equal weight; 
 
 **Task performance: All conditions (pooled)**
 
-![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=a1a9a1083973)
+![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=89fc0b242a9d)
 
-Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=a1a9a1083973) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=89fc0b242a9d) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
 
 Each spoke pools completed attempts for one task. Subtitles average available task accuracies equally; five tasks have only easy variants. Missing results are unscored, not zero. Groups and tasks share the same order across models. The [report’s condition selector and task key](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.
 
@@ -79,7 +81,7 @@ Scores count incorrect answers, formatting failures, timeouts, token caps and AP
 | Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 153 | 382 | 0 | 109 | 17 |
 | Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 145 | 384 | 0 | 103 | 0 |
 | Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 167 | 355 | 0 | 91 | 6 |
-| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 75 | 127 | 0 | 17 | 1 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 161 | 351 | 0 | 96 | 2 |
 
 Recorded charges: **$10.24787 Nemotron 3.5 Lightning**, **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 53 Nemotron 3.5 Lightning, 29 Qwen and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
 

@@ -389,7 +389,7 @@
     </g>
    </g>
    <g id="radar-easy-tools-patch_13">
-    <path d="M 219.850116 121.139771  L 228.577024 108.96427  L 236.834099 110.051335  L 245.002396 111.67611  L 253.04694 113.831639  L 260.933281 116.508691  L 277.561162 124.174249  L 284.718577 128.432464  L 291.582167 133.149679  L 298.122541 138.305694  L 295.49076 153.052744  L 310.123117 149.844025  L 321.458577 164.222987  L 325.902692 171.266483  L 329.876625 178.585557  L 321.63726 191.096137  L 324.323404 198.093782  L 338.817658 201.877744  L 342.389714 219.835684  L 317.741889 229.627569  L 342.912102 246.437258  L 341.933212 254.707855  L 340.415496 262.89672  L 338.365451 270.968789  L 335.791858 278.889496  L 332.705735 286.624923  L 329.120299 294.141946  L 325.050903 301.408376  L 299.632452 293.83879  L 308.992269 322.62245  L 303.103255 328.511465  L 288.767757 324.164596  L 282.821183 328.727562  L 283.309637 343.699642  L 276.097096 347.863804  L 252.870065 316.769599  L 260.933281 354.734439  L 249.352483 345.232499  L 235.188659 361.452408  L 226.918063 362.431297  L 218.601152 362.867168  L 212.02219 324.617177  L 203.384039 349.456405  L 193.728753 360.909668  L 194.738407 322.111148  L 177.566784 356.917468  L 197.547886 283.027906  L 172.063741 313.064873  L 153.090318 331.275149  L 139.287723 337.096673  L 132.8154 331.855489  L 135.639988 317.144151  L 120.966884 320.161063  L 115.641428 313.757899  L 121.281783 299.880285  L 139.242144 280.670123  L 102.328115 292.657574  L 98.841381 285.094263  L 95.856776 277.319103  L 105.658611 265.991005  L 141.306672 251.008931  L 90.032476 253.059144  L 88.83496 234.78859  L 89.161929 226.466687  L 90.032476 218.183986  L 93.839288 200.274341  L 108.381831 196.680427  L 99.499004 184.618207  L 103.08444 177.101184  L 107.153836 169.834754  L 122.131027 170.127187  L 116.672808 156.176933  L 122.081622 149.844025  L 127.893047 143.87843  L 134.082198 138.305694  L 148.170552 143.396867  L 147.486162 128.432464  L 160.789457 135.318981  L 162.064169 120.393269  L 169.71616 117.105714  L 177.566784 114.325663  L 185.582423 112.065019  L 198.203477 135.391083  L 201.970891 109.13841  L 219.850116 121.139771  z " clip-path="url(#radar-easy-tools-p83d83b88d4)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
+    <path d="M 219.850116 121.139771  L 228.577024 108.96427  L 236.834099 110.051335  L 245.002396 111.67611  L 253.04694 113.831639  L 260.933281 116.508691  L 277.561162 124.174249  L 284.718577 128.432464  L 291.582167 133.149679  L 298.122541 138.305694  L 295.49076 153.052744  L 310.123117 149.844025  L 321.458577 164.222987  L 325.902692 171.266483  L 329.876625 178.585557  L 321.63726 191.096137  L 324.323404 198.093782  L 338.817658 201.877744  L 342.389714 219.835684  L 317.741889 229.627569  L 342.912102 246.437258  L 341.933212 254.707855  L 340.415496 262.89672  L 338.365451 270.968789  L 335.791858 278.889496  L 332.705735 286.624923  L 329.120299 294.141946  L 325.050903 301.408376  L 299.632452 293.83879  L 308.992269 322.62245  L 303.103255 328.511465  L 288.767757 324.164596  L 282.821183 328.727562  L 283.309637 343.699642  L 276.097096 347.863804  L 252.870065 316.769599  L 260.933281 354.734439  L 249.352483 345.232499  L 235.188659 361.452408  L 226.918063 362.431297  L 218.601152 362.867168  L 212.02219 324.617177  L 203.384039 349.456405  L 193.728753 360.909668  L 194.738407 322.111148  L 177.566784 356.917468  L 197.547886 283.027906  L 172.063741 313.064873  L 153.090318 331.275149  L 139.287723 337.096673  L 132.8154 331.855489  L 135.639988 317.144151  L 120.966884 320.161063  L 115.641428 313.757899  L 121.281783 299.880285  L 106.302048 299.976648  L 136.460391 275.546771  L 98.841381 285.094263  L 95.856776 277.319103  L 105.658611 265.991005  L 141.306672 251.008931  L 90.032476 253.059144  L 88.83496 234.78859  L 89.161929 226.466687  L 90.032476 218.183986  L 93.839288 200.274341  L 108.381831 196.680427  L 99.499004 184.618207  L 103.08444 177.101184  L 107.153836 169.834754  L 122.131027 170.127187  L 116.672808 156.176933  L 122.081622 149.844025  L 127.893047 143.87843  L 142.284215 148.037281  L 140.622572 133.149679  L 147.486162 128.432464  L 160.789457 135.318981  L 162.064169 120.393269  L 169.71616 117.105714  L 177.566784 114.325663  L 185.582423 112.065019  L 198.203477 135.391083  L 201.970891 109.13841  L 219.850116 121.139771  z " clip-path="url(#radar-easy-tools-p83d83b88d4)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
    </g>
    <g id="radar-easy-tools-patch_14">
     <path d="M 216.10237 105.169676  C 224.647278 105.169676 233.171551 106.009244 241.552271 107.676273  C 249.932991 109.343302 258.129681 111.82974 266.024146 115.099735  L 267.728792 110.984356  C 259.56476 107.602703 251.088183 105.031361 242.421292 103.307409  C 233.754401 101.583457 224.939055 100.715222 216.10237 100.715222  z " clip-path="url(#radar-easy-tools-p83d83b88d4)" style="fill: #ee6677" />
@@ -690,15 +690,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="97.834631" y="318.594294" transform="rotate(-34.125 97.834631 318.594294)">H08</text>
     <title>H08: Introduce a DNA recognition site (design.insert_dna_motif). GPT-6 Luna (high): 9/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-luna-design.synonymous_distance">
-    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). GPT-6 Luna (high): 7/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="92.661176" y="310.681562" transform="rotate(-30.375 92.661176 310.681562)">H09</text>
-    <title>H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). GPT-6 Luna (high): 7/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-luna-design.guide_escape">
-    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H10: Create a guide-escape control (design.guide_escape). GPT-6 Luna (high): 10/10.">
+    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H09: Create a guide-escape control (design.guide_escape). GPT-6 Luna (high): 10/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="92.661176" y="310.681562" transform="rotate(-30.375 92.661176 310.681562)">H09</text>
+    <title>H09: Create a guide-escape control (design.guide_escape). GPT-6 Luna (high): 10/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-luna-design.synonymous_distance">
+    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). GPT-6 Luna (high): 7/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="88.016314" y="302.447413" transform="rotate(-26.625 88.016314 302.447413)">H10</text>
-    <title>H10: Create a guide-escape control (design.guide_escape). GPT-6 Luna (high): 10/10.</title></a>
+    <title>H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). GPT-6 Luna (high): 7/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-luna-design.remove_dna_motifs">
     <a xlink:href="report.html#task-design.remove_dna_motifs" target="_self" href="report.html#task-design.remove_dna_motifs" aria-label="H11: Remove specified DNA motifs (design.remove_dna_motifs). GPT-6 Luna (high): 10/10.">
@@ -728,15 +728,15 @@
    <g id="radar-easy-tools-patch_22">
     <path d="M 85.695183 239.036398  C 85.583411 234.767976 85.681273 230.496639 85.988418 226.237815  C 86.295562 221.978991 86.811617 217.737814 87.53472 213.529603  L 83.144605 212.775243  C 82.396811 217.127149 81.863134 221.513147 81.545502 225.917394  C 81.22787 230.321641 81.126666 234.738829 81.242255 239.153002  z " clip-path="url(#radar-easy-tools-p83d83b88d4)" style="fill: #009988" />
    </g>
-   <g id="radar-easy-tools-radar-label-luna-assay.select_rna_probe">
-    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I01: Select a CDS-specific RNA probe (assay.select_rna_probe). GPT-6 Luna (high): 10/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="71.638559" y="237.013979" transform="rotate(-359.625 71.638559 237.013979)">I01</text>
-    <title>I01: Select a CDS-specific RNA probe (assay.select_rna_probe). GPT-6 Luna (high): 10/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-luna-assay.min_probe_panel">
-    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). GPT-6 Luna (high): 10/10.">
+    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). GPT-6 Luna (high): 10/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="71.638559" y="237.013979" transform="rotate(-359.625 71.638559 237.013979)">I01</text>
+    <title>I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). GPT-6 Luna (high): 10/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-luna-assay.select_rna_probe">
+    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I02: Select a CDS-specific RNA probe (assay.select_rna_probe). GPT-6 Luna (high): 10/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="71.856798" y="227.562612" transform="rotate(-355.875 71.856798 227.562612)">I02</text>
-    <title>I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). GPT-6 Luna (high): 10/10.</title></a>
+    <title>I02: Select a CDS-specific RNA probe (assay.select_rna_probe). GPT-6 Luna (high): 10/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-luna-assay.primer_pair">
     <a xlink:href="report.html#task-assay.primer_pair" target="_self" href="report.html#task-assay.primer_pair" aria-label="I03: Choose CDS-internal PCR primers (assay.primer_pair). GPT-6 Luna (high): 10/10.">
@@ -791,15 +791,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="114.299512" y="133.11347" transform="rotate(-313.875 114.299512 133.11347)">J09</text>
     <title>J09: Design a codon library and verify its coverage (pipeline.library_and_verify). GPT-6 Luna (high): 10/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-luna-pipeline.fusion_junction">
-    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). GPT-6 Luna (high): 10/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="121.22183" y="126.674722" transform="rotate(-310.125 121.22183 126.674722)">J10</text>
-    <title>J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). GPT-6 Luna (high): 10/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-luna-joint.structure_and_codons">
-    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). GPT-6 Luna (high): 9/10.">
+    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). GPT-6 Luna (high): 9/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="121.22183" y="126.674722" transform="rotate(-310.125 121.22183 126.674722)">J10</text>
+    <title>J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). GPT-6 Luna (high): 9/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-luna-pipeline.fusion_junction">
+    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). GPT-6 Luna (high): 10/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="128.550441" y="120.702501" transform="rotate(-306.375 128.550441 120.702501)">J11</text>
-    <title>J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). GPT-6 Luna (high): 9/10.</title></a>
+    <title>J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). GPT-6 Luna (high): 10/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-luna-pipeline.rna_edit_digest">
     <a xlink:href="report.html#task-pipeline.rna_edit_digest" target="_self" href="report.html#task-pipeline.rna_edit_digest" aria-label="J12: From specified RNA edits to RNA fragments (pipeline.rna_edit_digest). GPT-6 Luna (high): 10/10.">
@@ -842,7 +842,7 @@
     <title>J19: Build and audit a controlled synonymous panel (pipeline.controlled_panel). GPT-6 Luna (high): 10/10.</title></a>
    </g>
    <g id="radar-easy-tools-line2d_109">
-    <path d="M 219.850116 121.139771  L 228.577024 108.96427  L 236.834099 110.051335  L 245.002396 111.67611  L 253.04694 113.831639  L 260.933281 116.508691  L 277.561162 124.174249  L 284.718577 128.432464  L 291.582167 133.149679  L 298.122541 138.305694  L 295.49076 153.052744  L 310.123117 149.844025  L 321.458577 164.222987  L 325.902692 171.266483  L 329.876625 178.585557  L 321.63726 191.096137  L 324.323404 198.093782  L 338.817658 201.877744  L 342.389714 219.835684  L 317.741889 229.627569  L 342.912102 246.437258  L 341.933212 254.707855  L 340.415496 262.89672  L 338.365451 270.968789  L 335.791858 278.889496  L 332.705735 286.624923  L 329.120299 294.141946  L 325.050903 301.408376  L 299.632452 293.83879  L 308.992269 322.62245  L 303.103255 328.511465  L 288.767757 324.164596  L 282.821183 328.727562  L 283.309637 343.699642  L 276.097096 347.863804  L 252.870065 316.769599  L 260.933281 354.734439  L 249.352483 345.232499  L 235.188659 361.452408  L 226.918063 362.431297  L 218.601152 362.867168  L 212.02219 324.617177  L 203.384039 349.456405  L 193.728753 360.909668  L 194.738407 322.111148  L 177.566784 356.917468  L 197.547886 283.027906  L 172.063741 313.064873  L 153.090318 331.275149  L 139.287723 337.096673  L 132.8154 331.855489  L 135.639988 317.144151  L 120.966884 320.161063  L 115.641428 313.757899  L 121.281783 299.880285  L 139.242144 280.670123  L 102.328115 292.657574  L 98.841381 285.094263  L 95.856776 277.319103  L 105.658611 265.991005  L 141.306672 251.008931  L 90.032476 253.059144  L 88.83496 234.78859  L 89.161929 226.466687  L 90.032476 218.183986  L 93.839288 200.274341  L 108.381831 196.680427  L 99.499004 184.618207  L 103.08444 177.101184  L 107.153836 169.834754  L 122.131027 170.127187  L 116.672808 156.176933  L 122.081622 149.844025  L 127.893047 143.87843  L 134.082198 138.305694  L 148.170552 143.396867  L 147.486162 128.432464  L 160.789457 135.318981  L 162.064169 120.393269  L 169.71616 117.105714  L 177.566784 114.325663  L 185.582423 112.065019  L 198.203477 135.391083  L 201.970891 109.13841  L 219.850116 121.139771  " clip-path="url(#radar-easy-tools-p83d83b88d4)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
+    <path d="M 219.850116 121.139771  L 228.577024 108.96427  L 236.834099 110.051335  L 245.002396 111.67611  L 253.04694 113.831639  L 260.933281 116.508691  L 277.561162 124.174249  L 284.718577 128.432464  L 291.582167 133.149679  L 298.122541 138.305694  L 295.49076 153.052744  L 310.123117 149.844025  L 321.458577 164.222987  L 325.902692 171.266483  L 329.876625 178.585557  L 321.63726 191.096137  L 324.323404 198.093782  L 338.817658 201.877744  L 342.389714 219.835684  L 317.741889 229.627569  L 342.912102 246.437258  L 341.933212 254.707855  L 340.415496 262.89672  L 338.365451 270.968789  L 335.791858 278.889496  L 332.705735 286.624923  L 329.120299 294.141946  L 325.050903 301.408376  L 299.632452 293.83879  L 308.992269 322.62245  L 303.103255 328.511465  L 288.767757 324.164596  L 282.821183 328.727562  L 283.309637 343.699642  L 276.097096 347.863804  L 252.870065 316.769599  L 260.933281 354.734439  L 249.352483 345.232499  L 235.188659 361.452408  L 226.918063 362.431297  L 218.601152 362.867168  L 212.02219 324.617177  L 203.384039 349.456405  L 193.728753 360.909668  L 194.738407 322.111148  L 177.566784 356.917468  L 197.547886 283.027906  L 172.063741 313.064873  L 153.090318 331.275149  L 139.287723 337.096673  L 132.8154 331.855489  L 135.639988 317.144151  L 120.966884 320.161063  L 115.641428 313.757899  L 121.281783 299.880285  L 106.302048 299.976648  L 136.460391 275.546771  L 98.841381 285.094263  L 95.856776 277.319103  L 105.658611 265.991005  L 141.306672 251.008931  L 90.032476 253.059144  L 88.83496 234.78859  L 89.161929 226.466687  L 90.032476 218.183986  L 93.839288 200.274341  L 108.381831 196.680427  L 99.499004 184.618207  L 103.08444 177.101184  L 107.153836 169.834754  L 122.131027 170.127187  L 116.672808 156.176933  L 122.081622 149.844025  L 127.893047 143.87843  L 142.284215 148.037281  L 140.622572 133.149679  L 147.486162 128.432464  L 160.789457 135.318981  L 162.064169 120.393269  L 169.71616 117.105714  L 177.566784 114.325663  L 185.582423 112.065019  L 198.203477 135.391083  L 201.970891 109.13841  L 219.850116 121.139771  " clip-path="url(#radar-easy-tools-p83d83b88d4)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
    </g>
    <g id="radar-easy-tools-PathCollection_1">
     <defs>
@@ -1145,12 +1145,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_56">
     <g clip-path="url(#radar-easy-tools-p83d83b88d4)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="139.242144" y="280.670123" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="106.302048" y="299.976648" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_57">
     <g clip-path="url(#radar-easy-tools-p83d83b88d4)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="102.328115" y="292.657574" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="136.460391" y="275.546771" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_58">
@@ -1246,12 +1246,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_75">
     <g clip-path="url(#radar-easy-tools-p83d83b88d4)">
-     <use xlink:href="#radar-easy-tools-m25e576fc24" x="134.082198" y="138.305694" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m25e576fc24" x="142.284215" y="148.037281" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_76">
     <g clip-path="url(#radar-easy-tools-p83d83b88d4)">
-     <use xlink:href="#radar-easy-tools-m25e576fc24" x="148.170552" y="143.396867" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m25e576fc24" x="140.622572" y="133.149679" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_77">
@@ -1689,7 +1689,7 @@
     </g>
    </g>
    <g id="radar-easy-tools-patch_39">
-    <path d="M 651.22896 133.85997  L 657.877354 134.295729  L 664.483013 135.165381  L 665.237646 161.254292  L 684.842201 113.831639  L 674.796177 164.153841  L 684.772906 168.753176  L 716.513838 128.432464  L 723.377428 133.149679  L 729.917802 138.305694  L 736.106953 143.87843  L 694.908004 192.732795  L 732.182596 178.502703  L 746.71792 177.701991  L 761.671885 178.585557  L 741.706422 196.043407  L 708.020427 214.772797  L 660.169159 232.247183  L 748.927506 222.99286  L 724.12727 231.126068  L 774.707362 246.437258  L 773.728473 254.707855  L 759.779444 260.169205  L 770.160712 270.968789  L 755.618169 274.562703  L 717.85965 266.22358  L 738.311974 282.43787  L 702.371897 268.514971  L 668.780151 250.175871  L 740.78753 322.62245  L 708.79825 300.644495  L 712.489086 314.326481  L 707.203243 318.382451  L 694.942717 311.276219  L 701.892884 336.63958  L 689.917854 328.362175  L 661.346904 271.355427  L 658.981001 272.158543  L 666.98392 361.452408  L 658.713324 362.431297  L 650.146535 350.142608  L 643.234568 337.330836  L 638.005595 324.159774  L 634.473461 310.794427  L 632.637657 297.399839  L 617.069162 332.658287  L 647.89763 235.621565  L 597.567769 324.128203  L 591.886918 320.646973  L 594.127378 306.654141  L 614.582842 274.115135  L 585.315778 299.028021  L 600.329887 277.891314  L 587.621066 282.503365  L 584.683906 278.460712  L 571.037405 280.670123  L 602.387928 258.435969  L 624.445433 245.516105  L 611.823952 248.130826  L 574.268458 255.867858  L 573.101932 251.008931  L 610.076662 240.852839  L 571.537185 235.12178  L 584.42741 231.044126  L 610.076662 230.390291  L 550.087165 207.343786  L 552.14604 201.00722  L 542.954601 189.718543  L 557.483287 188.80526  L 582.52851 196.149479  L 574.808808 184.681493  L 598.18285 195.899249  L 629.093481 218.466057  L 603.792969 189.749998  L 615.089562 196.695217  L 610.157732 184.385622  L 634.174389 214.183745  L 611.022355 168.753176  L 626.28235 189.530247  L 620.065904 164.512055  L 644.044072 223.491975  L 635.689652 186.198947  L 641.185545 198.035134  L 646.484482 222.97325  L 651.22896 133.85997  z " clip-path="url(#radar-easy-tools-p72d962db4a)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
+    <path d="M 651.22896 133.85997  L 657.877354 134.295729  L 664.483013 135.165381  L 665.237646 161.254292  L 684.842201 113.831639  L 674.796177 164.153841  L 684.772906 168.753176  L 716.513838 128.432464  L 723.377428 133.149679  L 729.917802 138.305694  L 736.106953 143.87843  L 694.908004 192.732795  L 732.182596 178.502703  L 746.71792 177.701991  L 761.671885 178.585557  L 741.706422 196.043407  L 708.020427 214.772797  L 660.169159 232.247183  L 748.927506 222.99286  L 724.12727 231.126068  L 774.707362 246.437258  L 773.728473 254.707855  L 759.779444 260.169205  L 770.160712 270.968789  L 755.618169 274.562703  L 717.85965 266.22358  L 738.311974 282.43787  L 702.371897 268.514971  L 668.780151 250.175871  L 740.78753 322.62245  L 708.79825 300.644495  L 712.489086 314.326481  L 707.203243 318.382451  L 694.942717 311.276219  L 701.892884 336.63958  L 689.917854 328.362175  L 661.346904 271.355427  L 658.981001 272.158543  L 666.98392 361.452408  L 658.713324 362.431297  L 650.146535 350.142608  L 643.234568 337.330836  L 638.005595 324.159774  L 634.473461 310.794427  L 632.637657 297.399839  L 617.069162 332.658287  L 647.89763 235.621565  L 597.567769 324.128203  L 591.886918 320.646973  L 594.127378 306.654141  L 614.582842 274.115135  L 585.315778 299.028021  L 600.329887 277.891314  L 587.621066 282.503365  L 584.683906 278.460712  L 603.977501 261.363598  L 568.255652 275.546771  L 624.445433 245.516105  L 611.823952 248.130826  L 574.268458 255.867858  L 573.101932 251.008931  L 610.076662 240.852839  L 584.263926 235.205078  L 571.733366 230.128638  L 610.076662 230.390291  L 550.087165 207.343786  L 552.14604 201.00722  L 542.954601 189.718543  L 557.483287 188.80526  L 582.52851 196.149479  L 574.808808 184.681493  L 598.18285 195.899249  L 629.093481 218.466057  L 603.792969 189.749998  L 606.887545 186.963629  L 617.705711 194.632811  L 634.174389 214.183745  L 611.022355 168.753176  L 626.28235 189.530247  L 620.065904 164.512055  L 644.044072 223.491975  L 635.689652 186.198947  L 641.185545 198.035134  L 646.484482 222.97325  L 651.22896 133.85997  z " clip-path="url(#radar-easy-tools-p72d962db4a)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
    </g>
    <g id="radar-easy-tools-patch_40">
     <path d="M 647.89763 105.169676  C 656.442538 105.169676 664.966811 106.009244 673.347531 107.676273  C 681.728251 109.343302 689.924941 111.82974 697.819407 115.099735  L 699.524053 110.984356  C 691.36002 107.602703 682.883443 105.031361 674.216552 103.307409  C 665.549661 101.583457 656.734316 100.715222 647.89763 100.715222  z " clip-path="url(#radar-easy-tools-p72d962db4a)" style="fill: #ee6677" />
@@ -1990,15 +1990,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="529.629892" y="318.594294" transform="rotate(-34.125 529.629892 318.594294)">H08</text>
     <title>H08: Introduce a DNA recognition site (design.insert_dna_motif). Nemotron 3.5 Lightning: 6/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-deepinfra-design.synonymous_distance">
-    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). Nemotron 3.5 Lightning: 7/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="524.456436" y="310.681562" transform="rotate(-30.375 524.456436 310.681562)">H09</text>
-    <title>H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). Nemotron 3.5 Lightning: 7/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-deepinfra-design.guide_escape">
-    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H10: Create a guide-escape control (design.guide_escape). Nemotron 3.5 Lightning: 4/10.">
+    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H09: Create a guide-escape control (design.guide_escape). Nemotron 3.5 Lightning: 4/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="524.456436" y="310.681562" transform="rotate(-30.375 524.456436 310.681562)">H09</text>
+    <title>H09: Create a guide-escape control (design.guide_escape). Nemotron 3.5 Lightning: 4/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-deepinfra-design.synonymous_distance">
+    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). Nemotron 3.5 Lightning: 7/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="519.811575" y="302.447413" transform="rotate(-26.625 519.811575 302.447413)">H10</text>
-    <title>H10: Create a guide-escape control (design.guide_escape). Nemotron 3.5 Lightning: 4/10.</title></a>
+    <title>H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). Nemotron 3.5 Lightning: 7/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-deepinfra-design.remove_dna_motifs">
     <a xlink:href="report.html#task-design.remove_dna_motifs" target="_self" href="report.html#task-design.remove_dna_motifs" aria-label="H11: Remove specified DNA motifs (design.remove_dna_motifs). Nemotron 3.5 Lightning: 2/10.">
@@ -2028,15 +2028,15 @@
    <g id="radar-easy-tools-patch_48">
     <path d="M 517.490444 239.036398  C 517.378672 234.767976 517.476534 230.496639 517.783678 226.237815  C 518.090822 221.978991 518.606878 217.737814 519.329981 213.529603  L 514.939866 212.775243  C 514.192072 217.127149 513.658395 221.513147 513.340763 225.917394  C 513.023131 230.321641 512.921927 234.738829 513.037516 239.153002  z " clip-path="url(#radar-easy-tools-p72d962db4a)" style="fill: #009988" />
    </g>
-   <g id="radar-easy-tools-radar-label-deepinfra-assay.select_rna_probe">
-    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I01: Select a CDS-specific RNA probe (assay.select_rna_probe). Nemotron 3.5 Lightning: 6/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="503.433819" y="237.013979" transform="rotate(-359.625 503.433819 237.013979)">I01</text>
-    <title>I01: Select a CDS-specific RNA probe (assay.select_rna_probe). Nemotron 3.5 Lightning: 6/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-deepinfra-assay.min_probe_panel">
-    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). Nemotron 3.5 Lightning: 5/10.">
+    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). Nemotron 3.5 Lightning: 5/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="503.433819" y="237.013979" transform="rotate(-359.625 503.433819 237.013979)">I01</text>
+    <title>I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). Nemotron 3.5 Lightning: 5/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-deepinfra-assay.select_rna_probe">
+    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I02: Select a CDS-specific RNA probe (assay.select_rna_probe). Nemotron 3.5 Lightning: 6/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="503.652059" y="227.562612" transform="rotate(-355.875 503.652059 227.562612)">I02</text>
-    <title>I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). Nemotron 3.5 Lightning: 5/10.</title></a>
+    <title>I02: Select a CDS-specific RNA probe (assay.select_rna_probe). Nemotron 3.5 Lightning: 6/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-deepinfra-assay.primer_pair">
     <a xlink:href="report.html#task-assay.primer_pair" target="_self" href="report.html#task-assay.primer_pair" aria-label="I03: Choose CDS-internal PCR primers (assay.primer_pair). Nemotron 3.5 Lightning: 3/10.">
@@ -2091,15 +2091,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="546.094772" y="133.11347" transform="rotate(-313.875 546.094772 133.11347)">J09</text>
     <title>J09: Design a codon library and verify its coverage (pipeline.library_and_verify). Nemotron 3.5 Lightning: 5/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-deepinfra-pipeline.fusion_junction">
-    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Nemotron 3.5 Lightning: 4/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="553.01709" y="126.674722" transform="rotate(-310.125 553.01709 126.674722)">J10</text>
-    <title>J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Nemotron 3.5 Lightning: 4/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-deepinfra-joint.structure_and_codons">
-    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Nemotron 3.5 Lightning: 5/10.">
+    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Nemotron 3.5 Lightning: 5/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="553.01709" y="126.674722" transform="rotate(-310.125 553.01709 126.674722)">J10</text>
+    <title>J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Nemotron 3.5 Lightning: 5/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-deepinfra-pipeline.fusion_junction">
+    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Nemotron 3.5 Lightning: 4/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="560.345701" y="120.702501" transform="rotate(-306.375 560.345701 120.702501)">J11</text>
-    <title>J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Nemotron 3.5 Lightning: 5/10.</title></a>
+    <title>J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Nemotron 3.5 Lightning: 4/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-deepinfra-pipeline.rna_edit_digest">
     <a xlink:href="report.html#task-pipeline.rna_edit_digest" target="_self" href="report.html#task-pipeline.rna_edit_digest" aria-label="J12: From specified RNA edits to RNA fragments (pipeline.rna_edit_digest). Nemotron 3.5 Lightning: 2/10.">
@@ -2142,7 +2142,7 @@
     <title>J19: Build and audit a controlled synonymous panel (pipeline.controlled_panel). Nemotron 3.5 Lightning: 1/10.</title></a>
    </g>
    <g id="radar-easy-tools-line2d_218">
-    <path d="M 651.22896 133.85997  L 657.877354 134.295729  L 664.483013 135.165381  L 665.237646 161.254292  L 684.842201 113.831639  L 674.796177 164.153841  L 684.772906 168.753176  L 716.513838 128.432464  L 723.377428 133.149679  L 729.917802 138.305694  L 736.106953 143.87843  L 694.908004 192.732795  L 732.182596 178.502703  L 746.71792 177.701991  L 761.671885 178.585557  L 741.706422 196.043407  L 708.020427 214.772797  L 660.169159 232.247183  L 748.927506 222.99286  L 724.12727 231.126068  L 774.707362 246.437258  L 773.728473 254.707855  L 759.779444 260.169205  L 770.160712 270.968789  L 755.618169 274.562703  L 717.85965 266.22358  L 738.311974 282.43787  L 702.371897 268.514971  L 668.780151 250.175871  L 740.78753 322.62245  L 708.79825 300.644495  L 712.489086 314.326481  L 707.203243 318.382451  L 694.942717 311.276219  L 701.892884 336.63958  L 689.917854 328.362175  L 661.346904 271.355427  L 658.981001 272.158543  L 666.98392 361.452408  L 658.713324 362.431297  L 650.146535 350.142608  L 643.234568 337.330836  L 638.005595 324.159774  L 634.473461 310.794427  L 632.637657 297.399839  L 617.069162 332.658287  L 647.89763 235.621565  L 597.567769 324.128203  L 591.886918 320.646973  L 594.127378 306.654141  L 614.582842 274.115135  L 585.315778 299.028021  L 600.329887 277.891314  L 587.621066 282.503365  L 584.683906 278.460712  L 571.037405 280.670123  L 602.387928 258.435969  L 624.445433 245.516105  L 611.823952 248.130826  L 574.268458 255.867858  L 573.101932 251.008931  L 610.076662 240.852839  L 571.537185 235.12178  L 584.42741 231.044126  L 610.076662 230.390291  L 550.087165 207.343786  L 552.14604 201.00722  L 542.954601 189.718543  L 557.483287 188.80526  L 582.52851 196.149479  L 574.808808 184.681493  L 598.18285 195.899249  L 629.093481 218.466057  L 603.792969 189.749998  L 615.089562 196.695217  L 610.157732 184.385622  L 634.174389 214.183745  L 611.022355 168.753176  L 626.28235 189.530247  L 620.065904 164.512055  L 644.044072 223.491975  L 635.689652 186.198947  L 641.185545 198.035134  L 646.484482 222.97325  L 651.22896 133.85997  " clip-path="url(#radar-easy-tools-p72d962db4a)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
+    <path d="M 651.22896 133.85997  L 657.877354 134.295729  L 664.483013 135.165381  L 665.237646 161.254292  L 684.842201 113.831639  L 674.796177 164.153841  L 684.772906 168.753176  L 716.513838 128.432464  L 723.377428 133.149679  L 729.917802 138.305694  L 736.106953 143.87843  L 694.908004 192.732795  L 732.182596 178.502703  L 746.71792 177.701991  L 761.671885 178.585557  L 741.706422 196.043407  L 708.020427 214.772797  L 660.169159 232.247183  L 748.927506 222.99286  L 724.12727 231.126068  L 774.707362 246.437258  L 773.728473 254.707855  L 759.779444 260.169205  L 770.160712 270.968789  L 755.618169 274.562703  L 717.85965 266.22358  L 738.311974 282.43787  L 702.371897 268.514971  L 668.780151 250.175871  L 740.78753 322.62245  L 708.79825 300.644495  L 712.489086 314.326481  L 707.203243 318.382451  L 694.942717 311.276219  L 701.892884 336.63958  L 689.917854 328.362175  L 661.346904 271.355427  L 658.981001 272.158543  L 666.98392 361.452408  L 658.713324 362.431297  L 650.146535 350.142608  L 643.234568 337.330836  L 638.005595 324.159774  L 634.473461 310.794427  L 632.637657 297.399839  L 617.069162 332.658287  L 647.89763 235.621565  L 597.567769 324.128203  L 591.886918 320.646973  L 594.127378 306.654141  L 614.582842 274.115135  L 585.315778 299.028021  L 600.329887 277.891314  L 587.621066 282.503365  L 584.683906 278.460712  L 603.977501 261.363598  L 568.255652 275.546771  L 624.445433 245.516105  L 611.823952 248.130826  L 574.268458 255.867858  L 573.101932 251.008931  L 610.076662 240.852839  L 584.263926 235.205078  L 571.733366 230.128638  L 610.076662 230.390291  L 550.087165 207.343786  L 552.14604 201.00722  L 542.954601 189.718543  L 557.483287 188.80526  L 582.52851 196.149479  L 574.808808 184.681493  L 598.18285 195.899249  L 629.093481 218.466057  L 603.792969 189.749998  L 606.887545 186.963629  L 617.705711 194.632811  L 634.174389 214.183745  L 611.022355 168.753176  L 626.28235 189.530247  L 620.065904 164.512055  L 644.044072 223.491975  L 635.689652 186.198947  L 641.185545 198.035134  L 646.484482 222.97325  L 651.22896 133.85997  " clip-path="url(#radar-easy-tools-p72d962db4a)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
    </g>
    <g id="radar-easy-tools-PathCollection_85">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
@@ -2421,12 +2421,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_140">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="571.037405" y="280.670123" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="603.977501" y="261.363598" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_141">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="602.387928" y="258.435969" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="568.255652" y="275.546771" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_142">
@@ -2456,12 +2456,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_147">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
-     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="571.537185" y="235.12178" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="584.263926" y="235.205078" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_148">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
-     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="584.42741" y="231.044126" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="571.733366" y="230.128638" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_149">
@@ -2516,12 +2516,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_159">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
-     <use xlink:href="#radar-easy-tools-m25e576fc24" x="615.089562" y="196.695217" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m25e576fc24" x="606.887545" y="186.963629" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_160">
     <g clip-path="url(#radar-easy-tools-p72d962db4a)">
-     <use xlink:href="#radar-easy-tools-m25e576fc24" x="610.157732" y="184.385622" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m25e576fc24" x="617.705711" y="194.632811" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_161">
@@ -2959,7 +2959,7 @@
     </g>
    </g>
    <g id="radar-easy-tools-patch_65">
-    <path d="M 219.433699 537.56084  L 227.329559 525.330869  L 232.687753 538.86625  L 242.112394 527.771525  L 238.269112 566.248479  L 216.10237 639.322435  L 271.415283 539.01985  L 277.856956 542.852244  L 276.486208 557.344925  L 298.122541 542.006563  L 295.49076 556.753613  L 234.906519 622.166927  L 310.922956 575.063715  L 314.92266 581.402861  L 318.499199 587.990027  L 286.458963 609.638816  L 240.151488 630.982927  L 240.645427 632.57367  L 253.988573 634.58667  L 216.10237 639.322435  L 342.912102 650.138128  L 341.933212 658.408724  L 315.55287 661.142559  L 301.686527 664.065492  L 287.916062 665.283193  L 227.762706 644.422771  L 216.10237 639.322435  L 237.892076 652.479797  L 247.426151 661.153894  L 299.703279 717.623231  L 268.302901 695.056374  L 280.693825 718.027351  L 282.821183 732.428432  L 242.985276 682.553665  L 264.098151 729.116226  L 252.870065 720.470468  L 225.068552 663.14501  L 219.796827 651.501427  L 227.554143 714.82094  L 222.591786 715.408274  L 217.851518 728.394357  L 212.605073 715.604388  L 204.797187 740.508959  L 213.865008 651.851245  L 213.050375 651.678089  L 189.12746 724.229567  L 211.463749 651.17402  L 165.772508 727.829073  L 160.091657 724.347843  L 162.332117 710.35501  L 166.130188 697.062789  L 198.22184 657.438565  L 168.534627 681.592184  L 185.964087 662.763335  L 163.424266 675.021724  L 183.162273 658.628959  L 170.592668 662.136838  L 204.376271 644.269705  L 192.053251 647.661942  L 191.559312 646.071199  L 216.10237 639.322435  L 178.281401 644.553709  L 127.015183 638.739352  L 101.855973 631.083044  L 216.10237 639.322435  L 118.291904 611.044655  L 144.288677 613.361676  L 146.14035 608.72042  L 159.593405 610.062244  L 205.207516 632.743754  L 216.10237 639.322435  L 176.330545 607.544582  L 197.29822 622.166927  L 216.10237 639.322435  L 216.10237 639.322435  L 193.45843 608.580869  L 202.379128 617.884615  L 216.10237 639.322435  L 210.69855 627.799605  L 211.463749 627.47085  L 212.248811 627.192845  L 216.10237 639.322435  L 216.10237 639.322435  L 216.10237 639.322435  L 219.433699 537.56084  z " clip-path="url(#radar-easy-tools-pc2691c4728)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
+    <path d="M 219.433699 537.56084  L 227.329559 525.330869  L 232.687753 538.86625  L 242.112394 527.771525  L 238.269112 566.248479  L 216.10237 639.322435  L 271.415283 539.01985  L 277.856956 542.852244  L 276.486208 557.344925  L 298.122541 542.006563  L 295.49076 556.753613  L 234.906519 622.166927  L 310.922956 575.063715  L 314.92266 581.402861  L 318.499199 587.990027  L 286.458963 609.638816  L 240.151488 630.982927  L 240.645427 632.57367  L 253.988573 634.58667  L 216.10237 639.322435  L 342.912102 650.138128  L 341.933212 658.408724  L 315.55287 661.142559  L 301.686527 664.065492  L 287.916062 665.283193  L 227.762706 644.422771  L 216.10237 639.322435  L 237.892076 652.479797  L 247.426151 661.153894  L 299.703279 717.623231  L 268.302901 695.056374  L 280.693825 718.027351  L 282.821183 732.428432  L 242.985276 682.553665  L 264.098151 729.116226  L 252.870065 720.470468  L 225.068552 663.14501  L 219.796827 651.501427  L 227.554143 714.82094  L 222.591786 715.408274  L 217.851518 728.394357  L 212.605073 715.604388  L 204.797187 740.508959  L 213.865008 651.851245  L 213.050375 651.678089  L 189.12746 724.229567  L 211.463749 651.17402  L 165.772508 727.829073  L 160.091657 724.347843  L 162.332117 710.35501  L 166.130188 697.062789  L 198.22184 657.438565  L 168.534627 681.592184  L 185.964087 662.763335  L 163.424266 675.021724  L 172.182241 665.064468  L 181.970093 656.433237  L 204.376271 644.269705  L 192.053251 647.661942  L 191.559312 646.071199  L 216.10237 639.322435  L 178.281401 644.553709  L 101.561701 638.572757  L 127.244061 632.91402  L 216.10237 639.322435  L 118.291904 611.044655  L 144.288677 613.361676  L 146.14035 608.72042  L 159.593405 610.062244  L 205.207516 632.743754  L 216.10237 639.322435  L 176.330545 607.544582  L 197.29822 622.166927  L 216.10237 639.322435  L 191.496318 610.127673  L 216.10237 639.322435  L 202.379128 617.884615  L 216.10237 639.322435  L 210.69855 627.799605  L 211.463749 627.47085  L 212.248811 627.192845  L 216.10237 639.322435  L 216.10237 639.322435  L 216.10237 639.322435  L 219.433699 537.56084  z " clip-path="url(#radar-easy-tools-pc2691c4728)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
    </g>
    <g id="radar-easy-tools-patch_66">
     <path d="M 216.10237 508.870546  C 224.647278 508.870546 233.171551 509.710114 241.552271 511.377142  C 249.932991 513.044171 258.129681 515.53061 266.024146 518.800605  L 267.728792 514.685225  C 259.56476 511.303572 251.088183 508.732231 242.421292 507.008279  C 233.754401 505.284327 224.939055 504.416091 216.10237 504.416091  z " clip-path="url(#radar-easy-tools-pc2691c4728)" style="fill: #ee6677" />
@@ -3260,15 +3260,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="97.834631" y="722.295163" transform="rotate(-34.125 97.834631 722.295163)">H08</text>
     <title>H08: Introduce a DNA recognition site (design.insert_dna_motif). Qwen 3.7 Flash (high): 5/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-qwen-design.synonymous_distance">
-    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). Qwen 3.7 Flash (high): 3/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="92.661176" y="714.382432" transform="rotate(-30.375 92.661176 714.382432)">H09</text>
-    <title>H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). Qwen 3.7 Flash (high): 3/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-qwen-design.guide_escape">
-    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H10: Create a guide-escape control (design.guide_escape). Qwen 3.7 Flash (high): 4/10.">
+    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H09: Create a guide-escape control (design.guide_escape). Qwen 3.7 Flash (high): 4/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="92.661176" y="714.382432" transform="rotate(-30.375 92.661176 714.382432)">H09</text>
+    <title>H09: Create a guide-escape control (design.guide_escape). Qwen 3.7 Flash (high): 4/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-qwen-design.synonymous_distance">
+    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). Qwen 3.7 Flash (high): 3/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="88.016314" y="706.148282" transform="rotate(-26.625 88.016314 706.148282)">H10</text>
-    <title>H10: Create a guide-escape control (design.guide_escape). Qwen 3.7 Flash (high): 4/10.</title></a>
+    <title>H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). Qwen 3.7 Flash (high): 3/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-qwen-design.remove_dna_motifs">
     <a xlink:href="report.html#task-design.remove_dna_motifs" target="_self" href="report.html#task-design.remove_dna_motifs" aria-label="H11: Remove specified DNA motifs (design.remove_dna_motifs). Qwen 3.7 Flash (high): 1/10.">
@@ -3298,15 +3298,15 @@
    <g id="radar-easy-tools-patch_74">
     <path d="M 85.695183 642.737267  C 85.583411 638.468845 85.681273 634.197508 85.988418 629.938684  C 86.295562 625.67986 86.811617 621.438683 87.53472 617.230472  L 83.144605 616.476112  C 82.396811 620.828019 81.863134 625.214016 81.545502 629.618264  C 81.22787 634.022511 81.126666 638.439698 81.242255 642.853871  z " clip-path="url(#radar-easy-tools-pc2691c4728)" style="fill: #009988" />
    </g>
-   <g id="radar-easy-tools-radar-label-qwen-assay.select_rna_probe">
-    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I01: Select a CDS-specific RNA probe (assay.select_rna_probe). Qwen 3.7 Flash (high): 7/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="71.638559" y="640.714849" transform="rotate(-359.625 71.638559 640.714849)">I01</text>
-    <title>I01: Select a CDS-specific RNA probe (assay.select_rna_probe). Qwen 3.7 Flash (high): 7/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-qwen-assay.min_probe_panel">
-    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). Qwen 3.7 Flash (high): 9/10.">
+    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). Qwen 3.7 Flash (high): 9/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="71.638559" y="640.714849" transform="rotate(-359.625 71.638559 640.714849)">I01</text>
+    <title>I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). Qwen 3.7 Flash (high): 9/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-qwen-assay.select_rna_probe">
+    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I02: Select a CDS-specific RNA probe (assay.select_rna_probe). Qwen 3.7 Flash (high): 7/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="71.856798" y="631.263482" transform="rotate(-355.875 71.856798 631.263482)">I02</text>
-    <title>I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). Qwen 3.7 Flash (high): 9/10.</title></a>
+    <title>I02: Select a CDS-specific RNA probe (assay.select_rna_probe). Qwen 3.7 Flash (high): 7/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-qwen-assay.primer_pair">
     <a xlink:href="report.html#task-assay.primer_pair" target="_self" href="report.html#task-assay.primer_pair" aria-label="I03: Choose CDS-internal PCR primers (assay.primer_pair). Qwen 3.7 Flash (high): 0/10.">
@@ -3361,15 +3361,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="114.299512" y="536.814339" transform="rotate(-313.875 114.299512 536.814339)">J09</text>
     <title>J09: Design a codon library and verify its coverage (pipeline.library_and_verify). Qwen 3.7 Flash (high): 0/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-qwen-pipeline.fusion_junction">
-    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Qwen 3.7 Flash (high): 0/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="121.22183" y="530.375591" transform="rotate(-310.125 121.22183 530.375591)">J10</text>
-    <title>J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Qwen 3.7 Flash (high): 0/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-qwen-joint.structure_and_codons">
-    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Qwen 3.7 Flash (high): 3/10.">
+    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Qwen 3.7 Flash (high): 3/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="121.22183" y="530.375591" transform="rotate(-310.125 121.22183 530.375591)">J10</text>
+    <title>J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Qwen 3.7 Flash (high): 3/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-qwen-pipeline.fusion_junction">
+    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Qwen 3.7 Flash (high): 0/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="128.550441" y="524.403371" transform="rotate(-306.375 128.550441 524.403371)">J11</text>
-    <title>J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Qwen 3.7 Flash (high): 3/10.</title></a>
+    <title>J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Qwen 3.7 Flash (high): 0/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-qwen-pipeline.rna_edit_digest">
     <a xlink:href="report.html#task-pipeline.rna_edit_digest" target="_self" href="report.html#task-pipeline.rna_edit_digest" aria-label="J12: From specified RNA edits to RNA fragments (pipeline.rna_edit_digest). Qwen 3.7 Flash (high): 2/10.">
@@ -3412,7 +3412,7 @@
     <title>J19: Build and audit a controlled synonymous panel (pipeline.controlled_panel). Qwen 3.7 Flash (high): 0/10.</title></a>
    </g>
    <g id="radar-easy-tools-line2d_327">
-    <path d="M 219.433699 537.56084  L 227.329559 525.330869  L 232.687753 538.86625  L 242.112394 527.771525  L 238.269112 566.248479  L 216.10237 639.322435  L 271.415283 539.01985  L 277.856956 542.852244  L 276.486208 557.344925  L 298.122541 542.006563  L 295.49076 556.753613  L 234.906519 622.166927  L 310.922956 575.063715  L 314.92266 581.402861  L 318.499199 587.990027  L 286.458963 609.638816  L 240.151488 630.982927  L 240.645427 632.57367  L 253.988573 634.58667  L 216.10237 639.322435  L 342.912102 650.138128  L 341.933212 658.408724  L 315.55287 661.142559  L 301.686527 664.065492  L 287.916062 665.283193  L 227.762706 644.422771  L 216.10237 639.322435  L 237.892076 652.479797  L 247.426151 661.153894  L 299.703279 717.623231  L 268.302901 695.056374  L 280.693825 718.027351  L 282.821183 732.428432  L 242.985276 682.553665  L 264.098151 729.116226  L 252.870065 720.470468  L 225.068552 663.14501  L 219.796827 651.501427  L 227.554143 714.82094  L 222.591786 715.408274  L 217.851518 728.394357  L 212.605073 715.604388  L 204.797187 740.508959  L 213.865008 651.851245  L 213.050375 651.678089  L 189.12746 724.229567  L 211.463749 651.17402  L 165.772508 727.829073  L 160.091657 724.347843  L 162.332117 710.35501  L 166.130188 697.062789  L 198.22184 657.438565  L 168.534627 681.592184  L 185.964087 662.763335  L 163.424266 675.021724  L 183.162273 658.628959  L 170.592668 662.136838  L 204.376271 644.269705  L 192.053251 647.661942  L 191.559312 646.071199  L 216.10237 639.322435  L 178.281401 644.553709  L 127.015183 638.739352  L 101.855973 631.083044  L 216.10237 639.322435  L 118.291904 611.044655  L 144.288677 613.361676  L 146.14035 608.72042  L 159.593405 610.062244  L 205.207516 632.743754  L 216.10237 639.322435  L 176.330545 607.544582  L 197.29822 622.166927  L 216.10237 639.322435  L 216.10237 639.322435  L 193.45843 608.580869  L 202.379128 617.884615  L 216.10237 639.322435  L 210.69855 627.799605  L 211.463749 627.47085  L 212.248811 627.192845  L 216.10237 639.322435  L 216.10237 639.322435  L 216.10237 639.322435  L 219.433699 537.56084  " clip-path="url(#radar-easy-tools-pc2691c4728)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
+    <path d="M 219.433699 537.56084  L 227.329559 525.330869  L 232.687753 538.86625  L 242.112394 527.771525  L 238.269112 566.248479  L 216.10237 639.322435  L 271.415283 539.01985  L 277.856956 542.852244  L 276.486208 557.344925  L 298.122541 542.006563  L 295.49076 556.753613  L 234.906519 622.166927  L 310.922956 575.063715  L 314.92266 581.402861  L 318.499199 587.990027  L 286.458963 609.638816  L 240.151488 630.982927  L 240.645427 632.57367  L 253.988573 634.58667  L 216.10237 639.322435  L 342.912102 650.138128  L 341.933212 658.408724  L 315.55287 661.142559  L 301.686527 664.065492  L 287.916062 665.283193  L 227.762706 644.422771  L 216.10237 639.322435  L 237.892076 652.479797  L 247.426151 661.153894  L 299.703279 717.623231  L 268.302901 695.056374  L 280.693825 718.027351  L 282.821183 732.428432  L 242.985276 682.553665  L 264.098151 729.116226  L 252.870065 720.470468  L 225.068552 663.14501  L 219.796827 651.501427  L 227.554143 714.82094  L 222.591786 715.408274  L 217.851518 728.394357  L 212.605073 715.604388  L 204.797187 740.508959  L 213.865008 651.851245  L 213.050375 651.678089  L 189.12746 724.229567  L 211.463749 651.17402  L 165.772508 727.829073  L 160.091657 724.347843  L 162.332117 710.35501  L 166.130188 697.062789  L 198.22184 657.438565  L 168.534627 681.592184  L 185.964087 662.763335  L 163.424266 675.021724  L 172.182241 665.064468  L 181.970093 656.433237  L 204.376271 644.269705  L 192.053251 647.661942  L 191.559312 646.071199  L 216.10237 639.322435  L 178.281401 644.553709  L 101.561701 638.572757  L 127.244061 632.91402  L 216.10237 639.322435  L 118.291904 611.044655  L 144.288677 613.361676  L 146.14035 608.72042  L 159.593405 610.062244  L 205.207516 632.743754  L 216.10237 639.322435  L 176.330545 607.544582  L 197.29822 622.166927  L 216.10237 639.322435  L 191.496318 610.127673  L 216.10237 639.322435  L 202.379128 617.884615  L 216.10237 639.322435  L 210.69855 627.799605  L 211.463749 627.47085  L 212.248811 627.192845  L 216.10237 639.322435  L 216.10237 639.322435  L 216.10237 639.322435  L 219.433699 537.56084  " clip-path="url(#radar-easy-tools-pc2691c4728)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
    </g>
    <g id="radar-easy-tools-PathCollection_169">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
@@ -3691,12 +3691,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_224">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="183.162273" y="658.628959" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="172.182241" y="665.064468" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_225">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="170.592668" y="662.136838" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="181.970093" y="656.433237" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_226">
@@ -3726,12 +3726,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_231">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
-     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="127.015183" y="638.739352" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="101.561701" y="638.572757" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_232">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
-     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="101.855973" y="631.083044" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="127.244061" y="632.91402" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_233">
@@ -3786,12 +3786,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_243">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
-     <use xlink:href="#radar-easy-tools-m25e576fc24" x="216.10237" y="639.322435" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m25e576fc24" x="191.496318" y="610.127673" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_244">
     <g clip-path="url(#radar-easy-tools-pc2691c4728)">
-     <use xlink:href="#radar-easy-tools-m25e576fc24" x="193.45843" y="608.580869" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m25e576fc24" x="216.10237" y="639.322435" style="fill: #332288; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_245">
@@ -4229,7 +4229,7 @@
     </g>
    </g>
    <g id="radar-easy-tools-patch_91">
-    <path d="M 649.979711 575.721438  L 655.382423 563.328058  L 654.117149 601.651366  L 671.017652 540.166071  L 655.286544 614.96445  L 656.863813 615.49986  L 684.772906 572.454045  L 689.067355 575.008974  L 662.99359 618.828057  L 697.109733 580.932912  L 674.360427 611.799494  L 666.70178 622.166927  L 732.182596 582.203572  L 680.837727 620.01591  L 716.162183 605.10083  L 683.075927 624.480625  L 671.946749 630.982927  L 672.440688 632.57367  L 711.041302 631.429494  L 711.42233 635.576187  L 723.98347 645.811851  L 698.229967 646.95695  L 747.348131 661.142559  L 647.89763 639.322435  L 659.866579 643.649228  L 671.218303 649.523106  L 670.501216 651.026511  L 658.792484 645.901116  L 647.89763 639.322435  L 703.63157 691.522966  L 682.697984 676.478395  L 672.119426 668.836778  L 655.310832 649.667546  L 668.05981 671.745858  L 653.897103 650.546659  L 668.907742 685.69274  L 652.380721 651.233722  L 651.592087 651.501427  L 655.532146 689.654772  L 652.223908 690.046328  L 648.647265 677.496116  L 647.314748 652.036094  L 642.245039 689.915697  L 634.473461 714.495296  L 641.793641 664.033744  L 644.044072 651.452025  L 647.89763 639.322435  L 610.150234 705.702413  L 584.885579 734.976019  L 624.853236 669.764967  L 622.911539 668.192612  L 638.957366 648.3805  L 628.870533 656.230334  L 637.851536 647.136068  L 647.89763 639.322435  L 625.937566 652.193451  L 647.89763 639.322435  L 624.445433 649.216974  L 647.89763 639.322435  L 611.083044 649.445581  L 647.89763 639.322435  L 635.290641 641.066193  L 622.444148 639.15584  L 647.89763 639.322435  L 635.290641 637.578677  L 562.313473 614.579378  L 564.114989 609.034883  L 647.89763 639.322435  L 625.294044 627.618359  L 637.002777 632.743754  L 627.01511 624.768129  L 637.954674 631.377972  L 619.691406 613.589173  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 641.03601 628.603525  L 641.751751 628.177703  L 642.49381 627.799605  L 643.259009 627.47085  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 649.979711 575.721438  z " clip-path="url(#radar-easy-tools-pa2d65b023d)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
+    <path d="M 649.979711 575.721438  L 655.382423 563.328058  L 654.117149 601.651366  L 671.017652 540.166071  L 655.286544 614.96445  L 656.863813 615.49986  L 684.772906 572.454045  L 689.067355 575.008974  L 662.99359 618.828057  L 697.109733 580.932912  L 674.360427 611.799494  L 666.70178 622.166927  L 732.182596 582.203572  L 680.837727 620.01591  L 716.162183 605.10083  L 683.075927 624.480625  L 671.946749 630.982927  L 672.440688 632.57367  L 711.041302 631.429494  L 711.42233 635.576187  L 723.98347 645.811851  L 698.229967 646.95695  L 747.348131 661.142559  L 647.89763 639.322435  L 659.866579 643.649228  L 671.218303 649.523106  L 670.501216 651.026511  L 658.792484 645.901116  L 647.89763 639.322435  L 703.63157 691.522966  L 682.697984 676.478395  L 672.119426 668.836778  L 655.310832 649.667546  L 668.05981 671.745858  L 653.897103 650.546659  L 668.907742 685.69274  L 652.380721 651.233722  L 651.592087 651.501427  L 655.532146 689.654772  L 652.223908 690.046328  L 648.647265 677.496116  L 647.314748 652.036094  L 642.245039 689.915697  L 634.473461 714.495296  L 641.793641 664.033744  L 644.044072 651.452025  L 647.89763 639.322435  L 610.150234 705.702413  L 584.885579 734.976019  L 624.853236 669.764967  L 622.911539 668.192612  L 638.957366 648.3805  L 628.870533 656.230334  L 637.851536 647.136068  L 647.89763 639.322435  L 647.89763 639.322435  L 625.142779 650.729636  L 624.445433 649.216974  L 647.89763 639.322435  L 611.083044 649.445581  L 647.89763 639.322435  L 635.290641 641.066193  L 647.89763 639.322435  L 622.509542 637.491459  L 635.290641 637.578677  L 562.313473 614.579378  L 564.114989 609.034883  L 647.89763 639.322435  L 625.294044 627.618359  L 637.002777 632.743754  L 627.01511 624.768129  L 637.954674 631.377972  L 619.691406 613.589173  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 641.03601 628.603525  L 641.751751 628.177703  L 642.49381 627.799605  L 643.259009 627.47085  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 649.979711 575.721438  z " clip-path="url(#radar-easy-tools-pa2d65b023d)" style="fill: #344554; opacity: 0.055; stroke: #344554; stroke-linejoin: miter" />
    </g>
    <g id="radar-easy-tools-patch_92">
     <path d="M 647.89763 508.870546  C 656.442538 508.870546 664.966811 509.710114 673.347531 511.377142  C 681.728251 513.044171 689.924941 515.53061 697.819407 518.800605  L 699.524053 514.685225  C 691.36002 511.303572 682.883443 508.732231 674.216552 507.008279  C 665.549661 505.284327 656.734316 504.416091 647.89763 504.416091  z " clip-path="url(#radar-easy-tools-pa2d65b023d)" style="fill: #ee6677" />
@@ -4530,15 +4530,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="529.629892" y="722.295163" transform="rotate(-34.125 529.629892 722.295163)">H08</text>
     <title>H08: Introduce a DNA recognition site (design.insert_dna_motif). Snowball v0.1: 0/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-snowball-v01-design.synonymous_distance">
-    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). Snowball v0.1: 2/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="524.456436" y="714.382432" transform="rotate(-30.375 524.456436 714.382432)">H09</text>
-    <title>H09: Rewrite with a specified number of DNA changes (design.synonymous_distance). Snowball v0.1: 2/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-snowball-v01-design.guide_escape">
-    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H10: Create a guide-escape control (design.guide_escape). Snowball v0.1: 0/10.">
+    <a xlink:href="report.html#task-design.guide_escape" target="_self" href="report.html#task-design.guide_escape" aria-label="H09: Create a guide-escape control (design.guide_escape). Snowball v0.1: 0/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="524.456436" y="714.382432" transform="rotate(-30.375 524.456436 714.382432)">H09</text>
+    <title>H09: Create a guide-escape control (design.guide_escape). Snowball v0.1: 0/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-snowball-v01-design.synonymous_distance">
+    <a xlink:href="report.html#task-design.synonymous_distance" target="_self" href="report.html#task-design.synonymous_distance" aria-label="H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). Snowball v0.1: 2/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="519.811575" y="706.148282" transform="rotate(-26.625 519.811575 706.148282)">H10</text>
-    <title>H10: Create a guide-escape control (design.guide_escape). Snowball v0.1: 0/10.</title></a>
+    <title>H10: Rewrite with a specified number of DNA changes (design.synonymous_distance). Snowball v0.1: 2/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-snowball-v01-design.remove_dna_motifs">
     <a xlink:href="report.html#task-design.remove_dna_motifs" target="_self" href="report.html#task-design.remove_dna_motifs" aria-label="H11: Remove specified DNA motifs (design.remove_dna_motifs). Snowball v0.1: 2/10.">
@@ -4568,15 +4568,15 @@
    <g id="radar-easy-tools-patch_100">
     <path d="M 517.490444 642.737267  C 517.378672 638.468845 517.476534 634.197508 517.783678 629.938684  C 518.090822 625.67986 518.606878 621.438683 519.329981 617.230472  L 514.939866 616.476112  C 514.192072 620.828019 513.658395 625.214016 513.340763 629.618264  C 513.023131 634.022511 512.921927 638.439698 513.037516 642.853871  z " clip-path="url(#radar-easy-tools-pa2d65b023d)" style="fill: #009988" />
    </g>
-   <g id="radar-easy-tools-radar-label-snowball-v01-assay.select_rna_probe">
-    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I01: Select a CDS-specific RNA probe (assay.select_rna_probe). Snowball v0.1: 2/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="503.433819" y="640.714849" transform="rotate(-359.625 503.433819 640.714849)">I01</text>
-    <title>I01: Select a CDS-specific RNA probe (assay.select_rna_probe). Snowball v0.1: 2/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-snowball-v01-assay.min_probe_panel">
-    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). Snowball v0.1: 0/10.">
+    <a xlink:href="report.html#task-assay.min_probe_panel" target="_self" href="report.html#task-assay.min_probe_panel" aria-label="I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). Snowball v0.1: 0/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="503.433819" y="640.714849" transform="rotate(-359.625 503.433819 640.714849)">I01</text>
+    <title>I01: Distinguish CDSs with a probe panel (assay.min_probe_panel). Snowball v0.1: 0/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-snowball-v01-assay.select_rna_probe">
+    <a xlink:href="report.html#task-assay.select_rna_probe" target="_self" href="report.html#task-assay.select_rna_probe" aria-label="I02: Select a CDS-specific RNA probe (assay.select_rna_probe). Snowball v0.1: 2/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="503.652059" y="631.263482" transform="rotate(-355.875 503.652059 631.263482)">I02</text>
-    <title>I02: Distinguish CDSs with a probe panel (assay.min_probe_panel). Snowball v0.1: 0/10.</title></a>
+    <title>I02: Select a CDS-specific RNA probe (assay.select_rna_probe). Snowball v0.1: 2/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-snowball-v01-assay.primer_pair">
     <a xlink:href="report.html#task-assay.primer_pair" target="_self" href="report.html#task-assay.primer_pair" aria-label="I03: Choose CDS-internal PCR primers (assay.primer_pair). Snowball v0.1: 1/10.">
@@ -4631,15 +4631,15 @@
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="546.094772" y="536.814339" transform="rotate(-313.875 546.094772 536.814339)">J09</text>
     <title>J09: Design a codon library and verify its coverage (pipeline.library_and_verify). Snowball v0.1: 0/10.</title></a>
    </g>
-   <g id="radar-easy-tools-radar-label-snowball-v01-pipeline.fusion_junction">
-    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Snowball v0.1: 0/10.">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="553.01709" y="530.375591" transform="rotate(-310.125 553.01709 530.375591)">J10</text>
-    <title>J10: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Snowball v0.1: 0/10.</title></a>
-   </g>
    <g id="radar-easy-tools-radar-label-snowball-v01-joint.structure_and_codons">
-    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Snowball v0.1: 0/10.">
+    <a xlink:href="report.html#task-joint.structure_and_codons" target="_self" href="report.html#task-joint.structure_and_codons" aria-label="J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Snowball v0.1: 0/10.">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="553.01709" y="530.375591" transform="rotate(-310.125 553.01709 530.375591)">J10</text>
+    <title>J10: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Snowball v0.1: 0/10.</title></a>
+   </g>
+   <g id="radar-easy-tools-radar-label-snowball-v01-pipeline.fusion_junction">
+    <a xlink:href="report.html#task-pipeline.fusion_junction" target="_self" href="report.html#task-pipeline.fusion_junction" aria-label="J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Snowball v0.1: 0/10.">
      <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #334155" x="560.345701" y="524.403371" transform="rotate(-306.375 560.345701 524.403371)">J11</text>
-    <title>J11: Balance an RNA structural constraint and codon preference (joint.structure_and_codons). Snowball v0.1: 0/10.</title></a>
+    <title>J11: Assemble coding modules and locate junction motifs (pipeline.fusion_junction). Snowball v0.1: 0/10.</title></a>
    </g>
    <g id="radar-easy-tools-radar-label-snowball-v01-pipeline.rna_edit_digest">
     <a xlink:href="report.html#task-pipeline.rna_edit_digest" target="_self" href="report.html#task-pipeline.rna_edit_digest" aria-label="J12: From specified RNA edits to RNA fragments (pipeline.rna_edit_digest). Snowball v0.1: 1/10.">
@@ -4682,7 +4682,7 @@
     <title>J19: Build and audit a controlled synonymous panel (pipeline.controlled_panel). Snowball v0.1: 0/10.</title></a>
    </g>
    <g id="radar-easy-tools-line2d_436">
-    <path d="M 649.979711 575.721438  L 655.382423 563.328058  L 654.117149 601.651366  L 671.017652 540.166071  L 655.286544 614.96445  L 656.863813 615.49986  L 684.772906 572.454045  L 689.067355 575.008974  L 662.99359 618.828057  L 697.109733 580.932912  L 674.360427 611.799494  L 666.70178 622.166927  L 732.182596 582.203572  L 680.837727 620.01591  L 716.162183 605.10083  L 683.075927 624.480625  L 671.946749 630.982927  L 672.440688 632.57367  L 711.041302 631.429494  L 711.42233 635.576187  L 723.98347 645.811851  L 698.229967 646.95695  L 747.348131 661.142559  L 647.89763 639.322435  L 659.866579 643.649228  L 671.218303 649.523106  L 670.501216 651.026511  L 658.792484 645.901116  L 647.89763 639.322435  L 703.63157 691.522966  L 682.697984 676.478395  L 672.119426 668.836778  L 655.310832 649.667546  L 668.05981 671.745858  L 653.897103 650.546659  L 668.907742 685.69274  L 652.380721 651.233722  L 651.592087 651.501427  L 655.532146 689.654772  L 652.223908 690.046328  L 648.647265 677.496116  L 647.314748 652.036094  L 642.245039 689.915697  L 634.473461 714.495296  L 641.793641 664.033744  L 644.044072 651.452025  L 647.89763 639.322435  L 610.150234 705.702413  L 584.885579 734.976019  L 624.853236 669.764967  L 622.911539 668.192612  L 638.957366 648.3805  L 628.870533 656.230334  L 637.851536 647.136068  L 647.89763 639.322435  L 625.937566 652.193451  L 647.89763 639.322435  L 624.445433 649.216974  L 647.89763 639.322435  L 611.083044 649.445581  L 647.89763 639.322435  L 635.290641 641.066193  L 622.444148 639.15584  L 647.89763 639.322435  L 635.290641 637.578677  L 562.313473 614.579378  L 564.114989 609.034883  L 647.89763 639.322435  L 625.294044 627.618359  L 637.002777 632.743754  L 627.01511 624.768129  L 637.954674 631.377972  L 619.691406 613.589173  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 641.03601 628.603525  L 641.751751 628.177703  L 642.49381 627.799605  L 643.259009 627.47085  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 649.979711 575.721438  " clip-path="url(#radar-easy-tools-pa2d65b023d)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
+    <path d="M 649.979711 575.721438  L 655.382423 563.328058  L 654.117149 601.651366  L 671.017652 540.166071  L 655.286544 614.96445  L 656.863813 615.49986  L 684.772906 572.454045  L 689.067355 575.008974  L 662.99359 618.828057  L 697.109733 580.932912  L 674.360427 611.799494  L 666.70178 622.166927  L 732.182596 582.203572  L 680.837727 620.01591  L 716.162183 605.10083  L 683.075927 624.480625  L 671.946749 630.982927  L 672.440688 632.57367  L 711.041302 631.429494  L 711.42233 635.576187  L 723.98347 645.811851  L 698.229967 646.95695  L 747.348131 661.142559  L 647.89763 639.322435  L 659.866579 643.649228  L 671.218303 649.523106  L 670.501216 651.026511  L 658.792484 645.901116  L 647.89763 639.322435  L 703.63157 691.522966  L 682.697984 676.478395  L 672.119426 668.836778  L 655.310832 649.667546  L 668.05981 671.745858  L 653.897103 650.546659  L 668.907742 685.69274  L 652.380721 651.233722  L 651.592087 651.501427  L 655.532146 689.654772  L 652.223908 690.046328  L 648.647265 677.496116  L 647.314748 652.036094  L 642.245039 689.915697  L 634.473461 714.495296  L 641.793641 664.033744  L 644.044072 651.452025  L 647.89763 639.322435  L 610.150234 705.702413  L 584.885579 734.976019  L 624.853236 669.764967  L 622.911539 668.192612  L 638.957366 648.3805  L 628.870533 656.230334  L 637.851536 647.136068  L 647.89763 639.322435  L 647.89763 639.322435  L 625.142779 650.729636  L 624.445433 649.216974  L 647.89763 639.322435  L 611.083044 649.445581  L 647.89763 639.322435  L 635.290641 641.066193  L 647.89763 639.322435  L 622.509542 637.491459  L 635.290641 637.578677  L 562.313473 614.579378  L 564.114989 609.034883  L 647.89763 639.322435  L 625.294044 627.618359  L 637.002777 632.743754  L 627.01511 624.768129  L 637.954674 631.377972  L 619.691406 613.589173  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 641.03601 628.603525  L 641.751751 628.177703  L 642.49381 627.799605  L 643.259009 627.47085  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 647.89763 639.322435  L 649.979711 575.721438  " clip-path="url(#radar-easy-tools-pa2d65b023d)" style="fill: none; stroke: #344554; stroke-width: 1.1; stroke-linecap: square" />
    </g>
    <g id="radar-easy-tools-PathCollection_253">
     <g clip-path="url(#radar-easy-tools-pa2d65b023d)">
@@ -4961,12 +4961,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_308">
     <g clip-path="url(#radar-easy-tools-pa2d65b023d)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="625.937566" y="652.193451" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="647.89763" y="639.322435" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_309">
     <g clip-path="url(#radar-easy-tools-pa2d65b023d)">
-     <use xlink:href="#radar-easy-tools-m1287f5f914" x="647.89763" y="639.322435" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-m1287f5f914" x="625.142779" y="650.729636" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_310">
@@ -4996,12 +4996,12 @@
    </g>
    <g id="radar-easy-tools-PathCollection_315">
     <g clip-path="url(#radar-easy-tools-pa2d65b023d)">
-     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="622.444148" y="639.15584" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="647.89763" y="639.322435" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_316">
     <g clip-path="url(#radar-easy-tools-pa2d65b023d)">
-     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="647.89763" y="639.322435" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
+     <use xlink:href="#radar-easy-tools-mee3dd6bce1" x="622.509542" y="637.491459" style="fill: #009988; stroke: #ffffff; stroke-width: 0.25" />
     </g>
    </g>
    <g id="radar-easy-tools-PathCollection_317">

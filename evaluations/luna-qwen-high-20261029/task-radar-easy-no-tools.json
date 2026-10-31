@@ -1742,36 +1742,6 @@
           "angle": 4.116795373141625
         },
         {
-          "task_id": "design.synonymous_distance",
-          "title": "Rewrite with a specified number of DNA changes",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.27499999999999997,
-          "code": "H09",
-          "angle": 4.182245220091412
-        },
-        {
           "task_id": "design.guide_escape",
           "title": "Create a guide-escape control",
           "family": "redesign",
@@ -1798,6 +1768,36 @@
             }
           },
           "mean_accuracy": 0.275,
+          "code": "H09",
+          "angle": 4.182245220091412
+        },
+        {
+          "task_id": "design.synonymous_distance",
+          "title": "Rewrite with a specified number of DNA changes",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.27499999999999997,
           "code": "H10",
           "angle": 4.2476950670411995
         },
@@ -1963,36 +1963,6 @@
       "mean_accuracy": 0.275,
       "tasks": [
         {
-          "task_id": "assay.select_rna_probe",
-          "title": "Select a CDS-specific RNA probe",
-          "family": "assay",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.275,
-          "code": "I01",
-          "angle": 4.7189339650796684
-        },
-        {
           "task_id": "assay.min_probe_panel",
           "title": "Distinguish CDSs with a probe panel",
           "family": "assay",
@@ -2019,6 +1989,36 @@
             }
           },
           "mean_accuracy": 0.25,
+          "code": "I01",
+          "angle": 4.7189339650796684
+        },
+        {
+          "task_id": "assay.select_rna_probe",
+          "title": "Select a CDS-specific RNA probe",
+          "family": "assay",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.275,
           "code": "I02",
           "angle": 4.784383812029456
         },
@@ -2334,36 +2334,6 @@
           "angle": 5.517422097867074
         },
         {
-          "task_id": "pipeline.fusion_junction",
-          "title": "Assemble coding modules and locate junction motifs",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "deepinfra": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            }
-          },
-          "mean_accuracy": 0.275,
-          "code": "J10",
-          "angle": 5.582871944816862
-        },
-        {
           "task_id": "joint.structure_and_codons",
           "title": "Balance an RNA structural constraint and codon preference",
           "family": "composition",
@@ -2390,6 +2360,36 @@
             }
           },
           "mean_accuracy": 0.25,
+          "code": "J10",
+          "angle": 5.582871944816862
+        },
+        {
+          "task_id": "pipeline.fusion_junction",
+          "title": "Assemble coding modules and locate junction motifs",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.275,
           "code": "J11",
           "angle": 5.648321791766649
         },

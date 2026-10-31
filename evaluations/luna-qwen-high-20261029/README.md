@@ -1,10 +1,12 @@
 # Full CDS-bench model evaluation
 
-Snowball v0.1: 2797/3,260 fresh attempts (running). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.
+Snowball v0.1: 3260/3,260 fresh attempts (complete). GPT-6 Luna, Nemotron 3.5 Lightning and Qwen 3.7 Flash each have 3,260 matched completed attempts.
 
 Download [report.html](report.html) and open it in a browser. It is self-contained.
 
 [Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)
+
+[Snowball completion audit](snowball-v01-full-audit.json)
 
 Snowball v0.1 is a 67B MoE model with 2B active parameters per token. The full run uses 32,768 aggregate generated tokens, a 1,800-second API request deadline, temperature 0.7 and concurrency 60. Its native thinking/tool transport and private access configuration match the validated pilot. No per-request monetary price is exposed.
 

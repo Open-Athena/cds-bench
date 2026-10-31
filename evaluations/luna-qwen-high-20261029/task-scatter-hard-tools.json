@@ -53,11 +53,11 @@
     "code": "B01",
     "group": "Sequence operations",
     "color": "#4477aa",
-    "attempted": 2,
-    "nemotron_correct": 2,
-    "snowball_correct": 2,
-    "x": 100.0,
-    "y": 100.0
+    "attempted": 10,
+    "nemotron_correct": 9,
+    "snowball_correct": 9,
+    "x": 90.0,
+    "y": 90.0
   },
   {
     "task_id": "cds.validate",
@@ -65,11 +65,11 @@
     "code": "B02",
     "group": "Sequence operations",
     "color": "#4477aa",
-    "attempted": 7,
-    "nemotron_correct": 7,
-    "snowball_correct": 3,
+    "attempted": 10,
+    "nemotron_correct": 10,
+    "snowball_correct": 4,
     "x": 100.0,
-    "y": 42.857142857142854
+    "y": 40.0
   },
   {
     "task_id": "dna.transcribe",
@@ -125,11 +125,11 @@
     "code": "C02",
     "group": "Sequence statistics",
     "color": "#228833",
-    "attempted": 8,
-    "nemotron_correct": 8,
-    "snowball_correct": 5,
+    "attempted": 10,
+    "nemotron_correct": 10,
+    "snowball_correct": 6,
     "x": 100.0,
-    "y": 62.5
+    "y": 60.0
   },
   {
     "task_id": "stats.gc_windows",
@@ -149,11 +149,35 @@
     "code": "C04",
     "group": "Sequence statistics",
     "color": "#228833",
-    "attempted": 6,
+    "attempted": 10,
+    "nemotron_correct": 9,
+    "snowball_correct": 4,
+    "x": 90.0,
+    "y": 40.0
+  },
+  {
+    "task_id": "stats.codon_counts",
+    "title": "Count sense codons",
+    "code": "C05",
+    "group": "Sequence statistics",
+    "color": "#228833",
+    "attempted": 10,
     "nemotron_correct": 5,
     "snowball_correct": 4,
-    "x": 83.33333333333333,
-    "y": 66.66666666666667
+    "x": 50.0,
+    "y": 40.0
+  },
+  {
+    "task_id": "dna.motif_positions",
+    "title": "Find nucleotide patterns",
+    "code": "C06",
+    "group": "Sequence statistics",
+    "color": "#228833",
+    "attempted": 10,
+    "nemotron_correct": 1,
+    "snowball_correct": 0,
+    "x": 10.0,
+    "y": 0.0
   },
   {
     "task_id": "overlap.constrained_edit",
@@ -180,15 +204,87 @@
     "y": 40.0
   },
   {
+    "task_id": "rna.structure_score",
+    "title": "Score a specified RNA structure",
+    "code": "E01",
+    "group": "RNA operations",
+    "color": "#55aacc",
+    "attempted": 10,
+    "nemotron_correct": 10,
+    "snowball_correct": 6,
+    "x": 100.0,
+    "y": 60.0
+  },
+  {
+    "task_id": "rna.pair_compatibility",
+    "title": "Check specified RNA pairs",
+    "code": "E02",
+    "group": "RNA operations",
+    "color": "#55aacc",
+    "attempted": 10,
+    "nemotron_correct": 9,
+    "snowball_correct": 4,
+    "x": 90.0,
+    "y": 40.0
+  },
+  {
     "task_id": "rna.apply_edits",
     "title": "Apply specified RNA edits",
     "code": "E04",
     "group": "RNA operations",
     "color": "#55aacc",
-    "attempted": 5,
-    "nemotron_correct": 5,
+    "attempted": 10,
+    "nemotron_correct": 10,
     "snowball_correct": 0,
     "x": 100.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "rna.translate",
+    "title": "Translate coding RNA",
+    "code": "E05",
+    "group": "RNA operations",
+    "color": "#55aacc",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 0,
+    "x": 20.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "rna.guide_hits",
+    "title": "Match an RNA guide",
+    "code": "E06",
+    "group": "RNA operations",
+    "color": "#55aacc",
+    "attempted": 10,
+    "nemotron_correct": 9,
+    "snowball_correct": 1,
+    "x": 90.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "rna.motif_counts",
+    "title": "Count coding-RNA patterns",
+    "code": "E07",
+    "group": "RNA operations",
+    "color": "#55aacc",
+    "attempted": 10,
+    "nemotron_correct": 7,
+    "snowball_correct": 2,
+    "x": 70.0,
+    "y": 20.0
+  },
+  {
+    "task_id": "rna.t1_digest",
+    "title": "Digest coding RNA with RNase T1 rules",
+    "code": "E08",
+    "group": "RNA operations",
+    "color": "#55aacc",
+    "attempted": 10,
+    "nemotron_correct": 4,
+    "snowball_correct": 0,
+    "x": 40.0,
     "y": 0.0
   },
   {
@@ -197,11 +293,35 @@
     "code": "E09",
     "group": "RNA operations",
     "color": "#55aacc",
-    "attempted": 8,
+    "attempted": 10,
     "nemotron_correct": 1,
     "snowball_correct": 0,
-    "x": 12.5,
+    "x": 10.0,
     "y": 0.0
+  },
+  {
+    "task_id": "protein.nglyco_sequons",
+    "title": "Locate N-glycosylation sequons",
+    "code": "F01",
+    "group": "Protein operations",
+    "color": "#b49b30",
+    "attempted": 10,
+    "nemotron_correct": 7,
+    "snowball_correct": 5,
+    "x": 70.0,
+    "y": 50.0
+  },
+  {
+    "task_id": "protein.motif_positions",
+    "title": "Find a supplied peptide pattern",
+    "code": "F02",
+    "group": "Protein operations",
+    "color": "#b49b30",
+    "attempted": 10,
+    "nemotron_correct": 9,
+    "snowball_correct": 2,
+    "x": 90.0,
+    "y": 20.0
   },
   {
     "task_id": "protein.isoelectric_point",
@@ -240,16 +360,64 @@
     "y": 30.0
   },
   {
+    "task_id": "protein.mean_hydropathy",
+    "title": "Calculate mean hydropathy",
+    "code": "F06",
+    "group": "Protein operations",
+    "color": "#b49b30",
+    "attempted": 10,
+    "nemotron_correct": 1,
+    "snowball_correct": 2,
+    "x": 10.0,
+    "y": 20.0
+  },
+  {
+    "task_id": "protein.monoisotopic_mass",
+    "title": "Calculate peptide mass",
+    "code": "F07",
+    "group": "Protein operations",
+    "color": "#b49b30",
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "protein.residue_counts",
+    "title": "Count amino acids",
+    "code": "F08",
+    "group": "Protein operations",
+    "color": "#b49b30",
+    "attempted": 10,
+    "nemotron_correct": 4,
+    "snowball_correct": 1,
+    "x": 40.0,
+    "y": 10.0
+  },
+  {
     "task_id": "protein.trypsin_digest",
     "title": "Digest with trypsin rules",
     "code": "F09",
     "group": "Protein operations",
     "color": "#b49b30",
-    "attempted": 4,
+    "attempted": 10,
     "nemotron_correct": 0,
     "snowball_correct": 0,
     "x": 0.0,
     "y": 0.0
+  },
+  {
+    "task_id": "construct.tag_fusion",
+    "title": "Build a tagged protein CDS",
+    "code": "G01",
+    "group": "Construct design",
+    "color": "#dd7733",
+    "attempted": 10,
+    "nemotron_correct": 10,
+    "snowball_correct": 2,
+    "x": 100.0,
+    "y": 20.0
   },
   {
     "task_id": "construct.join_modules",
@@ -269,11 +437,35 @@
     "code": "G04",
     "group": "Construct design",
     "color": "#dd7733",
-    "attempted": 6,
+    "attempted": 10,
+    "nemotron_correct": 5,
+    "snowball_correct": 2,
+    "x": 50.0,
+    "y": 20.0
+  },
+  {
+    "task_id": "construct.minimal_aa_edit",
+    "title": "Encode a requested amino-acid substitution",
+    "code": "G05",
+    "group": "Construct design",
+    "color": "#dd7733",
+    "attempted": 10,
     "nemotron_correct": 4,
-    "snowball_correct": 1,
-    "x": 66.66666666666667,
-    "y": 16.666666666666668
+    "snowball_correct": 3,
+    "x": 40.0,
+    "y": 30.0
+  },
+  {
+    "task_id": "library.codon_products",
+    "title": "Enumerate a degenerate codon library",
+    "code": "G06",
+    "group": "Construct design",
+    "color": "#dd7733",
+    "attempted": 10,
+    "nemotron_correct": 6,
+    "snowball_correct": 2,
+    "x": 60.0,
+    "y": 20.0
   },
   {
     "task_id": "construct.edit_aware_encoding",
@@ -286,6 +478,30 @@
     "snowball_correct": 2,
     "x": 20.0,
     "y": 20.0
+  },
+  {
+    "task_id": "construct.tev_products",
+    "title": "Derive TEV-cleaved products",
+    "code": "G08",
+    "group": "Construct design",
+    "color": "#dd7733",
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "construct.remove_peptide_motif",
+    "title": "Remove a protein motif",
+    "code": "G09",
+    "group": "Construct design",
+    "color": "#dd7733",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 1,
+    "x": 20.0,
+    "y": 10.0
   },
   {
     "task_id": "design.expose_rna_window",
@@ -329,11 +545,11 @@
     "code": "H04",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 9,
+    "attempted": 10,
     "nemotron_correct": 5,
     "snowball_correct": 4,
-    "x": 55.55555555555556,
-    "y": 44.44444444444444
+    "x": 50.0,
+    "y": 40.0
   },
   {
     "task_id": "design.codon_profile",
@@ -341,11 +557,11 @@
     "code": "H05",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 2,
-    "nemotron_correct": 2,
-    "snowball_correct": 1,
-    "x": 100.0,
-    "y": 50.0
+    "attempted": 10,
+    "nemotron_correct": 6,
+    "snowball_correct": 3,
+    "x": 60.0,
+    "y": 30.0
   },
   {
     "task_id": "design.gc_windows",
@@ -353,11 +569,11 @@
     "code": "H06",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 5,
-    "nemotron_correct": 4,
+    "attempted": 10,
+    "nemotron_correct": 5,
     "snowball_correct": 1,
-    "x": 80.0,
-    "y": 20.0
+    "x": 50.0,
+    "y": 10.0
   },
   {
     "task_id": "design.rna_motif_control",
@@ -365,11 +581,11 @@
     "code": "H07",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 2,
-    "nemotron_correct": 2,
-    "snowball_correct": 1,
-    "x": 100.0,
-    "y": 50.0
+    "attempted": 10,
+    "nemotron_correct": 4,
+    "snowball_correct": 2,
+    "x": 40.0,
+    "y": 20.0
   },
   {
     "task_id": "design.insert_dna_motif",
@@ -384,27 +600,27 @@
     "y": 10.0
   },
   {
+    "task_id": "design.guide_escape",
+    "title": "Create a guide-escape control",
+    "code": "H09",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 4,
+    "snowball_correct": 1,
+    "x": 40.0,
+    "y": 10.0
+  },
+  {
     "task_id": "design.synonymous_distance",
     "title": "Rewrite with a specified number of DNA changes",
-    "code": "H09",
+    "code": "H10",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
     "nemotron_correct": 4,
     "snowball_correct": 0,
     "x": 40.0,
-    "y": 0.0
-  },
-  {
-    "task_id": "design.guide_escape",
-    "title": "Create a guide-escape control",
-    "code": "H10",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 1,
-    "nemotron_correct": 0,
-    "snowball_correct": 0,
-    "x": 0.0,
     "y": 0.0
   },
   {
@@ -425,11 +641,11 @@
     "code": "H12",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 2,
-    "nemotron_correct": 1,
+    "attempted": 10,
+    "nemotron_correct": 6,
     "snowball_correct": 1,
-    "x": 50.0,
-    "y": 50.0
+    "x": 60.0,
+    "y": 10.0
   },
   {
     "task_id": "design.break_repeats",
@@ -437,11 +653,11 @@
     "code": "H13",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 8,
-    "nemotron_correct": 0,
+    "attempted": 10,
+    "nemotron_correct": 1,
     "snowball_correct": 2,
-    "x": 0.0,
-    "y": 25.0
+    "x": 10.0,
+    "y": 20.0
   },
   {
     "task_id": "design.structure_score",
@@ -456,16 +672,40 @@
     "y": 0.0
   },
   {
+    "task_id": "design.variant_panel",
+    "title": "Build a controlled synonymous panel",
+    "code": "H15",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
     "task_id": "assay.min_probe_panel",
     "title": "Distinguish CDSs with a probe panel",
+    "code": "I01",
+    "group": "Assay design",
+    "color": "#009988",
+    "attempted": 10,
+    "nemotron_correct": 5,
+    "snowball_correct": 3,
+    "x": 50.0,
+    "y": 30.0
+  },
+  {
+    "task_id": "assay.select_rna_probe",
+    "title": "Select a CDS-specific RNA probe",
     "code": "I02",
     "group": "Assay design",
     "color": "#009988",
-    "attempted": 3,
-    "nemotron_correct": 2,
+    "attempted": 10,
+    "nemotron_correct": 5,
     "snowball_correct": 1,
-    "x": 66.66666666666667,
-    "y": 33.333333333333336
+    "x": 50.0,
+    "y": 10.0
   },
   {
     "task_id": "assay.primer_pair",
@@ -473,11 +713,59 @@
     "code": "I03",
     "group": "Assay design",
     "color": "#009988",
-    "attempted": 7,
-    "nemotron_correct": 3,
+    "attempted": 10,
+    "nemotron_correct": 5,
     "snowball_correct": 2,
-    "x": 42.857142857142854,
-    "y": 28.571428571428573
+    "x": 50.0,
+    "y": 20.0
+  },
+  {
+    "task_id": "pipeline.rna_edit_translation",
+    "title": "From specified RNA edits to protein",
+    "code": "J01",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 5,
+    "snowball_correct": 5,
+    "x": 50.0,
+    "y": 50.0
+  },
+  {
+    "task_id": "pipeline.repair_and_verify",
+    "title": "Repair RNA pairs and verify the protein",
+    "code": "J02",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 7,
+    "snowball_correct": 5,
+    "x": 70.0,
+    "y": 50.0
+  },
+  {
+    "task_id": "joint.protein_edit_and_cloning",
+    "title": "Encode a protein change and remove cloning sites",
+    "code": "J03",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 5,
+    "snowball_correct": 2,
+    "x": 50.0,
+    "y": 20.0
+  },
+  {
+    "task_id": "pipeline.diagnostic_digest",
+    "title": "From CDS panel to a diagnostic peptide",
+    "code": "J04",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 1,
+    "snowball_correct": 2,
+    "x": 10.0,
+    "y": 20.0
   },
   {
     "task_id": "pipeline.motif_to_dna",
@@ -492,15 +780,135 @@
     "y": 20.0
   },
   {
+    "task_id": "pipeline.overlap_edit_verify",
+    "title": "Edit one frame and audit both products",
+    "code": "J06",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 7,
+    "snowball_correct": 2,
+    "x": 70.0,
+    "y": 20.0
+  },
+  {
+    "task_id": "joint.clone_ready_cds",
+    "title": "Remove cloning sites while controlling GC",
+    "code": "J07",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 1,
+    "x": 20.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "pipeline.structure_gated_digest",
+    "title": "From a pairing annotation to eligible cuts",
+    "code": "J08",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 1,
+    "x": 20.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "pipeline.library_and_verify",
+    "title": "Design a codon library and verify its coverage",
+    "code": "J09",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 1,
+    "x": 20.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "joint.structure_and_codons",
+    "title": "Balance an RNA structural constraint and codon preference",
+    "code": "J10",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 0,
+    "snowball_correct": 1,
+    "x": 0.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "pipeline.fusion_junction",
+    "title": "Assemble coding modules and locate junction motifs",
+    "code": "J11",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "pipeline.rna_edit_digest",
+    "title": "From specified RNA edits to RNA fragments",
+    "code": "J12",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 1,
+    "snowball_correct": 1,
+    "x": 10.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "pipeline.edit_dependent_product",
+    "title": "Design and verify an RNA-editing-dependent product",
+    "code": "J13",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
     "task_id": "pipeline.rna_probe_panel",
     "title": "From CDS collection to a minimal measurement panel",
     "code": "J14",
     "group": "Composition tasks",
     "color": "#332288",
-    "attempted": 1,
-    "nemotron_correct": 0,
+    "attempted": 10,
+    "nemotron_correct": 2,
     "snowball_correct": 0,
-    "x": 0.0,
+    "x": 20.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "pipeline.variant_peptides",
+    "title": "From DNA edits to changed peptide readouts",
+    "code": "J15",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 0,
+    "x": 20.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "pipeline.target_and_escape",
+    "title": "Choose an RNA probe and a matched escape control",
+    "code": "J16",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 1,
+    "snowball_correct": 0,
+    "x": 10.0,
     "y": 0.0
   },
   {
@@ -509,7 +917,31 @@
     "code": "J17",
     "group": "Composition tasks",
     "color": "#332288",
-    "attempted": 1,
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "pipeline.tag_cleave_mass",
+    "title": "Build a tagged construct, cleave it, measure products",
+    "code": "J18",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 0,
+    "snowball_correct": 0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "pipeline.controlled_panel",
+    "title": "Build and audit a controlled synonymous panel",
+    "code": "J19",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
     "nemotron_correct": 0,
     "snowball_correct": 0,
     "x": 0.0,

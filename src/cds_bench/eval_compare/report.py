@@ -200,9 +200,10 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
     render(output, summary, config, data, public)
     (output / "pr-body.md").write_text(pr_body(summary, config))
     (output / "README.md").write_text(
-        f"# Full CDS-bench model evaluation\n\nSnowball v0.1: {totals['snowball-v01']['attempted']}/3,260 fresh attempts ({summary['state']}). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.\n\n"
+        f"# Full CDS-bench model evaluation\n\nSnowball v0.1: {totals['snowball-v01']['attempted']}/3,260 fresh attempts ({summary['state']}). GPT-6 Luna, Nemotron 3.5 Lightning and Qwen 3.7 Flash each have 3,260 matched completed attempts.\n\n"
         "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
         "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
+        f"{'[Snowball completion audit](snowball-v01-full-audit.json)' if summary['snowball_completion_audit']=='passed' else 'Snowball completion audit pending.'}\n\n"
         "Snowball v0.1 is a 67B MoE model with 2B active parameters per token. The full run uses 32,768 aggregate generated tokens, a 1,800-second API request deadline, temperature 0.7 and concurrency 60. Its native thinking/tool transport and private access configuration match the validated pilot. No per-request monetary price is exposed.\n\n"
         "Checkpoint: [open-athena/Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3), revision `adc0078a19a4383bc998fcdb43867b3360baf5f3`.\n\n"
         "Accuracy by condition: [PNG](overall.png) · [SVG](overall.svg).\n\n"
@@ -281,6 +282,7 @@ def pr_body(summary, config):
         f"\n**Snowball v0.1: {summary['snowball_completed']:,}/3,260 finished ({summary['state']}).** The other three models each have 3,260 completed matching attempts. **{completed:,} scored attempts** in total; pilot responses are not reused.",
         "\nEvaluation-only PR. **Do not merge.**",
         f"\n[Full report (HTML)]({base}/report.html) · [Per-task results (CSV)]({base}/by-task.csv) · [Final predictions (JSON)]({base}/results.json)",
+        *([f"\n[Snowball completion audit passed]({base}/snowball-v01-full-audit.json): all 3,260 cases verified, with no scored retries or pilot-response reuse."] if summary['snowball_completion_audit']=='passed' else []),
         "\nThe HTML reports are self-contained; download and open them in a browser.",
         "\n**Accuracy by condition**",
         *figure("overall", "CDS-bench accuracy by model and evaluation condition"),
@@ -375,7 +377,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
 .radar-control select{margin-left:8px}
 </style><main><h1>CDS-bench: full model evaluation</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#task-scatter">Task comparison</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
-    parts.append(f"<p>Full evaluation: <b>Snowball v0.1 {summary['snowball_completed']:,}/3,260 ({esc(summary['state'])})</b>. GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. Retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
+    parts.append(f"<p>Full evaluation: <b>Snowball v0.1 {summary['snowball_completed']:,}/3,260 ({esc(summary['state'])})</b>. GPT-6 Luna, Nemotron 3.5 Lightning and Qwen 3.7 Flash each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. Retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
     parts.append('<p class="muted">Snowball uses 32,768 aggregate generated tokens, a 1,800-second API wall deadline, temperature 0.7 and concurrency 60. The OpenRouter models use a 300-second deadline and concurrency 10. Snowball’s native thinking/tool transport matches its validated pilot; no per-request monetary price is exposed.</p>')
     if summary['state'] == 'complete':
         parts.append('<p>Snowball completion audit: <b>'+esc(summary['snowball_completion_audit'])+'</b>. <a href="snowball-v01-full-audit.json">Inspect audit</a>.</p>')

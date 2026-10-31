@@ -62,7 +62,7 @@ cds.validate,sequence,qwen,hard-tools,10,10,10,1.0,0,0,0,0,0,0.004971019,28.0696
 cds.validate,sequence,snowball-v01,easy-no-tools,10,10,5,0.5,1,4,0,0,0,,40.3770354790031
 cds.validate,sequence,snowball-v01,hard-no-tools,10,10,4,0.4,3,3,0,0,0,,47.739717937016394
 cds.validate,sequence,snowball-v01,easy-tools,10,10,6,0.6,0,4,0,0,0,,43.84839268756332
-cds.validate,sequence,snowball-v01,hard-tools,10,7,3,0.42857142857142855,1,3,0,0,0,,49.674447749974206
+cds.validate,sequence,snowball-v01,hard-tools,10,10,4,0.4,2,4,0,0,0,,57.43885810446227
 coords.nt_to_codon,sequence,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0013133,3.8625960419885814
 coords.nt_to_codon,sequence,luna,hard-no-tools,0,0,0,,0,0,0,0,0,0,
 coords.nt_to_codon,sequence,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0015229,4.046059332991717
@@ -94,7 +94,7 @@ coords.aa_to_nt,sequence,qwen,hard-tools,10,10,10,1.0,0,0,0,0,0,0.0049139,19.911
 coords.aa_to_nt,sequence,snowball-v01,easy-no-tools,10,10,9,0.9,0,1,0,0,0,,29.697197895962745
 coords.aa_to_nt,sequence,snowball-v01,hard-no-tools,10,10,7,0.7,0,3,0,0,0,,27.58826993749244
 coords.aa_to_nt,sequence,snowball-v01,easy-tools,10,10,6,0.6,0,4,0,0,0,,28.130319833522663
-coords.aa_to_nt,sequence,snowball-v01,hard-tools,10,2,2,1.0,0,0,0,0,0,,33.94195639551617
+coords.aa_to_nt,sequence,snowball-v01,hard-tools,10,10,9,0.9,0,1,0,0,0,,30.063602479058318
 variant.apply,variation,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0050542,9.923427166504553
 variant.apply,variation,luna,hard-no-tools,0,0,0,,0,0,0,0,0,0,
 variant.apply,variation,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0033067,6.478243854013272
@@ -206,7 +206,7 @@ stats.codon_counts,measure,qwen,hard-tools,10,10,0,0.0,0,10,0,0,0,0.005377505,25
 stats.codon_counts,measure,snowball-v01,easy-no-tools,10,10,1,0.1,2,7,0,0,0,,50.177639916946646
 stats.codon_counts,measure,snowball-v01,hard-no-tools,10,10,1,0.1,2,7,0,0,0,,78.50921693793498
 stats.codon_counts,measure,snowball-v01,easy-tools,10,10,2,0.2,2,6,0,0,0,,40.328102187020704
-stats.codon_counts,measure,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+stats.codon_counts,measure,snowball-v01,hard-tools,10,10,4,0.4,2,4,0,0,0,,42.6123227084754
 stats.gc_fraction,measure,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.0025814,6.425586791476235
 stats.gc_fraction,measure,luna,hard-no-tools,10,10,6,0.6,4,0,0,0,0,0.0022959,6.835482229012996
 stats.gc_fraction,measure,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0018095,5.394137124996632
@@ -222,7 +222,7 @@ stats.gc_fraction,measure,qwen,hard-tools,10,10,9,0.9,0,1,0,0,0,0.003588675,16.8
 stats.gc_fraction,measure,snowball-v01,easy-no-tools,10,10,4,0.4,5,1,0,0,0,,50.890582646010444
 stats.gc_fraction,measure,snowball-v01,hard-no-tools,10,10,5,0.5,4,1,0,0,0,,39.976395250007045
 stats.gc_fraction,measure,snowball-v01,easy-tools,10,10,3,0.3,0,6,0,0,1,,15.488833853974938
-stats.gc_fraction,measure,snowball-v01,hard-tools,10,8,5,0.625,1,2,0,0,0,,37.07769472897053
+stats.gc_fraction,measure,snowball-v01,hard-tools,10,10,6,0.6,1,3,0,0,0,,34.172680541465525
 stats.gc3_fraction,measure,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0023151,5.002675020485185
 stats.gc3_fraction,measure,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0022456,5.4536935620126314
 stats.gc3_fraction,measure,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.002081,5.32231624997803
@@ -270,7 +270,7 @@ stats.cai,measure,qwen,hard-tools,10,10,9,0.9,1,0,0,0,0,0.010363368,49.929687062
 stats.cai,measure,snowball-v01,easy-no-tools,10,10,0,0.0,9,1,0,0,0,,174.30602435447508
 stats.cai,measure,snowball-v01,hard-no-tools,10,10,1,0.1,7,2,0,0,0,,229.5565531460452
 stats.cai,measure,snowball-v01,easy-tools,10,10,3,0.3,1,5,0,1,0,,143.38624285446713
-stats.cai,measure,snowball-v01,hard-tools,10,6,4,0.6666666666666666,1,1,0,0,0,,86.8237317915191
+stats.cai,measure,snowball-v01,hard-tools,10,10,4,0.4,1,4,0,1,0,,166.02505574998213
 dna.motif_positions,measure,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0050216,10.278938083501998
 dna.motif_positions,measure,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0049181,8.581560249993345
 dna.motif_positions,measure,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0029031,5.098524917004397
@@ -286,7 +286,7 @@ dna.motif_positions,measure,qwen,hard-tools,10,10,2,0.2,0,8,0,0,0,0.010735826,45
 dna.motif_positions,measure,snowball-v01,easy-no-tools,10,10,0,0.0,2,6,0,2,0,,123.00608529150486
 dna.motif_positions,measure,snowball-v01,hard-no-tools,10,10,2,0.2,2,6,0,0,0,,106.82192427100381
 dna.motif_positions,measure,snowball-v01,easy-tools,10,10,2,0.2,1,5,0,2,0,,187.31692443747306
-dna.motif_positions,measure,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+dna.motif_positions,measure,snowball-v01,hard-tools,10,10,0,0.0,2,8,0,0,0,,137.2855863334844
 protein.motif_positions,protein,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0021309,4.8136160835274495
 protein.motif_positions,protein,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0017719,5.665791791980155
 protein.motif_positions,protein,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0026245,4.3590523750172
@@ -302,7 +302,7 @@ protein.motif_positions,protein,qwen,hard-tools,10,10,7,0.7,1,2,0,0,0,0.02286766
 protein.motif_positions,protein,snowball-v01,easy-no-tools,10,10,5,0.5,3,2,0,0,0,,64.74886231200071
 protein.motif_positions,protein,snowball-v01,hard-no-tools,10,10,0,0.0,4,6,0,0,0,,71.59992920799414
 protein.motif_positions,protein,snowball-v01,easy-tools,10,10,4,0.4,4,2,0,0,0,,94.98278170800768
-protein.motif_positions,protein,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+protein.motif_positions,protein,snowball-v01,hard-tools,10,10,2,0.2,3,4,0,1,0,,125.93647618795512
 protein.nglyco_sequons,protein,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0021316,4.916257458506152
 protein.nglyco_sequons,protein,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0014516,4.948909188009566
 protein.nglyco_sequons,protein,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0022202,5.342951145488769
@@ -318,7 +318,7 @@ protein.nglyco_sequons,protein,qwen,hard-tools,10,10,10,1.0,0,0,0,0,0,0.01481185
 protein.nglyco_sequons,protein,snowball-v01,easy-no-tools,10,10,4,0.4,4,2,0,0,0,,70.11294449999696
 protein.nglyco_sequons,protein,snowball-v01,hard-no-tools,10,10,5,0.5,2,3,0,0,0,,49.5387250414351
 protein.nglyco_sequons,protein,snowball-v01,easy-tools,10,10,6,0.6,3,1,0,0,0,,54.71695664548315
-protein.nglyco_sequons,protein,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+protein.nglyco_sequons,protein,snowball-v01,hard-tools,10,10,5,0.5,2,3,0,0,0,,64.24334962503053
 protein.residue_counts,protein,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0026541,5.257588916487293
 protein.residue_counts,protein,luna,hard-no-tools,10,10,7,0.7,3,0,0,0,0,0.0019991,5.922654812486144
 protein.residue_counts,protein,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00313235,5.285000979027245
@@ -334,7 +334,7 @@ protein.residue_counts,protein,qwen,hard-tools,10,10,0,0.0,0,9,0,0,1,0.011437419
 protein.residue_counts,protein,snowball-v01,easy-no-tools,10,10,3,0.3,3,4,0,0,0,,59.41719012503745
 protein.residue_counts,protein,snowball-v01,hard-no-tools,10,10,1,0.1,4,5,0,0,0,,60.36057385453023
 protein.residue_counts,protein,snowball-v01,easy-tools,10,10,1,0.1,3,6,0,0,0,,45.8526132919942
-protein.residue_counts,protein,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+protein.residue_counts,protein,snowball-v01,hard-tools,10,10,1,0.1,2,7,0,0,0,,62.79660216649063
 protein.monoisotopic_mass,protein,luna,easy-no-tools,10,10,9,0.9,0,1,0,0,0,0.003682,6.8171268754813354
 protein.monoisotopic_mass,protein,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.005326,11.917139958532061
 protein.monoisotopic_mass,protein,luna,easy-tools,10,10,7,0.7,0,3,0,0,0,0.00542411,9.64294637501007
@@ -350,7 +350,7 @@ protein.monoisotopic_mass,protein,qwen,hard-tools,10,10,0,0.0,6,2,1,1,0,0.044841
 protein.monoisotopic_mass,protein,snowball-v01,easy-no-tools,10,10,3,0.3,4,3,0,0,0,,85.94599233352346
 protein.monoisotopic_mass,protein,snowball-v01,hard-no-tools,10,10,0,0.0,8,2,0,0,0,,105.97109887498664
 protein.monoisotopic_mass,protein,snowball-v01,easy-tools,10,10,4,0.4,3,2,0,0,1,,105.23208239598898
-protein.monoisotopic_mass,protein,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+protein.monoisotopic_mass,protein,snowball-v01,hard-tools,10,10,0,0.0,7,3,0,0,0,,166.55923645797884
 protein.mean_hydropathy,protein,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0031622,6.500888896000106
 protein.mean_hydropathy,protein,luna,hard-no-tools,10,10,7,0.7,3,0,0,0,0,0.0033692,8.881885062495712
 protein.mean_hydropathy,protein,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0044863,7.579301729507279
@@ -366,7 +366,7 @@ protein.mean_hydropathy,protein,qwen,hard-tools,10,10,2,0.2,8,0,0,0,0,0.01838198
 protein.mean_hydropathy,protein,snowball-v01,easy-no-tools,10,10,5,0.5,3,2,0,0,0,,75.06656170799397
 protein.mean_hydropathy,protein,snowball-v01,hard-no-tools,10,10,3,0.3,5,2,0,0,0,,80.32112866698299
 protein.mean_hydropathy,protein,snowball-v01,easy-tools,10,10,1,0.1,2,7,0,0,0,,107.83862864598632
-protein.mean_hydropathy,protein,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+protein.mean_hydropathy,protein,snowball-v01,hard-tools,10,10,2,0.2,6,2,0,0,0,,93.98297085403465
 protein.trypsin_digest,protein,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0035405,5.674040437996155
 protein.trypsin_digest,protein,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.003321,5.845830832986394
 protein.trypsin_digest,protein,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.004081175,6.906982624495868
@@ -382,7 +382,7 @@ protein.trypsin_digest,protein,qwen,hard-tools,10,10,0,0.0,0,8,0,2,0,0.038528872
 protein.trypsin_digest,protein,snowball-v01,easy-no-tools,10,10,0,0.0,3,6,0,1,0,,65.06812214601086
 protein.trypsin_digest,protein,snowball-v01,hard-no-tools,10,10,0,0.0,2,7,0,1,0,,120.4576846670825
 protein.trypsin_digest,protein,snowball-v01,easy-tools,10,10,1,0.1,1,7,0,1,0,,135.31536081247032
-protein.trypsin_digest,protein,snowball-v01,hard-tools,10,4,0,0.0,2,1,0,1,0,,69.506574790983
+protein.trypsin_digest,protein,snowball-v01,hard-tools,10,10,0,0.0,3,6,0,1,0,,76.5113285620464
 protein.diagnostic_peptide,protein,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0033812,6.420870396017563
 protein.diagnostic_peptide,protein,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0027307,6.930216125008883
 protein.diagnostic_peptide,protein,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.004582825,7.311749937478453
@@ -446,7 +446,7 @@ rna.apply_edits,rna,qwen,hard-tools,10,10,4,0.4,2,4,0,0,0,0.00492273,23.37091487
 rna.apply_edits,rna,snowball-v01,easy-no-tools,10,10,1,0.1,2,6,0,1,0,,143.5517878960818
 rna.apply_edits,rna,snowball-v01,hard-no-tools,10,10,1,0.1,1,6,0,2,0,,216.23021258349763
 rna.apply_edits,rna,snowball-v01,easy-tools,10,10,0,0.0,6,3,0,0,1,,70.42143375001615
-rna.apply_edits,rna,snowball-v01,hard-tools,10,5,0,0.0,2,3,0,0,0,,96.2661036249483
+rna.apply_edits,rna,snowball-v01,hard-tools,10,10,0,0.0,2,8,0,0,0,,200.71210987493396
 rna.translate,rna,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0022434,5.02481772901956
 rna.translate,rna,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0020414,7.921610166522441
 rna.translate,rna,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.002397,4.775204957986716
@@ -462,7 +462,7 @@ rna.translate,rna,qwen,hard-tools,10,10,4,0.4,4,1,0,1,0,0.034218964,160.35196687
 rna.translate,rna,snowball-v01,easy-no-tools,10,10,2,0.2,4,4,0,0,0,,94.91462087503169
 rna.translate,rna,snowball-v01,hard-no-tools,10,10,0,0.0,5,4,0,1,0,,142.8783830209868
 rna.translate,rna,snowball-v01,easy-tools,10,10,1,0.1,4,4,0,1,0,,136.43880170799093
-rna.translate,rna,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+rna.translate,rna,snowball-v01,hard-tools,10,10,0,0.0,4,6,0,0,0,,133.67267449997598
 rna.pair_compatibility,rna,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0027832,5.7939992294996046
 rna.pair_compatibility,rna,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0021857,6.746938437980134
 rna.pair_compatibility,rna,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.002696475,4.616731437505223
@@ -478,7 +478,7 @@ rna.pair_compatibility,rna,qwen,hard-tools,10,10,9,0.9,0,1,0,0,0,0.005896939,28.
 rna.pair_compatibility,rna,snowball-v01,easy-no-tools,10,10,4,0.4,0,6,0,0,0,,44.76232145901304
 rna.pair_compatibility,rna,snowball-v01,hard-no-tools,10,10,2,0.2,2,6,0,0,0,,43.96016968705226
 rna.pair_compatibility,rna,snowball-v01,easy-tools,10,10,4,0.4,2,4,0,0,0,,55.073193416465074
-rna.pair_compatibility,rna,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+rna.pair_compatibility,rna,snowball-v01,hard-tools,10,10,4,0.4,1,5,0,0,0,,41.98354337445926
 rna.dotbracket_to_pairs,rna,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0017736,5.2334627704985905
 rna.dotbracket_to_pairs,rna,luna,hard-no-tools,0,0,0,,0,0,0,0,0,0,
 rna.dotbracket_to_pairs,rna,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0017127,4.372868103993824
@@ -510,7 +510,7 @@ rna.t1_digest,rna,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0.014741388,60.167660207
 rna.t1_digest,rna,snowball-v01,easy-no-tools,10,10,0,0.0,0,6,0,4,0,,187.62817772949347
 rna.t1_digest,rna,snowball-v01,hard-no-tools,10,10,1,0.1,0,7,0,2,0,,214.5231949579902
 rna.t1_digest,rna,snowball-v01,easy-tools,10,10,1,0.1,1,7,0,1,0,,143.9496331035043
-rna.t1_digest,rna,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+rna.t1_digest,rna,snowball-v01,hard-tools,10,10,0,0.0,0,7,0,3,0,,243.49756049952703
 rna.guide_hits,rna,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0174356,29.572960749996128
 rna.guide_hits,rna,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0150431,32.18486752099125
 rna.guide_hits,rna,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.004497275,7.180973812006414
@@ -526,7 +526,7 @@ rna.guide_hits,rna,qwen,hard-tools,10,10,4,0.4,0,6,0,0,0,0.006948054,32.43284964
 rna.guide_hits,rna,snowball-v01,easy-no-tools,10,10,0,0.0,0,6,0,4,0,,268.7030284789507
 rna.guide_hits,rna,snowball-v01,hard-no-tools,10,10,0,0.0,0,4,0,6,0,,348.6329969789949
 rna.guide_hits,rna,snowball-v01,easy-tools,10,10,2,0.2,0,4,0,4,0,,306.4980436254991
-rna.guide_hits,rna,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+rna.guide_hits,rna,snowball-v01,hard-tools,10,10,1,0.1,0,9,0,0,0,,237.45749381242786
 rna.motif_counts,rna,luna,easy-no-tools,10,10,7,0.7,3,0,0,0,0,0.0079978,11.54782035399694
 rna.motif_counts,rna,luna,hard-no-tools,10,10,7,0.7,3,0,0,0,0,0.0066218,14.192687791481148
 rna.motif_counts,rna,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0025846000000000003,5.16457918798551
@@ -542,7 +542,7 @@ rna.motif_counts,rna,qwen,hard-tools,10,10,0,0.0,0,10,0,0,0,0.010512639,50.30038
 rna.motif_counts,rna,snowball-v01,easy-no-tools,10,10,1,0.1,0,8,0,1,0,,166.57857250003144
 rna.motif_counts,rna,snowball-v01,hard-no-tools,10,10,1,0.1,0,9,0,0,0,,190.21431587508414
 rna.motif_counts,rna,snowball-v01,easy-tools,10,10,2,0.2,0,5,0,2,1,,209.85448531247675
-rna.motif_counts,rna,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+rna.motif_counts,rna,snowball-v01,hard-tools,10,10,2,0.2,0,8,0,0,0,,143.84483797947178
 rna.structure_score,rna,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0023897,5.931312416505534
 rna.structure_score,rna,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0021272,5.992304896004498
 rna.structure_score,rna,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00274045,6.861616333480924
@@ -558,7 +558,7 @@ rna.structure_score,rna,qwen,hard-tools,10,10,9,0.9,0,1,0,0,0,0.009519961,46.362
 rna.structure_score,rna,snowball-v01,easy-no-tools,10,10,9,0.9,0,1,0,0,0,,42.269592396041844
 rna.structure_score,rna,snowball-v01,hard-no-tools,10,10,8,0.8,0,2,0,0,0,,51.0641989375581
 rna.structure_score,rna,snowball-v01,easy-tools,10,10,6,0.6,0,4,0,0,0,,44.4590817290009
-rna.structure_score,rna,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+rna.structure_score,rna,snowball-v01,hard-tools,10,10,6,0.6,0,4,0,0,0,,49.862694999959785
 rna.max_pair_fold,rna,luna,easy-no-tools,10,10,0,0.0,1,0,8,1,0,0.040256,300.0134594584815
 rna.max_pair_fold,rna,luna,hard-no-tools,10,10,0,0.0,4,0,6,0,0,0.0480065,300.0071425625065
 rna.max_pair_fold,rna,luna,easy-tools,10,10,8,0.8,2,0,0,0,0,0.00851932,15.59483104152605
@@ -574,7 +574,7 @@ rna.max_pair_fold,rna,qwen,hard-tools,10,10,5,0.5,2,3,0,0,0,0.031361112000000003
 rna.max_pair_fold,rna,snowball-v01,easy-no-tools,10,10,0,0.0,0,0,0,10,0,,348.80403689545346
 rna.max_pair_fold,rna,snowball-v01,hard-no-tools,10,10,0,0.0,0,0,0,10,0,,353.521850562538
 rna.max_pair_fold,rna,snowball-v01,easy-tools,10,10,0,0.0,2,3,0,5,0,,334.6343110415037
-rna.max_pair_fold,rna,snowball-v01,hard-tools,10,8,0,0.0,1,2,0,5,0,,355.4054635629873
+rna.max_pair_fold,rna,snowball-v01,hard-tools,10,10,0,0.0,2,2,0,6,0,,328.94053041696316
 design.synonymous_distance,redesign,luna,easy-no-tools,10,10,7,0.7,3,0,0,0,0,0.0058029,10.803684478480136
 design.synonymous_distance,redesign,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0054039,11.780484437505947
 design.synonymous_distance,redesign,luna,easy-tools,10,10,7,0.7,3,0,0,0,0,0.006664325,11.325767667003674
@@ -622,7 +622,7 @@ design.codon_preference,redesign,qwen,hard-tools,10,10,6,0.6,1,3,0,0,0,0.0110584
 design.codon_preference,redesign,snowball-v01,easy-no-tools,10,10,2,0.2,3,5,0,0,0,,68.15235979197314
 design.codon_preference,redesign,snowball-v01,hard-no-tools,10,10,2,0.2,4,4,0,0,0,,65.73084308300167
 design.codon_preference,redesign,snowball-v01,easy-tools,10,10,3,0.3,2,3,0,2,0,,139.63453714601928
-design.codon_preference,redesign,snowball-v01,hard-tools,10,9,4,0.4444444444444444,3,2,0,0,0,,63.63232066691853
+design.codon_preference,redesign,snowball-v01,hard-tools,10,10,4,0.4,3,2,0,1,0,,65.66250779200345
 design.codon_profile,redesign,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.0034397,7.606382333004149
 design.codon_profile,redesign,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0027242,6.78054614548455
 design.codon_profile,redesign,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.003730805,6.863491291500395
@@ -638,7 +638,7 @@ design.codon_profile,redesign,qwen,hard-tools,10,10,6,0.6,2,2,0,0,0,0.024125148,
 design.codon_profile,redesign,snowball-v01,easy-no-tools,10,10,1,0.1,2,7,0,0,0,,102.44487677101279
 design.codon_profile,redesign,snowball-v01,hard-no-tools,10,10,3,0.3,2,5,0,0,0,,103.23742714599939
 design.codon_profile,redesign,snowball-v01,easy-tools,10,10,1,0.1,3,6,0,0,0,,109.33979902102146
-design.codon_profile,redesign,snowball-v01,hard-tools,10,2,1,0.5,0,1,0,0,0,,60.314117792004254
+design.codon_profile,redesign,snowball-v01,hard-tools,10,10,3,0.3,3,4,0,0,0,,103.97723316645715
 design.gc_windows,redesign,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0151542,29.790044458495686
 design.gc_windows,redesign,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0142902,31.6244337290118
 design.gc_windows,redesign,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.007555235,12.241183186968556
@@ -654,7 +654,7 @@ design.gc_windows,redesign,qwen,hard-tools,10,10,4,0.4,2,2,0,2,0,0.026754596,87.
 design.gc_windows,redesign,snowball-v01,easy-no-tools,10,10,0,0.0,2,5,0,3,0,,136.75570762500865
 design.gc_windows,redesign,snowball-v01,hard-no-tools,10,10,2,0.2,1,6,0,1,0,,189.84460710402345
 design.gc_windows,redesign,snowball-v01,easy-tools,10,10,2,0.2,2,5,0,1,0,,152.82994956243783
-design.gc_windows,redesign,snowball-v01,hard-tools,10,5,1,0.2,0,3,0,1,0,,131.07673525006976
+design.gc_windows,redesign,snowball-v01,hard-tools,10,10,1,0.1,1,6,0,2,0,,208.82874891650863
 design.remove_dna_motifs,redesign,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.0070513,13.411259207990952
 design.remove_dna_motifs,redesign,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0065217999999999995,16.2653518334846
 design.remove_dna_motifs,redesign,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.008013175,14.139844854042167
@@ -702,7 +702,7 @@ design.break_repeats,redesign,qwen,hard-tools,10,10,1,0.1,2,6,0,1,0,0.0291816209
 design.break_repeats,redesign,snowball-v01,easy-no-tools,10,10,0,0.0,1,7,0,2,0,,230.56622731254902
 design.break_repeats,redesign,snowball-v01,hard-no-tools,10,10,1,0.1,0,5,0,4,0,,304.20016416697763
 design.break_repeats,redesign,snowball-v01,easy-tools,10,10,3,0.3,3,4,0,0,0,,197.44383574998938
-design.break_repeats,redesign,snowball-v01,hard-tools,10,8,2,0.25,0,6,0,0,0,,222.71778704156168
+design.break_repeats,redesign,snowball-v01,hard-tools,10,10,2,0.2,0,7,0,1,0,,248.95905079203658
 design.rna_motif_control,redesign,luna,easy-no-tools,10,10,6,0.6,4,0,0,0,0,0.0103739,18.38438622900867
 design.rna_motif_control,redesign,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0091699,21.55927106249146
 design.rna_motif_control,redesign,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.008473915,15.088663520495174
@@ -718,7 +718,7 @@ design.rna_motif_control,redesign,qwen,hard-tools,10,10,5,0.5,2,1,0,2,0,0.027628
 design.rna_motif_control,redesign,snowball-v01,easy-no-tools,10,10,1,0.1,1,7,0,1,0,,217.9058752710116
 design.rna_motif_control,redesign,snowball-v01,hard-no-tools,10,10,1,0.1,1,6,0,2,0,,260.89826560398797
 design.rna_motif_control,redesign,snowball-v01,easy-tools,10,10,1,0.1,2,5,0,2,0,,168.09905608353438
-design.rna_motif_control,redesign,snowball-v01,hard-tools,10,2,1,0.5,0,1,0,0,0,,128.58972766652005
+design.rna_motif_control,redesign,snowball-v01,hard-tools,10,10,2,0.2,1,6,0,1,0,,174.59182793746004
 design.dinucleotide_counts,redesign,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.0155919,29.52878856251482
 design.dinucleotide_counts,redesign,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0145679,27.491520666517317
 design.dinucleotide_counts,redesign,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.007636525,11.945997354516294
@@ -734,7 +734,7 @@ design.dinucleotide_counts,redesign,qwen,hard-tools,10,10,3,0.3,3,4,0,0,0,0.0256
 design.dinucleotide_counts,redesign,snowball-v01,easy-no-tools,10,10,1,0.1,2,5,0,2,0,,252.55488872894784
 design.dinucleotide_counts,redesign,snowball-v01,hard-no-tools,10,10,0,0.0,2,5,0,3,0,,258.14308512496063
 design.dinucleotide_counts,redesign,snowball-v01,easy-tools,10,10,0,0.0,6,2,0,2,0,,224.1441345415078
-design.dinucleotide_counts,redesign,snowball-v01,hard-tools,10,2,1,0.5,0,0,0,1,0,,296.5733761244919
+design.dinucleotide_counts,redesign,snowball-v01,hard-tools,10,10,1,0.1,3,4,0,2,0,,268.3374799165176
 design.pairing_repair,redesign,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0034784,7.257920520962216
 design.pairing_repair,redesign,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0029019,7.234334895503707
 design.pairing_repair,redesign,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.0037055,7.352398833492771
@@ -798,7 +798,7 @@ design.guide_escape,redesign,qwen,hard-tools,10,10,5,0.5,3,2,0,0,0,0.020026664,8
 design.guide_escape,redesign,snowball-v01,easy-no-tools,10,10,1,0.1,0,7,0,2,0,,234.81244139600312
 design.guide_escape,redesign,snowball-v01,hard-no-tools,10,10,0,0.0,0,9,0,1,0,,240.12016897904687
 design.guide_escape,redesign,snowball-v01,easy-tools,10,10,0,0.0,3,6,0,1,0,,267.64401404198725
-design.guide_escape,redesign,snowball-v01,hard-tools,10,1,0,0.0,0,1,0,0,0,,127.5172173329629
+design.guide_escape,redesign,snowball-v01,hard-tools,10,10,1,0.1,2,4,0,3,0,,242.9322455835063
 design.variant_panel,redesign,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.017952,39.373939708515536
 design.variant_panel,redesign,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.017093999999999998,31.566340416960884
 design.variant_panel,redesign,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.008982005,12.574298896011896
@@ -814,7 +814,7 @@ design.variant_panel,redesign,qwen,hard-tools,10,10,1,0.1,6,2,0,1,0,0.030246392,
 design.variant_panel,redesign,snowball-v01,easy-no-tools,10,10,0,0.0,1,5,0,4,0,,324.2040417919634
 design.variant_panel,redesign,snowball-v01,hard-no-tools,10,10,0,0.0,1,5,0,4,0,,325.74768812500406
 design.variant_panel,redesign,snowball-v01,easy-tools,10,10,1,0.1,1,3,0,5,0,,336.87440383352805
-design.variant_panel,redesign,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+design.variant_panel,redesign,snowball-v01,hard-tools,10,10,0,0.0,0,5,0,5,0,,351.6767802704708
 construct.minimal_aa_edit,construct,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.0031464,6.245217166520888
 construct.minimal_aa_edit,construct,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0033269000000000003,7.844370208506007
 construct.minimal_aa_edit,construct,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.00383024,7.818411562475376
@@ -830,7 +830,7 @@ construct.minimal_aa_edit,construct,qwen,hard-tools,10,10,7,0.7,2,1,0,0,0,0.0117
 construct.minimal_aa_edit,construct,snowball-v01,easy-no-tools,10,10,2,0.2,1,6,0,1,0,,106.50318900047569
 construct.minimal_aa_edit,construct,snowball-v01,hard-no-tools,10,10,1,0.1,2,7,0,0,0,,139.8046386455535
 construct.minimal_aa_edit,construct,snowball-v01,easy-tools,10,10,4,0.4,4,2,0,0,0,,93.26577950001229
-construct.minimal_aa_edit,construct,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+construct.minimal_aa_edit,construct,snowball-v01,hard-tools,10,10,3,0.3,3,4,0,0,0,,171.2056314374786
 construct.remove_peptide_motif,construct,luna,easy-no-tools,10,10,3,0.3,7,0,0,0,0,0.0038563,8.090378999506356
 construct.remove_peptide_motif,construct,luna,hard-no-tools,10,10,2,0.2,8,0,0,0,0,0.0035168,7.8413177494949196
 construct.remove_peptide_motif,construct,luna,easy-tools,10,10,4,0.4,6,0,0,0,0,0.00385185,6.756352937518386
@@ -846,7 +846,7 @@ construct.remove_peptide_motif,construct,qwen,hard-tools,10,10,0,0.0,5,5,0,0,0,0
 construct.remove_peptide_motif,construct,snowball-v01,easy-no-tools,10,10,0,0.0,6,4,0,0,0,,100.82249502104241
 construct.remove_peptide_motif,construct,snowball-v01,hard-no-tools,10,10,1,0.1,3,6,0,0,0,,129.53493166697444
 construct.remove_peptide_motif,construct,snowball-v01,easy-tools,10,10,0,0.0,5,3,0,1,1,,81.44704572902992
-construct.remove_peptide_motif,construct,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+construct.remove_peptide_motif,construct,snowball-v01,hard-tools,10,10,1,0.1,2,7,0,0,0,,82.17818087449996
 construct.tag_fusion,construct,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0034010999999999998,4.790411291993223
 construct.tag_fusion,construct,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0033946,5.637254895496881
 construct.tag_fusion,construct,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0026613,5.396861791989068
@@ -862,7 +862,7 @@ construct.tag_fusion,construct,qwen,hard-tools,10,10,7,0.7,1,2,0,0,0,0.007570462
 construct.tag_fusion,construct,snowball-v01,easy-no-tools,10,10,6,0.6,2,2,0,0,0,,79.26037264597835
 construct.tag_fusion,construct,snowball-v01,hard-no-tools,10,10,4,0.4,1,4,0,1,0,,129.28454554197378
 construct.tag_fusion,construct,snowball-v01,easy-tools,10,10,4,0.4,2,4,0,0,0,,70.3181838329765
-construct.tag_fusion,construct,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+construct.tag_fusion,construct,snowball-v01,hard-tools,10,10,2,0.2,3,5,0,0,0,,70.50140118750278
 construct.tev_products,construct,luna,easy-no-tools,10,10,5,0.5,5,0,0,0,0,0.007436900000000001,11.897504249995109
 construct.tev_products,construct,luna,hard-no-tools,10,10,5,0.5,5,0,0,0,0,0.0049649,9.069684062502347
 construct.tev_products,construct,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0065770049999999995,9.317367104493314
@@ -878,7 +878,7 @@ construct.tev_products,construct,qwen,hard-tools,10,10,0,0.0,8,0,0,2,0,0.0325206
 construct.tev_products,construct,snowball-v01,easy-no-tools,10,10,0,0.0,2,7,0,1,0,,198.73321393696824
 construct.tev_products,construct,snowball-v01,hard-no-tools,10,10,1,0.1,5,4,0,0,0,,198.35272308299318
 construct.tev_products,construct,snowball-v01,easy-tools,10,10,1,0.1,5,3,0,1,0,,171.0038926874986
-construct.tev_products,construct,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+construct.tev_products,construct,snowball-v01,hard-tools,10,10,0,0.0,5,2,0,2,1,,219.5480720840278
 library.codon_products,construct,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0035328,5.525329625001177
 library.codon_products,construct,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0022528,5.194356624502689
 library.codon_products,construct,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0030956,5.765317666984629
@@ -894,7 +894,7 @@ library.codon_products,construct,qwen,hard-tools,10,10,0,0.0,0,10,0,0,0,0.012812
 library.codon_products,construct,snowball-v01,easy-no-tools,10,10,3,0.3,1,6,0,0,0,,43.38398124993546
 library.codon_products,construct,snowball-v01,hard-no-tools,10,10,4,0.4,1,4,0,1,0,,54.87236166646471
 library.codon_products,construct,snowball-v01,easy-tools,10,10,6,0.6,1,3,0,0,0,,39.53656645846786
-library.codon_products,construct,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+library.codon_products,construct,snowball-v01,hard-tools,10,10,2,0.2,4,4,0,0,0,,73.15240322909085
 library.design_codon,construct,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0070381,13.926398583513219
 library.design_codon,construct,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0081201,15.708850375027396
 library.design_codon,construct,luna,easy-tools,10,10,7,0.7,3,0,0,0,0,0.00937203,13.944557062495733
@@ -910,7 +910,7 @@ library.design_codon,construct,qwen,hard-tools,10,10,7,0.7,1,0,1,1,0,0.034998918
 library.design_codon,construct,snowball-v01,easy-no-tools,10,10,1,0.1,3,6,0,0,0,,139.2282618334866
 library.design_codon,construct,snowball-v01,hard-no-tools,10,10,1,0.1,3,6,0,0,0,,99.34395239554578
 library.design_codon,construct,snowball-v01,easy-tools,10,10,1,0.1,3,5,0,1,0,,93.99988181254594
-library.design_codon,construct,snowball-v01,hard-tools,10,6,1,0.16666666666666666,3,2,0,0,0,,95.32875954150222
+library.design_codon,construct,snowball-v01,hard-tools,10,10,2,0.2,4,4,0,0,0,,81.93016408354742
 construct.inframe_deletion,construct,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0031659,6.236175687517971
 construct.inframe_deletion,construct,luna,hard-no-tools,0,0,0,,0,0,0,0,0,0,
 construct.inframe_deletion,construct,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0027758,6.867481624503853
@@ -974,7 +974,7 @@ assay.primer_pair,assay,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0.005813095,26.256
 assay.primer_pair,assay,snowball-v01,easy-no-tools,10,10,1,0.1,1,6,0,2,0,,87.87900897901272
 assay.primer_pair,assay,snowball-v01,hard-no-tools,10,10,3,0.3,0,7,0,0,0,,69.65001154143829
 assay.primer_pair,assay,snowball-v01,easy-tools,10,10,1,0.1,0,5,0,4,0,,86.017139791511
-assay.primer_pair,assay,snowball-v01,hard-tools,10,7,2,0.2857142857142857,1,3,0,1,0,,84.49006133398507
+assay.primer_pair,assay,snowball-v01,hard-tools,10,10,2,0.2,1,3,0,4,0,,128.66264029149897
 assay.select_rna_probe,assay,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0131067,24.783295103989076
 assay.select_rna_probe,assay,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0122367,25.952553770504892
 assay.select_rna_probe,assay,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.0051952000000000005,8.175608207995538
@@ -990,7 +990,7 @@ assay.select_rna_probe,assay,qwen,hard-tools,10,10,5,0.5,0,5,0,0,0,0.018430428,9
 assay.select_rna_probe,assay,snowball-v01,easy-no-tools,10,10,1,0.1,1,2,0,6,0,,310.8119184159441
 assay.select_rna_probe,assay,snowball-v01,hard-no-tools,10,10,1,0.1,0,4,0,5,0,,338.82834545796504
 assay.select_rna_probe,assay,snowball-v01,easy-tools,10,10,2,0.2,1,5,0,2,0,,332.3522142084548
-assay.select_rna_probe,assay,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+assay.select_rna_probe,assay,snowball-v01,hard-tools,10,10,1,0.1,0,1,0,8,0,,356.4512203540071
 assay.min_probe_panel,assay,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0230775,48.475672228989424
 assay.min_probe_panel,assay,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.024646500000000002,42.957016666507116
 assay.min_probe_panel,assay,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00802566,11.133595583494753
@@ -1006,7 +1006,7 @@ assay.min_probe_panel,assay,qwen,hard-tools,10,10,7,0.7,2,1,0,0,0,0.019967019,71
 assay.min_probe_panel,assay,snowball-v01,easy-no-tools,10,10,0,0.0,0,1,0,8,1,,300.96493020799244
 assay.min_probe_panel,assay,snowball-v01,hard-no-tools,10,10,0,0.0,0,1,0,9,0,,352.75928122899495
 assay.min_probe_panel,assay,snowball-v01,easy-tools,10,10,0,0.0,0,5,0,5,0,,294.5537947084522
-assay.min_probe_panel,assay,snowball-v01,hard-tools,10,3,1,0.3333333333333333,0,1,0,1,0,,340.5015229580458
+assay.min_probe_panel,assay,snowball-v01,hard-tools,10,10,3,0.3,1,1,0,5,0,,347.9599840415176
 overlap.compare_products,overlap,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0028149,4.825570354005322
 overlap.compare_products,overlap,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0024894,5.526564187486656
 overlap.compare_products,overlap,luna,easy-tools,10,10,8,0.8,1,1,0,0,0,0.0029664,4.9296508750121575
@@ -1070,7 +1070,7 @@ pipeline.protein_properties,composition,qwen,hard-tools,10,10,0,0.0,0,9,0,1,0,0.
 pipeline.protein_properties,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,10,0,0,0,,187.88901031250134
 pipeline.protein_properties,composition,snowball-v01,hard-no-tools,10,10,0,0.0,1,9,0,0,0,,211.86325804149965
 pipeline.protein_properties,composition,snowball-v01,easy-tools,10,10,0,0.0,0,10,0,0,0,,203.50433933304157
-pipeline.protein_properties,composition,snowball-v01,hard-tools,10,1,0,0.0,0,1,0,0,0,,221.16223012492992
+pipeline.protein_properties,composition,snowball-v01,hard-tools,10,10,0,0.0,1,9,0,0,0,,218.757414520951
 pipeline.diagnostic_digest,composition,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0037556,7.6570949374872725
 pipeline.diagnostic_digest,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0031511,6.870421603991417
 pipeline.diagnostic_digest,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00569379,8.841660396021325
@@ -1086,7 +1086,7 @@ pipeline.diagnostic_digest,composition,qwen,hard-tools,10,10,4,0.4,2,4,0,0,0,0.0
 pipeline.diagnostic_digest,composition,snowball-v01,easy-no-tools,10,10,2,0.2,4,3,0,1,0,,104.56883504195139
 pipeline.diagnostic_digest,composition,snowball-v01,hard-no-tools,10,10,2,0.2,5,3,0,0,0,,153.16754291654797
 pipeline.diagnostic_digest,composition,snowball-v01,easy-tools,10,10,2,0.2,5,3,0,0,0,,124.65737083303975
-pipeline.diagnostic_digest,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.diagnostic_digest,composition,snowball-v01,hard-tools,10,10,2,0.2,4,2,0,2,0,,163.72445006249472
 pipeline.variant_peptides,composition,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0043663,8.172585083026206
 pipeline.variant_peptides,composition,luna,hard-no-tools,10,10,6,0.6,4,0,0,0,0,0.0046858,9.428928354522213
 pipeline.variant_peptides,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.006992425,10.694463124498725
@@ -1102,7 +1102,7 @@ pipeline.variant_peptides,composition,qwen,hard-tools,10,10,0,0.0,1,8,0,0,1,0.01
 pipeline.variant_peptides,composition,snowball-v01,easy-no-tools,10,10,0,0.0,1,5,0,2,2,,130.4460379164666
 pipeline.variant_peptides,composition,snowball-v01,hard-no-tools,10,10,0,0.0,2,7,0,1,0,,96.32875214604428
 pipeline.variant_peptides,composition,snowball-v01,easy-tools,10,10,1,0.1,1,8,0,0,0,,124.1030277084792
-pipeline.variant_peptides,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.variant_peptides,composition,snowball-v01,hard-tools,10,10,0,0.0,1,9,0,0,0,,125.32868447899818
 pipeline.rna_edit_translation,composition,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0027056,6.02642695850227
 pipeline.rna_edit_translation,composition,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0024776,6.819370791519759
 pipeline.rna_edit_translation,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.002943125,5.329876271513058
@@ -1118,7 +1118,7 @@ pipeline.rna_edit_translation,composition,qwen,hard-tools,10,10,5,0.5,4,1,0,0,0,
 pipeline.rna_edit_translation,composition,snowball-v01,easy-no-tools,10,10,7,0.7,0,3,0,0,0,,73.27582431252813
 pipeline.rna_edit_translation,composition,snowball-v01,hard-no-tools,10,10,3,0.3,1,5,0,1,0,,97.36367774993414
 pipeline.rna_edit_translation,composition,snowball-v01,easy-tools,10,10,7,0.7,0,3,0,0,0,,105.27531860448653
-pipeline.rna_edit_translation,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.rna_edit_translation,composition,snowball-v01,hard-tools,10,10,5,0.5,3,2,0,0,0,,92.3590376250213
 pipeline.rna_edit_digest,composition,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.0077689000000000005,13.350246562476968
 pipeline.rna_edit_digest,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0092529,15.99047837551916
 pipeline.rna_edit_digest,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.006513415,10.104129166516941
@@ -1134,7 +1134,7 @@ pipeline.rna_edit_digest,composition,qwen,hard-tools,10,10,0,0.0,1,8,0,1,0,0.016
 pipeline.rna_edit_digest,composition,snowball-v01,easy-no-tools,10,10,0,0.0,1,7,0,2,0,,149.9715018539573
 pipeline.rna_edit_digest,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,6,0,4,0,,211.03183216648176
 pipeline.rna_edit_digest,composition,snowball-v01,easy-tools,10,10,1,0.1,1,6,0,2,0,,174.04651987494435
-pipeline.rna_edit_digest,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.rna_edit_digest,composition,snowball-v01,hard-tools,10,10,1,0.1,1,5,0,3,0,,198.69491285452386
 pipeline.structure_gated_digest,composition,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.011245999999999999,17.13819766699453
 pipeline.structure_gated_digest,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.011129,22.191532270488096
 pipeline.structure_gated_digest,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.007935595,12.829740937508177
@@ -1150,7 +1150,7 @@ pipeline.structure_gated_digest,composition,qwen,hard-tools,10,10,2,0.2,1,7,0,0,
 pipeline.structure_gated_digest,composition,snowball-v01,easy-no-tools,10,10,1,0.1,0,6,0,3,0,,226.07257866702275
 pipeline.structure_gated_digest,composition,snowball-v01,hard-no-tools,10,10,0,0.0,1,7,0,2,0,,195.05049535405124
 pipeline.structure_gated_digest,composition,snowball-v01,easy-tools,10,10,3,0.3,1,4,0,2,0,,176.3260481665493
-pipeline.structure_gated_digest,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.structure_gated_digest,composition,snowball-v01,hard-tools,10,10,1,0.1,1,6,0,2,0,,171.7867577500292
 joint.clone_ready_cds,composition,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0228007,38.64307297949563
 joint.clone_ready_cds,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0167452,33.879230958002154
 joint.clone_ready_cds,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.010586455,13.920787083508912
@@ -1166,7 +1166,7 @@ joint.clone_ready_cds,composition,qwen,hard-tools,10,10,4,0.4,1,5,0,0,0,0.022406
 joint.clone_ready_cds,composition,snowball-v01,easy-no-tools,10,10,1,0.1,0,5,0,4,0,,334.6143164584646
 joint.clone_ready_cds,composition,snowball-v01,hard-no-tools,10,10,0,0.0,2,4,0,4,0,,278.1621813334059
 joint.clone_ready_cds,composition,snowball-v01,easy-tools,10,10,1,0.1,3,1,0,5,0,,342.1561240835581
-joint.clone_ready_cds,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+joint.clone_ready_cds,composition,snowball-v01,hard-tools,10,10,1,0.1,1,3,0,5,0,,321.868699229497
 pipeline.repair_and_verify,composition,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0032629,6.878075437503867
 pipeline.repair_and_verify,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0031289,7.915861500019673
 pipeline.repair_and_verify,composition,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.003787875,7.522957354027312
@@ -1182,7 +1182,7 @@ pipeline.repair_and_verify,composition,qwen,hard-tools,10,10,6,0.6,3,0,1,0,0,0.0
 pipeline.repair_and_verify,composition,snowball-v01,easy-no-tools,10,10,4,0.4,1,5,0,0,0,,63.89676683349535
 pipeline.repair_and_verify,composition,snowball-v01,hard-no-tools,10,10,5,0.5,1,4,0,0,0,,51.01250233349856
 pipeline.repair_and_verify,composition,snowball-v01,easy-tools,10,10,7,0.7,0,3,0,0,0,,63.17478239600314
-pipeline.repair_and_verify,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.repair_and_verify,composition,snowball-v01,hard-tools,10,10,5,0.5,1,4,0,0,0,,50.05160635395441
 joint.structure_and_codons,composition,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.01436165,25.417793291504495
 joint.structure_and_codons,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0132482,24.186329333489994
 joint.structure_and_codons,composition,luna,easy-tools,10,10,9,0.9,0,0,0,0,1,0.01092343,20.18719387499732
@@ -1198,7 +1198,7 @@ joint.structure_and_codons,composition,qwen,hard-tools,10,10,2,0.2,1,6,0,1,0,0.0
 joint.structure_and_codons,composition,snowball-v01,easy-no-tools,10,10,1,0.1,2,7,0,0,0,,172.691576186975
 joint.structure_and_codons,composition,snowball-v01,hard-no-tools,10,10,1,0.1,2,7,0,0,0,,169.71377572900383
 joint.structure_and_codons,composition,snowball-v01,easy-tools,10,10,0,0.0,0,10,0,0,0,,168.66259804199217
-joint.structure_and_codons,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+joint.structure_and_codons,composition,snowball-v01,hard-tools,10,10,1,0.1,2,6,0,1,0,,211.36697016650578
 pipeline.target_and_escape,composition,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.028844375,47.345798583497526
 pipeline.target_and_escape,composition,luna,hard-no-tools,10,10,10,1.0,0,0,0,0,0,0.0252934,43.84840366648859
 pipeline.target_and_escape,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.01612842,26.827674854022916
@@ -1214,7 +1214,7 @@ pipeline.target_and_escape,composition,qwen,hard-tools,10,10,1,0.1,0,8,0,1,0,0.0
 pipeline.target_and_escape,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,1,0,9,0,,346.84317804145394
 pipeline.target_and_escape,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,3,0,7,0,,349.31960516649997
 pipeline.target_and_escape,composition,snowball-v01,easy-tools,10,10,0,0.0,0,0,0,10,0,,363.9466904794681
-pipeline.target_and_escape,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.target_and_escape,composition,snowball-v01,hard-tools,10,10,0,0.0,1,1,0,8,0,,357.77985470800195
 joint.protein_edit_and_cloning,composition,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0058081,11.50906241647317
 joint.protein_edit_and_cloning,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0045726000000000004,11.821689312491799
 joint.protein_edit_and_cloning,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00934846,12.213780707999831
@@ -1230,7 +1230,7 @@ joint.protein_edit_and_cloning,composition,qwen,hard-tools,10,10,7,0.7,1,2,0,0,0
 joint.protein_edit_and_cloning,composition,snowball-v01,easy-no-tools,10,10,2,0.2,3,5,0,0,0,,122.47220724995714
 joint.protein_edit_and_cloning,composition,snowball-v01,hard-no-tools,10,10,4,0.4,1,5,0,0,0,,120.68516470852774
 joint.protein_edit_and_cloning,composition,snowball-v01,easy-tools,10,10,0,0.0,0,9,0,1,0,,157.65476552041946
-joint.protein_edit_and_cloning,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+joint.protein_edit_and_cloning,composition,snowball-v01,hard-tools,10,10,2,0.2,2,6,0,0,0,,146.74240204150556
 pipeline.tag_cleave_mass,composition,luna,easy-no-tools,10,10,7,0.7,2,1,0,0,0,0.0185389,23.267747062986018
 pipeline.tag_cleave_mass,composition,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0176999,31.394863499997882
 pipeline.tag_cleave_mass,composition,luna,easy-tools,10,10,8,0.8,2,0,0,0,0,0.012766234999999999,19.889128750015516
@@ -1246,7 +1246,7 @@ pipeline.tag_cleave_mass,composition,qwen,hard-tools,10,10,0,0.0,0,10,0,0,0,0.03
 pipeline.tag_cleave_mass,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,7,0,3,0,,280.5339828955475
 pipeline.tag_cleave_mass,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,6,0,4,0,,279.227364791499
 pipeline.tag_cleave_mass,composition,snowball-v01,easy-tools,10,10,0,0.0,0,8,0,2,0,,276.54616614599945
-pipeline.tag_cleave_mass,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.tag_cleave_mass,composition,snowball-v01,hard-tools,10,10,0,0.0,1,5,0,4,0,,298.5357023954275
 pipeline.library_and_verify,composition,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.0100194,18.3582065209921
 pipeline.library_and_verify,composition,luna,hard-no-tools,10,10,7,0.7,3,0,0,0,0,0.0071154,16.620950708485907
 pipeline.library_and_verify,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.01136157,18.389784520986723
@@ -1262,7 +1262,7 @@ pipeline.library_and_verify,composition,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0.
 pipeline.library_and_verify,composition,snowball-v01,easy-no-tools,10,10,1,0.1,2,7,0,0,0,,103.09942208346911
 pipeline.library_and_verify,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,9,0,1,0,,86.03435347904451
 pipeline.library_and_verify,composition,snowball-v01,easy-tools,10,10,0,0.0,1,9,0,0,0,,132.8334666255396
-pipeline.library_and_verify,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.library_and_verify,composition,snowball-v01,hard-tools,10,10,1,0.1,2,5,0,2,0,,111.14572091650916
 pipeline.fusion_junction,composition,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0093022,16.424812270968687
 pipeline.fusion_junction,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0065297,12.223795479512773
 pipeline.fusion_junction,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00897595,13.04956683301134
@@ -1278,7 +1278,7 @@ pipeline.fusion_junction,composition,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0.019
 pipeline.fusion_junction,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,8,0,1,1,,174.28662558295764
 pipeline.fusion_junction,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,9,0,1,0,,228.63624441705178
 pipeline.fusion_junction,composition,snowball-v01,easy-tools,10,10,0,0.0,0,9,0,1,0,,189.55846620799275
-pipeline.fusion_junction,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.fusion_junction,composition,snowball-v01,hard-tools,10,10,0,0.0,0,6,0,4,0,,286.0354777079774
 pipeline.edit_dependent_product,composition,luna,easy-no-tools,10,10,10,1.0,0,0,0,0,0,0.0056378750000000005,9.16878025000915
 pipeline.edit_dependent_product,composition,luna,hard-no-tools,10,10,8,0.8,2,0,0,0,0,0.0050667,10.408651500009
 pipeline.edit_dependent_product,composition,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.0059723449999999996,9.892486437485786
@@ -1294,7 +1294,7 @@ pipeline.edit_dependent_product,composition,qwen,hard-tools,10,10,0,0.0,0,10,0,0
 pipeline.edit_dependent_product,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,10,0,0,0,,145.0731561044813
 pipeline.edit_dependent_product,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,10,0,0,0,,111.50473993702326
 pipeline.edit_dependent_product,composition,snowball-v01,easy-tools,10,10,1,0.1,1,8,0,0,0,,133.72096654196503
-pipeline.edit_dependent_product,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.edit_dependent_product,composition,snowball-v01,hard-tools,10,10,0,0.0,3,6,0,1,0,,160.77060116652865
 pipeline.overlap_edit_verify,composition,luna,easy-no-tools,10,10,9,0.9,1,0,0,0,0,0.004479,7.497289895487484
 pipeline.overlap_edit_verify,composition,luna,hard-no-tools,10,10,7,0.7,2,1,0,0,0,0.0044465,10.258516750007402
 pipeline.overlap_edit_verify,composition,luna,easy-tools,10,10,9,0.9,1,0,0,0,0,0.005367125,8.132635354500962
@@ -1310,7 +1310,7 @@ pipeline.overlap_edit_verify,composition,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0
 pipeline.overlap_edit_verify,composition,snowball-v01,easy-no-tools,10,10,1,0.1,0,9,0,0,0,,76.31310420844238
 pipeline.overlap_edit_verify,composition,snowball-v01,hard-no-tools,10,10,1,0.1,1,8,0,0,0,,87.72638437495334
 pipeline.overlap_edit_verify,composition,snowball-v01,easy-tools,10,10,2,0.2,0,8,0,0,0,,85.63886418746551
-pipeline.overlap_edit_verify,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.overlap_edit_verify,composition,snowball-v01,hard-tools,10,10,2,0.2,0,7,0,1,0,,95.4386072079651
 pipeline.controlled_panel,composition,luna,easy-no-tools,10,10,5,0.5,5,0,0,0,0,0.0197751,36.647536187490914
 pipeline.controlled_panel,composition,luna,hard-no-tools,10,10,6,0.6,4,0,0,0,0,0.0218931,49.648672167008044
 pipeline.controlled_panel,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.01019248,17.812270771013573
@@ -1326,7 +1326,7 @@ pipeline.controlled_panel,composition,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0.02
 pipeline.controlled_panel,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,5,0,5,0,,325.30886970850406
 pipeline.controlled_panel,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,4,0,6,0,,349.3659862289205
 pipeline.controlled_panel,composition,snowball-v01,easy-tools,10,10,0,0.0,1,3,0,6,0,,355.6823463954497
-pipeline.controlled_panel,composition,snowball-v01,hard-tools,10,0,0,,0,0,0,0,0,,
+pipeline.controlled_panel,composition,snowball-v01,hard-tools,10,10,0,0.0,0,6,0,4,0,,329.36720843752846
 pipeline.rna_probe_panel,composition,luna,easy-no-tools,10,10,8,0.8,2,0,0,0,0,0.026879,40.4075444789778
 pipeline.rna_probe_panel,composition,luna,hard-no-tools,10,10,9,0.9,1,0,0,0,0,0.0267325,49.49062612501439
 pipeline.rna_probe_panel,composition,luna,easy-tools,10,10,10,1.0,0,0,0,0,0,0.00740908,9.544086020527175
@@ -1342,4 +1342,4 @@ pipeline.rna_probe_panel,composition,qwen,hard-tools,10,10,1,0.1,0,9,0,0,0,0.015
 pipeline.rna_probe_panel,composition,snowball-v01,easy-no-tools,10,10,0,0.0,0,1,0,9,0,,336.0850710005034
 pipeline.rna_probe_panel,composition,snowball-v01,hard-no-tools,10,10,0,0.0,0,1,0,9,0,,352.3985711039277
 pipeline.rna_probe_panel,composition,snowball-v01,easy-tools,10,10,1,0.1,0,2,0,7,0,,319.39483418746386
-pipeline.rna_probe_panel,composition,snowball-v01,hard-tools,10,1,0,0.0,0,0,0,1,0,,355.44857337500434
+pipeline.rna_probe_panel,composition,snowball-v01,hard-tools,10,10,0,0.0,1,2,0,7,0,,314.2256737294956

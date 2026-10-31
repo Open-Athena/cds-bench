@@ -203,7 +203,7 @@
       "family": "sequence",
       "name": "Sequence operations",
       "color": "#4477aa",
-      "mean_accuracy": 0.627561936936937,
+      "mean_accuracy": 0.628125,
       "tasks": [
         {
           "task_id": "coords.aa_to_nt",
@@ -226,12 +226,12 @@
               "accuracy": 0.875
             },
             "snowball-v01": {
-              "correct": 24,
-              "attempted": 32,
-              "accuracy": 0.75
+              "correct": 31,
+              "attempted": 40,
+              "accuracy": 0.775
             }
           },
-          "mean_accuracy": 0.8625,
+          "mean_accuracy": 0.86875,
           "code": "B01",
           "angle": 0.5039638215133626
         },
@@ -256,12 +256,12 @@
               "accuracy": 0.725
             },
             "snowball-v01": {
-              "correct": 18,
-              "attempted": 37,
-              "accuracy": 0.4864864864864865
+              "correct": 19,
+              "attempted": 40,
+              "accuracy": 0.475
             }
           },
-          "mean_accuracy": 0.7216216216216216,
+          "mean_accuracy": 0.71875,
           "code": "B02",
           "angle": 0.5694136684631499
         },
@@ -394,7 +394,7 @@
       "family": "measure",
       "name": "Sequence statistics",
       "color": "#228833",
-      "mean_accuracy": 0.5692190545808966,
+      "mean_accuracy": 0.5697916666666667,
       "tasks": [
         {
           "task_id": "stats.gc3_fraction",
@@ -447,12 +447,12 @@
               "accuracy": 0.9
             },
             "snowball-v01": {
-              "correct": 17,
-              "attempted": 38,
-              "accuracy": 0.4473684210526316
+              "correct": 18,
+              "attempted": 40,
+              "accuracy": 0.45
             }
           },
-          "mean_accuracy": 0.7555921052631579,
+          "mean_accuracy": 0.75625,
           "code": "C02",
           "angle": 1.0406525665016189
         },
@@ -508,11 +508,11 @@
             },
             "snowball-v01": {
               "correct": 8,
-              "attempted": 36,
-              "accuracy": 0.2222222222222222
+              "attempted": 40,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.46805555555555556,
+          "mean_accuracy": 0.4625,
           "code": "C04",
           "angle": 1.1715522604011934
         },
@@ -537,12 +537,12 @@
               "accuracy": 0.05
             },
             "snowball-v01": {
-              "correct": 4,
-              "attempted": 30,
-              "accuracy": 0.13333333333333333
+              "correct": 8,
+              "attempted": 40,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.3833333333333333,
+          "mean_accuracy": 0.4,
           "code": "C05",
           "angle": 1.237002107350981
         },
@@ -568,11 +568,11 @@
             },
             "snowball-v01": {
               "correct": 4,
-              "attempted": 30,
-              "accuracy": 0.13333333333333333
+              "attempted": 40,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.3208333333333333,
+          "mean_accuracy": 0.3125,
           "code": "C06",
           "angle": 1.3024519543007682
         }
@@ -656,7 +656,7 @@
       "family": "rna",
       "name": "RNA operations",
       "color": "#55aacc",
-      "mean_accuracy": 0.5020502645502646,
+      "mean_accuracy": 0.5006944444444444,
       "tasks": [
         {
           "task_id": "rna.structure_score",
@@ -679,12 +679,12 @@
               "accuracy": 0.9
             },
             "snowball-v01": {
-              "correct": 23,
-              "attempted": 30,
-              "accuracy": 0.7666666666666667
+              "correct": 29,
+              "attempted": 40,
+              "accuracy": 0.725
             }
           },
-          "mean_accuracy": 0.8666666666666667,
+          "mean_accuracy": 0.85625,
           "code": "E01",
           "angle": 1.6558811278296197
         },
@@ -709,12 +709,12 @@
               "accuracy": 0.95
             },
             "snowball-v01": {
-              "correct": 10,
-              "attempted": 30,
-              "accuracy": 0.3333333333333333
+              "correct": 14,
+              "attempted": 40,
+              "accuracy": 0.35
             }
           },
-          "mean_accuracy": 0.8020833333333334,
+          "mean_accuracy": 0.80625,
           "code": "E02",
           "angle": 1.7213309747794072
         },
@@ -770,11 +770,11 @@
             },
             "snowball-v01": {
               "correct": 2,
-              "attempted": 35,
-              "accuracy": 0.05714285714285714
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.48928571428571427,
+          "mean_accuracy": 0.4875,
           "code": "E04",
           "angle": 1.8522306686789818
         },
@@ -800,11 +800,11 @@
             },
             "snowball-v01": {
               "correct": 3,
-              "attempted": 30,
-              "accuracy": 0.1
+              "attempted": 40,
+              "accuracy": 0.075
             }
           },
-          "mean_accuracy": 0.4375,
+          "mean_accuracy": 0.43125,
           "code": "E05",
           "angle": 1.9176805156287693
         },
@@ -829,12 +829,12 @@
               "accuracy": 0.125
             },
             "snowball-v01": {
-              "correct": 2,
-              "attempted": 30,
-              "accuracy": 0.06666666666666667
+              "correct": 3,
+              "attempted": 40,
+              "accuracy": 0.075
             }
           },
-          "mean_accuracy": 0.41041666666666665,
+          "mean_accuracy": 0.4125,
           "code": "E06",
           "angle": 1.9831303625785566
         },
@@ -859,12 +859,12 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 4,
-              "attempted": 30,
-              "accuracy": 0.13333333333333333
+              "correct": 6,
+              "attempted": 40,
+              "accuracy": 0.15
             }
           },
-          "mean_accuracy": 0.33958333333333335,
+          "mean_accuracy": 0.34375,
           "code": "E07",
           "angle": 2.048580209528344
         },
@@ -890,11 +890,11 @@
             },
             "snowball-v01": {
               "correct": 2,
-              "attempted": 30,
-              "accuracy": 0.06666666666666667
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.28541666666666665,
+          "mean_accuracy": 0.28125,
           "code": "E08",
           "angle": 2.114030056478131
         },
@@ -920,7 +920,7 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 38,
+              "attempted": 40,
               "accuracy": 0.0
             }
           },
@@ -937,7 +937,7 @@
       "family": "protein",
       "name": "Protein operations",
       "color": "#b49b30",
-      "mean_accuracy": 0.48970588235294116,
+      "mean_accuracy": 0.4861111111111111,
       "tasks": [
         {
           "task_id": "protein.nglyco_sequons",
@@ -960,8 +960,8 @@
               "accuracy": 0.825
             },
             "snowball-v01": {
-              "correct": 15,
-              "attempted": 30,
+              "correct": 20,
+              "attempted": 40,
               "accuracy": 0.5
             }
           },
@@ -990,12 +990,12 @@
               "accuracy": 0.6
             },
             "snowball-v01": {
-              "correct": 9,
-              "attempted": 30,
-              "accuracy": 0.3
+              "correct": 11,
+              "attempted": 40,
+              "accuracy": 0.275
             }
           },
-          "mean_accuracy": 0.64375,
+          "mean_accuracy": 0.6375,
           "code": "F02",
           "angle": 2.3889194136672383
         },
@@ -1110,12 +1110,12 @@
               "accuracy": 0.4
             },
             "snowball-v01": {
-              "correct": 9,
-              "attempted": 30,
-              "accuracy": 0.3
+              "correct": 11,
+              "attempted": 40,
+              "accuracy": 0.275
             }
           },
-          "mean_accuracy": 0.4625,
+          "mean_accuracy": 0.45625,
           "code": "F06",
           "angle": 2.650718801466388
         },
@@ -1141,11 +1141,11 @@
             },
             "snowball-v01": {
               "correct": 7,
-              "attempted": 30,
-              "accuracy": 0.23333333333333334
+              "attempted": 40,
+              "accuracy": 0.175
             }
           },
-          "mean_accuracy": 0.42083333333333334,
+          "mean_accuracy": 0.40625,
           "code": "F07",
           "angle": 2.716168648416175
         },
@@ -1170,12 +1170,12 @@
               "accuracy": 0.05
             },
             "snowball-v01": {
-              "correct": 5,
-              "attempted": 30,
-              "accuracy": 0.16666666666666666
+              "correct": 6,
+              "attempted": 40,
+              "accuracy": 0.15
             }
           },
-          "mean_accuracy": 0.31666666666666665,
+          "mean_accuracy": 0.3125,
           "code": "F08",
           "angle": 2.7816184953659624
         },
@@ -1201,11 +1201,11 @@
             },
             "snowball-v01": {
               "correct": 1,
-              "attempted": 34,
-              "accuracy": 0.029411764705882353
+              "attempted": 40,
+              "accuracy": 0.025
             }
           },
-          "mean_accuracy": 0.2573529411764706,
+          "mean_accuracy": 0.25625,
           "code": "F09",
           "angle": 2.8470683423157497
         }
@@ -1218,7 +1218,7 @@
       "family": "construct",
       "name": "Construct design",
       "color": "#dd7733",
-      "mean_accuracy": 0.46859567901234567,
+      "mean_accuracy": 0.46597222222222223,
       "tasks": [
         {
           "task_id": "construct.tag_fusion",
@@ -1241,12 +1241,12 @@
               "accuracy": 0.6
             },
             "snowball-v01": {
-              "correct": 14,
-              "attempted": 30,
-              "accuracy": 0.4666666666666667
+              "correct": 16,
+              "attempted": 40,
+              "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.6979166666666666,
+          "mean_accuracy": 0.68125,
           "code": "G01",
           "angle": 2.9910580056052822
         },
@@ -1331,12 +1331,12 @@
               "accuracy": 0.625
             },
             "snowball-v01": {
-              "correct": 4,
-              "attempted": 36,
-              "accuracy": 0.1111111111111111
+              "correct": 5,
+              "attempted": 40,
+              "accuracy": 0.125
             }
           },
-          "mean_accuracy": 0.5465277777777777,
+          "mean_accuracy": 0.55,
           "code": "G04",
           "angle": 3.187407546454644
         },
@@ -1361,12 +1361,12 @@
               "accuracy": 0.6
             },
             "snowball-v01": {
-              "correct": 7,
-              "attempted": 30,
-              "accuracy": 0.23333333333333334
+              "correct": 10,
+              "attempted": 40,
+              "accuracy": 0.25
             }
           },
-          "mean_accuracy": 0.5020833333333333,
+          "mean_accuracy": 0.50625,
           "code": "G05",
           "angle": 3.2528573934044314
         },
@@ -1391,12 +1391,12 @@
               "accuracy": 0.025
             },
             "snowball-v01": {
-              "correct": 13,
-              "attempted": 30,
-              "accuracy": 0.43333333333333335
+              "correct": 15,
+              "attempted": 40,
+              "accuracy": 0.375
             }
           },
-          "mean_accuracy": 0.4583333333333333,
+          "mean_accuracy": 0.44375,
           "code": "G06",
           "angle": 3.318307240354219
         },
@@ -1452,11 +1452,11 @@
             },
             "snowball-v01": {
               "correct": 2,
-              "attempted": 30,
-              "accuracy": 0.06666666666666667
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.3104166666666667,
+          "mean_accuracy": 0.30625,
           "code": "G08",
           "angle": 3.4492069342537937
         },
@@ -1481,12 +1481,12 @@
               "accuracy": 0.05
             },
             "snowball-v01": {
-              "correct": 1,
-              "attempted": 30,
-              "accuracy": 0.03333333333333333
+              "correct": 2,
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.12083333333333333,
+          "mean_accuracy": 0.125,
           "code": "G09",
           "angle": 3.514656781203581
         }
@@ -1499,7 +1499,7 @@
       "family": "redesign",
       "name": "Synonymous design",
       "color": "#aa3377",
-      "mean_accuracy": 0.4262232426599999,
+      "mean_accuracy": 0.42583333333333334,
       "tasks": [
         {
           "task_id": "design.expose_rna_window",
@@ -1613,11 +1613,11 @@
             },
             "snowball-v01": {
               "correct": 11,
-              "attempted": 39,
-              "accuracy": 0.28205128205128205
+              "attempted": 40,
+              "accuracy": 0.275
             }
           },
-          "mean_accuracy": 0.5080128205128205,
+          "mean_accuracy": 0.50625,
           "code": "H04",
           "angle": 3.8549959853424753
         },
@@ -1642,12 +1642,12 @@
               "accuracy": 0.375
             },
             "snowball-v01": {
-              "correct": 6,
-              "attempted": 32,
-              "accuracy": 0.1875
+              "correct": 8,
+              "attempted": 40,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.465625,
+          "mean_accuracy": 0.46875,
           "code": "H05",
           "angle": 3.9204458322922626
         },
@@ -1673,11 +1673,11 @@
             },
             "snowball-v01": {
               "correct": 5,
-              "attempted": 35,
-              "accuracy": 0.14285714285714285
+              "attempted": 40,
+              "accuracy": 0.125
             }
           },
-          "mean_accuracy": 0.4044642857142857,
+          "mean_accuracy": 0.4,
           "code": "H06",
           "angle": 3.98589567924205
         },
@@ -1702,8 +1702,8 @@
               "accuracy": 0.325
             },
             "snowball-v01": {
-              "correct": 4,
-              "attempted": 32,
+              "correct": 5,
+              "attempted": 40,
               "accuracy": 0.125
             }
           },
@@ -1742,6 +1742,36 @@
           "angle": 4.116795373141625
         },
         {
+          "task_id": "design.guide_escape",
+          "title": "Create a guide-escape control",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 39,
+              "attempted": 40,
+              "accuracy": 0.975
+            },
+            "deepinfra": {
+              "correct": 9,
+              "attempted": 40,
+              "accuracy": 0.225
+            },
+            "qwen": {
+              "correct": 9,
+              "attempted": 40,
+              "accuracy": 0.225
+            },
+            "snowball-v01": {
+              "correct": 2,
+              "attempted": 40,
+              "accuracy": 0.05
+            }
+          },
+          "mean_accuracy": 0.36875,
+          "code": "H09",
+          "angle": 4.182245220091412
+        },
+        {
           "task_id": "design.synonymous_distance",
           "title": "Rewrite with a specified number of DNA changes",
           "family": "redesign",
@@ -1768,36 +1798,6 @@
             }
           },
           "mean_accuracy": 0.36875,
-          "code": "H09",
-          "angle": 4.182245220091412
-        },
-        {
-          "task_id": "design.guide_escape",
-          "title": "Create a guide-escape control",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 39,
-              "attempted": 40,
-              "accuracy": 0.975
-            },
-            "deepinfra": {
-              "correct": 9,
-              "attempted": 40,
-              "accuracy": 0.225
-            },
-            "qwen": {
-              "correct": 9,
-              "attempted": 40,
-              "accuracy": 0.225
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 31,
-              "accuracy": 0.03225806451612903
-            }
-          },
-          "mean_accuracy": 0.36431451612903226,
           "code": "H10",
           "angle": 4.2476950670411995
         },
@@ -1853,11 +1853,11 @@
             },
             "snowball-v01": {
               "correct": 2,
-              "attempted": 32,
-              "accuracy": 0.0625
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.340625,
+          "mean_accuracy": 0.3375,
           "code": "H12",
           "angle": 4.378594760940774
         },
@@ -1883,11 +1883,11 @@
             },
             "snowball-v01": {
               "correct": 6,
-              "attempted": 38,
-              "accuracy": 0.15789473684210525
+              "attempted": 40,
+              "accuracy": 0.15
             }
           },
-          "mean_accuracy": 0.3144736842105263,
+          "mean_accuracy": 0.3125,
           "code": "H13",
           "angle": 4.444044607890562
         },
@@ -1943,11 +1943,11 @@
             },
             "snowball-v01": {
               "correct": 1,
-              "attempted": 30,
-              "accuracy": 0.03333333333333333
+              "attempted": 40,
+              "accuracy": 0.025
             }
           },
-          "mean_accuracy": 0.2833333333333333,
+          "mean_accuracy": 0.28125,
           "code": "H15",
           "angle": 4.574944301790136
         }
@@ -1960,38 +1960,8 @@
       "family": "assay",
       "name": "Assay design",
       "color": "#009988",
-      "mean_accuracy": 0.3960687960687961,
+      "mean_accuracy": 0.39791666666666664,
       "tasks": [
-        {
-          "task_id": "assay.select_rna_probe",
-          "title": "Select a CDS-specific RNA probe",
-          "family": "assay",
-          "models": {
-            "luna": {
-              "correct": 38,
-              "attempted": 40,
-              "accuracy": 0.95
-            },
-            "deepinfra": {
-              "correct": 11,
-              "attempted": 40,
-              "accuracy": 0.275
-            },
-            "qwen": {
-              "correct": 12,
-              "attempted": 40,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 4,
-              "attempted": 30,
-              "accuracy": 0.13333333333333333
-            }
-          },
-          "mean_accuracy": 0.4145833333333333,
-          "code": "I01",
-          "angle": 4.7189339650796684
-        },
         {
           "task_id": "assay.min_probe_panel",
           "title": "Distinguish CDSs with a probe panel",
@@ -2013,12 +1983,42 @@
               "accuracy": 0.4
             },
             "snowball-v01": {
-              "correct": 1,
-              "attempted": 33,
-              "accuracy": 0.030303030303030304
+              "correct": 3,
+              "attempted": 40,
+              "accuracy": 0.075
             }
           },
-          "mean_accuracy": 0.41382575757575757,
+          "mean_accuracy": 0.425,
+          "code": "I01",
+          "angle": 4.7189339650796684
+        },
+        {
+          "task_id": "assay.select_rna_probe",
+          "title": "Select a CDS-specific RNA probe",
+          "family": "assay",
+          "models": {
+            "luna": {
+              "correct": 38,
+              "attempted": 40,
+              "accuracy": 0.95
+            },
+            "deepinfra": {
+              "correct": 11,
+              "attempted": 40,
+              "accuracy": 0.275
+            },
+            "qwen": {
+              "correct": 12,
+              "attempted": 40,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 5,
+              "attempted": 40,
+              "accuracy": 0.125
+            }
+          },
+          "mean_accuracy": 0.4125,
           "code": "I02",
           "angle": 4.784383812029456
         },
@@ -2044,11 +2044,11 @@
             },
             "snowball-v01": {
               "correct": 7,
-              "attempted": 37,
-              "accuracy": 0.1891891891891892
+              "attempted": 40,
+              "accuracy": 0.175
             }
           },
-          "mean_accuracy": 0.3597972972972973,
+          "mean_accuracy": 0.35625,
           "code": "I03",
           "angle": 4.849833658979243
         }
@@ -2061,7 +2061,7 @@
       "family": "composition",
       "name": "Composition tasks",
       "color": "#332288",
-      "mean_accuracy": 0.36270514997170344,
+      "mean_accuracy": 0.3628289473684211,
       "tasks": [
         {
           "task_id": "pipeline.rna_edit_translation",
@@ -2084,12 +2084,12 @@
               "accuracy": 0.625
             },
             "snowball-v01": {
-              "correct": 17,
-              "attempted": 30,
-              "accuracy": 0.5666666666666667
+              "correct": 22,
+              "attempted": 40,
+              "accuracy": 0.55
             }
           },
-          "mean_accuracy": 0.7104166666666667,
+          "mean_accuracy": 0.70625,
           "code": "J01",
           "angle": 4.993823322268776
         },
@@ -2114,12 +2114,12 @@
               "accuracy": 0.6
             },
             "snowball-v01": {
-              "correct": 16,
-              "attempted": 30,
-              "accuracy": 0.5333333333333333
+              "correct": 21,
+              "attempted": 40,
+              "accuracy": 0.525
             }
           },
-          "mean_accuracy": 0.6833333333333333,
+          "mean_accuracy": 0.68125,
           "code": "J02",
           "angle": 5.059273169218563
         },
@@ -2144,8 +2144,8 @@
               "accuracy": 0.575
             },
             "snowball-v01": {
-              "correct": 6,
-              "attempted": 30,
+              "correct": 8,
+              "attempted": 40,
               "accuracy": 0.2
             }
           },
@@ -2174,8 +2174,8 @@
               "accuracy": 0.325
             },
             "snowball-v01": {
-              "correct": 6,
-              "attempted": 30,
+              "correct": 8,
+              "attempted": 40,
               "accuracy": 0.2
             }
           },
@@ -2234,12 +2234,12 @@
               "accuracy": 0.025
             },
             "snowball-v01": {
-              "correct": 4,
-              "attempted": 30,
-              "accuracy": 0.13333333333333333
+              "correct": 6,
+              "attempted": 40,
+              "accuracy": 0.15
             }
           },
-          "mean_accuracy": 0.35833333333333334,
+          "mean_accuracy": 0.3625,
           "code": "J06",
           "angle": 5.321072557017713
         },
@@ -2264,12 +2264,12 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 2,
-              "attempted": 30,
-              "accuracy": 0.06666666666666667
+              "correct": 3,
+              "attempted": 40,
+              "accuracy": 0.075
             }
           },
-          "mean_accuracy": 0.34791666666666665,
+          "mean_accuracy": 0.35,
           "code": "J07",
           "angle": 5.3865224039675
         },
@@ -2294,12 +2294,12 @@
               "accuracy": 0.125
             },
             "snowball-v01": {
-              "correct": 4,
-              "attempted": 30,
-              "accuracy": 0.13333333333333333
+              "correct": 5,
+              "attempted": 40,
+              "accuracy": 0.125
             }
           },
-          "mean_accuracy": 0.3333333333333333,
+          "mean_accuracy": 0.33125,
           "code": "J08",
           "angle": 5.451972250917287
         },
@@ -2324,14 +2324,44 @@
               "accuracy": 0.05
             },
             "snowball-v01": {
-              "correct": 1,
-              "attempted": 30,
-              "accuracy": 0.03333333333333333
+              "correct": 2,
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.32083333333333336,
+          "mean_accuracy": 0.325,
           "code": "J09",
           "angle": 5.517422097867074
+        },
+        {
+          "task_id": "joint.structure_and_codons",
+          "title": "Balance an RNA structural constraint and codon preference",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 36,
+              "attempted": 40,
+              "accuracy": 0.9
+            },
+            "deepinfra": {
+              "correct": 5,
+              "attempted": 40,
+              "accuracy": 0.125
+            },
+            "qwen": {
+              "correct": 7,
+              "attempted": 40,
+              "accuracy": 0.175
+            },
+            "snowball-v01": {
+              "correct": 3,
+              "attempted": 40,
+              "accuracy": 0.075
+            }
+          },
+          "mean_accuracy": 0.31875,
+          "code": "J10",
+          "angle": 5.582871944816862
         },
         {
           "task_id": "pipeline.fusion_junction",
@@ -2355,41 +2385,11 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 30,
+              "attempted": 40,
               "accuracy": 0.0
             }
           },
           "mean_accuracy": 0.31875,
-          "code": "J10",
-          "angle": 5.582871944816862
-        },
-        {
-          "task_id": "joint.structure_and_codons",
-          "title": "Balance an RNA structural constraint and codon preference",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 36,
-              "attempted": 40,
-              "accuracy": 0.9
-            },
-            "deepinfra": {
-              "correct": 5,
-              "attempted": 40,
-              "accuracy": 0.125
-            },
-            "qwen": {
-              "correct": 7,
-              "attempted": 40,
-              "accuracy": 0.175
-            },
-            "snowball-v01": {
-              "correct": 2,
-              "attempted": 30,
-              "accuracy": 0.06666666666666667
-            }
-          },
-          "mean_accuracy": 0.31666666666666665,
           "code": "J11",
           "angle": 5.648321791766649
         },
@@ -2414,12 +2414,12 @@
               "accuracy": 0.1
             },
             "snowball-v01": {
-              "correct": 1,
-              "attempted": 30,
-              "accuracy": 0.03333333333333333
+              "correct": 2,
+              "attempted": 40,
+              "accuracy": 0.05
             }
           },
-          "mean_accuracy": 0.30833333333333335,
+          "mean_accuracy": 0.3125,
           "code": "J12",
           "angle": 5.713771638716437
         },
@@ -2445,11 +2445,11 @@
             },
             "snowball-v01": {
               "correct": 1,
-              "attempted": 30,
-              "accuracy": 0.03333333333333333
+              "attempted": 40,
+              "accuracy": 0.025
             }
           },
-          "mean_accuracy": 0.28958333333333336,
+          "mean_accuracy": 0.28750000000000003,
           "code": "J13",
           "angle": 5.779221485666224
         },
@@ -2475,11 +2475,11 @@
             },
             "snowball-v01": {
               "correct": 1,
-              "attempted": 31,
-              "accuracy": 0.03225806451612903
+              "attempted": 40,
+              "accuracy": 0.025
             }
           },
-          "mean_accuracy": 0.27681451612903224,
+          "mean_accuracy": 0.275,
           "code": "J14",
           "angle": 5.844671332616011
         },
@@ -2505,11 +2505,11 @@
             },
             "snowball-v01": {
               "correct": 1,
-              "attempted": 30,
-              "accuracy": 0.03333333333333333
+              "attempted": 40,
+              "accuracy": 0.025
             }
           },
-          "mean_accuracy": 0.2708333333333333,
+          "mean_accuracy": 0.26875,
           "code": "J15",
           "angle": 5.910121179565799
         },
@@ -2535,7 +2535,7 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 30,
+              "attempted": 40,
               "accuracy": 0.0
             }
           },
@@ -2565,7 +2565,7 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 31,
+              "attempted": 40,
               "accuracy": 0.0
             }
           },
@@ -2595,7 +2595,7 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 30,
+              "attempted": 40,
               "accuracy": 0.0
             }
           },
@@ -2625,7 +2625,7 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 30,
+              "attempted": 40,
               "accuracy": 0.0
             }
           },
@@ -2665,7 +2665,7 @@
     },
     "snowball-v01": {
       "task_count": 84,
-      "mean_accuracy": 0.23109786951979602
+      "mean_accuracy": 0.22827380952380952
     }
   }
 }

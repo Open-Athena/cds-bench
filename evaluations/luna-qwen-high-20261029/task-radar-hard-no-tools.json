@@ -1742,36 +1742,6 @@
           "angle": 4.116795373141625
         },
         {
-          "task_id": "design.synonymous_distance",
-          "title": "Rewrite with a specified number of DNA changes",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "deepinfra": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.35000000000000003,
-          "code": "H09",
-          "angle": 4.182245220091412
-        },
-        {
           "task_id": "design.guide_escape",
           "title": "Create a guide-escape control",
           "family": "redesign",
@@ -1798,6 +1768,36 @@
             }
           },
           "mean_accuracy": 0.25,
+          "code": "H09",
+          "angle": 4.182245220091412
+        },
+        {
+          "task_id": "design.synonymous_distance",
+          "title": "Rewrite with a specified number of DNA changes",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "deepinfra": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.35000000000000003,
           "code": "H10",
           "angle": 4.2476950670411995
         },
@@ -1963,36 +1963,6 @@
       "mean_accuracy": 0.25833333333333336,
       "tasks": [
         {
-          "task_id": "assay.select_rna_probe",
-          "title": "Select a CDS-specific RNA probe",
-          "family": "assay",
-          "models": {
-            "luna": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.225,
-          "code": "I01",
-          "angle": 4.7189339650796684
-        },
-        {
           "task_id": "assay.min_probe_panel",
           "title": "Distinguish CDSs with a probe panel",
           "family": "assay",
@@ -2016,6 +1986,36 @@
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.225,
+          "code": "I01",
+          "angle": 4.7189339650796684
+        },
+        {
+          "task_id": "assay.select_rna_probe",
+          "title": "Select a CDS-specific RNA probe",
+          "family": "assay",
+          "models": {
+            "luna": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
           "mean_accuracy": 0.225,
@@ -2334,36 +2334,6 @@
           "angle": 5.517422097867074
         },
         {
-          "task_id": "pipeline.fusion_junction",
-          "title": "Assemble coding modules and locate junction motifs",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "deepinfra": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            }
-          },
-          "mean_accuracy": 0.3,
-          "code": "J10",
-          "angle": 5.582871944816862
-        },
-        {
           "task_id": "joint.structure_and_codons",
           "title": "Balance an RNA structural constraint and codon preference",
           "family": "composition",
@@ -2387,6 +2357,36 @@
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.3,
+          "code": "J10",
+          "angle": 5.582871944816862
+        },
+        {
+          "task_id": "pipeline.fusion_junction",
+          "title": "Assemble coding modules and locate junction motifs",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "deepinfra": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
           "mean_accuracy": 0.3,

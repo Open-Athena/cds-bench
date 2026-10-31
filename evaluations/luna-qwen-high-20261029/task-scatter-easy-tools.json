@@ -660,21 +660,9 @@
     "y": 0.0
   },
   {
-    "task_id": "design.synonymous_distance",
-    "title": "Rewrite with a specified number of DNA changes",
-    "code": "H09",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 10,
-    "nemotron_correct": 7,
-    "snowball_correct": 2,
-    "x": 70.0,
-    "y": 20.0
-  },
-  {
     "task_id": "design.guide_escape",
     "title": "Create a guide-escape control",
-    "code": "H10",
+    "code": "H09",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -682,6 +670,18 @@
     "snowball_correct": 0,
     "x": 40.0,
     "y": 0.0
+  },
+  {
+    "task_id": "design.synonymous_distance",
+    "title": "Rewrite with a specified number of DNA changes",
+    "code": "H10",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 7,
+    "snowball_correct": 2,
+    "x": 70.0,
+    "y": 20.0
   },
   {
     "task_id": "design.remove_dna_motifs",
@@ -744,21 +744,9 @@
     "y": 10.0
   },
   {
-    "task_id": "assay.select_rna_probe",
-    "title": "Select a CDS-specific RNA probe",
-    "code": "I01",
-    "group": "Assay design",
-    "color": "#009988",
-    "attempted": 10,
-    "nemotron_correct": 6,
-    "snowball_correct": 2,
-    "x": 60.0,
-    "y": 20.0
-  },
-  {
     "task_id": "assay.min_probe_panel",
     "title": "Distinguish CDSs with a probe panel",
-    "code": "I02",
+    "code": "I01",
     "group": "Assay design",
     "color": "#009988",
     "attempted": 10,
@@ -766,6 +754,18 @@
     "snowball_correct": 0,
     "x": 50.0,
     "y": 0.0
+  },
+  {
+    "task_id": "assay.select_rna_probe",
+    "title": "Select a CDS-specific RNA probe",
+    "code": "I02",
+    "group": "Assay design",
+    "color": "#009988",
+    "attempted": 10,
+    "nemotron_correct": 6,
+    "snowball_correct": 2,
+    "x": 60.0,
+    "y": 20.0
   },
   {
     "task_id": "assay.primer_pair",
@@ -888,27 +888,27 @@
     "y": 0.0
   },
   {
-    "task_id": "pipeline.fusion_junction",
-    "title": "Assemble coding modules and locate junction motifs",
-    "code": "J10",
-    "group": "Composition tasks",
-    "color": "#332288",
-    "attempted": 10,
-    "nemotron_correct": 4,
-    "snowball_correct": 0,
-    "x": 40.0,
-    "y": 0.0
-  },
-  {
     "task_id": "joint.structure_and_codons",
     "title": "Balance an RNA structural constraint and codon preference",
-    "code": "J11",
+    "code": "J10",
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 10,
     "nemotron_correct": 5,
     "snowball_correct": 0,
     "x": 50.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "pipeline.fusion_junction",
+    "title": "Assemble coding modules and locate junction motifs",
+    "code": "J11",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 4,
+    "snowball_correct": 0,
+    "x": 40.0,
     "y": 0.0
   },
   {
