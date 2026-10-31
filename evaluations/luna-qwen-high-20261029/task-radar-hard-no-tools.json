@@ -12,38 +12,8 @@
       "family": "variation",
       "name": "Variant effects",
       "color": "#ee6677",
-      "mean_accuracy": 0.7166666666666667,
+      "mean_accuracy": 0.675,
       "tasks": [
-        {
-          "task_id": "cds.protein_equivalence",
-          "title": "Compare encoded proteins",
-          "family": "variation",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "deepinfra": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.6666666666666666,
-          "code": "A01",
-          "angle": 0.032724923474893676
-        },
         {
           "task_id": "ambiguity.stop_certainty",
           "title": "Assess an ambiguous stop",
@@ -65,44 +35,44 @@
               "accuracy": 0.6
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
             }
           },
-          "mean_accuracy": 0.7,
-          "code": "A02",
-          "angle": 0.09817477042468103
+          "mean_accuracy": 0.75,
+          "code": "A01",
+          "angle": 0.032724923474893676
         },
         {
-          "task_id": "variant.protein_effect",
-          "title": "Classify a substitution effect",
+          "task_id": "cds.protein_equivalence",
+          "title": "Compare encoded proteins",
           "family": "variation",
           "models": {
             "luna": {
-              "correct": 10,
+              "correct": 9,
               "attempted": 10,
-              "accuracy": 1.0
+              "accuracy": 0.9
             },
             "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
-            "deepinfra": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
             }
           },
-          "mean_accuracy": 0.6333333333333333,
-          "code": "A03",
-          "angle": 0.16362461737446837
+          "mean_accuracy": 0.65,
+          "code": "A02",
+          "angle": 0.09817477042468103
         },
         {
           "task_id": "ambiguity.codon_set",
@@ -125,12 +95,42 @@
               "accuracy": 0.9
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.8666666666666667,
+          "mean_accuracy": 0.7,
+          "code": "A03",
+          "angle": 0.16362461737446837
+        },
+        {
+          "task_id": "variant.protein_effect",
+          "title": "Classify a substitution effect",
+          "family": "variation",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
+            "deepinfra": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
+            "snowball-v01": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            }
+          },
+          "mean_accuracy": 0.6,
           "code": "A04",
           "angle": 0.22907446432425574
         },
@@ -203,7 +203,7 @@
       "family": "sequence",
       "name": "Sequence operations",
       "color": "#4477aa",
-      "mean_accuracy": 0.5466666666666666,
+      "mean_accuracy": 0.495,
       "tasks": [
         {
           "task_id": "coords.aa_to_nt",
@@ -226,12 +226,12 @@
               "accuracy": 0.9
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             }
           },
-          "mean_accuracy": 0.8666666666666667,
+          "mean_accuracy": 0.825,
           "code": "B01",
           "angle": 0.5039638215133626
         },
@@ -256,12 +256,12 @@
               "accuracy": 0.4
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.6,
+          "mean_accuracy": 0.55,
           "code": "B02",
           "angle": 0.5694136684631499
         },
@@ -286,12 +286,12 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.4666666666666667,
+          "mean_accuracy": 0.425,
           "code": "B03",
           "angle": 0.6348635154129373
         },
@@ -316,12 +316,12 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.3333333333333333,
+          "mean_accuracy": 0.27499999999999997,
           "code": "B04",
           "angle": 0.7003133623627246
         },
@@ -346,12 +346,12 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.4666666666666667,
+          "mean_accuracy": 0.4,
           "code": "B05",
           "angle": 0.765763209312512
         },
@@ -394,7 +394,7 @@
       "family": "measure",
       "name": "Sequence statistics",
       "color": "#228833",
-      "mean_accuracy": 0.5222222222222223,
+      "mean_accuracy": 0.47500000000000003,
       "tasks": [
         {
           "task_id": "stats.gc_fraction",
@@ -417,12 +417,12 @@
               "accuracy": 0.7
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.7333333333333333,
+          "mean_accuracy": 0.675,
           "code": "C01",
           "angle": 0.9752027195518315
         },
@@ -447,12 +447,12 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.65,
           "code": "C02",
           "angle": 1.0406525665016189
         },
@@ -477,12 +477,12 @@
               "accuracy": 0.5
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
             }
           },
-          "mean_accuracy": 0.6333333333333333,
+          "mean_accuracy": 0.625,
           "code": "C03",
           "angle": 1.1061024134514061
         },
@@ -507,44 +507,14 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.3,
+          "mean_accuracy": 0.25,
           "code": "C04",
           "angle": 1.1715522604011934
-        },
-        {
-          "task_id": "dna.motif_positions",
-          "title": "Find nucleotide patterns",
-          "family": "measure",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3666666666666667,
-          "code": "C05",
-          "angle": 1.237002107350981
         },
         {
           "task_id": "stats.codon_counts",
@@ -567,12 +537,42 @@
               "accuracy": 0.3
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.4,
+          "mean_accuracy": 0.325,
+          "code": "C05",
+          "angle": 1.237002107350981
+        },
+        {
+          "task_id": "dna.motif_positions",
+          "title": "Find nucleotide patterns",
+          "family": "measure",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            }
+          },
+          "mean_accuracy": 0.325,
           "code": "C06",
           "angle": 1.3024519543007682
         }
@@ -585,7 +585,7 @@
       "family": "overlap",
       "name": "Overlapping frames",
       "color": "#777777",
-      "mean_accuracy": 0.5333333333333333,
+      "mean_accuracy": 0.44999999999999996,
       "tasks": [
         {
           "task_id": "overlap.constrained_edit",
@@ -608,12 +608,12 @@
               "accuracy": 0.3
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.5666666666666667,
+          "mean_accuracy": 0.475,
           "code": "D01",
           "angle": 1.4464416175903003
         },
@@ -638,12 +638,12 @@
               "accuracy": 0.3
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.5,
+          "mean_accuracy": 0.425,
           "code": "D02",
           "angle": 1.5118914645400876
         }
@@ -653,291 +653,10 @@
       "angle_end": 1.5446163880149815
     },
     {
-      "family": "protein",
-      "name": "Protein operations",
-      "color": "#b49b30",
-      "mean_accuracy": 0.47777777777777775,
-      "tasks": [
-        {
-          "task_id": "protein.nglyco_sequons",
-          "title": "Locate N-glycosylation sequons",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
-            "deepinfra": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.7666666666666666,
-          "code": "E01",
-          "angle": 1.6558811278296197
-        },
-        {
-          "task_id": "protein.motif_positions",
-          "title": "Find a supplied peptide pattern",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
-            "deepinfra": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.8,
-          "code": "E02",
-          "angle": 1.7213309747794072
-        },
-        {
-          "task_id": "protein.isoelectric_point",
-          "title": "Calculate the isoelectric point (pI)",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
-            "deepinfra": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.6333333333333333,
-          "code": "E03",
-          "angle": 1.7867808217291945
-        },
-        {
-          "task_id": "protein.charge_at_ph",
-          "title": "Calculate model charge at a pH",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.33333333333333337,
-          "code": "E04",
-          "angle": 1.8522306686789818
-        },
-        {
-          "task_id": "protein.mean_hydropathy",
-          "title": "Calculate mean hydropathy",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3,
-          "code": "E05",
-          "angle": 1.9176805156287693
-        },
-        {
-          "task_id": "protein.diagnostic_peptide",
-          "title": "Select a distinguishing peptide",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
-            "deepinfra": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.4666666666666667,
-          "code": "E06",
-          "angle": 1.9831303625785566
-        },
-        {
-          "task_id": "protein.residue_counts",
-          "title": "Count amino acids",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.2333333333333333,
-          "code": "E07",
-          "angle": 2.048580209528344
-        },
-        {
-          "task_id": "protein.monoisotopic_mass",
-          "title": "Calculate peptide mass",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.4666666666666667,
-          "code": "E08",
-          "angle": 2.114030056478131
-        },
-        {
-          "task_id": "protein.trypsin_digest",
-          "title": "Digest with trypsin rules",
-          "family": "protein",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3,
-          "code": "E09",
-          "angle": 2.1794799034279184
-        }
-      ],
-      "code": "E",
-      "angle_start": 1.623156204354726,
-      "angle_end": 2.2122048269028123
-    },
-    {
       "family": "rna",
       "name": "RNA operations",
       "color": "#55aacc",
-      "mean_accuracy": 0.4375,
+      "mean_accuracy": 0.36875,
       "tasks": [
         {
           "task_id": "rna.structure_score",
@@ -960,14 +679,14 @@
               "accuracy": 0.7
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
             }
           },
-          "mean_accuracy": 0.8666666666666667,
-          "code": "F01",
-          "angle": 2.323469566717451
+          "mean_accuracy": 0.85,
+          "code": "E01",
+          "angle": 1.6558811278296197
         },
         {
           "task_id": "rna.pair_compatibility",
@@ -990,14 +709,14 @@
               "accuracy": 0.9
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.9333333333333333,
-          "code": "F02",
-          "angle": 2.3889194136672383
+          "mean_accuracy": 0.75,
+          "code": "E02",
+          "angle": 1.7213309747794072
         },
         {
           "task_id": "rna.dotbracket_to_pairs",
@@ -1026,8 +745,8 @@
             }
           },
           "mean_accuracy": null,
-          "code": "F03",
-          "angle": 2.4543692606170255
+          "code": "E03",
+          "angle": 1.7867808217291945
         },
         {
           "task_id": "rna.apply_edits",
@@ -1050,14 +769,14 @@
               "accuracy": 0.1
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.43333333333333335,
-          "code": "F04",
-          "angle": 2.5198191075668133
+          "mean_accuracy": 0.35,
+          "code": "E04",
+          "angle": 1.8522306686789818
         },
         {
           "task_id": "rna.translate",
@@ -1081,13 +800,13 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.4666666666666667,
-          "code": "F05",
-          "angle": 2.5852689545166005
+          "mean_accuracy": 0.35000000000000003,
+          "code": "E05",
+          "angle": 1.9176805156287693
         },
         {
           "task_id": "rna.guide_hits",
@@ -1111,13 +830,13 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.3666666666666667,
-          "code": "F06",
-          "angle": 2.650718801466388
+          "mean_accuracy": 0.275,
+          "code": "E06",
+          "angle": 1.9831303625785566
         },
         {
           "task_id": "rna.motif_counts",
@@ -1140,14 +859,14 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.2333333333333333,
-          "code": "F07",
-          "angle": 2.716168648416175
+          "mean_accuracy": 0.19999999999999998,
+          "code": "E07",
+          "angle": 2.048580209528344
         },
         {
           "task_id": "rna.t1_digest",
@@ -1170,14 +889,14 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.19999999999999998,
-          "code": "F08",
-          "angle": 2.7816184953659624
+          "mean_accuracy": 0.175,
+          "code": "E08",
+          "angle": 2.114030056478131
         },
         {
           "task_id": "rna.max_pair_fold",
@@ -1201,11 +920,292 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
           "mean_accuracy": 0.0,
+          "code": "E09",
+          "angle": 2.1794799034279184
+        }
+      ],
+      "code": "E",
+      "angle_start": 1.623156204354726,
+      "angle_end": 2.2122048269028123
+    },
+    {
+      "family": "protein",
+      "name": "Protein operations",
+      "color": "#b49b30",
+      "mean_accuracy": 0.4166666666666667,
+      "tasks": [
+        {
+          "task_id": "protein.nglyco_sequons",
+          "title": "Locate N-glycosylation sequons",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
+            "deepinfra": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "snowball-v01": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            }
+          },
+          "mean_accuracy": 0.7,
+          "code": "F01",
+          "angle": 2.323469566717451
+        },
+        {
+          "task_id": "protein.motif_positions",
+          "title": "Find a supplied peptide pattern",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
+            "deepinfra": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.6,
+          "code": "F02",
+          "angle": 2.3889194136672383
+        },
+        {
+          "task_id": "protein.isoelectric_point",
+          "title": "Calculate the isoelectric point (pI)",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
+            "deepinfra": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
+            "snowball-v01": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            }
+          },
+          "mean_accuracy": 0.525,
+          "code": "F03",
+          "angle": 2.4543692606170255
+        },
+        {
+          "task_id": "protein.charge_at_ph",
+          "title": "Calculate model charge at a pH",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            }
+          },
+          "mean_accuracy": 0.375,
+          "code": "F04",
+          "angle": 2.5198191075668133
+        },
+        {
+          "task_id": "protein.diagnostic_peptide",
+          "title": "Select a distinguishing peptide",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "snowball-v01": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            }
+          },
+          "mean_accuracy": 0.47500000000000003,
+          "code": "F05",
+          "angle": 2.5852689545166005
+        },
+        {
+          "task_id": "protein.mean_hydropathy",
+          "title": "Calculate mean hydropathy",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "snowball-v01": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            }
+          },
+          "mean_accuracy": 0.3,
+          "code": "F06",
+          "angle": 2.650718801466388
+        },
+        {
+          "task_id": "protein.monoisotopic_mass",
+          "title": "Calculate peptide mass",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.35,
+          "code": "F07",
+          "angle": 2.716168648416175
+        },
+        {
+          "task_id": "protein.residue_counts",
+          "title": "Count amino acids",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.19999999999999998,
+          "code": "F08",
+          "angle": 2.7816184953659624
+        },
+        {
+          "task_id": "protein.trypsin_digest",
+          "title": "Digest with trypsin rules",
+          "family": "protein",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.225,
           "code": "F09",
           "angle": 2.8470683423157497
         }
@@ -1218,38 +1218,8 @@
       "family": "construct",
       "name": "Construct design",
       "color": "#dd7733",
-      "mean_accuracy": 0.44166666666666665,
+      "mean_accuracy": 0.384375,
       "tasks": [
-        {
-          "task_id": "construct.join_modules",
-          "title": "Join coding modules",
-          "family": "construct",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "deepinfra": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.5,
-          "code": "G01",
-          "angle": 2.9910580056052822
-        },
         {
           "task_id": "construct.tag_fusion",
           "title": "Build a tagged protein CDS",
@@ -1271,12 +1241,42 @@
               "accuracy": 0.4
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.6,
+          "mean_accuracy": 0.55,
+          "code": "G01",
+          "angle": 2.9910580056052822
+        },
+        {
+          "task_id": "construct.join_modules",
+          "title": "Join coding modules",
+          "family": "construct",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "deepinfra": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            }
+          },
+          "mean_accuracy": 0.475,
           "code": "G02",
           "angle": 3.0565078525550695
         },
@@ -1331,12 +1331,12 @@
               "accuracy": 0.5
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.55,
           "code": "G04",
           "angle": 3.187407546454644
         },
@@ -1361,44 +1361,14 @@
               "accuracy": 0.1
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.5,
+          "mean_accuracy": 0.4,
           "code": "G05",
           "angle": 3.2528573934044314
-        },
-        {
-          "task_id": "construct.edit_aware_encoding",
-          "title": "Design an RNA-editing-dependent product",
-          "family": "construct",
-          "models": {
-            "luna": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
-            "deepinfra": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.5,
-          "code": "G06",
-          "angle": 3.318307240354219
         },
         {
           "task_id": "library.codon_products",
@@ -1421,12 +1391,42 @@
               "accuracy": 0.3
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.43333333333333335,
+          "mean_accuracy": 0.425,
+          "code": "G06",
+          "angle": 3.318307240354219
+        },
+        {
+          "task_id": "construct.edit_aware_encoding",
+          "title": "Design an RNA-editing-dependent product",
+          "family": "construct",
+          "models": {
+            "luna": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
+            "deepinfra": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.4,
           "code": "G07",
           "angle": 3.3837570873040064
         },
@@ -1451,12 +1451,12 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.16666666666666666,
+          "mean_accuracy": 0.15,
           "code": "G08",
           "angle": 3.4492069342537937
         },
@@ -1481,12 +1481,12 @@
               "accuracy": 0.1
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.13333333333333333,
+          "mean_accuracy": 0.125,
           "code": "G09",
           "angle": 3.514656781203581
         }
@@ -1496,111 +1496,10 @@
       "angle_end": 3.547381704678475
     },
     {
-      "family": "assay",
-      "name": "Assay design",
-      "color": "#009988",
-      "mean_accuracy": 0.3,
-      "tasks": [
-        {
-          "task_id": "assay.min_probe_panel",
-          "title": "Distinguish CDSs with a probe panel",
-          "family": "assay",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3,
-          "code": "H01",
-          "angle": 3.6586464444931135
-        },
-        {
-          "task_id": "assay.select_rna_probe",
-          "title": "Select a CDS-specific RNA probe",
-          "family": "assay",
-          "models": {
-            "luna": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.26666666666666666,
-          "code": "H02",
-          "angle": 3.7240962914429008
-        },
-        {
-          "task_id": "assay.primer_pair",
-          "title": "Choose CDS-internal PCR primers",
-          "family": "assay",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.33333333333333337,
-          "code": "H03",
-          "angle": 3.789546138392688
-        }
-      ],
-      "code": "H",
-      "angle_start": 3.6259215210182196,
-      "angle_end": 3.822271061867582
-    },
-    {
       "family": "redesign",
       "name": "Synonymous design",
       "color": "#aa3377",
-      "mean_accuracy": 0.4111111111111111,
+      "mean_accuracy": 0.3466666666666667,
       "tasks": [
         {
           "task_id": "design.expose_rna_window",
@@ -1623,14 +1522,14 @@
               "accuracy": 0.5
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.6666666666666666,
-          "code": "I01",
-          "angle": 3.9335358016822206
+          "mean_accuracy": 0.625,
+          "code": "H01",
+          "angle": 3.6586464444931135
         },
         {
           "task_id": "design.pairing_repair",
@@ -1653,14 +1552,14 @@
               "accuracy": 0.3
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.5333333333333333,
-          "code": "I02",
-          "angle": 3.998985648632008
+          "mean_accuracy": 0.475,
+          "code": "H02",
+          "angle": 3.7240962914429008
         },
         {
           "task_id": "design.codon_allowlist",
@@ -1683,14 +1582,14 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.6,
-          "code": "I03",
-          "angle": 4.064435495581795
+          "mean_accuracy": 0.525,
+          "code": "H03",
+          "angle": 3.789546138392688
         },
         {
           "task_id": "design.codon_preference",
@@ -1713,14 +1612,14 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.5,
-          "code": "I04",
-          "angle": 4.1298853425315825
+          "mean_accuracy": 0.425,
+          "code": "H04",
+          "angle": 3.8549959853424753
         },
         {
           "task_id": "design.codon_profile",
@@ -1743,14 +1642,44 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.5,
-          "code": "I05",
-          "angle": 4.19533518948137
+          "mean_accuracy": 0.45,
+          "code": "H05",
+          "angle": 3.9204458322922626
+        },
+        {
+          "task_id": "design.gc_windows",
+          "title": "Control local GC by recoding",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            }
+          },
+          "mean_accuracy": 0.3,
+          "code": "H06",
+          "angle": 3.98589567924205
         },
         {
           "task_id": "design.insert_dna_motif",
@@ -1773,14 +1702,14 @@
               "accuracy": 0.2
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.5,
-          "code": "I06",
-          "angle": 4.260785036431157
+          "mean_accuracy": 0.4,
+          "code": "H07",
+          "angle": 4.051345526191837
         },
         {
           "task_id": "design.rna_motif_control",
@@ -1803,18 +1732,18 @@
               "accuracy": 0.1
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.4,
-          "code": "I07",
-          "angle": 4.326234883380945
+          "mean_accuracy": 0.325,
+          "code": "H08",
+          "angle": 4.116795373141625
         },
         {
-          "task_id": "design.dinucleotide_counts",
-          "title": "Control RNA dinucleotide counts",
+          "task_id": "design.synonymous_distance",
+          "title": "Rewrite with a specified number of DNA changes",
           "family": "redesign",
           "models": {
             "luna": {
@@ -1823,24 +1752,24 @@
               "accuracy": 0.8
             },
             "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "deepinfra": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
+            "snowball-v01": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
             }
           },
-          "mean_accuracy": 0.30000000000000004,
-          "code": "I08",
-          "angle": 4.391684730330732
+          "mean_accuracy": 0.35000000000000003,
+          "code": "H09",
+          "angle": 4.182245220091412
         },
         {
           "task_id": "design.guide_escape",
@@ -1864,73 +1793,13 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3333333333333333,
-          "code": "I09",
-          "angle": 4.457134577280519
-        },
-        {
-          "task_id": "design.gc_windows",
-          "title": "Control local GC by recoding",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
             }
           },
-          "mean_accuracy": 0.3333333333333333,
-          "code": "I10",
-          "angle": 4.522584424230306
-        },
-        {
-          "task_id": "design.synonymous_distance",
-          "title": "Rewrite with a specified number of DNA changes",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "deepinfra": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.43333333333333335,
-          "code": "I11",
-          "angle": 4.588034271180094
+          "mean_accuracy": 0.25,
+          "code": "H10",
+          "angle": 4.2476950670411995
         },
         {
           "task_id": "design.remove_dna_motifs",
@@ -1954,13 +1823,73 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.26666666666666666,
-          "code": "I12",
-          "angle": 4.653484118129882
+          "mean_accuracy": 0.2,
+          "code": "H11",
+          "angle": 4.313144913990987
+        },
+        {
+          "task_id": "design.dinucleotide_counts",
+          "title": "Control RNA dinucleotide counts",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.225,
+          "code": "H12",
+          "angle": 4.378594760940774
+        },
+        {
+          "task_id": "design.break_repeats",
+          "title": "Break homopolymers and repeats",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.225,
+          "code": "H13",
+          "angle": 4.444044607890562
         },
         {
           "task_id": "design.structure_score",
@@ -1983,14 +1912,14 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.26666666666666666,
-          "code": "I13",
-          "angle": 4.7189339650796684
+          "mean_accuracy": 0.225,
+          "code": "H14",
+          "angle": 4.509494454840349
         },
         {
           "task_id": "design.variant_panel",
@@ -2014,18 +1943,29 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.26666666666666666,
-          "code": "I14",
-          "angle": 4.784383812029456
-        },
+          "mean_accuracy": 0.2,
+          "code": "H15",
+          "angle": 4.574944301790136
+        }
+      ],
+      "code": "H",
+      "angle_start": 3.6259215210182196,
+      "angle_end": 4.60766922526503
+    },
+    {
+      "family": "assay",
+      "name": "Assay design",
+      "color": "#009988",
+      "mean_accuracy": 0.25833333333333336,
+      "tasks": [
         {
-          "task_id": "design.break_repeats",
-          "title": "Break homopolymers and repeats",
-          "family": "redesign",
+          "task_id": "assay.select_rna_probe",
+          "title": "Select a CDS-specific RNA probe",
+          "family": "assay",
           "models": {
             "luna": {
               "correct": 8,
@@ -2043,25 +1983,85 @@
               "accuracy": 0.0
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.26666666666666666,
-          "code": "I15",
+          "mean_accuracy": 0.225,
+          "code": "I01",
+          "angle": 4.7189339650796684
+        },
+        {
+          "task_id": "assay.min_probe_panel",
+          "title": "Distinguish CDSs with a probe panel",
+          "family": "assay",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.225,
+          "code": "I02",
+          "angle": 4.784383812029456
+        },
+        {
+          "task_id": "assay.primer_pair",
+          "title": "Choose CDS-internal PCR primers",
+          "family": "assay",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "snowball-v01": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            }
+          },
+          "mean_accuracy": 0.325,
+          "code": "I03",
           "angle": 4.849833658979243
         }
       ],
       "code": "I",
-      "angle_start": 3.9008108782073267,
+      "angle_start": 4.686209041604775,
       "angle_end": 4.882558582454137
     },
     {
       "family": "composition",
       "name": "Composition tasks",
       "color": "#332288",
-      "mean_accuracy": 0.38070175438596493,
+      "mean_accuracy": 0.3078947368421053,
       "tasks": [
         {
           "task_id": "pipeline.rna_edit_translation",
@@ -2084,12 +2084,12 @@
               "accuracy": 0.5
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.6,
+          "mean_accuracy": 0.525,
           "code": "J01",
           "angle": 4.993823322268776
         },
@@ -2114,12 +2114,12 @@
               "accuracy": 0.5
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.6333333333333333,
+          "mean_accuracy": 0.6,
           "code": "J02",
           "angle": 5.059273169218563
         },
@@ -2144,14 +2144,104 @@
               "accuracy": 0.8
             },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.7333333333333334,
+          "mean_accuracy": 0.65,
           "code": "J03",
           "angle": 5.124723016168351
+        },
+        {
+          "task_id": "pipeline.diagnostic_digest",
+          "title": "From CDS panel to a diagnostic peptide",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "snowball-v01": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            }
+          },
+          "mean_accuracy": 0.325,
+          "code": "J04",
+          "angle": 5.190172863118137
+        },
+        {
+          "task_id": "pipeline.motif_to_dna",
+          "title": "From peptide motif to encoding DNA",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.425,
+          "code": "J05",
+          "angle": 5.255622710067925
+        },
+        {
+          "task_id": "pipeline.overlap_edit_verify",
+          "title": "Edit one frame and audit both products",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.25,
+          "code": "J06",
+          "angle": 5.321072557017713
         },
         {
           "task_id": "joint.clone_ready_cds",
@@ -2175,133 +2265,13 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.33333333333333337,
-          "code": "J04",
-          "angle": 5.190172863118137
-        },
-        {
-          "task_id": "pipeline.diagnostic_digest",
-          "title": "From CDS panel to a diagnostic peptide",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3666666666666667,
-          "code": "J05",
-          "angle": 5.255622710067925
-        },
-        {
-          "task_id": "pipeline.motif_to_dna",
-          "title": "From peptide motif to encoding DNA",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.5333333333333333,
-          "code": "J06",
-          "angle": 5.321072557017713
-        },
-        {
-          "task_id": "pipeline.overlap_edit_verify",
-          "title": "Edit one frame and audit both products",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "qwen": {
-              "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
             }
           },
-          "mean_accuracy": 0.3,
+          "mean_accuracy": 0.25,
           "code": "J07",
           "angle": 5.3865224039675
-        },
-        {
-          "task_id": "pipeline.library_and_verify",
-          "title": "Design a codon library and verify its coverage",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "deepinfra": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3333333333333333,
-          "code": "J08",
-          "angle": 5.451972250917287
         },
         {
           "task_id": "pipeline.structure_gated_digest",
@@ -2325,43 +2295,43 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.3666666666666667,
-          "code": "J09",
-          "angle": 5.517422097867074
+          "mean_accuracy": 0.275,
+          "code": "J08",
+          "angle": 5.451972250917287
         },
         {
-          "task_id": "joint.structure_and_codons",
-          "title": "Balance an RNA structural constraint and codon preference",
+          "task_id": "pipeline.library_and_verify",
+          "title": "Design a codon library and verify its coverage",
           "family": "composition",
           "models": {
             "luna": {
-              "correct": 9,
+              "correct": 7,
               "attempted": 10,
-              "accuracy": 0.9
+              "accuracy": 0.7
             },
             "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
             },
-            "deepinfra": {
+            "snowball-v01": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
             }
           },
-          "mean_accuracy": 0.3666666666666667,
-          "code": "J10",
-          "angle": 5.582871944816862
+          "mean_accuracy": 0.25,
+          "code": "J09",
+          "angle": 5.517422097867074
         },
         {
           "task_id": "pipeline.fusion_junction",
@@ -2385,11 +2355,41 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.4,
+          "mean_accuracy": 0.3,
+          "code": "J10",
+          "angle": 5.582871944816862
+        },
+        {
+          "task_id": "joint.structure_and_codons",
+          "title": "Balance an RNA structural constraint and codon preference",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.3,
           "code": "J11",
           "angle": 5.648321791766649
         },
@@ -2415,11 +2415,11 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.43333333333333335,
+          "mean_accuracy": 0.325,
           "code": "J12",
           "angle": 5.713771638716437
         },
@@ -2445,11 +2445,11 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.30000000000000004,
+          "mean_accuracy": 0.225,
           "code": "J13",
           "angle": 5.779221485666224
         },
@@ -2475,43 +2475,13 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.3,
+          "mean_accuracy": 0.225,
           "code": "J14",
           "angle": 5.844671332616011
-        },
-        {
-          "task_id": "pipeline.target_and_escape",
-          "title": "Choose an RNA probe and a matched escape control",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.3333333333333333,
-          "code": "J15",
-          "angle": 5.910121179565799
         },
         {
           "task_id": "pipeline.variant_peptides",
@@ -2535,11 +2505,41 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.19999999999999998,
+          "mean_accuracy": 0.15,
+          "code": "J15",
+          "angle": 5.910121179565799
+        },
+        {
+          "task_id": "pipeline.target_and_escape",
+          "title": "Choose an RNA probe and a matched escape control",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            }
+          },
+          "mean_accuracy": 0.25,
           "code": "J16",
           "angle": 5.975571026515586
         },
@@ -2565,11 +2565,11 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.23333333333333334,
+          "mean_accuracy": 0.175,
           "code": "J17",
           "angle": 6.041020873465373
         },
@@ -2595,11 +2595,11 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.26666666666666666,
+          "mean_accuracy": 0.2,
           "code": "J18",
           "angle": 6.10647072041516
         },
@@ -2625,11 +2625,11 @@
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.19999999999999998,
+          "mean_accuracy": 0.15,
           "code": "J19",
           "angle": 6.171920567364948
         }
@@ -2664,8 +2664,8 @@
       "mean_accuracy": 0.23417721518987342
     },
     "snowball-v01": {
-      "task_count": 0,
-      "mean_accuracy": null
+      "task_count": 79,
+      "mean_accuracy": 0.2
     }
   }
 }

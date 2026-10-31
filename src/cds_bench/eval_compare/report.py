@@ -1,4 +1,4 @@
-"""Self-contained matched Luna/Qwen report; raw reasoning remains untracked."""
+"""Self-contained full model comparison; raw reasoning remains untracked."""
 
 import argparse
 import csv
@@ -23,7 +23,7 @@ from .lightning_run import RAW as LIGHTNING_RAW
 from .deepinfra_run import RAW as DEEPINFRA_RAW
 from .lightning_supervise import latest_failure_was_rate_limit
 from .tables import HEADERS, cells, html_grouped_table
-from . import radar
+from . import radar, scatter
 from . import snowball_full
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
@@ -190,7 +190,8 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
                                      "condition": condition, "planned": planned,
                                      **{k: metric[k] for k in metric if k in writer.fieldnames}})
     plot(output, summaries)
-    radar.plot(output, summary, MODELS)
+    radar_views = radar.plot(output, summary, MODELS)
+    scatter.plot(output, public, radar_views['all'])
     render(output, summary, config, data, public)
     (output / "pr-body.md").write_text(pr_body(summary, config))
     (output / "README.md").write_text(
@@ -201,6 +202,7 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
         "Checkpoint: [open-athena/Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3), revision `adc0078a19a4383bc998fcdb43867b3360baf5f3`.\n\n"
         "Accuracy by condition: [PNG](overall.png) · [SVG](overall.svg).\n\n"
         "[Pooled task radar](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report selector also shows each of the four evaluation conditions. Task codes and group colors stay fixed across views, with links to the full-name/ID key and existing details.\n\n"
+        "Nemotron versus Snowball, Easy conditions: [PNG](nemotron-snowball-easy.png) · [SVG](nemotron-snowball-easy.svg). The two panels share a legend and axes. Each point compares the same completed examples for one task; all failures count. The interactive report includes all five condition views and links points to task details.\n\n"
         "[30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
         "Failed Qwen request counts, timeout flags, usage, and charges are reconstructed from saved response metadata where the collector omitted them. Raw files and scores are unchanged; no requests are retried.\n"
     )
@@ -286,6 +288,9 @@ def pr_body(summary, config):
         "\n**Task performance: All conditions (pooled)**",
         *figure("task-radar", "CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model"),
         f"\nEach spoke pools completed attempts for one task. Subtitles average available task accuracies equally; five tasks have only easy variants. Missing results are unscored, not zero. Groups and tasks share the same order across models. The [report’s condition selector and task key]({base}/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.",
+        "\n**Nemotron versus Snowball: Easy examples**",
+        *figure("nemotron-snowball-easy", "Task accuracy for Nemotron and Snowball: Easy without tools and Easy with Python"),
+        f"\nEach point is a task, colored by the same groups as the radars. Both axes use identical completed cases. Above the dashed equality line Snowball scores higher; below it Nemotron does. Numbered markers combine overlapping tasks. The [interactive report]({base}/report.html#task-scatter) shows task names, IDs and scores when you select a point.",
         "\nScores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.",
         "\n<details>\n<summary>Full-evaluation failures, billing and token-budget exceptions</summary>\n",
         markdown_table(
@@ -363,7 +368,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
 .indexed-table tbody+tbody{border-top:2px solid #bfc9d2}.indexed-table tbody th{background:white;font-weight:400}.indexed-table .index-group{vertical-align:middle;font-weight:600;min-width:130px;max-width:210px;border-right:1px solid #dce2e7}.indexed-table .index-item{min-width:100px;max-width:210px}.indexed-table td{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}.indexed-table thead th:nth-child(n+3){text-align:right}
 .task-radar-svg{display:block;width:100%;height:auto;min-width:1200px}.task-radar-figure{margin:0}.task-radar-figure figcaption{color:#64727e;font-size:13px;margin-top:8px}.radar-swatch{display:inline-block;width:10px;height:10px;margin-right:8px}.radar-key td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}.radar-key-group th{font-weight:600}
 .radar-control select{margin-left:8px}
-</style><main><h1>CDS-bench: full model evaluation</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
+</style><main><h1>CDS-bench: full model evaluation</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#task-scatter">Task comparison</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
     parts.append(f"<p>Full evaluation: <b>Snowball v0.1 {summary['snowball_completed']:,}/3,260 ({esc(summary['state'])})</b>. GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. Retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
     parts.append('<p class="muted">Snowball uses 32,768 aggregate generated tokens, a 1,800-second API wall deadline, temperature 0.7 and concurrency 60. The OpenRouter models use a 300-second deadline and concurrency 10. Snowball’s native thinking/tool transport matches its validated pilot; no per-request monetary price is exposed.</p>')
@@ -416,6 +421,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
         for family, metrics in summary["by_family"].items()
     ]))
     parts.append(radar.section(output, summary, MODELS))
+    parts.append(scatter.section(output))
     parts.append('<h2 id="tasks">By task</h2><p>Expand a row to inspect all ten instances, actual prompts, expected answers, and each model’s final prediction. Counts are correct / finished; — means that hard variant was removed.</p><input id="filter" placeholder="Filter task names or families"><div class="scroll"><table><thead><tr><th rowspan="2">Task</th>'+''.join(f'<th colspan="{len(MODELS)}">{label}</th>' for label in LABELS)+'</tr><tr>'+''.join(f'<th>{esc(name)}</th>' for _ in LABELS for name in MODELS.values())+'</tr></thead><tbody>')
     for task, definition in TASKS.items():
         title = definition["title"]

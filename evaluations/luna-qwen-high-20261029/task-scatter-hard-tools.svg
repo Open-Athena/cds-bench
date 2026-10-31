@@ -1,0 +1,407 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" width="748.8pt" height="482.4pt" viewBox="0 0 748.8 482.4" version="1.1" class="task-scatter-svg" role="group" aria-label="Hard, Python: Nemotron versus Snowball task accuracy">
+ <metadata>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <ns2:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </ns2:Agent>
+    </dc:creator>
+   </ns2:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="comparison-hard-tools-figure_1">
+  <g id="comparison-hard-tools-patch_1">
+   <path d="M 0 482.4  L 748.8 482.4  L 748.8 0  L 0 0  z " style="fill: #ffffff" />
+  </g>
+  <g id="comparison-hard-tools-axes_1">
+   <g id="comparison-hard-tools-patch_2">
+    <path d="M 96.66 419.688  L 487.404 419.688  L 487.404 28.944  L 96.66 28.944  z " style="fill: #ffffff" />
+   </g>
+   <g id="comparison-hard-tools-matplotlib.axis_1">
+    <g id="comparison-hard-tools-xtick_1">
+     <g id="comparison-hard-tools-line2d_1">
+      <path d="M 111.132 419.688  L 111.132 28.944  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_2">
+      <defs>
+       <path id="comparison-hard-tools-mb2ec739781" d="M 0 0  L 0 3.5  " style="stroke: #000000; stroke-width: 0.8" />
+      </defs>
+      <g>
+       <use xlink:href="#comparison-hard-tools-mb2ec739781" x="111.132" y="419.688" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="111.132" y="434.285656" transform="rotate(-0 111.132 434.285656)">0</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-xtick_2">
+     <g id="comparison-hard-tools-line2d_3">
+      <path d="M 183.492 419.688  L 183.492 28.944  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_4">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mb2ec739781" x="183.492" y="419.688" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="183.492" y="434.285656" transform="rotate(-0 183.492 434.285656)">20</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-xtick_3">
+     <g id="comparison-hard-tools-line2d_5">
+      <path d="M 255.852 419.688  L 255.852 28.944  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_6">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mb2ec739781" x="255.852" y="419.688" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="255.852" y="434.285656" transform="rotate(-0 255.852 434.285656)">40</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-xtick_4">
+     <g id="comparison-hard-tools-line2d_7">
+      <path d="M 328.212 419.688  L 328.212 28.944  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_8">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mb2ec739781" x="328.212" y="419.688" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="328.212" y="434.285656" transform="rotate(-0 328.212 434.285656)">60</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-xtick_5">
+     <g id="comparison-hard-tools-line2d_9">
+      <path d="M 400.572 419.688  L 400.572 28.944  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_10">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mb2ec739781" x="400.572" y="419.688" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="400.572" y="434.285656" transform="rotate(-0 400.572 434.285656)">80</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-xtick_6">
+     <g id="comparison-hard-tools-line2d_11">
+      <path d="M 472.932 419.688  L 472.932 28.944  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_12">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mb2ec739781" x="472.932" y="419.688" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="472.932" y="434.285656" transform="rotate(-0 472.932 434.285656)">100</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="292.032" y="454.286438" transform="rotate(-0 292.032 454.286438)">Nemotron 3.5 Lightning · task accuracy (%)</text>
+    </g>
+   </g>
+   <g id="comparison-hard-tools-matplotlib.axis_2">
+    <g id="comparison-hard-tools-ytick_1">
+     <g id="comparison-hard-tools-line2d_13">
+      <path d="M 96.66 405.216  L 487.404 405.216  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_14">
+      <defs>
+       <path id="comparison-hard-tools-mcd6e48aa87" d="M 0 0  L -3.5 0  " style="stroke: #000000; stroke-width: 0.8" />
+      </defs>
+      <g>
+       <use xlink:href="#comparison-hard-tools-mcd6e48aa87" x="96.66" y="405.216" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_8">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="89.66" y="409.014828" transform="rotate(-0 89.66 409.014828)">0</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-ytick_2">
+     <g id="comparison-hard-tools-line2d_15">
+      <path d="M 96.66 332.856  L 487.404 332.856  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_16">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mcd6e48aa87" x="96.66" y="332.856" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_9">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="89.66" y="336.654828" transform="rotate(-0 89.66 336.654828)">20</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-ytick_3">
+     <g id="comparison-hard-tools-line2d_17">
+      <path d="M 96.66 260.496  L 487.404 260.496  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_18">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mcd6e48aa87" x="96.66" y="260.496" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_10">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="89.66" y="264.294828" transform="rotate(-0 89.66 264.294828)">40</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-ytick_4">
+     <g id="comparison-hard-tools-line2d_19">
+      <path d="M 96.66 188.136  L 487.404 188.136  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_20">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mcd6e48aa87" x="96.66" y="188.136" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_11">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="89.66" y="191.934828" transform="rotate(-0 89.66 191.934828)">60</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-ytick_5">
+     <g id="comparison-hard-tools-line2d_21">
+      <path d="M 96.66 115.776  L 487.404 115.776  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_22">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mcd6e48aa87" x="96.66" y="115.776" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_12">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="89.66" y="119.574828" transform="rotate(-0 89.66 119.574828)">80</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-ytick_6">
+     <g id="comparison-hard-tools-line2d_23">
+      <path d="M 96.66 43.416  L 487.404 43.416  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke: #e1e5e9; stroke-width: 0.7; stroke-linecap: square" />
+     </g>
+     <g id="comparison-hard-tools-line2d_24">
+      <g>
+       <use xlink:href="#comparison-hard-tools-mcd6e48aa87" x="96.66" y="43.416" style="stroke: #000000; stroke-width: 0.8" />
+      </g>
+     </g>
+     <g id="comparison-hard-tools-text_13">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="89.66" y="47.214828" transform="rotate(-0 89.66 47.214828)">100</text>
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_14">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="58.170156" y="224.316" transform="rotate(-90 58.170156 224.316)">Snowball v0.1 · task accuracy (%)</text>
+    </g>
+   </g>
+   <g id="comparison-hard-tools-line2d_25">
+    <path d="M 111.132 405.216  L 472.932 43.416  " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #94a3ad" />
+   </g>
+   <g id="comparison-hard-tools-patch_3">
+    <path d="M 96.66 419.688  L 96.66 28.944  " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
+   </g>
+   <g id="comparison-hard-tools-patch_4">
+    <path d="M 96.66 419.688  L 487.404 419.688  " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square" />
+   </g>
+   <g id="comparison-hard-tools-patch_5">
+    <path d="M 118.1871 405.216  C 118.1871 404.289533 118.004606 403.372074 117.650062 402.51613  C 117.295519 401.660186 116.77582 400.882402 116.120709 400.227291  C 115.465598 399.57218 114.687814 399.052481 113.83187 398.697938  C 112.975926 398.343394 112.058467 398.1609 111.132 398.1609  C 110.205533 398.1609 109.288074 398.343394 108.43213 398.697938  C 107.576186 399.052481 106.798402 399.57218 106.143291 400.227291  C 105.48818 400.882402 104.968481 401.660186 104.613938 402.51613  C 104.259394 403.372074 104.0769 404.289533 104.0769 405.216  C 104.0769 406.142467 104.259394 407.059926 104.613938 407.91587  C 104.968481 408.771814 105.48818 409.549598 106.143291 410.204709  C 106.798402 410.85982 107.576186 411.379519 108.43213 411.734062  C 109.288074 412.088606 110.205533 412.2711 111.132 412.2711  C 112.058467 412.2711 112.975926 412.088606 113.83187 411.734062  C 114.687814 411.379519 115.465598 410.85982 116.120709 410.204709  C 116.77582 409.549598 117.295519 408.771814 117.650062 407.91587  C 118.004606 407.059926 118.1871 406.142467 118.1871 405.216  M 111.132 405.216  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #b49b30; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_6">
+    <path d="M 296.5545 405.216  C 296.5545 404.622111 296.437517 404.033996 296.210245 403.485314  C 295.982974 402.936632 295.649834 402.438053 295.22989 402.01811  C 294.809947 401.598166 294.311368 401.265026 293.762686 401.037755  C 293.214004 400.810483 292.625889 400.6935 292.032 400.6935  C 291.438111 400.6935 290.849996 400.810483 290.301314 401.037755  C 289.752632 401.265026 289.254053 401.598166 288.83411 402.01811  C 288.414166 402.438053 288.081026 402.936632 287.853755 403.485314  C 287.626483 404.033996 287.5095 404.622111 287.5095 405.216  C 287.5095 405.809889 287.626483 406.398004 287.853755 406.946686  C 288.081026 407.495368 288.414166 407.993947 288.83411 408.41389  C 289.254053 408.833834 289.752632 409.166974 290.301314 409.394245  C 290.849996 409.621517 291.438111 409.7385 292.032 409.7385  C 292.625889 409.7385 293.214004 409.621517 293.762686 409.394245  C 294.311368 409.166974 294.809947 408.833834 295.22989 408.41389  C 295.649834 407.993947 295.982974 407.495368 296.210245 406.946686  C 296.437517 406.398004 296.5545 405.809889 296.5545 405.216  M 292.032 405.216  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #4477aa; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_7">
+    <path d="M 356.8545 284.616  C 356.8545 284.022111 356.737517 283.433996 356.510245 282.885314  C 356.282974 282.336632 355.949834 281.838053 355.52989 281.41811  C 355.109947 280.998166 354.611368 280.665026 354.062686 280.437755  C 353.514004 280.210483 352.925889 280.0935 352.332 280.0935  C 351.738111 280.0935 351.149996 280.210483 350.601314 280.437755  C 350.052632 280.665026 349.554053 280.998166 349.13411 281.41811  C 348.714166 281.838053 348.381026 282.336632 348.153755 282.885314  C 347.926483 283.433996 347.8095 284.022111 347.8095 284.616  C 347.8095 285.209889 347.926483 285.798004 348.153755 286.346686  C 348.381026 286.895368 348.714166 287.393947 349.13411 287.81389  C 349.554053 288.233834 350.052632 288.566974 350.601314 288.794245  C 351.149996 289.021517 351.738111 289.1385 352.332 289.1385  C 352.925889 289.1385 353.514004 289.021517 354.062686 288.794245  C 354.611368 288.566974 355.109947 288.233834 355.52989 287.81389  C 355.949834 287.393947 356.282974 286.895368 356.510245 286.346686  C 356.737517 285.798004 356.8545 285.209889 356.8545 284.616  M 352.332 284.616  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #ee6677; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_8">
+    <path d="M 405.0945 332.856  C 405.0945 332.262111 404.977517 331.673996 404.750245 331.125314  C 404.522974 330.576632 404.189834 330.078053 403.76989 329.65811  C 403.349947 329.238166 402.851368 328.905026 402.302686 328.677755  C 401.754004 328.450483 401.165889 328.3335 400.572 328.3335  C 399.978111 328.3335 399.389996 328.450483 398.841314 328.677755  C 398.292632 328.905026 397.794053 329.238166 397.37411 329.65811  C 396.954166 330.078053 396.621026 330.576632 396.393755 331.125314  C 396.166483 331.673996 396.0495 332.262111 396.0495 332.856  C 396.0495 333.449889 396.166483 334.038004 396.393755 334.586686  C 396.621026 335.135368 396.954166 335.633947 397.37411 336.05389  C 397.794053 336.473834 398.292632 336.806974 398.841314 337.034245  C 399.389996 337.261517 399.978111 337.3785 400.572 337.3785  C 401.165889 337.3785 401.754004 337.261517 402.302686 337.034245  C 402.851368 336.806974 403.349947 336.473834 403.76989 336.05389  C 404.189834 335.633947 404.522974 335.135368 404.750245 334.586686  C 404.977517 334.038004 405.0945 333.449889 405.0945 332.856  M 400.572 332.856  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #dd7733; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_9">
+    <path d="M 417.1545 284.616  C 417.1545 284.022111 417.037517 283.433996 416.810245 282.885314  C 416.582974 282.336632 416.249834 281.838053 415.82989 281.41811  C 415.409947 280.998166 414.911368 280.665026 414.362686 280.437755  C 413.814004 280.210483 413.225889 280.0935 412.632 280.0935  C 412.038111 280.0935 411.449996 280.210483 410.901314 280.437755  C 410.352632 280.665026 409.854053 280.998166 409.43411 281.41811  C 409.014166 281.838053 408.681026 282.336632 408.453755 282.885314  C 408.226483 283.433996 408.1095 284.022111 408.1095 284.616  C 408.1095 285.209889 408.226483 285.798004 408.453755 286.346686  C 408.681026 286.895368 409.014166 287.393947 409.43411 287.81389  C 409.854053 288.233834 410.352632 288.566974 410.901314 288.794245  C 411.449996 289.021517 412.038111 289.1385 412.632 289.1385  C 413.225889 289.1385 413.814004 289.021517 414.362686 288.794245  C 414.911368 288.566974 415.409947 288.233834 415.82989 287.81389  C 416.249834 287.393947 416.582974 286.895368 416.810245 286.346686  C 417.037517 285.798004 417.1545 285.209889 417.1545 284.616  M 412.632 284.616  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #777777; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_10">
+    <path d="M 432.2295 179.091  C 432.2295 178.497111 432.112517 177.908996 431.885245 177.360314  C 431.657974 176.811632 431.324834 176.313053 430.90489 175.89311  C 430.484947 175.473166 429.986368 175.140026 429.437686 174.912755  C 428.889004 174.685483 428.300889 174.5685 427.707 174.5685  C 427.113111 174.5685 426.524996 174.685483 425.976314 174.912755  C 425.427632 175.140026 424.929053 175.473166 424.50911 175.89311  C 424.089166 176.313053 423.756026 176.811632 423.528755 177.360314  C 423.301483 177.908996 423.1845 178.497111 423.1845 179.091  C 423.1845 179.684889 423.301483 180.273004 423.528755 180.821686  C 423.756026 181.370368 424.089166 181.868947 424.50911 182.28889  C 424.929053 182.708834 425.427632 183.041974 425.976314 183.269245  C 426.524996 183.496517 427.113111 183.6135 427.707 183.6135  C 428.300889 183.6135 428.889004 183.496517 429.437686 183.269245  C 429.986368 183.041974 430.484947 182.708834 430.90489 182.28889  C 431.324834 181.868947 431.657974 181.370368 431.885245 180.821686  C 432.112517 180.273004 432.2295 179.684889 432.2295 179.091  M 427.707 179.091  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_11">
+    <path d="M 472.932 397.2564  C 470.821792 397.2564 468.795855 398.095571 467.303713 399.587713  C 465.811571 401.079855 464.9724 403.105792 464.9724 405.216  L 472.932 405.216  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #dd7733; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_12">
+    <path d="M 464.9724 405.216  C 464.9724 407.326208 465.811571 409.352145 467.303713 410.844287  C 468.795855 412.336429 470.821792 413.1756 472.932 413.1756  C 475.042208 413.1756 477.068145 412.336429 478.560287 410.844287  C 480.052429 409.352145 480.8916 407.326208 480.8916 405.216  L 472.932 405.216  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #aa3377; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_13">
+    <path d="M 480.8916 405.216  C 480.8916 403.105792 480.052429 401.079855 478.560287 399.587713  C 477.068145 398.095571 475.042208 397.2564 472.932 397.2564  L 472.932 405.216  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #009988; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_14">
+    <path d="M 477.4545 179.091  C 477.4545 178.497111 477.337517 177.908996 477.110245 177.360314  C 476.882974 176.811632 476.549834 176.313053 476.12989 175.89311  C 475.709947 175.473166 475.211368 175.140026 474.662686 174.912755  C 474.114004 174.685483 473.525889 174.5685 472.932 174.5685  C 472.338111 174.5685 471.749996 174.685483 471.201314 174.912755  C 470.652632 175.140026 470.154053 175.473166 469.73411 175.89311  C 469.314166 176.313053 468.981026 176.811632 468.753755 177.360314  C 468.526483 177.908996 468.4095 178.497111 468.4095 179.091  C 468.4095 179.684889 468.526483 180.273004 468.753755 180.821686  C 468.981026 181.370368 469.314166 181.868947 469.73411 182.28889  C 470.154053 182.708834 470.652632 183.041974 471.201314 183.269245  C 471.749996 183.496517 472.338111 183.6135 472.932 183.6135  C 473.525889 183.6135 474.114004 183.496517 474.662686 183.269245  C 475.211368 183.041974 475.709947 182.708834 476.12989 182.28889  C 476.549834 181.868947 476.882974 181.370368 477.110245 180.821686  C 477.337517 180.273004 477.4545 179.684889 477.4545 179.091  M 472.932 179.091  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #228833; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_15">
+    <path d="M 472.932 36.3609  C 471.061589 36.3609 469.265871 37.10471 467.943291 38.427291  C 466.62071 39.749871 465.8769 41.545589 465.8769 43.416  C 465.8769 45.286411 466.62071 47.082129 467.943291 48.404709  C 469.265871 49.72729 471.061589 50.4711 472.932 50.4711  L 472.932 43.416  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #4477aa; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_16">
+    <path d="M 472.932 50.4711  C 474.802411 50.4711 476.598129 49.72729 477.920709 48.404709  C 479.24329 47.082129 479.9871 45.286411 479.9871 43.416  C 479.9871 41.545589 479.24329 39.749871 477.920709 38.427291  C 476.598129 37.10471 474.802411 36.3609 472.932 36.3609  L 472.932 43.416  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #228833; stroke: #ffffff; stroke-width: 0.55; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_17">
+    <path d="M 111.132 409.237407  C 112.19849 409.237407 113.221442 408.813686 113.975564 408.059564  C 114.729686 407.305442 115.153407 406.28249 115.153407 405.216  C 115.153407 404.14951 114.729686 403.126558 113.975564 402.372436  C 113.221442 401.618314 112.19849 401.194593 111.132 401.194593  C 110.06551 401.194593 109.042558 401.618314 108.288436 402.372436  C 107.534314 403.126558 107.110593 404.14951 107.110593 405.216  C 107.110593 406.28249 107.534314 407.305442 108.288436 408.059564  C 109.042558 408.813686 110.06551 409.237407 111.132 409.237407  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_18">
+    <path d="M 472.932 409.752972  C 474.135219 409.752972 475.289319 409.274928 476.140124 408.424124  C 476.990928 407.573319 477.468972 406.419219 477.468972 405.216  C 477.468972 404.012781 476.990928 402.858681 476.140124 402.007876  C 475.289319 401.157072 474.135219 400.679028 472.932 400.679028  C 471.728781 400.679028 470.574681 401.157072 469.723876 402.007876  C 468.873072 402.858681 468.395028 404.012781 468.395028 405.216  C 468.395028 406.419219 468.873072 407.573319 469.723876 408.424124  C 470.574681 409.274928 471.728781 409.752972 472.932 409.752972  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-patch_19">
+    <path d="M 472.932 47.437407  C 473.99849 47.437407 475.021442 47.013686 475.775564 46.259564  C 476.529686 45.505442 476.953407 44.48249 476.953407 43.416  C 476.953407 42.34951 476.529686 41.326558 475.775564 40.572436  C 475.021442 39.818314 473.99849 39.394593 472.932 39.394593  C 471.86551 39.394593 470.842558 39.818314 470.088436 40.572436  C 469.334314 41.326558 468.910593 42.34951 468.910593 43.416  C 468.910593 44.48249 469.334314 45.505442 470.088436 46.259564  C 470.842558 47.013686 471.86551 47.437407 472.932 47.437407  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: #ffffff; stroke: #ffffff; stroke-linejoin: miter" />
+   </g>
+   <g id="comparison-hard-tools-text_15">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #26313b" x="111.132" y="407.164242" transform="rotate(-0 111.132 407.164242)">2</text>
+   </g>
+   <g id="comparison-hard-tools-text_16">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #26313b" x="472.932" y="407.164242" transform="rotate(-0 472.932 407.164242)">4</text>
+   </g>
+   <g id="comparison-hard-tools-text_17">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #26313b" x="472.932" y="45.364242" transform="rotate(-0 472.932 45.364242)">2</text>
+   </g>
+   <g id="comparison-hard-tools-legend_1">
+    <g id="comparison-hard-tools-line2d_26">
+     <defs>
+      <path id="comparison-hard-tools-m2c36abe7c7" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #ee6677" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m2c36abe7c7" x="521.08376" y="133.680805" style="fill: #ee6677; stroke: #ee6677" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_18">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="137.005805" transform="rotate(-0 536.28376 137.005805)">A  Variant effects</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_27">
+     <defs>
+      <path id="comparison-hard-tools-m799afa8f01" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #4477aa" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m799afa8f01" x="521.08376" y="153.631547" style="fill: #4477aa; stroke: #4477aa" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_19">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="156.956547" transform="rotate(-0 536.28376 156.956547)">B  Sequence operations</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_28">
+     <defs>
+      <path id="comparison-hard-tools-m0259f829e8" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #228833" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m0259f829e8" x="521.08376" y="173.582289" style="fill: #228833; stroke: #228833" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_20">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="176.907289" transform="rotate(-0 536.28376 176.907289)">C  Sequence statistics</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_29">
+     <defs>
+      <path id="comparison-hard-tools-mb9d3f92649" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #777777" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-mb9d3f92649" x="521.08376" y="193.533031" style="fill: #777777; stroke: #777777" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_21">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="196.858031" transform="rotate(-0 536.28376 196.858031)">D  Overlapping frames</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_30">
+     <defs>
+      <path id="comparison-hard-tools-m09e30e3de2" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #55aacc" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m09e30e3de2" x="521.08376" y="213.483773" style="fill: #55aacc; stroke: #55aacc" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_22">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="216.808773" transform="rotate(-0 536.28376 216.808773)">E  RNA operations</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_31">
+     <defs>
+      <path id="comparison-hard-tools-m257f22d0bf" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #b49b30" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m257f22d0bf" x="521.08376" y="233.434516" style="fill: #b49b30; stroke: #b49b30" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_23">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="236.759516" transform="rotate(-0 536.28376 236.759516)">F  Protein operations</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_32">
+     <defs>
+      <path id="comparison-hard-tools-m135b517d82" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #dd7733" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m135b517d82" x="521.08376" y="253.385258" style="fill: #dd7733; stroke: #dd7733" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_24">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="256.710258" transform="rotate(-0 536.28376 256.710258)">G  Construct design</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_33">
+     <defs>
+      <path id="comparison-hard-tools-md53ccb4574" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #aa3377" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-md53ccb4574" x="521.08376" y="273.336" style="fill: #aa3377; stroke: #aa3377" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_25">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="276.661" transform="rotate(-0 536.28376 276.661)">H  Synonymous design</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_34">
+     <defs>
+      <path id="comparison-hard-tools-m044c4acbfa" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #009988" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m044c4acbfa" x="521.08376" y="293.286742" style="fill: #009988; stroke: #009988" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_26">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="296.611742" transform="rotate(-0 536.28376 296.611742)">I  Assay design</text>
+    </g>
+    <g id="comparison-hard-tools-line2d_35">
+     <defs>
+      <path id="comparison-hard-tools-m56f7b21272" d="M 0 3  C 0.795609 3 1.55874 2.683901 2.12132 2.12132  C 2.683901 1.55874 3 0.795609 3 0  C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132  C 1.55874 -2.683901 0.795609 -3 0 -3  C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132  C -2.683901 -1.55874 -3 -0.795609 -3 0  C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132  C -1.55874 2.683901 -0.795609 3 0 3  z " style="stroke: #332288" />
+     </defs>
+     <g>
+      <use xlink:href="#comparison-hard-tools-m56f7b21272" x="521.08376" y="313.237484" style="fill: #332288; stroke: #332288" />
+     </g>
+    </g>
+    <g id="comparison-hard-tools-text_27">
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="536.28376" y="316.562484" transform="rotate(-0 536.28376 316.562484)">J  Composition tasks</text>
+    </g>
+   </g>
+   <g id="comparison-hard-tools-scatter-hard-tools-0" data-scatter-point="scatter-hard-tools-0" tabindex="0" role="button" aria-label="F05: Select a distinguishing peptide (protein.diagnostic_peptide); Nemotron 0/1, Snowball 0/1; F09: Digest with trypsin rules (protein.trypsin_digest); Nemotron 0/3, Snowball 0/3" pointer-events="all">
+    <path d="M 111.132 413.1756  C 113.242911 413.1756 115.267648 412.336926 116.760287 410.844287  C 118.252926 409.351648 119.0916 407.326911 119.0916 405.216  C 119.0916 403.105089 118.252926 401.080352 116.760287 399.587713  C 115.267648 398.095074 113.242911 397.2564 111.132 397.2564  C 109.021089 397.2564 106.996352 398.095074 105.503713 399.587713  C 104.011074 401.080352 103.1724 403.105089 103.1724 405.216  C 103.1724 407.326911 104.011074 409.351648 105.503713 410.844287  C 106.996352 412.336926 109.021089 413.1756 111.132 413.1756  L 111.132 413.1756  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>F05: Select a distinguishing peptide (protein.diagnostic_peptide); Nemotron 0/1, Snowball 0/1; F09: Digest with trypsin rules (protein.trypsin_digest); Nemotron 0/3, Snowball 0/3</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-1" data-scatter-point="scatter-hard-tools-1" tabindex="0" role="button" aria-label="B04: Reverse-complement a CDS (dna.reverse_complement); Nemotron 1/2, Snowball 0/2" pointer-events="all">
+    <path d="M 292.032 413.1756  C 294.142911 413.1756 296.167648 412.336926 297.660287 410.844287  C 299.152926 409.351648 299.9916 407.326911 299.9916 405.216  C 299.9916 403.105089 299.152926 401.080352 297.660287 399.587713  C 296.167648 398.095074 294.142911 397.2564 292.032 397.2564  C 289.921089 397.2564 287.896352 398.095074 286.403713 399.587713  C 284.911074 401.080352 284.0724 403.105089 284.0724 405.216  C 284.0724 407.326911 284.911074 409.351648 286.403713 410.844287  C 287.896352 412.336926 289.921089 413.1756 292.032 413.1756  L 292.032 413.1756  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>B04: Reverse-complement a CDS (dna.reverse_complement); Nemotron 1/2, Snowball 0/2</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-2" data-scatter-point="scatter-hard-tools-2" tabindex="0" role="button" aria-label="A04: Classify a substitution effect (variant.protein_effect); Nemotron 2/3, Snowball 1/3" pointer-events="all">
+    <path d="M 352.332 292.5756  C 354.442911 292.5756 356.467648 291.736926 357.960287 290.244287  C 359.452926 288.751648 360.2916 286.726911 360.2916 284.616  C 360.2916 282.505089 359.452926 280.480352 357.960287 278.987713  C 356.467648 277.495074 354.442911 276.6564 352.332 276.6564  C 350.221089 276.6564 348.196352 277.495074 346.703713 278.987713  C 345.211074 280.480352 344.3724 282.505089 344.3724 284.616  C 344.3724 286.726911 345.211074 288.751648 346.703713 290.244287  C 348.196352 291.736926 350.221089 292.5756 352.332 292.5756  L 352.332 292.5756  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>A04: Classify a substitution effect (variant.protein_effect); Nemotron 2/3, Snowball 1/3</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-3" data-scatter-point="scatter-hard-tools-3" tabindex="0" role="button" aria-label="G04: Design a focused degenerate codon (library.design_codon); Nemotron 4/5, Snowball 1/5" pointer-events="all">
+    <path d="M 400.572 340.8156  C 402.682911 340.8156 404.707648 339.976926 406.200287 338.484287  C 407.692926 336.991648 408.5316 334.966911 408.5316 332.856  C 408.5316 330.745089 407.692926 328.720352 406.200287 327.227713  C 404.707648 325.735074 402.682911 324.8964 400.572 324.8964  C 398.461089 324.8964 396.436352 325.735074 394.943713 327.227713  C 393.451074 328.720352 392.6124 330.745089 392.6124 332.856  C 392.6124 334.966911 393.451074 336.991648 394.943713 338.484287  C 396.436352 339.976926 398.461089 340.8156 400.572 340.8156  L 400.572 340.8156  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>G04: Design a focused degenerate codon (library.design_codon); Nemotron 4/5, Snowball 1/5</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-4" data-scatter-point="scatter-hard-tools-4" tabindex="0" role="button" aria-label="D02: Evaluate a change in two frames (overlap.compare_products); Nemotron 5/6, Snowball 2/6" pointer-events="all">
+    <path d="M 412.632 292.5756  C 414.742911 292.5756 416.767648 291.736926 418.260287 290.244287  C 419.752926 288.751648 420.5916 286.726911 420.5916 284.616  C 420.5916 282.505089 419.752926 280.480352 418.260287 278.987713  C 416.767648 277.495074 414.742911 276.6564 412.632 276.6564  C 410.521089 276.6564 408.496352 277.495074 407.003713 278.987713  C 405.511074 280.480352 404.6724 282.505089 404.6724 284.616  C 404.6724 286.726911 405.511074 288.751648 407.003713 290.244287  C 408.496352 291.736926 410.521089 292.5756 412.632 292.5756  L 412.632 292.5756  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>D02: Evaluate a change in two frames (overlap.compare_products); Nemotron 5/6, Snowball 2/6</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-5" data-scatter-point="scatter-hard-tools-5" tabindex="0" role="button" aria-label="H02: Repair pairing synonymously (design.pairing_repair); Nemotron 7/8, Snowball 5/8" pointer-events="all">
+    <path d="M 427.707 187.0506  C 429.817911 187.0506 431.842648 186.211926 433.335287 184.719287  C 434.827926 183.226648 435.6666 181.201911 435.6666 179.091  C 435.6666 176.980089 434.827926 174.955352 433.335287 173.462713  C 431.842648 171.970074 429.817911 171.1314 427.707 171.1314  C 425.596089 171.1314 423.571352 171.970074 422.078713 173.462713  C 420.586074 174.955352 419.7474 176.980089 419.7474 179.091  C 419.7474 181.201911 420.586074 183.226648 422.078713 184.719287  C 423.571352 186.211926 425.596089 187.0506 427.707 187.0506  L 427.707 187.0506  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>H02: Repair pairing synonymously (design.pairing_repair); Nemotron 7/8, Snowball 5/8</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-6" data-scatter-point="scatter-hard-tools-6" tabindex="0" role="button" aria-label="G02: Join coding modules (construct.join_modules); Nemotron 1/1, Snowball 0/1; H06: Control local GC by recoding (design.gc_windows); Nemotron 2/2, Snowball 0/2; H11: Remove specified DNA motifs (design.remove_dna_motifs); Nemotron 1/1, Snowball 0/1; I02: Distinguish CDSs with a probe panel (assay.min_probe_panel); Nemotron 1/1, Snowball 0/1" pointer-events="all">
+    <path d="M 472.932 413.1756  C 475.042911 413.1756 477.067648 412.336926 478.560287 410.844287  C 480.052926 409.351648 480.8916 407.326911 480.8916 405.216  C 480.8916 403.105089 480.052926 401.080352 478.560287 399.587713  C 477.067648 398.095074 475.042911 397.2564 472.932 397.2564  C 470.821089 397.2564 468.796352 398.095074 467.303713 399.587713  C 465.811074 401.080352 464.9724 403.105089 464.9724 405.216  C 464.9724 407.326911 465.811074 409.351648 467.303713 410.844287  C 468.796352 412.336926 470.821089 413.1756 472.932 413.1756  L 472.932 413.1756  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>G02: Join coding modules (construct.join_modules); Nemotron 1/1, Snowball 0/1; H06: Control local GC by recoding (design.gc_windows); Nemotron 2/2, Snowball 0/2; H11: Remove specified DNA motifs (design.remove_dna_motifs); Nemotron 1/1, Snowball 0/1; I02: Distinguish CDSs with a probe panel (assay.min_probe_panel); Nemotron 1/1, Snowball 0/1</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-7" data-scatter-point="scatter-hard-tools-7" tabindex="0" role="button" aria-label="C01: Calculate total GC (stats.gc_fraction); Nemotron 8/8, Snowball 5/8" pointer-events="all">
+    <path d="M 472.932 187.0506  C 475.042911 187.0506 477.067648 186.211926 478.560287 184.719287  C 480.052926 183.226648 480.8916 181.201911 480.8916 179.091  C 480.8916 176.980089 480.052926 174.955352 478.560287 173.462713  C 477.067648 171.970074 475.042911 171.1314 472.932 171.1314  C 470.821089 171.1314 468.796352 171.970074 467.303713 173.462713  C 465.811074 174.955352 464.9724 176.980089 464.9724 179.091  C 464.9724 181.201911 465.811074 183.226648 467.303713 184.719287  C 468.796352 186.211926 470.821089 187.0506 472.932 187.0506  L 472.932 187.0506  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>C01: Calculate total GC (stats.gc_fraction); Nemotron 8/8, Snowball 5/8</title></g>
+   <g id="comparison-hard-tools-scatter-hard-tools-8" data-scatter-point="scatter-hard-tools-8" tabindex="0" role="button" aria-label="B01: Map residues back to DNA (coords.aa_to_nt); Nemotron 2/2, Snowball 2/2; C02: Calculate third-position GC (stats.gc3_fraction); Nemotron 2/2, Snowball 2/2" pointer-events="all">
+    <path d="M 472.932 51.3756  C 475.042911 51.3756 477.067648 50.536926 478.560287 49.044287  C 480.052926 47.551648 480.8916 45.526911 480.8916 43.416  C 480.8916 41.305089 480.052926 39.280352 478.560287 37.787713  C 477.067648 36.295074 475.042911 35.4564 472.932 35.4564  C 470.821089 35.4564 468.796352 36.295074 467.303713 37.787713  C 465.811074 39.280352 464.9724 41.305089 464.9724 43.416  C 464.9724 45.526911 465.811074 47.551648 467.303713 49.044287  C 468.796352 50.536926 470.821089 51.3756 472.932 51.3756  L 472.932 51.3756  z " clip-path="url(#comparison-hard-tools-pbb81eb4ea7)" style="fill: none; opacity: 0" pointer-events="all" />
+   <title>B01: Map residues back to DNA (coords.aa_to_nt); Nemotron 2/2, Snowball 2/2; C02: Calculate third-position GC (stats.gc3_fraction); Nemotron 2/2, Snowball 2/2</title></g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="comparison-hard-tools-pbb81eb4ea7">
+   <rect x="96.66" y="28.944" width="390.744" height="390.744" />
+  </clipPath>
+ </defs>
+</svg>

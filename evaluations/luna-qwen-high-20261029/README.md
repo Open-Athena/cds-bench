@@ -1,6 +1,6 @@
 # Full CDS-bench model evaluation
 
-Snowball v0.1: 684/3,260 fresh attempts (running). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.
+Snowball v0.1: 2515/3,260 fresh attempts (running). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.
 
 Download [report.html](report.html) and open it in a browser. It is self-contained.
 
@@ -13,6 +13,8 @@ Checkpoint: [open-athena/Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/ope
 Accuracy by condition: [PNG](overall.png) · [SVG](overall.svg).
 
 [Pooled task radar](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report selector also shows each of the four evaluation conditions. Task codes and group colors stay fixed across views, with links to the full-name/ID key and existing details.
+
+Nemotron versus Snowball, Easy conditions: [PNG](nemotron-snowball-easy.png) · [SVG](nemotron-snowball-easy.svg). The two panels share a legend and axes. Each point compares the same completed examples for one task; all failures count. The interactive report includes all five condition views and links points to task details.
 
 [30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.
 

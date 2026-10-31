@@ -1,6 +1,6 @@
 Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)**, **Nemotron 3.5 Lightning** and **Snowball v0.1**, with and without offline Python. The dataset has ten examples per task: 84 easy task types and 79 hard task types, or 3,260 planned attempts per model. Retained prompts and reference answers are identical across models.
 
-**Snowball v0.1: 684/3,260 finished (running).** The other three models each have 3,260 completed matching attempts. **10,464 scored attempts** in total; pilot responses are not reused.
+**Snowball v0.1: 2,515/3,260 finished (running).** The other three models each have 3,260 completed matching attempts. **12,295 scored attempts** in total; pilot responses are not reused.
 
 Evaluation-only PR. **Do not merge.**
 
@@ -10,9 +10,9 @@ The HTML reports are self-contained; download and open them in a browser.
 
 **Accuracy by condition**
 
-![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=50c21d9c59c1)
+![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=c524c55cae6b)
 
-Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=50c21d9c59c1) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=c524c55cae6b) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
 
 <details>
 <summary>Full results: accuracy, median time, cost and truncation</summary>
@@ -32,10 +32,10 @@ Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/head
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;no&nbsp;tools | 185/790 | 23.4% | 157.4s | $3.10986 | 163 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 537/840 | 63.9% | 28.3s | $1.83524 | 4 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 397/790 | 50.3% | 40.7s | $2.37400 | 7 |
-| Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 153/684 | 22.4% | 105.4s | Unavailable | 76 |
-| Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 0/0 | n/a | n/a | Unavailable | 0 |
-| Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 0/0 | n/a | n/a | Unavailable | 0 |
-| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 0/0 | n/a | n/a | Unavailable | 0 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 179/840 | 21.3% | 109.6s | Unavailable | 109 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 158/790 | 20.0% | 119.5s | Unavailable | 103 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 221/840 | 26.3% | 110.4s | Unavailable | 91 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 18/45 | 40.0% | 54.9s | Unavailable | 0 |
 
 All failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.
 
@@ -43,11 +43,19 @@ All failures remain in the denominator. Median time includes tool round trips an
 
 **Task performance: All conditions (pooled)**
 
-![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=bb7a6445c9ed)
+![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=dd7b69cc9cea)
 
-Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=bb7a6445c9ed) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=dd7b69cc9cea) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
 
 Each spoke pools completed attempts for one task. Subtitles average available task accuracies equally; five tasks have only easy variants. Missing results are unscored, not zero. Groups and tasks share the same order across models. The [report’s condition selector and task key](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.
+
+**Nemotron versus Snowball: Easy examples**
+
+![Task accuracy for Nemotron and Snowball: Easy without tools and Easy with Python](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/nemotron-snowball-easy.png?v=6a10f0fd7a02)
+
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/nemotron-snowball-easy.png?v=6a10f0fd7a02) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/nemotron-snowball-easy.svg)
+
+Each point is a task, colored by the same groups as the radars. Both axes use identical completed cases. Above the dashed equality line Snowball scores higher; below it Nemotron does. Numbered markers combine overlapping tasks. The [interactive report](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-scatter) shows task names, IDs and scores when you select a point.
 
 Scores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.
 
@@ -68,10 +76,10 @@ Scores count incorrect answers, formatting failures, timeouts, token caps and AP
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;no&nbsp;tools | 260 | 137 | 43 | 163 | 2 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 87 | 194 | 3 | 4 | 15 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 146 | 237 | 3 | 7 | 0 |
-| Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 117 | 322 | 0 | 76 | 16 |
-| Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 0 | 0 | 0 | 0 | 0 |
-| Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 0 | 0 | 0 | 0 | 0 |
-| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 0 | 0 | 0 | 0 | 0 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;no&nbsp;tools | 153 | 382 | 0 | 109 | 17 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;no&nbsp;tools | 145 | 384 | 0 | 103 | 0 |
+| Snowball&nbsp;v0.1 | Easy,&nbsp;Python | 167 | 355 | 0 | 91 | 6 |
+| Snowball&nbsp;v0.1 | Hard,&nbsp;Python | 13 | 13 | 0 | 0 | 1 |
 
 Recorded charges: **$10.24787 Nemotron 3.5 Lightning**, **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 53 Nemotron 3.5 Lightning, 29 Qwen and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
 
