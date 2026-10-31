@@ -16,7 +16,7 @@ def cells(label, metric, budget):
         f"{metric['correct']}/{metric['attempted']}",
         f"{100 * metric['accuracy']:.1f}%" if metric["attempted"] else "n/a",
         f"{metric['median_seconds']:.1f}s" if metric["attempted"] else "n/a",
-        f"${metric['cost_usd']:.5f}", f"{budget:,}",
+        f"${metric['cost_usd']:.5f}" if metric['cost_usd'] is not None else "Unavailable", f"{budget:,}",
         str(metric["timeout"]), str(metric["token_cap"]), str(metric["format"]), str(metric["error"]),
     ]
 

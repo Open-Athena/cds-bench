@@ -216,6 +216,7 @@ def pr_body(summary, config):
         "nemotron-lightning": "Nemotron 3.5 Lightning io.net", "nemotron-lightning-coreweave": "Nemotron 3.5 Lightning CoreWeave",
         "north-mini-code": "North Mini Code", "gpt-oss-20b": "GPT-OSS 20B",
         "gemma": "Gemma 31B", "gemma-moe": "Gemma 26B A4B", "liquid": "LFM 24B A2B",
+        "snowball": "Marin Snowball",
     }
     completed = sum(summary["totals"][model]["attempted"] for model in MODELS)
     lines = [
@@ -254,6 +255,9 @@ def pr_body(summary, config):
     ]
     pilot = read(PILOT_OUTPUT / "summary.json")
     if pilot:
+        PILOT_MODELS = pilot['models']
+        if 'snowball' in pilot['configurations']:
+            lines.append('\n**Snowball settings exception:** 16,384 aggregate generated tokens/example and **1,800 seconds/API request**, with concurrency 60. Its original 32,768-token/300-second trial is preserved separately and excluded from the table.')
         rows = []
         for model, name in PILOT_MODELS.items():
             settings = pilot["configurations"][model]
@@ -266,16 +270,20 @@ def pr_body(summary, config):
             f"\n<details>\n<summary>Pilot results: {len(PILOT_MODELS)} model/provider runs, with accuracy, timing and costs</summary>\n",
             markdown_results(rows),
             "\n**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. The CoreWeave extra row retains all 353 completed attempts from the stopped expansion, separately from its original 116-attempt pilot. Ten interrupted attempts are excluded. [Inspect the additional samples](" + pilot_base + "/report.html#coreweave-extra). Full model names, provider routing and failure counts are in the pilot report.",
-            "\nLFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron 3.5 Lightning enable reasoning without an effort selector; the other models request `high`. Nemotron 3.5 Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.",
+            "\nLFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron 3.5 Lightning enable reasoning without an effort selector; the remaining OpenRouter models request `high`. Nemotron 3.5 Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.",
             "\nCosts cover these scored subsets, excluding compatibility checks, removed duplicate-hard cases, interrupted requests and follow-up diagnostics. Missing charges remain explicit. The reports separate incorrect values, formatting failures, timeouts, token caps and API/protocol errors. Earlier ten-example GLM/Luna checks are a separate report appendix, not pooled here.",
             "\n</details>",
         ]
+        if 'snowball' in pilot['configurations']:
+            snowball = pilot['configurations']['snowball']
+            p = snowball['provenance']
+            lines.insert(-1, f"\n**Marin Snowball** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip passed before scoring. Uses 16,384 aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [{snowball['full_name']}]({p['url']}), `{p['repo']}` at revision `{p['revision']}`. Its transport and execution checks are documented in the pilot report.")
     lines += [
         "\n**Request and execution settings**",
         "\n| Setting | Value |\n|---|---|",
         "| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; `nvidia/nemotron-3.5-lightning` / `deepinfra/bf16`; no fallback |",
         '| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Nemotron 3.5 Lightning: `{"enabled":true,"exclude":false}`; no effort selector |',
-        "| Output / timeout | 32,768 aggregate generated tokens/example (8,192 for LFM); **300 seconds/API request** |",
+        "| Full output / timeout | 32,768 aggregate generated tokens/example; **300 seconds/API request**. Pilot exceptions are noted above |",
         '| Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |',
         "| Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |",
         "| Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |",

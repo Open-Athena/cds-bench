@@ -13,3 +13,5 @@ Rebuild from the saved local pilot, with no inference:
 ```sh
 PYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.pilot
 ```
+
+Marin Snowball: [Grug-67B-A2B-Datakit-SFT-262K-2026.09.21](https://huggingface.co/open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21/tree/b8c07f7df1df65525abbfdbcd1572318ba11c42f), `open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21` at revision `b8c07f7df1df65525abbfdbcd1572318ba11c42f`. Uses the internal API with native thinking/tool transport, a 16,384-token aggregate budget, 1,800-second request deadline, temperature 0.7 and concurrency 60. Monetary cost is unavailable. [Pilot audit](snowball-audit.json).
