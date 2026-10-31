@@ -38,7 +38,7 @@ def one_shot():
             'preflight':{'real_tool_round_trip':bool(preflight['tool_calls'] and not preflight['tool_failures']),
                          'strict_answer_passed':preflight['passed']},
             'audit':audit,
-            'interpretation':'Same 30 easy and 28 hard pilot prompts, fresh attempts with one prepended generic arithmetic demonstration. It demonstrates both tool use and final-answer formatting. Baseline adapter and scorer are unchanged. One draw per prompt; no causal isolation of formatting versus tool-selection effects.'}
+            'interpretation':'Fresh attempts on the original 30 easy and 28 hard pilot questions. Each benchmark user message is unchanged byte for byte, but the full API message history differs: an arithmetic question, assistant Python call, tool result and assistant example answer are prepended before it. The demonstration shows both tool use and final-answer formatting. Baseline request transformation, response parser and scorer are unchanged. One draw per question; no causal isolation of formatting versus tool-selection effects.'}
 
 
 def within_tasks(rows, minimum=2):
@@ -123,10 +123,14 @@ def build(output, rows, models):
 def short_text(stats):
     a = stats['tool_invocation']['snowball-v01']
     b = stats['tool_invocation']['deepinfra']
-    return (f"With Python available, Snowball invoked it on {a['called']:,}/{a['available']:,} examples "
+    text = (f"With Python available, Snowball invoked it on {a['called']:,}/{a['available']:,} examples "
             f"({a['called']/a['available']:.1%}), versus {b['called']:,}/{b['available']:,} "
             f"({b['called']/b['available']:.1%}) for Nemotron. "
             "These are optional tool-use conditions; supplying a tool does not require the model to call it.")
+    if stats.get('one_shot_pilot'):
+        text += (" In the one-shot pilot, 7 of 22 final responses missing the required final-answer marker "
+                 "still ended with the correct answer; two also prefixed it with the demonstration's arithmetic result.")
+    return text
 
 
 def comparison_text(stats):

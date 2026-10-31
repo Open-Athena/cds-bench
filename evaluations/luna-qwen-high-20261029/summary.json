@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T17:14:35.048524+00:00",
+  "generated_at": "2026-10-31T18:01:14.754374+00:00",
   "state": "complete",
   "qwen_completed": 3260,
   "qwen_planned": 3260,
@@ -34167,7 +34167,7 @@
         "scored_retries": 0,
         "sources_and_token_budget_verified": true
       },
-      "interpretation": "Same 30 easy and 28 hard pilot prompts, fresh attempts with one prepended generic arithmetic demonstration. It demonstrates both tool use and final-answer formatting. Baseline adapter and scorer are unchanged. One draw per prompt; no causal isolation of formatting versus tool-selection effects."
+      "interpretation": "Fresh attempts on the original 30 easy and 28 hard pilot questions. Each benchmark user message is unchanged byte for byte, but the full API message history differs: an arithmetic question, assistant Python call, tool result and assistant example answer are prepended before it. The demonstration shows both tool use and final-answer formatting. Baseline request transformation, response parser and scorer are unchanged. One draw per question; no causal isolation of formatting versus tool-selection effects."
     }
   }
 }

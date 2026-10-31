@@ -12,7 +12,7 @@ Evaluation-only PR. **Do not merge.**
 
 The HTML reports are self-contained; download and open them in a browser.
 
-With Python available, Snowball invoked it on 177/1,630 examples (10.9%), versus 1,544/1,630 (94.7%) for Nemotron. These are optional tool-use conditions; supplying a tool does not require the model to call it.
+With Python available, Snowball invoked it on 177/1,630 examples (10.9%), versus 1,544/1,630 (94.7%) for Nemotron. These are optional tool-use conditions; supplying a tool does not require the model to call it. In the one-shot pilot, 7 of 22 final responses missing the required final-answer marker still ended with the correct answer; two also prefixed it with the demonstration's arithmetic result.
 
 For Easy/Python, 33 task types have at least two examples with a Python call and two without one. Averaging accuracy equally across these same task types gives 54.8% with calls versus 23.2% without (+31.6 percentage points). This compares different examples within each task and is observational, not a causal estimate of tool benefit. [Per-task breakdown](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#snowball-tools).
 
@@ -21,7 +21,7 @@ The one-demonstration Snowball pilot used Python on 10/58 examples versus 5/58 o
 <details>
 <summary>Snowball follow-up: one tool-use demonstration on the matched pilot</summary>
 
-Same 30 easy and 28 hard pilot prompts, fresh attempts with one prepended generic arithmetic demonstration. It demonstrates both tool use and final-answer formatting. Baseline adapter and scorer are unchanged. One draw per prompt; no causal isolation of formatting versus tool-selection effects.
+Fresh attempts on the original 30 easy and 28 hard pilot questions. Each benchmark user message is unchanged byte for byte, but the full API message history differs: an arithmetic question, assistant Python call, tool result and assistant example answer are prepended before it. The demonstration shows both tool use and final-answer formatting. Baseline request transformation, response parser and scorer are unchanged. One draw per question; no causal isolation of formatting versus tool-selection effects.
 
 | Condition | Original correct | With demo | Original tool users | With demo |
 |---|---:|---:|---:|---:|
