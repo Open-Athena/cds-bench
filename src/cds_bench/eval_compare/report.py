@@ -18,11 +18,13 @@ from cds_bench.eval_luna.score import score_result
 
 from .run import CONDITIONS, LUNA_RAW, LUNA_RESULTS, OUTPUT, PLANNED, RAW, ROOT
 from .collector import records
+from .tables import html_results
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
 MODELS = {"luna": "Luna high", "qwen": "Qwen3.7 Flash high"}
 BRANCH = "eval/luna-high-baseline"
 REPOSITORY = "Open-Athena/cds-bench"
+PR_TITLE = "CDS-bench: model pilot and full Luna/Qwen evaluation"
 REPORT_PATH = str(OUTPUT.relative_to(ROOT))
 
 
@@ -130,7 +132,7 @@ def _build(raw, output):
         f"# Luna and Qwen3.7 Flash: full CDS-bench evaluation\n\nQwen: {totals['qwen']['attempted']}/3,260 attempts ({job['state']}). Luna: 3,260 matched historical attempts.\n\n"
         "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
         "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
-        "Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
+        "[30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
         "Failed Qwen request counts, timeout flags, usage, and charges are reconstructed from saved response metadata where the collector omitted them. Raw files and scores are unchanged; no requests are retried.\n"
     )
     print(json.dumps({"state": job["state"], "qwen_completed": totals["qwen"]["attempted"], "qwen_cost_usd": totals["qwen"]["cost_usd"]}), flush=True)
@@ -166,41 +168,82 @@ def plot(output, summaries):
 
 
 def pr_body(summary, config):
-    base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{REPORT_PATH}"
-    q = summary["totals"]["qwen"]
-    lines = ["Compare **Luna high** and **Qwen3.7 Flash high** on the full CDS-bench dataset, with and without offline Python. Qwen uses Alibaba’s US endpoint. This is an evaluation-only branch; **do not merge**.",
-             f"\n**Qwen: {q['attempted']}/3,260 attempts ({summary['state']}).** Recorded Qwen charges: **${q['cost_usd']:.6f}**. Luna contributes 3,260 matching historical attempts. No pilot responses are reused.",
-             f"\nBilling is incomplete for {q['unreconciled_examples']} completed Qwen attempts and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Unverified charges are not assumed to be zero.\n\n[Combined HTML report]({base}/report.html) · [Per-task results]({base}/by-task.csv) · [Predictions]({base}/results.json)",
-             "\n| Model / condition | Correct / finished | Median | Recorded cost |\n|---|---:|---:|---:|"]
-    for model, name in MODELS.items():
-        for c, label in zip(PLANNED, LABELS):
-            r = summary["conditions"][model][c]
-            lines.append(f"| {name}: {label} | {r['correct']}/{r['attempted']} | {r['median_seconds'] or 0:.1f}s | ${r['cost_usd']:.6f} |")
-    lines += ["\nAll failures remain in the denominator. In-progress Qwen results are a partial subset. Incorrect values, answer-format failures, five-minute timeouts, token caps, and provider/connection errors are separated below.",
-              "\n| Model / condition | Incorrect | Format | Timeout | Token cap | API error |\n|---|---:|---:|---:|---:|---:|"]
-    for model, name in MODELS.items():
-        for c, label in zip(PLANNED, LABELS):
-            r = summary["conditions"][model][c]
-            lines.append(f"| {name}: {label} | {r['wrong']} | {r['format']} | {r['timeout']} | {r['token_cap']} | {r['error']} |")
-    lines += ["\n| Request / execution setting | Value |\n|---|---|",
-              "| Models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; no fallback |",
-              '| Reasoning | `{"effort":"high","exclude":false}` |',
-              "| Output / timeout | 32,768 total generated tokens/example; 300 seconds/API request |",
-              '| Tools / web | One Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |',
-              "| Executor | `/usr/bin/sandbox-exec`, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; no Biopython |",
-              "| Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |",
-              "| Sampling | Seed 20261029; provider defaults; ten concurrent examples |",
-              "\n<details>\n<summary>Matched dataset and historical Luna results</summary>\n",
-              f"Pinned dataset revision: `{config['dataset']['revision']}`. There are 840 easy and 790 hard prompts. Five duplicated hard variants were removed after the original Luna run. Every retained prompt, input, and answer was checked against Luna’s saved cases. The original 3,360-attempt Luna report remains intact; only the 100 duplicate-hard attempts are omitted from the combined comparison. No model responses were rescored or retried. Qwen makes fresh requests for every case, including the cases previously used in its model-selection pilot.\n\n</details>",
-              "\n<details>\n<summary>Exact tools JSON supplied to OpenRouter</summary>\n\n```json\n" + json.dumps(config["tools_condition"]["tools"], indent=2) + "\n```\n\nThe no-tools condition sends an empty tools array. No hosted shell or web tool is registered.\n\n</details>",
-              "\n<details>\n<summary>Python execution and macOS sandbox</summary>\n\nThe controller executes returned Python programs locally and sends stdout/stderr, exit code, and timeout status back as tool results. Networking is blocked by the operating system, not an OpenRouter parameter. The controller retains API access.\n\n```sh\n/usr/bin/sandbox-exec -f \"$workdir/sandbox.sb\" \\\n  \"$runtime/bin/python\" -I -B -c \"$launcher\"\n```\n\nThe policy denies `network*` and `process-fork`, restricts content reads to runtime/system paths and the current example workdir, and restricts writes to that workdir. Credentials and benchmark answers are inaccessible. Startup checks verify these restrictions.\n\n</details>",
-              "\n<details>\n<summary>Request settings, scoring, costs, and traces</summary>\n\n```json\n" + json.dumps(config["parameters_no_tools"], indent=2) + "\n```\n\nThe tools condition adds the function above and uses `auto`, then `none` once the call limit is reached. Every round receives the remaining token budget. Reasoning records are preserved between rounds. The original deterministic scorer is unchanged. A separately labeled formatting diagnostic only relocates inline final-answer markers and removes outer JSON fences; it never changes the primary scores.\n\nCosts are reconciled against generation metadata. Missing billing records remain explicit. Raw requests, SSE responses, reasoning, and tool programs/results stay untracked. Only final predictions and metrics are published.\n\n</details>"]
-    lines.append("\n<details>\n<summary>Failed-request bookkeeping</summary>\n\nThe Qwen client and legacy trial use different exception classes. The trial records these requests as failures but omits failed-response metadata from its bookkeeping. The report reconstructs request counts, timeout flags, usage, and charges from the saved response files and billing records. No raw files, final answers, or scores are changed, and no requests are retried. The inference source remains frozen throughout the run.\n\n</details>")
-    budget = summary["token_budget"]
-    if budget["qwen_reported_over_budget_attempts"]:
-        lines.append(f"\n<details>\n<summary>Provider-reported token-budget exceptions</summary>\n\nThe controller requests at most 32,768 generated tokens per example, reducing the allowance after each tool round. Qwen's response metadata reports more than this allowance for {budget['qwen_reported_over_budget_attempts']} attempts, with a maximum of {budget['qwen_largest_reported_usage']:,} tokens. These exceptions remain visible in the audit. Requests and scores are unchanged; actual provider-reported usage is not strictly matched to Luna's requested cap.\n\n</details>")
-    return "\n".join(lines) + "\n"
+    from .pilot import MODELS as PILOT_MODELS, OUTPUT as PILOT_OUTPUT
+    from .tables import markdown_results, markdown_table
 
+    base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{REPORT_PATH}"
+    pilot_base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{PILOT_OUTPUT.relative_to(ROOT)}"
+    q, luna = summary["totals"]["qwen"], summary["totals"]["luna"]
+    full_names = {"luna": "Luna", "qwen": "Qwen Flash"}
+    pilot_names = {
+        "luna": "Luna", "beam": "Beam 501B A23B", "deepseek": "DeepSeek Flash",
+        "nemotron": "Nemotron Ultra", "qwen-flash": "Qwen Flash",
+        "nemotron-lightning": "Lightning io.net", "nemotron-lightning-coreweave": "Lightning CoreWeave",
+        "north-mini-code": "North Mini Code", "gpt-oss-20b": "GPT-OSS 20B",
+        "gemma": "Gemma 31B", "gemma-moe": "Gemma 26B A4B", "liquid": "LFM 24B A2B",
+    }
+    lines = [
+        "Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen evaluation**. This is an evaluation-only PR; **do not merge**.",
+        f"\n**Full evaluation: {q['attempted']:,}/3,260 Qwen attempts ({summary['state']})**, compared with 3,260 matching historical Luna attempts. Each condition has ten examples per task: 840 easy and 790 hard. All Qwen requests are fresh; pilot responses are not reused.",
+        f"\n[Full evaluation report (HTML)]({base}/report.html) · [Pilot report (HTML)]({pilot_base}/report.html) · [Full per-task results]({base}/by-task.csv) · [Pilot per-task results]({pilot_base}/by-task.csv)",
+        "\nThe HTML reports are self-contained; download and open them in a browser.",
+        "\n**Full evaluation results**",
+        "\n" + markdown_results([
+            ((full_names[model], label), summary["conditions"][model][c], 32768)
+            for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
+        ]),
+        "\nBoth full-evaluation models use `high` reasoning, a requested 32,768-token budget per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures.",
+        "\n<details>\n<summary>Full-evaluation failures, billing and token-budget exceptions</summary>\n",
+        markdown_table(
+            ["Model", "Condition", "Wrong", "Format", "Timeout", "Cap", "API"],
+            [[full_names[model], label, *[summary["conditions"][model][c][k]
+                for k in ["wrong", "format", "timeout", "token_cap", "error"]]]
+             for model in MODELS for c, label in zip(PLANNED, LABELS)],
+        ),
+    ]
+    lines += [
+        f"\nRecorded charges: **${q['cost_usd']:.5f} Qwen**, **${luna['cost_usd']:.5f} retained Luna**. Billing is incomplete for {q['unreconciled_examples']} Qwen attempts and {luna['unreconciled_examples']} retained Luna attempts. Unknown charges are not assumed to be zero.",
+        f"\nQwen reports usage beyond the requested 32,768-token budget for {summary['token_budget']['qwen_reported_over_budget_attempts']} attempts, up to {summary['token_budget']['qwen_largest_reported_usage']:,} tokens. The [audit]({base}/audit.json) lists these exceptions. Actual provider-reported usage is not strictly matched to Luna’s requested cap.",
+        "\n</details>",
+        "\n**30-task pilot**",
+        "\nOne judgment-selected instance per task, each in easy/hard form and with/without Python. Two duplicate hard variants are omitted, leaving **30 easy + 28 hard prompts and 116 attempts per complete model**. The pilot checks accuracy, cost, latency and tool compatibility. It is too small for a definitive model ranking.",
+        f"\nThe [pilot HTML report]({pilot_base}/report.html) gives four-condition scores, per-task predictions, provider/reasoning settings, failure categories, timing definitions and GPT-OSS compatibility checks. Partial runs, the lower LFM token budget and tool-protocol failures are kept explicit.",
+    ]
+    pilot = read(PILOT_OUTPUT / "summary.json")
+    if pilot:
+        rows = []
+        for model, name in PILOT_MODELS.items():
+            settings = pilot["configurations"][model]
+            condition = "All four" if settings["state"] in {"complete", "prior pilot"} else "Running" if settings["state"] == "running" else "Partial"
+            rows.append(((pilot_names[model], condition), pilot["totals"][model], settings["aggregate_completion_token_budget"]))
+        lines += [
+            f"\n<details>\n<summary>Pilot results: {len(PILOT_MODELS)} model/provider runs, with accuracy, timing and costs</summary>\n",
+            markdown_results(rows),
+            "\n**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. Full model names, provider routing and failure counts are in the pilot report.",
+            "\nLFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron Lightning enable reasoning without an effort selector; the other models request `high`. Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.",
+            "\nCosts cover these scored subsets, excluding compatibility checks, removed duplicate-hard cases, interrupted requests and follow-up diagnostics. Missing charges remain explicit. The reports separate incorrect values, formatting failures, timeouts, token caps and API/protocol errors. Earlier ten-example GLM/Luna checks are a separate report appendix, not pooled here.",
+            "\n</details>",
+        ]
+    lines += [
+        "\n**Request and execution settings**",
+        "\n| Setting | Value |\n|---|---|",
+        "| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; no fallback |",
+        '| Full reasoning | `{"effort":"high","exclude":false}`; pilot exceptions are documented above |',
+        "| Output / timeout | 32,768 aggregate generated tokens/example (8,192 for LFM); **300 seconds/API request** |",
+        '| Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |',
+        "| Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |",
+        "| Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |",
+        "| Sampling | Seed 20261029 where supported, omitted on Bedrock and both Lightning runs; provider-default temperature; initially ten concurrent examples, with free-endpoint pacing. io.net continued only unissued cases at concurrency three |",
+        "\n<details>\n<summary>Exact Python function supplied to OpenRouter</summary>\n\n```json\n" + json.dumps(config["tools_condition"]["tools"], indent=2) + "\n```\n\nThe no-tools condition sends an empty tools array. No hosted shell or web tool is registered. Separate GPT-OSS compatibility experiments are described in the pilot report.\n\n</details>",
+        "\n<details>\n<summary>Exact full-evaluation request settings</summary>\n\n```json\n" + json.dumps(config["parameters_no_tools"], indent=2) + "\n```\n\nThe tools condition adds the function above and uses `auto`, then `none` after the call limit. Each round receives the remaining token budget. Returned reasoning records are preserved between turns. Pilot-specific routing and settings are in its report.\n\n</details>",
+        "\n<details>\n<summary>Local Python execution and network isolation</summary>\n\nThe controller executes returned Python programs locally and sends stdout/stderr, exit code and timeout status back as tool results. Network isolation is an OS policy, not an OpenRouter parameter; the controller retains API access.\n\n```sh\n/usr/bin/sandbox-exec -f \"$workdir/sandbox.sb\" \\\n  \"$runtime/bin/python\" -I -B -c \"$launcher\"\n```\n\nThe policy denies `network*` and `process-fork`, restricts reads to runtime/system paths and the current example workdir, and restricts writes to that workdir. Benchmark answers and credentials are inaccessible. Startup checks verify these restrictions.\n\n</details>",
+        "\n<details>\n<summary>Dataset matching, scoring and saved artifacts</summary>\n",
+        f"Full-evaluation dataset revision: `{config['dataset']['revision']}`. Five duplicated hard variants were removed after the original Luna run. Its original 3,360-attempt artifacts remain intact; the combined comparison excludes only those 100 historical attempts. Retained prompts and reference answers match byte for byte. The pilot’s 30 task types contain two of those duplicated hard variants, so its comparison retains 116 attempts/model.",
+        "\nThe deterministic scorer and benchmark definitions are unchanged. No scored inference requests are retried. A separate formatting diagnostic accepts an inline final-answer marker and removes one outer JSON fence; it never changes primary scores. GPT-OSS exploratory compatibility checks are separate from scored pilot attempts.",
+        "\nFailed Qwen request metadata omitted by the legacy trial is reconstructed from saved response and billing files for reporting. Raw traces, final answers and scores are unchanged. Public artifacts include prompts, final predictions, settings and metrics. Raw API requests, reasoning and tool programs/results remain local and untracked.",
+        "\n</details>",
+    ]
+    return "\n".join(lines) + "\n"
 
 def render(output, summary, config, data, rows):
     import base64
@@ -210,13 +253,12 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
     q = summary["totals"]["qwen"]
     parts.append(f"<p>Full evaluation: <b>Qwen {q['attempted']}/3,260 ({esc(summary['state'])})</b>; Luna 3,260 matching historical attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Qwen pilot responses are excluded.</p>")
     parts.append(f'<p class="muted">Updated <time id="last-update" datetime="{esc(summary["generated_at"])}">{esc(summary["generated_at"])}</time>. <span id="update-status">Saved snapshot.</span> <button id="refresh-now" type="button">Refresh now</button></p>')
-    parts.append('<h2 id="overview">Overview</h2><div class="scroll"><table><tr><th>Model / condition</th><th>Correct / finished</th><th>Accuracy</th><th>Median time</th><th>Recorded cost</th></tr>')
-    for model, name in MODELS.items():
-        for c, label in zip(PLANNED, LABELS):
-            r = summary["conditions"][model][c]
-            accuracy = f"{100*r['accuracy']:.1f}%" if r["accuracy"] is not None else "—"
-            parts.append(f"<tr><td>{name}<small>{label}; {PLANNED[c]} planned</small></td><td>{r['correct']}/{r['attempted']}</td><td>{accuracy}</td><td>{r['median_seconds'] or 0:.1f}s</td><td>${r['cost_usd']:.5f}</td></tr>")
-    parts.append('</table></div><p class="muted">All failures remain in the denominator. In-progress Qwen cases are a partial, early-finishing subset. Use the paired comparison below to compare only cases already completed by both models. Original Luna artifacts are preserved separately.</p>')
+    parts.append('<h2 id="overview">Overview</h2>')
+    parts.append(html_results([
+        (f"{name}: {label}", summary["conditions"][model][c], 32768)
+        for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
+    ]))
+    parts.append('<p class="muted">All failures remain in the denominator. Original Luna artifacts are preserved separately. The <a href="../model-pilot-20261029/report.html">30-task model/provider pilot</a> is a separate report; its responses are not reused here.</p>')
     parts.append(f"<p class=muted>Billing metadata is incomplete for {q['unreconciled_examples']} completed Qwen attempts and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
     image = base64.b64encode((output / "overall.png").read_bytes()).decode()
     parts.append(f'<img alt="Accuracy by model and condition" src="data:image/png;base64,{image}">')

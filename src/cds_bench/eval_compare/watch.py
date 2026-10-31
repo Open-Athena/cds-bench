@@ -14,7 +14,7 @@ from cds_bench.eval_luna.io import save
 from cds_bench.eval_luna.run import now
 
 from .audit import audit
-from .report import BRANCH, REPOSITORY, build
+from .report import PR_TITLE, BRANCH, REPOSITORY, build
 from .run import OUTPUT, RAW, ROOT
 
 
@@ -40,7 +40,7 @@ def publish(raw, output, number):
         subprocess.run(["git", "commit", "-m", f"Update matched Luna/Qwen evaluation: {summary['qwen_completed']}/3260 Qwen attempts"], cwd=ROOT, check=True)
     subprocess.run(["git", "push", "origin", BRANCH], cwd=ROOT, check=True)
     subprocess.run(["gh", "pr", "edit", str(number), "--repo", REPOSITORY,
-                    "--title", "Evaluate Luna and Qwen3.7 Flash high on CDS-bench",
+                    "--title", PR_TITLE,
                     "--body-file", str(output / "pr-body.md")], cwd=ROOT, check=True)
     value = {"qwen_completed": summary["qwen_completed"], "state": summary["state"],
              "qwen_cost_usd": summary["totals"]["qwen"]["cost_usd"], "published_at": now(), "pr_number": number}

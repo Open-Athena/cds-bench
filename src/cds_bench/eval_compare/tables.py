@@ -1,0 +1,48 @@
+"""Compact GitHub tables and detailed HTML report tables."""
+
+import html
+
+
+HEADERS = [
+    "Model / condition", "Correct / finished", "Accuracy", "Median / example",
+    "Recorded cost", "Token budget", "Timeouts", "Token caps", "Format", "API/protocol",
+]
+PR_HEADERS = ["Model", "Condition", "Correct", "Accuracy", "Median", "Cost", "Truncated"]
+
+
+def cells(label, metric, budget):
+    return [
+        label,
+        f"{metric['correct']}/{metric['attempted']}",
+        f"{100 * metric['accuracy']:.1f}%" if metric["attempted"] else "n/a",
+        f"{metric['median_seconds']:.1f}s" if metric["attempted"] else "n/a",
+        f"${metric['cost_usd']:.5f}", f"{budget:,}",
+        str(metric["timeout"]), str(metric["token_cap"]), str(metric["format"]), str(metric["error"]),
+    ]
+
+
+def markdown_table(headers, rows):
+    # GitHub strips table CSS. Nonbreaking spaces keep short labels together.
+    def nowrap(value):
+        return html.escape(str(value)).replace(" ", "&nbsp;")
+
+    lines = ["| " + " | ".join(headers) + " |", "|---|---|" + "---:|" * (len(headers) - 2)]
+    for row in rows:
+        lines.append("| " + " | ".join(nowrap(value) for value in row) + " |")
+    return "\n".join(lines)
+
+
+def markdown_results(rows):
+    return markdown_table(PR_HEADERS, [
+        [model, condition, *cells("", metric, budget)[1:5], metric["token_cap"]]
+        for (model, condition), metric, budget in rows
+    ])
+
+
+def html_results(rows):
+    head = "".join(f"<th>{html.escape(h)}</th>" for h in HEADERS)
+    body = "".join(
+        "<tr>" + "".join(f"<td>{html.escape(c)}</td>" for c in cells(*row)) + "</tr>"
+        for row in rows
+    )
+    return f'<div class="scroll"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
