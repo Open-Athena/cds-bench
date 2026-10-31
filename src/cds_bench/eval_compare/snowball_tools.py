@@ -11,7 +11,34 @@ from statistics import mean
 from cds_bench.catalog import TASKS
 from cds_bench.eval_luna.io import save
 
-from .snowball_full import RAW
+from .snowball_full import RAW, ROOT
+
+ONESHOT = ROOT/'scratch/snowball-v01-oneshot-pilot-20261031-01'
+
+
+def one_shot():
+    """Keep the prompted follow-up separate from all original model scores."""
+    path=ONESHOT/'summary.json'
+    if not path.exists():
+        return None
+    summary=json.loads(path.read_text())
+    if summary['state']!='complete':
+        return None
+    audit=json.loads((ONESHOT/'audit.json').read_text())
+    assert audit['passed'] and audit['attempts']==58
+    config=json.loads((ONESHOT/'config.json').read_text())
+    preflight=json.loads((ONESHOT/'preflight-result.json').read_text())
+    return {'attempts':58, 'original_conditions':summary['original_conditions'],
+            'conditions':summary['conditions'], 'paired_comparison':summary['paired_comparison'],
+            'demonstration':json.loads((ONESHOT/'demonstration.json').read_text()),
+            'provenance':config['provenance'], 'settings':{k:config[k] for k in
+                ['concurrency','aggregate_completion_token_budget','request_timeout_seconds',
+                 'connection_timeout_seconds','max_tool_calls','adapter','sampling','cost_note']},
+            'transport_note':'Uses the full-run client with the identical native request transformation and response parser. Relative to the original pilot, it adds error-stage metadata and a 15-second connection-setup timeout instead of the generic 1,800-second timeout. No connection failures occurred in this follow-up.',
+            'preflight':{'real_tool_round_trip':bool(preflight['tool_calls'] and not preflight['tool_failures']),
+                         'strict_answer_passed':preflight['passed']},
+            'audit':audit,
+            'interpretation':'Same 30 easy and 28 hard pilot prompts, fresh attempts with one prepended generic arithmetic demonstration. It demonstrates both tool use and final-answer formatting. Baseline adapter and scorer are unchanged. One draw per prompt; no causal isolation of formatting versus tool-selection effects.'}
 
 
 def within_tasks(rows, minimum=2):
@@ -82,6 +109,7 @@ def build(output, rows, models):
               'program_failures':audit['python_program_failures'],
               'missed_complete_json_handoffs':missed,
               'missed_handoff_note':'The original parser returned no calls for these complete JSON calls inside unfinished thinking. Seven contain syntactically valid Python; two are placeholder programs. No programs were executed again and no scores were changed.'}
+    result['one_shot_pilot']=one_shot()
     save(output/'snowball-tool-use.json',result)
     tasks = result['easy_python_within_tasks']['tasks']
     if tasks:
@@ -129,6 +157,35 @@ def native_explanation(stats):
             "The private capability URL and serving model ID are omitted. A real execution/result round trip passed before scoring.")
 
 
+def one_shot_text(pilot):
+    old,new=pilot['original_conditions'].values(),pilot['conditions'].values()
+    old_calls,new_calls=sum(r['tool_users'] for r in old),sum(r['tool_users'] for r in new)
+    old_correct,new_correct=sum(r['correct'] for r in old),sum(r['correct'] for r in new)
+    n=pilot['attempts']
+    return (f"The one-demonstration Snowball pilot used Python on {new_calls}/{n} examples versus {old_calls}/{n} originally. "
+            f"Correct answers: {new_correct}/{n} ({new_correct/n:.1%}) versus {old_correct}/{n} ({old_correct/n:.1%}). "
+            "This small matched repeat does not show an accuracy benefit.")
+
+
+def one_shot_markdown(stats, base):
+    pilot=stats.get('one_shot_pilot')
+    if not pilot:
+        return []
+    lines=['\n'+one_shot_text(pilot),
+           '\n<details>\n<summary>Snowball follow-up: one tool-use demonstration on the matched pilot</summary>\n',
+           pilot['interpretation'],
+           '\n| Condition | Original correct | With demo | Original tool users | With demo |',
+           '|---|---:|---:|---:|---:|']
+    for condition,label in [('easy-tools','Easy, Python'),('hard-tools','Hard, Python')]:
+        a,b=pilot['original_conditions'][condition],pilot['conditions'][condition]
+        lines.append(f'| {label} | {a["correct"]}/{a["n"]} ({a["accuracy"]:.1%}) | {b["correct"]}/{b["n"]} ({b["accuracy"]:.1%}) | {a["tool_users"]}/{a["n"]} | {b["tool_users"]}/{b["n"]} |')
+    lines.extend(['\nSame native XML transformation/parser, optional Python tool, 32,768 aggregate generated tokens, temperature 0.7, seed 20261029, concurrency 60 and 1,800-second API deadline. The demonstration is the only change to model-facing context/settings. Its call is excluded from measured tool use. Cost is unavailable. The full baselines and pilot model-ranking table are unchanged.',
+                  '\n'+pilot['transport_note'],
+                  f'\n[Follow-up results and exact demonstration]({base}/report.html#snowball-oneshot). No scored retries; all 58 attempts passed the source/prompt/budget/scoring audit.',
+                  '\n</details>'])
+    return lines
+
+
 def html_section(stats):
     esc=html.escape
     s=stats['easy_python_within_tasks']
@@ -144,4 +201,17 @@ def html_section(stats):
                      f'<td>{r["uncalled_correct"]}/{r["uncalled_n"]} ({r["uncalled_accuracy"]:.1%})</td>'
                      f'<td>{100*r["difference"]:+.1f} pp</td></tr>')
     parts.append('</table><p><a href="snowball-tool-use.json">Analysis JSON</a> · <a href="snowball-tool-use-by-task.csv">Per-task CSV</a></p></details>')
+    pilot=stats.get('one_shot_pilot')
+    if pilot:
+        parts.extend(['<h3 id="snowball-oneshot">One tool-use demonstration: matched pilot</h3>',
+            '<p>'+esc(pilot['interpretation'])+'</p>',
+            '<p>'+esc(one_shot_text(pilot))+'</p>',
+            '<table><tr><th>Condition</th><th>Original correct</th><th>With demonstration</th><th>Original tool users</th><th>With demonstration</th></tr>'])
+        for condition,label in [('easy-tools','Easy, Python'),('hard-tools','Hard, Python')]:
+            old,new=pilot['original_conditions'][condition],pilot['conditions'][condition]
+            parts.append(f'<tr><td>{label}</td><td>{old["correct"]}/{old["n"]} ({old["accuracy"]:.1%})</td>'
+                f'<td>{new["correct"]}/{new["n"]} ({new["accuracy"]:.1%})</td>'
+                f'<td>{old["tool_users"]}/{old["n"]}</td><td>{new["tool_users"]}/{new["n"]}</td></tr>')
+        parts.append('</table><p>Same native XML adapter and optional Python tool, 32,768 aggregate generated tokens, temperature 0.7, seed 20261029, concurrency 60 and 1,800-second API deadline. The demonstration is context; its call is excluded from measured tool use. No baseline scores or model rankings include this follow-up. Cost is unavailable.</p>')
+        parts.append('<details><summary>Exact demonstration messages and follow-up audit</summary><pre>'+esc(json.dumps(pilot['demonstration']['messages'],indent=2))+'</pre><p>'+esc(pilot['transport_note'])+'</p><p>Unscored preflight executed Python and delivered its result; strict final-answer score: '+str(pilot['preflight']['strict_answer_passed']).lower()+'. All 58 scored attempts passed the prompt, source-hash, token-budget and scoring audit. No scored retries.</p></details>')
     return ''.join(parts)

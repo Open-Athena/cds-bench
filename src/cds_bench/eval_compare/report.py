@@ -288,6 +288,7 @@ def pr_body(summary, config):
         "\nThe HTML reports are self-contained; download and open them in a browser.",
         "\n" + snowball_tools.short_text(summary['snowball_tool_use']),
         "\n" + snowball_tools.comparison_text(summary['snowball_tool_use']) + f" [Per-task breakdown]({base}/report.html#snowball-tools).",
+        *snowball_tools.one_shot_markdown(summary['snowball_tool_use'], base),
         "\n**Accuracy by condition**",
         *figure("overall", "CDS-bench accuracy by model and evaluation condition"),
         "\n<details>\n<summary>Full results: accuracy, median time, cost and truncation</summary>\n",
@@ -408,7 +409,6 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
     parts.append(f"<p class=muted>Billing is incomplete for {deepinfra['unreconciled_examples']} Nemotron 3.5 Lightning, {q['unreconciled_examples']} Qwen and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
     image = base64.b64encode((output / "overall.png").read_bytes()).decode()
     parts.append(f'<img alt="Accuracy by model and condition" src="data:image/png;base64,{image}">')
-    parts.append(snowball_tools.html_section(summary['snowball_tool_use']))
     parts.append('<details><summary>Failure categories, token usage, and costs</summary><div class="scroll"><table><tr><th>Model / condition</th><th>Incorrect</th><th>Format</th><th>Timeout</th><th>Token cap</th><th>API error</th><th>Used Python</th><th>Reported generated tokens</th></tr>')
     for m, name in MODELS.items():
         for c, label in zip(PLANNED, LABELS):
@@ -430,7 +430,9 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
         for c, label in zip(PLANNED, LABELS):
             r = summary["conditions"][m][c]; extra = summary["format_diagnostic_additional_exact"][m][c]
             parts.append(f'<tr><td>{name}<small>{label}</small></td><td>{r["correct"]}/{r["attempted"]}</td><td>{extra}</td><td>{r["correct"]+extra}/{r["attempted"]}</td></tr>')
-    parts.append('</table></details><h2 id="families">By family</h2>')
+    parts.append('</table></details>')
+    parts.append(snowball_tools.html_section(summary['snowball_tool_use']))
+    parts.append('<h2 id="families">By family</h2>')
     parts.append(html_grouped_table(["Family", "Model", *LABELS], [
         (family, [[name, *[f'{metrics[m][c]["correct"]}/{metrics[m][c]["attempted"]}' for c in PLANNED]]
                   for m, name in MODELS.items()])

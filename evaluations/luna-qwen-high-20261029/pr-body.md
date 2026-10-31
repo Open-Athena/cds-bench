@@ -16,6 +16,26 @@ With Python available, Snowball invoked it on 177/1,630 examples (10.9%), versus
 
 For Easy/Python, 33 task types have at least two examples with a Python call and two without one. Averaging accuracy equally across these same task types gives 54.8% with calls versus 23.2% without (+31.6 percentage points). This compares different examples within each task and is observational, not a causal estimate of tool benefit. [Per-task breakdown](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#snowball-tools).
 
+The one-demonstration Snowball pilot used Python on 10/58 examples versus 5/58 originally. Correct answers: 12/58 (20.7%) versus 15/58 (25.9%). This small matched repeat does not show an accuracy benefit.
+
+<details>
+<summary>Snowball follow-up: one tool-use demonstration on the matched pilot</summary>
+
+Same 30 easy and 28 hard pilot prompts, fresh attempts with one prepended generic arithmetic demonstration. It demonstrates both tool use and final-answer formatting. Baseline adapter and scorer are unchanged. One draw per prompt; no causal isolation of formatting versus tool-selection effects.
+
+| Condition | Original correct | With demo | Original tool users | With demo |
+|---|---:|---:|---:|---:|
+| Easy, Python | 7/30 (23.3%) | 8/30 (26.7%) | 3/30 | 7/30 |
+| Hard, Python | 8/28 (28.6%) | 4/28 (14.3%) | 2/28 | 3/28 |
+
+Same native XML transformation/parser, optional Python tool, 32,768 aggregate generated tokens, temperature 0.7, seed 20261029, concurrency 60 and 1,800-second API deadline. The demonstration is the only change to model-facing context/settings. Its call is excluded from measured tool use. Cost is unavailable. The full baselines and pilot model-ranking table are unchanged.
+
+Uses the full-run client with the identical native request transformation and response parser. Relative to the original pilot, it adds error-stage metadata and a 15-second connection-setup timeout instead of the generic 1,800-second timeout. No connection failures occurred in this follow-up.
+
+[Follow-up results and exact demonstration](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#snowball-oneshot). No scored retries; all 58 attempts passed the source/prompt/budget/scoring audit.
+
+</details>
+
 **Accuracy by condition**
 
 ![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=12b1d05ac1cd)
