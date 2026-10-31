@@ -1,0 +1,320 @@
+"""Self-contained matched Luna/Qwen report; raw reasoning remains untracked."""
+
+import argparse
+import csv
+import fcntl
+import html
+import json
+import os
+import re
+from collections import Counter
+from datetime import UTC, datetime
+from pathlib import Path
+
+from cds_bench.catalog import TASKS
+from cds_bench.eval_luna.io import save
+from cds_bench.eval_luna.report import aggregate, public_record
+from cds_bench.eval_luna.score import score_result
+
+from .run import CONDITIONS, LUNA_RAW, LUNA_RESULTS, OUTPUT, PLANNED, RAW, ROOT
+from .collector import records
+
+LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
+MODELS = {"luna": "Luna high", "qwen": "Qwen3.7 Flash high"}
+BRANCH = "eval/luna-high-baseline"
+REPOSITORY = "Open-Athena/cds-bench"
+REPORT_PATH = str(OUTPUT.relative_to(ROOT))
+
+
+def read(path, default=None):
+    return json.loads(path.read_text()) if path.exists() else default
+
+
+def formatting_diagnostic(row, case, raw):
+    """Only relocate an inline marker and remove one outer JSON fence."""
+    if row["outcome"] != "format":
+        return False
+    if row.get("trace_directory"):
+        directory = Path(row["trace_directory"])
+    else:
+        number = row["instance_id"].rsplit("/", 1)[1]
+        matches = list((raw / "traces" / row["condition"]).glob(f"*-{row['task_id']}-{number}"))
+        assert len(matches) == 1
+        directory = matches[0]
+    text = (directory / "answer.txt").read_text()
+    markers = list(re.finditer(r"(?m)^Final answer:[ \t]*", text))
+    if not markers:
+        return False
+    final = text[markers[-1].end():].strip()
+    if case["output_format"] == "json":
+        match = re.fullmatch(r"```(?:json)?[ \t]*\n(.*?)\n```", final, re.DOTALL)
+        if match:
+            final = match[1]
+    return bool(score_result(case, "Final answer:\n" + final, row["finish_reason"])["passed"])
+
+
+def build(raw=RAW, output=OUTPUT):
+    output.mkdir(parents=True, exist_ok=True)
+    with (raw / "report.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _build(raw, output)
+
+
+def _build(raw, output):
+    config = read(raw / "config.json")
+    data = read(raw / "dataset.json")
+    cases = {(r["instance_id"], v): r for v, rows in data.items() for r in rows}
+    all_rows = []
+    for model, source, source_rows in [
+        ("luna", LUNA_RAW, read(LUNA_RESULTS)), ("qwen", raw, records(raw)),
+    ]:
+        for original in source_rows:
+            key = original["instance_id"], original["variant"]
+            if key not in cases:
+                continue
+            row = dict(original, model=model)
+            assert row["expected_answer"] == cases[key]["answer"]
+            row["format_diagnostic_exact"] = formatting_diagnostic(row, cases[key], source)
+            all_rows.append(row)
+    assert len({(r["model"], r["instance_id"], r["condition"]) for r in all_rows}) == len(all_rows)
+    condition_names = list(PLANNED)
+    summaries = {m: {c: aggregate([r for r in all_rows if r["model"] == m and r["condition"] == c]) for c in condition_names} for m in MODELS}
+    totals = {m: aggregate([r for r in all_rows if r["model"] == m]) for m in MODELS}
+    assert totals["luna"]["attempted"] == 3260
+    by_task = {t: {m: {c: aggregate([r for r in all_rows if r["task_id"] == t and r["model"] == m and r["condition"] == c]) for c in condition_names} for m in MODELS} for t in TASKS}
+    families = sorted({v.get("family", "composition") for v in TASKS.values()})
+    by_family = {f: {m: {c: aggregate([r for r in all_rows if TASKS[r["task_id"]].get("family", "composition") == f and r["model"] == m and r["condition"] == c]) for c in condition_names} for m in MODELS} for f in families}
+    diagnostics = {m: {c: sum(r["format_diagnostic_exact"] for r in all_rows if r["model"] == m and r["condition"] == c) for c in condition_names} for m in MODELS}
+    luna_lookup = {(r["instance_id"], r["condition"]): r for r in all_rows if r["model"] == "luna"}
+    paired = {}
+    for c in condition_names:
+        pairs = [(luna_lookup[r["instance_id"], c], r) for r in all_rows if r["model"] == "qwen" and r["condition"] == c]
+        paired[c] = {"completed_pairs": len(pairs), "both_correct": sum(a["passed"] and b["passed"] for a, b in pairs),
+                     "luna_only": sum(a["passed"] and not b["passed"] for a, b in pairs),
+                     "qwen_only": sum(b["passed"] and not a["passed"] for a, b in pairs),
+                     "both_failed": sum(not a["passed"] and not b["passed"] for a, b in pairs)}
+    job = read(raw / "job-status.json", {"state": "prepared", "completed": 0})
+    summary = {"generated_at": datetime.now(UTC).isoformat(), "state": job["state"], "qwen_completed": totals["qwen"]["attempted"], "qwen_planned": 3260,
+               "models": MODELS, "planned_per_condition": PLANNED, "totals": totals,
+               "conditions": summaries, "by_task": by_task, "by_family": by_family,
+               "paired_models": paired, "format_diagnostic_additional_exact": diagnostics,
+               "luna_original_attempts": 3360, "luna_retained_attempts": 3260,
+               "luna_original_results_sha256": config["luna_comparison"]["published_results_sha256"],
+               "billing": {"luna_original_run": read(LUNA_RAW / "billing-summary.json", {}), "qwen": read(raw / "billing-summary.json", {})},
+               "preflight_billing": read(raw / "preflight/billing-summary.json", {}), "job": job}
+    summary["recovered_failed_request_metadata"] = sum(bool(r.get("request_metadata_recovered")) for r in all_rows)
+    summary["token_budget"] = {
+        "requested_per_example": 32768,
+        "qwen_reported_over_budget_attempts": sum(r["completion_tokens"] > 32768 for r in all_rows if r["model"] == "qwen"),
+        "qwen_largest_reported_usage": max((r["completion_tokens"] for r in all_rows if r["model"] == "qwen"), default=0),
+    }
+    public = [dict(public_record(r), model=r["model"], format_diagnostic_exact=r["format_diagnostic_exact"], request_metadata_recovered=bool(r.get("request_metadata_recovered"))) for r in all_rows]
+    save(output / "summary.json", summary)
+    save(output / "results.json", public)
+    save(output / "config.json", {"qwen": config, "luna_original": read(LUNA_RAW / "config.json")})
+    with (output / "by-task.csv").open("w") as f:
+        writer = csv.DictWriter(f, fieldnames=["task_id", "family", "model", "condition", "planned", "attempted", "correct", "accuracy", "wrong", "format", "timeout", "token_cap", "error", "cost_usd", "median_seconds"])
+        writer.writeheader()
+        for task in TASKS:
+            for model in MODELS:
+                for condition in condition_names:
+                    metric = by_task[task][model][condition]
+                    planned = 0 if condition.startswith("hard") and task in config["dataset"]["removed_hard_tasks"] else 10
+                    writer.writerow({"task_id": task, "family": TASKS[task].get("family", "composition"), "model": model,
+                                     "condition": condition, "planned": planned,
+                                     **{k: metric[k] for k in metric if k in writer.fieldnames}})
+    plot(output, summaries)
+    render(output, summary, config, data, public)
+    (output / "pr-body.md").write_text(pr_body(summary, config))
+    (output / "README.md").write_text(
+        f"# Luna and Qwen3.7 Flash: full CDS-bench evaluation\n\nQwen: {totals['qwen']['attempted']}/3,260 attempts ({job['state']}). Luna: 3,260 matched historical attempts.\n\n"
+        "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
+        "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
+        "Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
+        "Failed Qwen request counts, timeout flags, usage, and charges are reconstructed from saved response metadata where the collector omitted them. Raw files and scores are unchanged; no requests are retried.\n"
+    )
+    print(json.dumps({"state": job["state"], "qwen_completed": totals["qwen"]["attempted"], "qwen_cost_usd": totals["qwen"]["cost_usd"]}), flush=True)
+    return summary
+
+
+def plot(output, summaries):
+    cache = ROOT / "build/eval-comparison-cache"
+    cache.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("MPLCONFIGDIR", str(cache / "matplotlib"))
+    os.environ.setdefault("XDG_CACHE_HOME", str(cache))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+    fig, ax = plt.subplots(figsize=(8.8, 3.5), layout="constrained")
+    for offset, (model, name) in zip([-0.19, 0.19], MODELS.items()):
+        values = [100 * (summaries[model][c]["accuracy"] or 0) for c in PLANNED]
+        bars = ax.bar(np.arange(4) + offset, values, width=0.36, label=name,
+                      color="#466784" if model == "luna" else "#688775")
+        for bar, c in zip(bars, PLANNED):
+            r = summaries[model][c]
+            ax.text(bar.get_x() + bar.get_width()/2, bar.get_height()+1, f"{r['correct']}/{r['attempted']}", ha="center", fontsize=8)
+    ax.set_xticks(range(4), LABELS)
+    ax.set_ylim(0, 108)
+    ax.set_ylabel("Correct answers (%) among finished attempts")
+    ax.legend(frameon=False, loc="upper right")
+    ax.grid(axis="y", color="#e1e5e8")
+    ax.set_axisbelow(True)
+    ax.spines[["top", "right"]].set_visible(False)
+    fig.savefig(output / "overall.png", dpi=160)
+    plt.close(fig)
+
+
+def pr_body(summary, config):
+    base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{REPORT_PATH}"
+    q = summary["totals"]["qwen"]
+    lines = ["Compare **Luna high** and **Qwen3.7 Flash high** on the full CDS-bench dataset, with and without offline Python. Qwen uses Alibaba’s US endpoint. This is an evaluation-only branch; **do not merge**.",
+             f"\n**Qwen: {q['attempted']}/3,260 attempts ({summary['state']}).** Recorded Qwen charges: **${q['cost_usd']:.6f}**. Luna contributes 3,260 matching historical attempts. No pilot responses are reused.",
+             f"\nBilling is incomplete for {q['unreconciled_examples']} completed Qwen attempts and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Unverified charges are not assumed to be zero.\n\n[Combined HTML report]({base}/report.html) · [Per-task results]({base}/by-task.csv) · [Predictions]({base}/results.json)",
+             "\n| Model / condition | Correct / finished | Median | Recorded cost |\n|---|---:|---:|---:|"]
+    for model, name in MODELS.items():
+        for c, label in zip(PLANNED, LABELS):
+            r = summary["conditions"][model][c]
+            lines.append(f"| {name}: {label} | {r['correct']}/{r['attempted']} | {r['median_seconds'] or 0:.1f}s | ${r['cost_usd']:.6f} |")
+    lines += ["\nAll failures remain in the denominator. In-progress Qwen results are a partial subset. Incorrect values, answer-format failures, five-minute timeouts, token caps, and provider/connection errors are separated below.",
+              "\n| Model / condition | Incorrect | Format | Timeout | Token cap | API error |\n|---|---:|---:|---:|---:|---:|"]
+    for model, name in MODELS.items():
+        for c, label in zip(PLANNED, LABELS):
+            r = summary["conditions"][model][c]
+            lines.append(f"| {name}: {label} | {r['wrong']} | {r['format']} | {r['timeout']} | {r['token_cap']} | {r['error']} |")
+    lines += ["\n| Request / execution setting | Value |\n|---|---|",
+              "| Models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; no fallback |",
+              '| Reasoning | `{"effort":"high","exclude":false}` |',
+              "| Output / timeout | 32,768 total generated tokens/example; 300 seconds/API request |",
+              '| Tools / web | One Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |',
+              "| Executor | `/usr/bin/sandbox-exec`, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; no Biopython |",
+              "| Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |",
+              "| Sampling | Seed 20261029; provider defaults; ten concurrent examples |",
+              "\n<details>\n<summary>Matched dataset and historical Luna results</summary>\n",
+              f"Pinned dataset revision: `{config['dataset']['revision']}`. There are 840 easy and 790 hard prompts. Five duplicated hard variants were removed after the original Luna run. Every retained prompt, input, and answer was checked against Luna’s saved cases. The original 3,360-attempt Luna report remains intact; only the 100 duplicate-hard attempts are omitted from the combined comparison. No model responses were rescored or retried. Qwen makes fresh requests for every case, including the cases previously used in its model-selection pilot.\n\n</details>",
+              "\n<details>\n<summary>Exact tools JSON supplied to OpenRouter</summary>\n\n```json\n" + json.dumps(config["tools_condition"]["tools"], indent=2) + "\n```\n\nThe no-tools condition sends an empty tools array. No hosted shell or web tool is registered.\n\n</details>",
+              "\n<details>\n<summary>Python execution and macOS sandbox</summary>\n\nThe controller executes returned Python programs locally and sends stdout/stderr, exit code, and timeout status back as tool results. Networking is blocked by the operating system, not an OpenRouter parameter. The controller retains API access.\n\n```sh\n/usr/bin/sandbox-exec -f \"$workdir/sandbox.sb\" \\\n  \"$runtime/bin/python\" -I -B -c \"$launcher\"\n```\n\nThe policy denies `network*` and `process-fork`, restricts content reads to runtime/system paths and the current example workdir, and restricts writes to that workdir. Credentials and benchmark answers are inaccessible. Startup checks verify these restrictions.\n\n</details>",
+              "\n<details>\n<summary>Request settings, scoring, costs, and traces</summary>\n\n```json\n" + json.dumps(config["parameters_no_tools"], indent=2) + "\n```\n\nThe tools condition adds the function above and uses `auto`, then `none` once the call limit is reached. Every round receives the remaining token budget. Reasoning records are preserved between rounds. The original deterministic scorer is unchanged. A separately labeled formatting diagnostic only relocates inline final-answer markers and removes outer JSON fences; it never changes the primary scores.\n\nCosts are reconciled against generation metadata. Missing billing records remain explicit. Raw requests, SSE responses, reasoning, and tool programs/results stay untracked. Only final predictions and metrics are published.\n\n</details>"]
+    lines.append("\n<details>\n<summary>Failed-request bookkeeping</summary>\n\nThe Qwen client and legacy trial use different exception classes. The trial records these requests as failures but omits failed-response metadata from its bookkeeping. The report reconstructs request counts, timeout flags, usage, and charges from the saved response files and billing records. No raw files, final answers, or scores are changed, and no requests are retried. The inference source remains frozen throughout the run.\n\n</details>")
+    budget = summary["token_budget"]
+    if budget["qwen_reported_over_budget_attempts"]:
+        lines.append(f"\n<details>\n<summary>Provider-reported token-budget exceptions</summary>\n\nThe controller requests at most 32,768 generated tokens per example, reducing the allowance after each tool round. Qwen's response metadata reports more than this allowance for {budget['qwen_reported_over_budget_attempts']} attempts, with a maximum of {budget['qwen_largest_reported_usage']:,} tokens. These exceptions remain visible in the audit. Requests and scores are unchanged; actual provider-reported usage is not strictly matched to Luna's requested cap.\n\n</details>")
+    return "\n".join(lines) + "\n"
+
+
+def render(output, summary, config, data, rows):
+    import base64
+    esc = html.escape
+    parts = ["""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CDS-bench: Luna and Qwen full evaluation</title><style>
+body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}small,.muted{color:#64727e}small{display:block}.scroll{overflow-x:auto}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 0}img{max-width:100%;height:auto}[hidden]{display:none!important}nav{margin:12px 0 20px}.good{background:#e5efe8}.bad{background:#f3e8e9}</style><main><h1>CDS-bench: Luna and Qwen3.7 Flash</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
+    q = summary["totals"]["qwen"]
+    parts.append(f"<p>Full evaluation: <b>Qwen {q['attempted']}/3,260 ({esc(summary['state'])})</b>; Luna 3,260 matching historical attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Qwen pilot responses are excluded.</p>")
+    parts.append(f'<p class="muted">Updated <time id="last-update" datetime="{esc(summary["generated_at"])}">{esc(summary["generated_at"])}</time>. <span id="update-status">Saved snapshot.</span> <button id="refresh-now" type="button">Refresh now</button></p>')
+    parts.append('<h2 id="overview">Overview</h2><div class="scroll"><table><tr><th>Model / condition</th><th>Correct / finished</th><th>Accuracy</th><th>Median time</th><th>Recorded cost</th></tr>')
+    for model, name in MODELS.items():
+        for c, label in zip(PLANNED, LABELS):
+            r = summary["conditions"][model][c]
+            accuracy = f"{100*r['accuracy']:.1f}%" if r["accuracy"] is not None else "—"
+            parts.append(f"<tr><td>{name}<small>{label}; {PLANNED[c]} planned</small></td><td>{r['correct']}/{r['attempted']}</td><td>{accuracy}</td><td>{r['median_seconds'] or 0:.1f}s</td><td>${r['cost_usd']:.5f}</td></tr>")
+    parts.append('</table></div><p class="muted">All failures remain in the denominator. In-progress Qwen cases are a partial, early-finishing subset. Use the paired comparison below to compare only cases already completed by both models. Original Luna artifacts are preserved separately.</p>')
+    parts.append(f"<p class=muted>Billing metadata is incomplete for {q['unreconciled_examples']} completed Qwen attempts and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
+    image = base64.b64encode((output / "overall.png").read_bytes()).decode()
+    parts.append(f'<img alt="Accuracy by model and condition" src="data:image/png;base64,{image}">')
+    parts.append('<details><summary>Failure categories, token usage, and costs</summary><div class="scroll"><table><tr><th>Model / condition</th><th>Incorrect</th><th>Format</th><th>Timeout</th><th>Token cap</th><th>API error</th><th>Used Python</th><th>Reported generated tokens</th></tr>')
+    for m, name in MODELS.items():
+        for c, label in zip(PLANNED, LABELS):
+            r = summary["conditions"][m][c]
+            parts.append(f'<tr><td>{name}<small>{label}</small></td>'+''.join(f'<td>{r[k]}</td>' for k in ['wrong','format','timeout','token_cap','error','examples_using_python','completion_tokens'])+'</tr>')
+    budget = summary["token_budget"]
+    parts.append('</table></div><p>Timeouts are the 300-second API deadline. Token caps exhaust the aggregate generated-token budget. Provider/connection failures remain separate. Timed-out responses may omit usage; reconciled generation charges are retained when available.</p>')
+    parts.append(f"<p>Failed-request bookkeeping is reconstructed from saved response metadata for {summary['recovered_failed_request_metadata']} attempts. Raw traces, answers, and scores are unchanged.</p>")
+    parts.append(f"<p>The controller requests at most 32,768 generated tokens per example. Qwen reports usage above that allowance for {budget['qwen_reported_over_budget_attempts']} attempts, with a maximum of {budget['qwen_largest_reported_usage']:,} tokens. The audit lists these exceptions; actual provider-reported usage is not strictly matched to Luna's requested cap.</p></details>")
+    parts.append('<details><summary>Paired model comparison on completed Qwen cases</summary><table><tr><th>Condition</th><th>Pairs</th><th>Both correct</th><th>Luna only</th><th>Qwen only</th><th>Both failed</th></tr>')
+    for c, label in zip(PLANNED, LABELS):
+        r = summary["paired_models"][c]
+        parts.append(f'<tr><td>{label}</td>'+''.join(f'<td>{r[k]}</td>' for k in ['completed_pairs','both_correct','luna_only','qwen_only','both_failed'])+'</tr>')
+    parts.append('</table></details><details><summary>Formatting diagnostic: original scores unchanged</summary><p>This only accepts an inline <code>Final answer:</code> marker and removes one outer Markdown JSON fence. It applies the same exact-value comparison afterward. It does not repair the answer or recover missing markers.</p><table><tr><th>Model / condition</th><th>Original correct</th><th>Additional exact values</th><th>Diagnostic total</th></tr>')
+    for m, name in MODELS.items():
+        for c, label in zip(PLANNED, LABELS):
+            r = summary["conditions"][m][c]; extra = summary["format_diagnostic_additional_exact"][m][c]
+            parts.append(f'<tr><td>{name}<small>{label}</small></td><td>{r["correct"]}/{r["attempted"]}</td><td>{extra}</td><td>{r["correct"]+extra}/{r["attempted"]}</td></tr>')
+    parts.append('</table></details><h2 id="families">By family</h2><div class="scroll"><table><tr><th>Family / model</th>'+''.join(f'<th>{label}</th>' for label in LABELS)+'</tr>')
+    for family, metrics in summary["by_family"].items():
+        for m, name in MODELS.items():
+            parts.append(f'<tr><td>{esc(family)}<small>{name}</small></td>'+''.join(f'<td>{metrics[m][c]["correct"]}/{metrics[m][c]["attempted"]}</td>' for c in PLANNED)+'</tr>')
+    parts.append('</table></div><h2 id="tasks">By task</h2><p>Expand a row to inspect all ten instances, actual prompts, expected answers, and each model’s final prediction. Counts are correct / finished; — means that hard variant was removed.</p><input id="filter" placeholder="Filter task names or families"><div class="scroll"><table><thead><tr><th rowspan="2">Task</th>'+''.join(f'<th colspan="2">{label}</th>' for label in LABELS)+'</tr><tr>'+''.join('<th>Luna</th><th>Qwen</th>' for _ in LABELS)+'</tr></thead><tbody>')
+    for task, definition in TASKS.items():
+        title = definition["title"]
+        parts.append(f'<tr class="task-row" id="task-{task}" data-task="{task}" data-search="{esc((task+" "+title+" "+definition.get("family", "composition")).lower())}" tabindex="0" aria-expanded="false"><td><a href="#task-{task}">{esc(title)}</a><small>{task}</small></td>')
+        for c in PLANNED:
+            for m in MODELS:
+                r = summary["by_task"][task][m][c]
+                text = '—' if c.startswith('hard') and task in config['dataset']['removed_hard_tasks'] else f'{r["correct"]}/{r["attempted"]}'
+                parts.append(f'<td>{text}</td>')
+        parts.append('</tr><tr class="task-detail"><td colspan="9"></td></tr>')
+    parts.append('</tbody></table></div><h2 id="settings">Settings and data</h2><p>Both models request <code>high</code> reasoning. Qwen uses <code>qwen/qwen3.7-flash</code> on <code>alibaba/us-east-1</code>; Luna used the standard OpenAI endpoint. No provider fallback. The limit is 32,768 generated tokens across all turns, 300 seconds per API request, and eight Python calls per example.</p><p>Python 3.12.9 + NumPy 2.5.4; no Biopython. Local <code>/usr/bin/sandbox-exec</code> denies networking and process forks and restricts filesystem access. Network denial is not an OpenRouter parameter. Web plugins are disabled and no web tool is registered. Raw requests, reasoning, and tool traces remain untracked.</p>')
+    parts.append('<details><summary>Exact Python tool definition</summary><pre>'+esc(json.dumps(config['tools_condition']['tools'],indent=2))+'</pre></details>')
+    parts.append('<details><summary>Dataset version, exact request settings, and billing metadata</summary><p>The current dataset removes five duplicated hard variants. The 100 corresponding historical Luna attempts are excluded only from this comparison. Its original 3,360-attempt report is preserved. Every retained prompt and answer was verified against the old traces.</p><pre>'+esc(json.dumps({'qwen_config':config,'billing':summary['billing'],'preflight_billing':summary['preflight_billing']},indent=2))+'</pre></details>')
+    parts.append('<p><a href="summary.json">Summary</a> · <a href="by-task.csv">Per-task CSV</a> · <a href="results.json">Predictions</a> · <a href="config.json">Configurations</a></p>')
+    payload = {'snapshot':{k:summary[k] for k in ['generated_at','state','qwen_completed']},
+               'models':MODELS,'conditions':list(PLANNED),'labels':LABELS,'records':rows,
+               'cases':{v:rs for v,rs in data.items()}}
+    parts.append('<script id="data" type="application/json">'+json.dumps(payload,ensure_ascii=False).replace('<','\\u003c')+'</script>')
+    parts.append("""<script>
+const d=JSON.parse(document.getElementById('data').textContent),caseMap=new Map(),recordMap=new Map();for(const [v,rows]of Object.entries(d.cases))for(const r of rows)caseMap.set(r.instance_id+'|'+v,r);for(const r of d.records)recordMap.set(r.model+'|'+r.condition+'|'+r.instance_id,r);function node(tag,text){const x=document.createElement(tag);if(text!==undefined)x.textContent=text;return x}function details(title,text){const x=node('details');x.append(node('summary',title),node('pre',text));return x}
+function expand(row,force){const child=row.nextElementSibling,open=force===undefined?!child.classList.contains('open'):force;child.classList.toggle('open',open);row.setAttribute('aria-expanded',open);if(!open||child.dataset.loaded)return;child.dataset.loaded='1';const cell=child.firstElementChild,select=node('select'),view=node('div'),ids=d.cases.easy.filter(x=>x.task_id===row.dataset.task).map(x=>x.instance_id);for(const id of ids){const o=node('option',id);o.value=id;select.append(o)}const label=node('label','Instance ');label.append(select);cell.append(label,view);function show(){view.replaceChildren();const id=select.value;for(const variant of ['easy','hard']){const c=caseMap.get(id+'|'+variant);if(!c)continue;view.append(details(variant+' prompt',c.prompt));view.append(details(variant+' expected answer',c.answer));for(const tools of [false,true]){const condition=variant+(tools?'-tools':'-no-tools');for(const [m,name]of Object.entries(d.models)){const r=recordMap.get(m+'|'+condition+'|'+id);let text='Not completed';if(r)text=(r.final_answer??r.error??'No final answer')+'\\n\\n'+r.elapsed_seconds.toFixed(1)+'s; '+r.tool_calls+' Python calls; $'+r.cost_usd.toFixed(6);view.append(details(name+' · '+condition+' · '+(r?r.outcome:'pending'),text))}}}}select.addEventListener('change',show);show()}
+for(const row of document.querySelectorAll('.task-row')){row.addEventListener('click',e=>expand(row,e.target.closest('a')?true:undefined));row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();expand(row)}})}document.getElementById('filter').addEventListener('input',e=>{for(const row of document.querySelectorAll('.task-row')){row.hidden=!row.dataset.search.includes(e.target.value.toLowerCase());row.nextElementSibling.hidden=row.hidden}});function anchor(){const row=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(row?.classList.contains('task-row'))expand(row,true)}addEventListener('hashchange',anchor);anchor();
+const viewKey='cds-report-view:'+location.pathname;
+function refreshReport(){
+  const view={scroll:scrollY,filter:document.getElementById('filter').value,
+    sections:[...document.querySelectorAll('main > details')].map(x=>x.open),
+    tasks:[...document.querySelectorAll('.task-row[aria-expanded="true"]')].map(row=>({
+      id:row.id,instance:row.nextElementSibling.querySelector('select')?.value,
+      sections:[...row.nextElementSibling.querySelectorAll('details')].map(x=>x.open)}))};
+  try{sessionStorage.setItem(viewKey,JSON.stringify(view))}catch{}
+  const url=new URL(location.href);url.searchParams.set('updated',Date.now());location.replace(url);
+}
+try{
+  const saved=sessionStorage.getItem(viewKey);sessionStorage.removeItem(viewKey);
+  if(saved){const view=JSON.parse(saved),filter=document.getElementById('filter');
+    filter.value=view.filter||'';filter.dispatchEvent(new Event('input'));
+    for(const task of view.tasks||[]){const row=document.getElementById(task.id);if(!row)continue;
+      expand(row,true);const select=row.nextElementSibling.querySelector('select');
+      if(select&&task.instance){select.value=task.instance;select.dispatchEvent(new Event('change'))}
+      [...row.nextElementSibling.querySelectorAll('details')].forEach((x,i)=>x.open=!!task.sections[i]);}
+    [...document.querySelectorAll('main > details')].forEach((x,i)=>x.open=!!view.sections[i]);
+    requestAnimationFrame(()=>scrollTo(0,view.scroll||0));}
+}catch{}
+document.getElementById('last-update').textContent=new Date(d.snapshot.generated_at).toLocaleString();
+document.getElementById('refresh-now').addEventListener('click',refreshReport);
+if(/^https?:$/.test(location.protocol)&&d.snapshot.state==='running'){
+  const status=document.getElementById('update-status');status.textContent='Checks for updates every 30 seconds.';
+  let checking=false;
+  async function checkUpdates(){
+    if(checking||document.hidden||document.activeElement?.matches('input,select,textarea'))return;
+    checking=true;
+    try{const reply=await fetch('summary.json?updated='+Date.now(),{cache:'no-store'});
+      if(!reply.ok)throw Error('Report unavailable');const latest=await reply.json();
+      if(latest.generated_at&&latest.generated_at!==d.snapshot.generated_at)refreshReport();
+      else status.textContent='Checks for updates every 30 seconds.';
+    }catch{status.textContent='Update check failed; showing the timestamped snapshot.'}
+    finally{checking=false}
+  }
+  setInterval(checkUpdates,30000);addEventListener('focus',checkUpdates);
+}
+</script></main></html>""")
+    temporary = output / "report.html.tmp"
+    temporary.write_text('\n'.join(parts))
+    temporary.replace(output / "report.html")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--raw-root", type=Path, default=RAW)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    args = parser.parse_args()
+    build(args.raw_root.resolve(), args.output.resolve())
+
+
+if __name__ == "__main__":
+    main()
