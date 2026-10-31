@@ -1,6 +1,20 @@
 """Compact GitHub tables and detailed HTML report tables."""
 
 import html
+from collections import defaultdict
+from statistics import mean
+
+
+def models_by_task_accuracy(names, rows):
+    """Use one pooled, equally weighted task mean for every model display."""
+    tasks = defaultdict(list)
+    for row in rows:
+        if row['model'] in names:
+            tasks[row['model'], row['task_id']].append(row['passed'])
+    scores = {model: mean(mean(values) for (m, _), values in tasks.items() if m == model)
+              if any(m == model for m, _ in tasks) else None for model in names}
+    order = sorted(names, key=lambda model: (-(scores[model] if scores[model] is not None else -1), names[model]))
+    return {model: names[model] for model in order}, scores
 
 
 HEADERS = [

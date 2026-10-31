@@ -1,6 +1,6 @@
 # Full CDS-bench model evaluation
 
-Snowball v0.1: 2515/3,260 fresh attempts (running). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.
+Snowball v0.1: 2797/3,260 fresh attempts (running). GPT-6 Luna, Qwen 3.7 Flash and Nemotron 3.5 Lightning each have 3,260 matched completed attempts.
 
 Download [report.html](report.html) and open it in a browser. It is self-contained.
 

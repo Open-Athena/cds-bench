@@ -1,8 +1,8 @@
 {
   "models": {
     "luna": "GPT-6 Luna (high)",
-    "qwen": "Qwen 3.7 Flash (high)",
     "deepinfra": "Nemotron 3.5 Lightning",
+    "qwen": "Qwen 3.7 Flash (high)",
     "snowball-v01": "Snowball v0.1"
   },
   "ordering": "Fixed from the pooled view: descending mean task accuracy across models, first by group then within group; ties use family or task ID.",
@@ -12,7 +12,7 @@
       "family": "variation",
       "name": "Variant effects",
       "color": "#ee6677",
-      "mean_accuracy": 0.7604166666666666,
+      "mean_accuracy": 0.725,
       "tasks": [
         {
           "task_id": "ambiguity.stop_certainty",
@@ -24,20 +24,20 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
             },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
             }
           },
           "mean_accuracy": 0.8,
@@ -54,23 +54,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
             "deepinfra": {
               "correct": 8,
               "attempted": 10,
               "accuracy": 0.8
             },
+            "qwen": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
             }
           },
-          "mean_accuracy": 0.9,
+          "mean_accuracy": 0.825,
           "code": "A02",
           "angle": 0.09817477042468103
         },
@@ -84,23 +84,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
             },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.7333333333333333,
+          "mean_accuracy": 0.675,
           "code": "A03",
           "angle": 0.16362461737446837
         },
@@ -114,23 +114,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
             "snowball-v01": {
-              "correct": 1,
-              "attempted": 3,
-              "accuracy": 0.3333333333333333
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.6083333333333333,
+          "mean_accuracy": 0.6,
           "code": "A04",
           "angle": 0.22907446432425574
         },
@@ -144,12 +144,12 @@
               "attempted": 0,
               "accuracy": null
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
@@ -174,12 +174,12 @@
               "attempted": 0,
               "accuracy": null
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
@@ -203,7 +203,7 @@
       "family": "sequence",
       "name": "Sequence operations",
       "color": "#4477aa",
-      "mean_accuracy": 0.8483333333333333,
+      "mean_accuracy": 0.7714285714285715,
       "tasks": [
         {
           "task_id": "coords.aa_to_nt",
@@ -215,15 +215,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
             },
             "snowball-v01": {
               "correct": 2,
@@ -245,23 +245,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
             },
+            "qwen": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 7,
+              "accuracy": 0.42857142857142855
             }
           },
-          "mean_accuracy": 1.0,
+          "mean_accuracy": 0.8571428571428571,
           "code": "B02",
           "angle": 0.5694136684631499
         },
@@ -275,23 +275,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
             },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.9,
+          "mean_accuracy": 0.725,
           "code": "B03",
           "angle": 0.6348635154129373
         },
@@ -305,23 +305,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
             },
+            "qwen": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 2,
-              "accuracy": 0.0
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.775,
           "code": "B04",
           "angle": 0.7003133623627246
         },
@@ -335,23 +335,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
             },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.6666666666666666,
+          "mean_accuracy": 0.525,
           "code": "B05",
           "angle": 0.765763209312512
         },
@@ -365,12 +365,12 @@
               "attempted": 0,
               "accuracy": null
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
@@ -394,38 +394,8 @@
       "family": "measure",
       "name": "Sequence statistics",
       "color": "#228833",
-      "mean_accuracy": 0.759375,
+      "mean_accuracy": 0.7302083333333333,
       "tasks": [
-        {
-          "task_id": "stats.gc_fraction",
-          "title": "Calculate total GC",
-          "family": "measure",
-          "models": {
-            "luna": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "qwen": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "deepinfra": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
-            "snowball-v01": {
-              "correct": 5,
-              "attempted": 8,
-              "accuracy": 0.625
-            }
-          },
-          "mean_accuracy": 0.88125,
-          "code": "C01",
-          "angle": 0.9752027195518315
-        },
         {
           "task_id": "stats.gc3_fraction",
           "title": "Calculate third-position GC",
@@ -436,23 +406,53 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
             },
-            "snowball-v01": {
-              "correct": 2,
-              "attempted": 2,
+            "qwen": {
+              "correct": 10,
+              "attempted": 10,
               "accuracy": 1.0
+            },
+            "snowball-v01": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             }
           },
-          "mean_accuracy": 0.975,
+          "mean_accuracy": 0.9,
+          "code": "C01",
+          "angle": 0.9752027195518315
+        },
+        {
+          "task_id": "stats.gc_fraction",
+          "title": "Calculate total GC",
+          "family": "measure",
+          "models": {
+            "luna": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "deepinfra": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "snowball-v01": {
+              "correct": 5,
+              "attempted": 8,
+              "accuracy": 0.625
+            }
+          },
+          "mean_accuracy": 0.88125,
           "code": "C02",
           "angle": 1.0406525665016189
         },
@@ -466,23 +466,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
             },
+            "qwen": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             }
           },
-          "mean_accuracy": 0.9333333333333333,
+          "mean_accuracy": 0.875,
           "code": "C03",
           "angle": 1.1061024134514061
         },
@@ -496,23 +496,23 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
             },
+            "qwen": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 4,
+              "attempted": 6,
+              "accuracy": 0.6666666666666666
             }
           },
-          "mean_accuracy": 0.8333333333333334,
+          "mean_accuracy": 0.7916666666666666,
           "code": "C04",
           "angle": 1.1715522604011934
         },
@@ -526,15 +526,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -556,15 +556,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             },
             "snowball-v01": {
               "correct": 0,
@@ -585,7 +585,7 @@
       "family": "overlap",
       "name": "Overlapping frames",
       "color": "#777777",
-      "mean_accuracy": 0.6958333333333333,
+      "mean_accuracy": 0.6375,
       "tasks": [
         {
           "task_id": "overlap.constrained_edit",
@@ -597,23 +597,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 8,
               "attempted": 10,
               "accuracy": 0.8
             },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.8333333333333334,
+          "mean_accuracy": 0.7,
           "code": "D01",
           "angle": 1.4464416175903003
         },
@@ -627,23 +627,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 8,
               "attempted": 10,
               "accuracy": 0.8
             },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
             "snowball-v01": {
-              "correct": 2,
-              "attempted": 6,
-              "accuracy": 0.3333333333333333
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.5583333333333333,
+          "mean_accuracy": 0.5750000000000001,
           "code": "D02",
           "angle": 1.5118914645400876
         }
@@ -656,7 +656,7 @@
       "family": "rna",
       "name": "RNA operations",
       "color": "#55aacc",
-      "mean_accuracy": 0.6833333333333333,
+      "mean_accuracy": 0.6427083333333333,
       "tasks": [
         {
           "task_id": "rna.structure_score",
@@ -668,15 +668,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
             },
             "snowball-v01": {
               "correct": 0,
@@ -698,12 +698,12 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
@@ -728,12 +728,12 @@
               "attempted": 0,
               "accuracy": null
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
@@ -758,23 +758,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
             },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 5,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.8,
+          "mean_accuracy": 0.6,
           "code": "E04",
           "angle": 1.8522306686789818
         },
@@ -788,15 +788,15 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             },
             "snowball-v01": {
               "correct": 0,
@@ -818,15 +818,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             },
             "snowball-v01": {
               "correct": 0,
@@ -848,15 +848,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 7,
               "attempted": 10,
               "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -878,15 +878,15 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             },
             "snowball-v01": {
               "correct": 0,
@@ -908,23 +908,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
             },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 8,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.5,
+          "mean_accuracy": 0.375,
           "code": "E09",
           "angle": 2.1794799034279184
         }
@@ -937,7 +937,7 @@
       "family": "protein",
       "name": "Protein operations",
       "color": "#b49b30",
-      "mean_accuracy": 0.5138888888888888,
+      "mean_accuracy": 0.5037037037037038,
       "tasks": [
         {
           "task_id": "protein.nglyco_sequons",
@@ -949,15 +949,15 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 10,
-              "attempted": 10,
-              "accuracy": 1.0
-            },
             "deepinfra": {
               "correct": 7,
               "attempted": 10,
               "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 10,
+              "attempted": 10,
+              "accuracy": 1.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -979,15 +979,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
+            },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             },
             "snowball-v01": {
               "correct": 0,
@@ -1009,23 +1009,23 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
             },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.5666666666666667,
+          "mean_accuracy": 0.5,
           "code": "F03",
           "angle": 2.4543692606170255
         },
@@ -1039,23 +1039,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.6,
           "code": "F04",
           "angle": 2.5198191075668133
         },
@@ -1069,23 +1069,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 1,
-              "accuracy": 0.0
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.425,
+          "mean_accuracy": 0.5,
           "code": "F05",
           "angle": 2.5852689545166005
         },
@@ -1099,15 +1099,15 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             },
             "snowball-v01": {
               "correct": 0,
@@ -1129,15 +1129,15 @@
               "attempted": 10,
               "accuracy": 0.5
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -1159,15 +1159,15 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -1189,19 +1189,19 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 3,
+              "attempted": 4,
               "accuracy": 0.0
             }
           },
@@ -1218,7 +1218,7 @@
       "family": "construct",
       "name": "Construct design",
       "color": "#dd7733",
-      "mean_accuracy": 0.5375,
+      "mean_accuracy": 0.5333333333333333,
       "tasks": [
         {
           "task_id": "construct.tag_fusion",
@@ -1230,15 +1230,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
+            },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             },
             "snowball-v01": {
               "correct": 0,
@@ -1260,23 +1260,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 10,
               "attempted": 10,
               "accuracy": 1.0
             },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 1,
-              "accuracy": 0.0
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.65,
+          "mean_accuracy": 0.7,
           "code": "G02",
           "angle": 3.0565078525550695
         },
@@ -1290,12 +1290,12 @@
               "attempted": 0,
               "accuracy": null
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 0,
               "accuracy": null
@@ -1320,23 +1320,23 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
             "snowball-v01": {
               "correct": 1,
-              "attempted": 5,
-              "accuracy": 0.2
+              "attempted": 6,
+              "accuracy": 0.16666666666666666
             }
           },
-          "mean_accuracy": 0.55,
+          "mean_accuracy": 0.5416666666666666,
           "code": "G04",
           "angle": 3.187407546454644
         },
@@ -1350,15 +1350,15 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
+            },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             },
             "snowball-v01": {
               "correct": 0,
@@ -1380,15 +1380,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -1410,23 +1410,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
             },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.5,
+          "mean_accuracy": 0.42500000000000004,
           "code": "G07",
           "angle": 3.3837570873040064
         },
@@ -1440,15 +1440,15 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -1470,15 +1470,15 @@
               "attempted": 10,
               "accuracy": 0.3
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -1499,7 +1499,7 @@
       "family": "redesign",
       "name": "Synonymous design",
       "color": "#aa3377",
-      "mean_accuracy": 0.574861111111111,
+      "mean_accuracy": 0.5199074074074074,
       "tasks": [
         {
           "task_id": "design.expose_rna_window",
@@ -1511,23 +1511,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 7,
               "attempted": 10,
               "accuracy": 0.7
             },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
             }
           },
-          "mean_accuracy": 0.7666666666666666,
+          "mean_accuracy": 0.725,
           "code": "H01",
           "angle": 3.6586464444931135
         },
@@ -1541,23 +1541,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 9,
               "attempted": 10,
               "accuracy": 0.9
             },
-            "snowball-v01": {
+            "qwen": {
               "correct": 5,
-              "attempted": 8,
-              "accuracy": 0.625
+              "attempted": 10,
+              "accuracy": 0.5
+            },
+            "snowball-v01": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
             }
           },
-          "mean_accuracy": 0.75625,
+          "mean_accuracy": 0.75,
           "code": "H02",
           "angle": 3.7240962914429008
         },
@@ -1571,23 +1571,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
             },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.55,
           "code": "H03",
           "angle": 3.789546138392688
         },
@@ -1601,23 +1601,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 4,
+              "attempted": 9,
+              "accuracy": 0.4444444444444444
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.6361111111111111,
           "code": "H04",
           "angle": 3.8549959853424753
         },
@@ -1631,23 +1631,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
             },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 2,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.7,
+          "mean_accuracy": 0.65,
           "code": "H05",
           "angle": 3.9204458322922626
         },
@@ -1661,55 +1661,25 @@
               "attempted": 10,
               "accuracy": 0.9
             },
+            "deepinfra": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "qwen": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
-            "deepinfra": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 2,
-              "accuracy": 0.0
+              "correct": 1,
+              "attempted": 5,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.45,
+          "mean_accuracy": 0.5,
           "code": "H06",
           "angle": 3.98589567924205
-        },
-        {
-          "task_id": "design.insert_dna_motif",
-          "title": "Introduce a DNA recognition site",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
-            "deepinfra": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
-            }
-          },
-          "mean_accuracy": 0.4666666666666667,
-          "code": "H07",
-          "angle": 4.051345526191837
         },
         {
           "task_id": "design.rna_motif_control",
@@ -1721,23 +1691,53 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 2,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.6333333333333333,
+          "mean_accuracy": 0.6,
+          "code": "H07",
+          "angle": 4.051345526191837
+        },
+        {
+          "task_id": "design.insert_dna_motif",
+          "title": "Introduce a DNA recognition site",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
+            "deepinfra": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.375,
           "code": "H08",
           "angle": 4.116795373141625
         },
@@ -1751,23 +1751,23 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.5,
+          "mean_accuracy": 0.375,
           "code": "H09",
           "angle": 4.182245220091412
         },
@@ -1781,23 +1781,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 5,
-              "attempted": 10,
-              "accuracy": 0.5
-            },
             "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
+            "qwen": {
+              "correct": 5,
+              "attempted": 10,
+              "accuracy": 0.5
+            },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 1,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.6333333333333333,
+          "mean_accuracy": 0.475,
           "code": "H10",
           "angle": 4.2476950670411995
         },
@@ -1811,23 +1811,23 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
             },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 1,
-              "accuracy": 0.0
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.45,
+          "mean_accuracy": 0.47500000000000003,
           "code": "H11",
           "angle": 4.313144913990987
         },
@@ -1841,23 +1841,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
             "deepinfra": {
               "correct": 6,
               "attempted": 10,
               "accuracy": 0.6
             },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 1,
+              "attempted": 2,
+              "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.6,
+          "mean_accuracy": 0.575,
           "code": "H12",
           "angle": 4.378594760940774
         },
@@ -1871,23 +1871,23 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
             },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 8,
+              "accuracy": 0.25
             }
           },
-          "mean_accuracy": 0.3666666666666667,
+          "mean_accuracy": 0.3375,
           "code": "H13",
           "angle": 4.444044607890562
         },
@@ -1901,23 +1901,23 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 4,
               "attempted": 10,
               "accuracy": 0.4
             },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 10,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.5,
+          "mean_accuracy": 0.375,
           "code": "H14",
           "angle": 4.509494454840349
         },
@@ -1931,15 +1931,15 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             },
             "snowball-v01": {
               "correct": 0,
@@ -1960,7 +1960,7 @@
       "family": "assay",
       "name": "Assay design",
       "color": "#009988",
-      "mean_accuracy": 0.5833333333333334,
+      "mean_accuracy": 0.5904761904761905,
       "tasks": [
         {
           "task_id": "assay.select_rna_probe",
@@ -1972,12 +1972,12 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
@@ -2002,23 +2002,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 1,
-              "accuracy": 0.0
+              "correct": 1,
+              "attempted": 3,
+              "accuracy": 0.3333333333333333
             }
           },
-          "mean_accuracy": 0.55,
+          "mean_accuracy": 0.6333333333333333,
           "code": "I02",
           "angle": 4.784383812029456
         },
@@ -2032,23 +2032,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 7,
+              "accuracy": 0.2857142857142857
             }
           },
-          "mean_accuracy": 0.5333333333333333,
+          "mean_accuracy": 0.4714285714285714,
           "code": "I03",
           "angle": 4.849833658979243
         }
@@ -2061,7 +2061,7 @@
       "family": "composition",
       "name": "Composition tasks",
       "color": "#332288",
-      "mean_accuracy": 0.443859649122807,
+      "mean_accuracy": 0.431140350877193,
       "tasks": [
         {
           "task_id": "pipeline.rna_edit_translation",
@@ -2073,12 +2073,12 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
@@ -2103,15 +2103,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
             "deepinfra": {
               "correct": 7,
               "attempted": 10,
               "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
             },
             "snowball-v01": {
               "correct": 0,
@@ -2133,15 +2133,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
             "deepinfra": {
               "correct": 5,
               "attempted": 10,
               "accuracy": 0.5
+            },
+            "qwen": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
             },
             "snowball-v01": {
               "correct": 0,
@@ -2163,15 +2163,15 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             },
             "snowball-v01": {
               "correct": 0,
@@ -2193,23 +2193,23 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
             },
+            "qwen": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
             "snowball-v01": {
-              "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.43333333333333335,
+          "mean_accuracy": 0.375,
           "code": "J05",
           "angle": 5.255622710067925
         },
@@ -2223,15 +2223,15 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 7,
               "attempted": 10,
               "accuracy": 0.7
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             },
             "snowball-v01": {
               "correct": 0,
@@ -2253,15 +2253,15 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
-              "correct": 4,
-              "attempted": 10,
-              "accuracy": 0.4
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
             },
             "snowball-v01": {
               "correct": 0,
@@ -2283,12 +2283,12 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
@@ -2313,15 +2313,15 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             },
             "snowball-v01": {
               "correct": 0,
@@ -2343,15 +2343,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             },
             "snowball-v01": {
               "correct": 0,
@@ -2373,15 +2373,15 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
-              "correct": 2,
-              "attempted": 10,
-              "accuracy": 0.2
-            },
             "deepinfra": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
+            },
+            "qwen": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
             },
             "snowball-v01": {
               "correct": 0,
@@ -2403,15 +2403,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -2433,15 +2433,15 @@
               "attempted": 10,
               "accuracy": 0.5
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -2463,23 +2463,23 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
             },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 1,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.3666666666666667,
+          "mean_accuracy": 0.275,
           "code": "J14",
           "angle": 5.844671332616011
         },
@@ -2493,15 +2493,15 @@
               "attempted": 10,
               "accuracy": 0.7
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 2,
               "attempted": 10,
               "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
             },
             "snowball-v01": {
               "correct": 0,
@@ -2523,12 +2523,12 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
@@ -2553,23 +2553,23 @@
               "attempted": 10,
               "accuracy": 0.8
             },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
             "deepinfra": {
               "correct": 3,
               "attempted": 10,
               "accuracy": 0.3
             },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
             "snowball-v01": {
               "correct": 0,
-              "attempted": 0,
-              "accuracy": null
+              "attempted": 1,
+              "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.3666666666666667,
+          "mean_accuracy": 0.275,
           "code": "J17",
           "angle": 6.041020873465373
         },
@@ -2583,12 +2583,12 @@
               "attempted": 10,
               "accuracy": 0.9
             },
-            "qwen": {
+            "deepinfra": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
             },
-            "deepinfra": {
+            "qwen": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
@@ -2613,15 +2613,15 @@
               "attempted": 10,
               "accuracy": 1.0
             },
-            "qwen": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
             "deepinfra": {
               "correct": 0,
               "attempted": 10,
               "accuracy": 0.0
+            },
+            "qwen": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
             },
             "snowball-v01": {
               "correct": 0,
@@ -2655,17 +2655,17 @@
       "task_count": 79,
       "mean_accuracy": 0.8987341772151899
     },
-    "qwen": {
-      "task_count": 79,
-      "mean_accuracy": 0.42025316455696204
-    },
     "deepinfra": {
       "task_count": 79,
       "mean_accuracy": 0.5025316455696203
     },
+    "qwen": {
+      "task_count": 79,
+      "mean_accuracy": 0.42025316455696204
+    },
     "snowball-v01": {
-      "task_count": 14,
-      "mean_accuracy": 0.29404761904761906
+      "task_count": 43,
+      "mean_accuracy": 0.3209394610557401
     }
   }
 }

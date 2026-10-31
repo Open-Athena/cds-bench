@@ -22,13 +22,14 @@ from .collector import records
 from .lightning_run import RAW as LIGHTNING_RAW
 from .deepinfra_run import RAW as DEEPINFRA_RAW
 from .lightning_supervise import latest_failure_was_rate_limit
-from .tables import HEADERS, cells, html_grouped_table
+from .tables import HEADERS, cells, html_grouped_table, models_by_task_accuracy
 from . import radar, scatter
 from . import snowball_full
 
 LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
-MODELS = {"luna": "GPT-6 Luna (high)", "qwen": "Qwen 3.7 Flash (high)",
-          "deepinfra": "Nemotron 3.5 Lightning", "snowball-v01": "Snowball v0.1"}
+MODELS = {"luna": "GPT-6 Luna (high)", "deepinfra": "Nemotron 3.5 Lightning",
+          "qwen": "Qwen 3.7 Flash (high)", "snowball-v01": "Snowball v0.1"}
+MODEL_COLORS = {'luna':'#466784', 'qwen':'#688775', 'deepinfra':'#786b94', 'snowball-v01':'#b47f5e'}
 BRANCH = "eval/luna-high-baseline"
 REPOSITORY = "Open-Athena/cds-bench"
 PR_TITLE = "CDS-bench: full baseline evaluation and model pilot"
@@ -78,6 +79,7 @@ def build(raw=RAW, output=OUTPUT, lightning_raw=LIGHTNING_RAW, deepinfra_raw=DEE
 
 
 def _build(raw, output, lightning_raw, deepinfra_raw):
+    global MODELS
     config = read(raw / "config.json")
     deepinfra_config = read(deepinfra_raw / "config.json")
     data = read(raw / "dataset.json")
@@ -97,6 +99,7 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
             row["format_diagnostic_exact"] = formatting_diagnostic(row, cases[key], source)
             all_rows.append(row)
     assert len({(r["model"], r["instance_id"], r["condition"]) for r in all_rows}) == len(all_rows)
+    MODELS, model_means = models_by_task_accuracy(MODELS, all_rows)
     condition_names = list(PLANNED)
     summaries = {m: {c: aggregate([r for r in all_rows if r["model"] == m and r["condition"] == c], m) for c in condition_names} for m in MODELS}
     totals = {m: aggregate([r for r in all_rows if r["model"] == m], m) for m in MODELS}
@@ -126,7 +129,9 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
                "deepinfra_completed": totals["deepinfra"]["attempted"], "deepinfra_planned": 3260, "active_model": "deepinfra",
                "deepinfra_completion_audit": "passed" if read(deepinfra_raw / "audit.json", {}).get("complete") else "pending" if job["state"] == "complete" else "not due",
                "model_states": {"luna": "complete", "qwen": qwen_job["state"], "deepinfra": job["state"]},
-               "models": MODELS, "planned_per_condition": PLANNED, "totals": totals,
+               "models": MODELS, "model_mean_task_accuracy":model_means,
+               "model_order_metric":"Descending pooled mean task accuracy, weighting each available task equally; the same order is used in every condition.",
+               "planned_per_condition": PLANNED, "totals": totals,
                "conditions": summaries, "by_task": by_task, "by_family": by_family,
                "paired_models": paired, "paired_deepinfra": paired_deepinfra, "format_diagnostic_additional_exact": diagnostics,
                "luna_original_attempts": 3360, "luna_retained_attempts": 3260,
@@ -220,9 +225,9 @@ def plot(output, summaries):
     import matplotlib.pyplot as plt
     import numpy as np
     fig, ax = plt.subplots(figsize=(11.2, 4.2), layout="constrained")
-    for offset, (model, name), color in zip([-0.30, -0.10, 0.10, 0.30], MODELS.items(), ["#466784", "#688775", "#786b94", "#b47f5e"]):
+    for offset, (model, name) in zip([-0.30, -0.10, 0.10, 0.30], MODELS.items(), strict=True):
         values = [100 * (summaries[model][c]["accuracy"] or 0) for c in PLANNED]
-        bars = ax.bar(np.arange(4) + offset, values, width=0.18, label=name, color=color)
+        bars = ax.bar(np.arange(4) + offset, values, width=0.18, label=name, color=MODEL_COLORS[model])
         for bar, c in zip(bars, PLANNED):
             r = summaries[model][c]
             percent = f"{100 * r['accuracy']:.1f}%" if r['attempted'] else "n/a"
@@ -272,7 +277,7 @@ def pr_body(summary, config):
     }
     completed = sum(summary["totals"][model]["attempted"] for model in MODELS)
     lines = [
-        "Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)**, **Nemotron 3.5 Lightning** and **Snowball v0.1**, with and without offline Python. The dataset has ten examples per task: 84 easy task types and 79 hard task types, or 3,260 planned attempts per model. Retained prompts and reference answers are identical across models.",
+        "Full CDS-bench baselines for **GPT-6 Luna (high)**, **Nemotron 3.5 Lightning**, **Qwen 3.7 Flash (high)** and **Snowball v0.1**, with and without offline Python. The dataset has ten examples per task: 84 easy task types and 79 hard task types, or 3,260 planned attempts per model. Retained prompts and reference answers are identical across models.",
         f"\n**Snowball v0.1: {summary['snowball_completed']:,}/3,260 finished ({summary['state']}).** The other three models each have 3,260 completed matching attempts. **{completed:,} scored attempts** in total; pilot responses are not reused.",
         "\nEvaluation-only PR. **Do not merge.**",
         f"\n[Full report (HTML)]({base}/report.html) · [Per-task results (CSV)]({base}/by-task.csv) · [Final predictions (JSON)]({base}/results.json)",
@@ -284,7 +289,7 @@ def pr_body(summary, config):
             ((full_names[model], label), summary["conditions"][model][c], 32768)
             for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
         ]),
-        "\nAll failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.\n\n</details>",
+        "\nModels are ordered by pooled mean task accuracy, giving each task equal weight; the order stays fixed across conditions. All failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.\n\n</details>",
         "\n**Task performance: All conditions (pooled)**",
         *figure("task-radar", "CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model"),
         f"\nEach spoke pools completed attempts for one task. Subtitles average available task accuracies equally; five tasks have only easy variants. Missing results are unscored, not zero. Groups and tasks share the same order across models. The [report’s condition selector and task key]({base}/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.",
@@ -391,6 +396,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
                 for c, label in zip(PLANNED, LABELS)])
         for model, name in MODELS.items()
     ]))
+    parts.append('<p class="muted">Models are ordered by pooled mean task accuracy, giving each task equal weight. The same order is used in all condition views, tables and radar panels.</p>')
     parts.append('<p class="muted">All failures remain in the denominator. Original Luna artifacts are preserved separately. The <a href="../model-pilot-20261029/report.html">30-task model/provider pilot</a> is a separate report; its responses are not reused here.</p>')
     parts.append(f"<p class=muted>Billing is incomplete for {deepinfra['unreconciled_examples']} Nemotron 3.5 Lightning, {q['unreconciled_examples']} Qwen and {summary['totals']['luna']['unreconciled_examples']} retained Luna attempts. Charges are provisional where only streaming usage is available; unknown charges are not assumed to be zero.</p>")
     image = base64.b64encode((output / "overall.png").read_bytes()).decode()
@@ -405,7 +411,9 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}
     parts.append(f"<p>Failed-request bookkeeping is reconstructed from saved response metadata for {summary['recovered_failed_request_metadata']} attempts. Raw traces, answers, and scores are unchanged.</p>")
     parts.append(f"<p>The controller requests at most 32,768 generated tokens per example. Qwen reports usage above that allowance for {budget['qwen_reported_over_budget_attempts']} attempts, with a maximum of {budget['qwen_largest_reported_usage']:,} tokens. The audit lists these exceptions; actual provider-reported usage is not strictly matched to Luna's requested cap.</p></details>")
     parts.append('<details><summary>Paired comparisons with Luna on completed cases</summary><table><tr><th>Model / condition</th><th>Pairs</th><th>Both correct</th><th>Luna only</th><th>Other model only</th><th>Both failed</th></tr>')
-    for model, metrics, only in [('qwen', summary['paired_models'], 'qwen_only'), ('deepinfra', summary['paired_deepinfra'], 'deepinfra_only'), ('snowball-v01', summary['paired_snowball'], 'snowball_only')]:
+    comparisons = {'qwen':(summary['paired_models'],'qwen_only'), 'deepinfra':(summary['paired_deepinfra'],'deepinfra_only'), 'snowball-v01':(summary['paired_snowball'],'snowball_only')}
+    for model in (m for m in MODELS if m!='luna'):
+        metrics, only = comparisons[model]
         for c, label in zip(PLANNED, LABELS):
             r = metrics[c]
             parts.append(f'<tr><td>{esc(MODELS[model])}<small>{label}</small></td>'+''.join(f'<td>{r[k]}</td>' for k in ['completed_pairs','both_correct','luna_only',only,'both_failed'])+'</tr>')

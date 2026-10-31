@@ -14,7 +14,7 @@ from cds_bench.eval_luna.io import save
 from cds_bench.eval_luna.report import aggregate, public_record
 from cds_bench.eval_luna.score import score_result
 
-from .tables import html_results
+from .tables import html_results, models_by_task_accuracy
 from . import pilot_extension
 from . import snowball_pilot
 
@@ -130,6 +130,7 @@ def build(source=SOURCE, output=OUTPUT):
             model_rows, totals[model], conditions[model], configs[model] = snowball
             rows.extend(model_rows)
             models[model] = definition['name']
+    models, model_means = models_by_task_accuracy(models, rows)
     task_ids = [r["task_id"] for r in selected if r["variant"] == "easy"]
     source_diagnostics = read(source / "gpt-oss-reliability-summary.json")
     diagnostics = {
@@ -151,7 +152,9 @@ def build(source=SOURCE, output=OUTPUT):
         appendix.append({"name": name, "attempted": s["completed"], "correct": s["strict_passed"],
                          "cost_usd": s["reported_cost_usd"], "median_seconds": statistics.median(r["elapsed_seconds"] for r in s["cases"]),
                          "token_caps": s["truncated"], "parameters": c["parameters"]})
-    summary = {"models": models, "planned_per_condition": dict(zip(CONDITIONS, [30, 28, 30, 28])),
+    summary = {"models": models, "model_mean_task_accuracy":model_means,
+               "model_order_metric":"Descending mean task accuracy over completed attempts, weighting each available task equally; partial subsets remain non-comparable.",
+               "planned_per_condition": dict(zip(CONDITIONS, [30, 28, 30, 28])),
                "omitted_duplicate_hard_tasks": sorted(OMITTED), "task_ids": task_ids,
                "totals": totals, "conditions": conditions, "configurations": configs,
                "earlier_ten_example_checks": appendix,
@@ -214,6 +217,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
     ]
     parts.append(html_results(top))
     parts.append('<p class="muted">Recorded cost covers only the retained completed attempts. Compatibility checks, interrupted requests, discarded duplicate-hard cases and GPT-OSS follow-ups are excluded. Missing billing records are not assumed to be zero. OpenRouter pilot requests had a 300-second deadline. Both internal Marin checkpoints use a <b>1,800-second request deadline</b>: Snowball RC (2026.09.21) has a <b>16,384-token</b> aggregate budget and Snowball v0.1 has <b>32,768 tokens</b>. Both are mixture-of-experts models with <b>67B total parameters and 2B active per token</b>. RC means release candidate. Neither API exposes per-request pricing. Unavailable cost is not zero.</p>')
+    parts.append('<p class="muted">Models are ordered by mean task accuracy over their completed cases, giving each available task equal weight. Partial runs cover different subsets, so this display order is not a matched model ranking.</p>')
     if summary["provider_reported_budget_overruns"]:
         parts.append('<details><summary>Provider-reported token-budget exceptions</summary><p>Budgets are requested maxima. North reports 32,791 generated tokens on one attempt, 27 above the requested 32,768. This is retained explicitly; requests and scores are unchanged.</p><pre>'+esc(json.dumps(summary["provider_reported_budget_overruns"],indent=2))+'</pre></details>')
     failures = '<table><tr><th>Model</th><th>Incorrect value</th><th>Format</th><th>Timeout</th><th>Token cap</th><th>API/protocol</th><th>Unreconciled examples</th></tr>'

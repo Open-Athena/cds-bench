@@ -144,21 +144,9 @@
     "y": 20.0
   },
   {
-    "task_id": "stats.gc_fraction",
-    "title": "Calculate total GC",
-    "code": "C01",
-    "group": "Sequence statistics",
-    "color": "#228833",
-    "attempted": 10,
-    "nemotron_correct": 9,
-    "snowball_correct": 3,
-    "x": 90.0,
-    "y": 30.0
-  },
-  {
     "task_id": "stats.gc3_fraction",
     "title": "Calculate third-position GC",
-    "code": "C02",
+    "code": "C01",
     "group": "Sequence statistics",
     "color": "#228833",
     "attempted": 10,
@@ -166,6 +154,18 @@
     "snowball_correct": 8,
     "x": 80.0,
     "y": 80.0
+  },
+  {
+    "task_id": "stats.gc_fraction",
+    "title": "Calculate total GC",
+    "code": "C02",
+    "group": "Sequence statistics",
+    "color": "#228833",
+    "attempted": 10,
+    "nemotron_correct": 9,
+    "snowball_correct": 3,
+    "x": 90.0,
+    "y": 30.0
   },
   {
     "task_id": "stats.gc_windows",
@@ -636,21 +636,9 @@
     "y": 20.0
   },
   {
-    "task_id": "design.insert_dna_motif",
-    "title": "Introduce a DNA recognition site",
-    "code": "H07",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 10,
-    "nemotron_correct": 6,
-    "snowball_correct": 0,
-    "x": 60.0,
-    "y": 0.0
-  },
-  {
     "task_id": "design.rna_motif_control",
     "title": "Control coding-RNA motifs",
-    "code": "H08",
+    "code": "H07",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -658,6 +646,18 @@
     "snowball_correct": 1,
     "x": 60.0,
     "y": 10.0
+  },
+  {
+    "task_id": "design.insert_dna_motif",
+    "title": "Introduce a DNA recognition site",
+    "code": "H08",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 6,
+    "snowball_correct": 0,
+    "x": 60.0,
+    "y": 0.0
   },
   {
     "task_id": "design.synonymous_distance",

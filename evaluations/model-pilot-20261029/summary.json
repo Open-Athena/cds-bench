@@ -1,20 +1,37 @@
 {
   "models": {
     "luna": "GPT-6 Luna (high)",
-    "beam": "Beam 1.0 501B A23B",
     "deepseek": "DeepSeek V4.1 Flash 1017",
+    "beam": "Beam 1.0 501B A23B",
     "nemotron": "Nemotron 3 Ultra 550B A55B",
-    "nemotron-lightning": "Nemotron 3.5 Lightning (io.net)",
     "nemotron-lightning-coreweave": "Nemotron 3.5 Lightning (CoreWeave)",
     "qwen-flash": "Qwen 3.7 Flash (high)",
     "north-mini-code": "North Mini Code",
     "gpt-oss-20b": "GPT-OSS 20B",
+    "nemotron-lightning": "Nemotron 3.5 Lightning (io.net)",
+    "snowball-v01": "Snowball v0.1",
     "gemma": "Gemma 4 31B",
-    "gemma-moe": "Gemma 4 26B A4B",
-    "liquid": "LFM 2.5 24B A2B",
     "snowball": "Snowball RC (2026.09.21)",
-    "snowball-v01": "Snowball v0.1"
+    "liquid": "LFM 2.5 24B A2B",
+    "gemma-moe": "Gemma 4 26B A4B"
   },
+  "model_mean_task_accuracy": {
+    "luna": 0.925,
+    "beam": 0.85,
+    "deepseek": 0.9222222222222222,
+    "nemotron": 0.6611111111111111,
+    "nemotron-lightning": 0.2611111111111111,
+    "nemotron-lightning-coreweave": 0.4,
+    "qwen-flash": 0.39166666666666666,
+    "north-mini-code": 0.36666666666666664,
+    "gpt-oss-20b": 0.325,
+    "gemma": 0.20833333333333334,
+    "gemma-moe": 0.07222222222222222,
+    "liquid": 0.09166666666666666,
+    "snowball": 0.14166666666666666,
+    "snowball-v01": 0.24166666666666667
+  },
+  "model_order_metric": "Descending mean task accuracy over completed attempts, weighting each available task equally; partial subsets remain non-comparable.",
   "planned_per_condition": {
     "easy-no-tools": 30,
     "hard-no-tools": 28,

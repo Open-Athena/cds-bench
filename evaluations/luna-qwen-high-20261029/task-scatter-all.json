@@ -5,11 +5,11 @@
     "code": "A01",
     "group": "Variant effects",
     "color": "#ee6677",
-    "attempted": 30,
-    "nemotron_correct": 20,
-    "snowball_correct": 23,
-    "x": 66.66666666666667,
-    "y": 76.66666666666667
+    "attempted": 40,
+    "nemotron_correct": 30,
+    "snowball_correct": 31,
+    "x": 75.0,
+    "y": 77.5
   },
   {
     "task_id": "cds.protein_equivalence",
@@ -17,11 +17,11 @@
     "code": "A02",
     "group": "Variant effects",
     "color": "#ee6677",
-    "attempted": 30,
-    "nemotron_correct": 17,
-    "snowball_correct": 19,
-    "x": 56.666666666666664,
-    "y": 63.333333333333336
+    "attempted": 40,
+    "nemotron_correct": 25,
+    "snowball_correct": 25,
+    "x": 62.5,
+    "y": 62.5
   },
   {
     "task_id": "ambiguity.codon_set",
@@ -29,11 +29,11 @@
     "code": "A03",
     "group": "Variant effects",
     "color": "#ee6677",
-    "attempted": 30,
-    "nemotron_correct": 23,
-    "snowball_correct": 8,
-    "x": 76.66666666666667,
-    "y": 26.666666666666668
+    "attempted": 40,
+    "nemotron_correct": 29,
+    "snowball_correct": 13,
+    "x": 72.5,
+    "y": 32.5
   },
   {
     "task_id": "variant.protein_effect",
@@ -41,11 +41,11 @@
     "code": "A04",
     "group": "Variant effects",
     "color": "#ee6677",
-    "attempted": 33,
-    "nemotron_correct": 16,
-    "snowball_correct": 20,
-    "x": 48.484848484848484,
-    "y": 60.60606060606061
+    "attempted": 40,
+    "nemotron_correct": 19,
+    "snowball_correct": 22,
+    "x": 47.5,
+    "y": 55.0
   },
   {
     "task_id": "variant.apply",
@@ -89,11 +89,11 @@
     "code": "B02",
     "group": "Sequence operations",
     "color": "#4477aa",
-    "attempted": 30,
-    "nemotron_correct": 17,
-    "snowball_correct": 15,
-    "x": 56.666666666666664,
-    "y": 50.0
+    "attempted": 37,
+    "nemotron_correct": 24,
+    "snowball_correct": 18,
+    "x": 64.86486486486487,
+    "y": 48.648648648648646
   },
   {
     "task_id": "dna.transcribe",
@@ -101,10 +101,10 @@
     "code": "B03",
     "group": "Sequence operations",
     "color": "#4477aa",
-    "attempted": 30,
-    "nemotron_correct": 10,
-    "snowball_correct": 6,
-    "x": 33.333333333333336,
+    "attempted": 40,
+    "nemotron_correct": 20,
+    "snowball_correct": 8,
+    "x": 50.0,
     "y": 20.0
   },
   {
@@ -113,11 +113,11 @@
     "code": "B04",
     "group": "Sequence operations",
     "color": "#4477aa",
-    "attempted": 32,
-    "nemotron_correct": 11,
-    "snowball_correct": 9,
-    "x": 34.375,
-    "y": 28.125
+    "attempted": 40,
+    "nemotron_correct": 19,
+    "snowball_correct": 12,
+    "x": 47.5,
+    "y": 30.0
   },
   {
     "task_id": "cds.translate",
@@ -125,11 +125,11 @@
     "code": "B05",
     "group": "Sequence operations",
     "color": "#4477aa",
-    "attempted": 30,
-    "nemotron_correct": 13,
-    "snowball_correct": 7,
-    "x": 43.333333333333336,
-    "y": 23.333333333333332
+    "attempted": 40,
+    "nemotron_correct": 19,
+    "snowball_correct": 8,
+    "x": 47.5,
+    "y": 20.0
   },
   {
     "task_id": "coords.nt_to_codon",
@@ -144,9 +144,21 @@
     "y": 25.0
   },
   {
+    "task_id": "stats.gc3_fraction",
+    "title": "Calculate third-position GC",
+    "code": "C01",
+    "group": "Sequence statistics",
+    "color": "#228833",
+    "attempted": 40,
+    "nemotron_correct": 22,
+    "snowball_correct": 24,
+    "x": 55.0,
+    "y": 60.0
+  },
+  {
     "task_id": "stats.gc_fraction",
     "title": "Calculate total GC",
-    "code": "C01",
+    "code": "C02",
     "group": "Sequence statistics",
     "color": "#228833",
     "attempted": 38,
@@ -156,28 +168,16 @@
     "y": 44.73684210526316
   },
   {
-    "task_id": "stats.gc3_fraction",
-    "title": "Calculate third-position GC",
-    "code": "C02",
-    "group": "Sequence statistics",
-    "color": "#228833",
-    "attempted": 32,
-    "nemotron_correct": 15,
-    "snowball_correct": 19,
-    "x": 46.875,
-    "y": 59.375
-  },
-  {
     "task_id": "stats.gc_windows",
     "title": "Locate GC-window violations",
     "code": "C03",
     "group": "Sequence statistics",
     "color": "#228833",
-    "attempted": 30,
-    "nemotron_correct": 20,
-    "snowball_correct": 17,
-    "x": 66.66666666666667,
-    "y": 56.666666666666664
+    "attempted": 40,
+    "nemotron_correct": 30,
+    "snowball_correct": 24,
+    "x": 75.0,
+    "y": 60.0
   },
   {
     "task_id": "stats.cai",
@@ -185,11 +185,11 @@
     "code": "C04",
     "group": "Sequence statistics",
     "color": "#228833",
-    "attempted": 30,
-    "nemotron_correct": 8,
-    "snowball_correct": 4,
-    "x": 26.666666666666668,
-    "y": 13.333333333333334
+    "attempted": 36,
+    "nemotron_correct": 13,
+    "snowball_correct": 8,
+    "x": 36.111111111111114,
+    "y": 22.22222222222222
   },
   {
     "task_id": "stats.codon_counts",
@@ -221,11 +221,11 @@
     "code": "D01",
     "group": "Overlapping frames",
     "color": "#777777",
-    "attempted": 30,
-    "nemotron_correct": 15,
-    "snowball_correct": 12,
-    "x": 50.0,
-    "y": 40.0
+    "attempted": 40,
+    "nemotron_correct": 23,
+    "snowball_correct": 15,
+    "x": 57.5,
+    "y": 37.5
   },
   {
     "task_id": "overlap.compare_products",
@@ -233,11 +233,11 @@
     "code": "D02",
     "group": "Overlapping frames",
     "color": "#777777",
-    "attempted": 36,
-    "nemotron_correct": 21,
-    "snowball_correct": 10,
-    "x": 58.333333333333336,
-    "y": 27.77777777777778
+    "attempted": 40,
+    "nemotron_correct": 24,
+    "snowball_correct": 12,
+    "x": 60.0,
+    "y": 30.0
   },
   {
     "task_id": "rna.structure_score",
@@ -281,11 +281,11 @@
     "code": "E04",
     "group": "RNA operations",
     "color": "#55aacc",
-    "attempted": 30,
-    "nemotron_correct": 11,
+    "attempted": 35,
+    "nemotron_correct": 16,
     "snowball_correct": 2,
-    "x": 36.666666666666664,
-    "y": 6.666666666666667
+    "x": 45.714285714285715,
+    "y": 5.714285714285714
   },
   {
     "task_id": "rna.translate",
@@ -341,10 +341,10 @@
     "code": "E09",
     "group": "RNA operations",
     "color": "#55aacc",
-    "attempted": 30,
-    "nemotron_correct": 2,
+    "attempted": 38,
+    "nemotron_correct": 3,
     "snowball_correct": 0,
-    "x": 6.666666666666667,
+    "x": 7.894736842105263,
     "y": 0.0
   },
   {
@@ -377,11 +377,11 @@
     "code": "F03",
     "group": "Protein operations",
     "color": "#b49b30",
-    "attempted": 30,
-    "nemotron_correct": 16,
-    "snowball_correct": 8,
-    "x": 53.333333333333336,
-    "y": 26.666666666666668
+    "attempted": 40,
+    "nemotron_correct": 19,
+    "snowball_correct": 11,
+    "x": 47.5,
+    "y": 27.5
   },
   {
     "task_id": "protein.charge_at_ph",
@@ -389,10 +389,10 @@
     "code": "F04",
     "group": "Protein operations",
     "color": "#b49b30",
-    "attempted": 30,
-    "nemotron_correct": 9,
-    "snowball_correct": 9,
-    "x": 30.0,
+    "attempted": 40,
+    "nemotron_correct": 13,
+    "snowball_correct": 12,
+    "x": 32.5,
     "y": 30.0
   },
   {
@@ -401,11 +401,11 @@
     "code": "F05",
     "group": "Protein operations",
     "color": "#b49b30",
-    "attempted": 31,
-    "nemotron_correct": 11,
-    "snowball_correct": 11,
-    "x": 35.483870967741936,
-    "y": 35.483870967741936
+    "attempted": 40,
+    "nemotron_correct": 15,
+    "snowball_correct": 14,
+    "x": 37.5,
+    "y": 35.0
   },
   {
     "task_id": "protein.mean_hydropathy",
@@ -449,11 +449,11 @@
     "code": "F09",
     "group": "Protein operations",
     "color": "#b49b30",
-    "attempted": 33,
+    "attempted": 34,
     "nemotron_correct": 3,
     "snowball_correct": 1,
-    "x": 9.090909090909092,
-    "y": 3.0303030303030303
+    "x": 8.823529411764707,
+    "y": 2.9411764705882355
   },
   {
     "task_id": "construct.tag_fusion",
@@ -473,11 +473,11 @@
     "code": "G02",
     "group": "Construct design",
     "color": "#dd7733",
-    "attempted": 31,
-    "nemotron_correct": 18,
-    "snowball_correct": 12,
-    "x": 58.064516129032256,
-    "y": 38.70967741935484
+    "attempted": 40,
+    "nemotron_correct": 27,
+    "snowball_correct": 14,
+    "x": 67.5,
+    "y": 35.0
   },
   {
     "task_id": "construct.inframe_deletion",
@@ -497,11 +497,11 @@
     "code": "G04",
     "group": "Construct design",
     "color": "#dd7733",
-    "attempted": 35,
+    "attempted": 36,
     "nemotron_correct": 24,
     "snowball_correct": 4,
-    "x": 68.57142857142857,
-    "y": 11.428571428571429
+    "x": 66.66666666666667,
+    "y": 11.11111111111111
   },
   {
     "task_id": "construct.minimal_aa_edit",
@@ -533,11 +533,11 @@
     "code": "G07",
     "group": "Construct design",
     "color": "#dd7733",
-    "attempted": 30,
-    "nemotron_correct": 9,
-    "snowball_correct": 4,
-    "x": 30.0,
-    "y": 13.333333333333334
+    "attempted": 40,
+    "nemotron_correct": 11,
+    "snowball_correct": 6,
+    "x": 27.5,
+    "y": 15.0
   },
   {
     "task_id": "construct.tev_products",
@@ -569,11 +569,11 @@
     "code": "H01",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 20,
-    "snowball_correct": 16,
-    "x": 66.66666666666667,
-    "y": 53.333333333333336
+    "attempted": 40,
+    "nemotron_correct": 27,
+    "snowball_correct": 22,
+    "x": 67.5,
+    "y": 55.0
   },
   {
     "task_id": "design.pairing_repair",
@@ -581,11 +581,11 @@
     "code": "H02",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 38,
-    "nemotron_correct": 22,
-    "snowball_correct": 20,
-    "x": 57.89473684210526,
-    "y": 52.63157894736842
+    "attempted": 40,
+    "nemotron_correct": 24,
+    "snowball_correct": 21,
+    "x": 60.0,
+    "y": 52.5
   },
   {
     "task_id": "design.codon_allowlist",
@@ -593,11 +593,11 @@
     "code": "H03",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 10,
-    "snowball_correct": 6,
-    "x": 33.333333333333336,
-    "y": 20.0
+    "attempted": 40,
+    "nemotron_correct": 16,
+    "snowball_correct": 7,
+    "x": 40.0,
+    "y": 17.5
   },
   {
     "task_id": "design.codon_preference",
@@ -605,11 +605,11 @@
     "code": "H04",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 7,
-    "snowball_correct": 7,
-    "x": 23.333333333333332,
-    "y": 23.333333333333332
+    "attempted": 39,
+    "nemotron_correct": 12,
+    "snowball_correct": 11,
+    "x": 30.76923076923077,
+    "y": 28.205128205128204
   },
   {
     "task_id": "design.codon_profile",
@@ -617,11 +617,11 @@
     "code": "H05",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 11,
-    "snowball_correct": 5,
-    "x": 36.666666666666664,
-    "y": 16.666666666666668
+    "attempted": 32,
+    "nemotron_correct": 13,
+    "snowball_correct": 6,
+    "x": 40.625,
+    "y": 18.75
   },
   {
     "task_id": "design.gc_windows",
@@ -629,35 +629,35 @@
     "code": "H06",
     "group": "Synonymous design",
     "color": "#aa3377",
+    "attempted": 35,
+    "nemotron_correct": 10,
+    "snowball_correct": 5,
+    "x": 28.571428571428573,
+    "y": 14.285714285714286
+  },
+  {
+    "task_id": "design.rna_motif_control",
+    "title": "Control coding-RNA motifs",
+    "code": "H07",
+    "group": "Synonymous design",
+    "color": "#aa3377",
     "attempted": 32,
-    "nemotron_correct": 8,
+    "nemotron_correct": 9,
     "snowball_correct": 4,
-    "x": 25.0,
+    "x": 28.125,
     "y": 12.5
   },
   {
     "task_id": "design.insert_dna_motif",
     "title": "Introduce a DNA recognition site",
-    "code": "H07",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 9,
-    "snowball_correct": 2,
-    "x": 30.0,
-    "y": 6.666666666666667
-  },
-  {
-    "task_id": "design.rna_motif_control",
-    "title": "Control coding-RNA motifs",
     "code": "H08",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 7,
+    "attempted": 40,
+    "nemotron_correct": 12,
     "snowball_correct": 3,
-    "x": 23.333333333333332,
-    "y": 10.0
+    "x": 30.0,
+    "y": 7.5
   },
   {
     "task_id": "design.synonymous_distance",
@@ -665,11 +665,11 @@
     "code": "H09",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 9,
+    "attempted": 40,
+    "nemotron_correct": 13,
     "snowball_correct": 4,
-    "x": 30.0,
-    "y": 13.333333333333334
+    "x": 32.5,
+    "y": 10.0
   },
   {
     "task_id": "design.guide_escape",
@@ -677,11 +677,11 @@
     "code": "H10",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
+    "attempted": 31,
     "nemotron_correct": 5,
     "snowball_correct": 1,
-    "x": 16.666666666666668,
-    "y": 3.3333333333333335
+    "x": 16.129032258064516,
+    "y": 3.225806451612903
   },
   {
     "task_id": "design.remove_dna_motifs",
@@ -689,11 +689,11 @@
     "code": "H11",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 31,
-    "nemotron_correct": 4,
-    "snowball_correct": 3,
-    "x": 12.903225806451612,
-    "y": 9.67741935483871
+    "attempted": 40,
+    "nemotron_correct": 9,
+    "snowball_correct": 4,
+    "x": 22.5,
+    "y": 10.0
   },
   {
     "task_id": "design.dinucleotide_counts",
@@ -701,11 +701,11 @@
     "code": "H12",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 4,
-    "snowball_correct": 1,
-    "x": 13.333333333333334,
-    "y": 3.3333333333333335
+    "attempted": 32,
+    "nemotron_correct": 5,
+    "snowball_correct": 2,
+    "x": 15.625,
+    "y": 6.25
   },
   {
     "task_id": "design.break_repeats",
@@ -713,11 +713,11 @@
     "code": "H13",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
+    "attempted": 38,
     "nemotron_correct": 6,
-    "snowball_correct": 4,
-    "x": 20.0,
-    "y": 13.333333333333334
+    "snowball_correct": 6,
+    "x": 15.789473684210526,
+    "y": 15.789473684210526
   },
   {
     "task_id": "design.structure_score",
@@ -725,11 +725,11 @@
     "code": "H14",
     "group": "Synonymous design",
     "color": "#aa3377",
-    "attempted": 30,
-    "nemotron_correct": 7,
+    "attempted": 40,
+    "nemotron_correct": 11,
     "snowball_correct": 2,
-    "x": 23.333333333333332,
-    "y": 6.666666666666667
+    "x": 27.5,
+    "y": 5.0
   },
   {
     "task_id": "design.variant_panel",
@@ -761,11 +761,11 @@
     "code": "I02",
     "group": "Assay design",
     "color": "#009988",
-    "attempted": 31,
-    "nemotron_correct": 6,
-    "snowball_correct": 0,
-    "x": 19.35483870967742,
-    "y": 0.0
+    "attempted": 33,
+    "nemotron_correct": 7,
+    "snowball_correct": 1,
+    "x": 21.21212121212121,
+    "y": 3.0303030303030303
   },
   {
     "task_id": "assay.primer_pair",
@@ -773,11 +773,11 @@
     "code": "I03",
     "group": "Assay design",
     "color": "#009988",
-    "attempted": 30,
-    "nemotron_correct": 6,
-    "snowball_correct": 5,
-    "x": 20.0,
-    "y": 16.666666666666668
+    "attempted": 37,
+    "nemotron_correct": 9,
+    "snowball_correct": 7,
+    "x": 24.324324324324323,
+    "y": 18.91891891891892
   },
   {
     "task_id": "pipeline.rna_edit_translation",
@@ -833,11 +833,11 @@
     "code": "J05",
     "group": "Composition tasks",
     "color": "#332288",
-    "attempted": 30,
-    "nemotron_correct": 12,
-    "snowball_correct": 2,
-    "x": 40.0,
-    "y": 6.666666666666667
+    "attempted": 40,
+    "nemotron_correct": 13,
+    "snowball_correct": 4,
+    "x": 32.5,
+    "y": 10.0
   },
   {
     "task_id": "pipeline.overlap_edit_verify",
@@ -941,11 +941,11 @@
     "code": "J14",
     "group": "Composition tasks",
     "color": "#332288",
-    "attempted": 30,
+    "attempted": 31,
     "nemotron_correct": 4,
     "snowball_correct": 1,
-    "x": 13.333333333333334,
-    "y": 3.3333333333333335
+    "x": 12.903225806451612,
+    "y": 3.225806451612903
   },
   {
     "task_id": "pipeline.variant_peptides",
@@ -977,10 +977,10 @@
     "code": "J17",
     "group": "Composition tasks",
     "color": "#332288",
-    "attempted": 30,
+    "attempted": 31,
     "nemotron_correct": 6,
     "snowball_correct": 0,
-    "x": 20.0,
+    "x": 19.35483870967742,
     "y": 0.0
   },
   {
