@@ -4,6 +4,7 @@ import html
 import json
 import math
 import xml.etree.ElementTree as ET
+from copy import deepcopy
 from statistics import mean
 
 from cds_bench.catalog import TASKS
@@ -23,18 +24,47 @@ FAMILIES = {
 }
 SVG = "http://www.w3.org/2000/svg"
 XLINK = "http://www.w3.org/1999/xlink"
+VIEWS = {
+    "all": "All conditions (pooled)",
+    "easy-no-tools": "Easy, no tools",
+    "hard-no-tools": "Hard, no tools",
+    "easy-tools": "Easy, Python",
+    "hard-tools": "Hard, Python",
+}
+
+def _model_summary(values):
+    values = [p for p in values if p is not None]
+    return {"task_count": len(values), "mean_accuracy": mean(values) if values else None}
 
 
-def prepare(summary, models):
+def _task_metrics(summary, task_id, models, condition):
+    metrics = {}
+    for model in models:
+        saved = summary["by_task"][task_id][model]
+        selected = saved.values() if condition == "all" else [saved[condition]]
+        correct = sum(r["correct"] for r in selected)
+        attempted = sum(r["attempted"] for r in selected)
+        metrics[model] = {"correct": correct, "attempted": attempted,
+                          "accuracy": correct / attempted if attempted else None}
+    return metrics
+
+
+def prepare(summary, models, condition="all", reference=None):
+    assert condition in VIEWS
+    if condition != "all":
+        data = deepcopy(reference or prepare(summary, models))
+        groups = data["groups"]
+        for group in groups:
+            for task in group["tasks"]:
+                task["models"] = _task_metrics(summary, task["task_id"], models, condition)
+                scores = [m["accuracy"] for m in task["models"].values() if m["accuracy"] is not None]
+                task["mean_accuracy"] = mean(scores) if scores else None
+            scores = [t["mean_accuracy"] for t in group["tasks"] if t["mean_accuracy"] is not None]
+            group["mean_accuracy"] = mean(scores) if scores else None
+        return _view_data(data, models, condition)
     tasks = []
     for task_id, task in TASKS.items():
-        metrics = {}
-        for model in models:
-            conditions = summary["by_task"][task_id][model].values()
-            correct = sum(r["correct"] for r in conditions)
-            attempted = sum(r["attempted"] for r in conditions)
-            metrics[model] = {"correct": correct, "attempted": attempted,
-                              "accuracy": correct / attempted if attempted else None}
+        metrics = _task_metrics(summary, task_id, models, condition)
         values = [m["accuracy"] for m in metrics.values() if m["accuracy"] is not None]
         tasks.append({"task_id": task_id, "title": task["title"],
                       "family": task.get("family", "composition"), "models": metrics,
@@ -54,22 +84,49 @@ def prepare(summary, models):
         for number, task in enumerate(group["tasks"], 1):
             task["code"] = f'{group["code"]}{number:02}'
     assert sum(len(g["tasks"]) for g in groups) == len(TASKS) == 84
-    return {
+    return _view_data({
         "models": models,
-        "score": "Correct / attempted across all retained conditions for each task; all failures count.",
-        "ordering": "Descending mean task accuracy across models, first by group then within group; ties use family or task ID.",
+        "ordering": "Fixed from the pooled view: descending mean task accuracy across models, first by group then within group; ties use family or task ID.",
         "group_average": "Unweighted mean of task means within each group.",
         "groups": groups,
-    }
+    }, models, condition)
+
+
+def _view_data(data, models, condition):
+    tasks = [t for g in data["groups"] for t in g["tasks"]]
+    data.update({
+        "condition": condition, "condition_label": VIEWS[condition],
+        "available_views": VIEWS, "ordering_reference": "all",
+        "score": "Correct / attempted for each task; all failures count. " + (
+            "All retained conditions are pooled within each task." if condition == "all" else "Only the selected condition contributes."),
+        "model_summaries": {m: _model_summary(t["models"][m]["accuracy"] for t in tasks) for m in models},
+    })
+    return data
+
+
+def stem(condition):
+    return "task-radar" if condition == "all" else f"task-radar-{condition}"
 
 
 def plot(output, summary, models):
+    reference = prepare(summary, models)
+    views = {}
+    for condition in VIEWS:
+        data = reference if condition == "all" else prepare(summary, models, condition, reference)
+        _plot_view(output, data)
+        views[condition] = data
+    return views
+
+
+def _plot_view(output, data):
     import matplotlib as mpl
     import matplotlib.pyplot as plt
     import numpy as np
     from matplotlib.patches import Patch
 
-    data = prepare(summary, models)
+    models = data["models"]
+    condition = data["condition"]
+    filename = stem(condition)
     groups = data["groups"]
     tasks = [t for group in groups for t in group["tasks"]]
     gap = 1.2
@@ -84,7 +141,7 @@ def plot(output, summary, models):
         group["angle_end"] = cursor * unit
         cursor += gap
 
-    with mpl.rc_context({"svg.fonttype": "none", "svg.hashsalt": "cds-bench-task-radar"}):
+    with mpl.rc_context({"svg.fonttype": "none", "svg.hashsalt": f"cds-bench-task-radar-{condition}"}):
         fig, axes = plt.subplots(1, 3, figsize=(18, 7.2), subplot_kw={"projection": "polar"})
         fig.subplots_adjust(left=0.015, right=0.985, bottom=0.18, top=0.88, wspace=0.11)
         for ax, (model, name) in zip(axes, models.items(), strict=True):
@@ -117,7 +174,8 @@ def plot(output, summary, models):
                     rotation = 90 - degrees
                     if 180 < degrees < 360:
                         rotation += 180
-                    label = ax.text(angle, 1.135, task["code"], fontsize=9, color="#334155",
+                    label = ax.text(angle, 1.135, task["code"], fontsize=9,
+                                    color="#334155" if value is not None else "#aab2b9",
                                     rotation=rotation, rotation_mode="anchor", ha="center", va="center")
                     label.set_gid(f'radar-label-{model}-{task["task_id"]}')
                     label.set_url(f'#task-{task["task_id"]}')
@@ -127,26 +185,32 @@ def plot(output, summary, models):
             ax.fill(angles + [angles[0] + 2 * math.pi], contour + contour[:1], color="#344554", alpha=0.055, zorder=2)
             center = (ax.get_position().x0 + ax.get_position().x1) / 2
             fig.text(center, 0.967, name, ha="center", va="top", fontsize=13, color="#25313c")
-            score = mean(v for v in values if v is not None)
-            fig.text(center, 0.925, f"Mean task accuracy: {score:.1%}", ha="center", fontsize=10, color="#64727e")
-        handles = [Patch(facecolor=g["color"], label=f'{g["code"]}  {g["name"]} ({g["mean_accuracy"]:.0%})') for g in groups]
+            stats = data["model_summaries"][model]
+            subtitle = (f'Mean task accuracy: {stats["mean_accuracy"]:.1%}'
+                        if stats["task_count"] else "No completed attempts")
+            fig.text(center, 0.925, subtitle, ha="center", fontsize=10, color="#64727e")
+        handles = [Patch(facecolor=g["color"], label=f'{g["code"]}  {g["name"]}') for g in groups]
         # Matplotlib fills legend columns; keep the displayed group order row-first.
         handles = [handles[i] for column in range(5) for i in range(column, len(handles), 5)]
         fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.045), ncol=5,
                    frameon=False, fontsize=9.5, handlelength=0.9, columnspacing=1.8)
-        fig.text(0.5, 0.016, "84 tasks · all retained conditions pooled per task · same task order and 0–100% scale in every panel",
+        count = next(iter(data["model_summaries"].values()))["task_count"]
+        footer = (f'{data["condition_label"]} · {count}/84 tasks scored · fixed pooled task order · 0–100% scale'
+                  + (" · gray labels and curve gaps indicate N/A" if count < 84 else ""))
+        fig.text(0.5, 0.016, footer,
                  ha="center", fontsize=9, color="#64727e")
-        fig.savefig(output / "task-radar.png", dpi=200, facecolor="white")
-        fig.savefig(output / "task-radar.svg", metadata={"Date": None})
+        fig.savefig(output / f"{filename}.png", dpi=200, facecolor="white")
+        fig.savefig(output / f"{filename}.svg", metadata={"Date": None})
         plt.close(fig)
 
     # Keep actual text in the SVG, and make each compact label an accessible link.
     ET.register_namespace("", SVG)
     ET.register_namespace("xlink", XLINK)
-    tree = ET.parse(output / "task-radar.svg")
+    tree = ET.parse(output / f"{filename}.svg")
     root = tree.getroot()
     root.set("role", "group")
-    root.set("aria-label", "Accuracy across all 84 tasks, with one radar panel per model and linked task codes")
+    root.set("data-radar-condition", condition)
+    root.set("aria-label", f'{data["condition_label"]}: {count} scored tasks, with one radar panel per model and linked task codes')
     lookup = {t["task_id"]: t for t in tasks}
     for element in root.iter(f"{{{SVG}}}g"):
         identity = element.get("id", "")
@@ -156,34 +220,78 @@ def plot(output, summary, models):
         task = lookup[task_id]
         link = element.find(f"{{{SVG}}}a")
         score = task["models"][model]
-        description = f'{task["code"]}: {task["title"]} ({task_id}). {models[model]}: {score["correct"]}/{score["attempted"]}.'
+        value = f'{score["correct"]}/{score["attempted"]}' if score["attempted"] else 'N/A: no retained hard variant'
+        description = f'{task["code"]}: {task["title"]} ({task_id}). {models[model]}: {value}.'
         link.set("href", f"report.html#task-{task_id}")
         link.set(f"{{{XLINK}}}href", f"report.html#task-{task_id}")
         link.set("target", "_self")
         link.set("aria-label", description)
         ET.SubElement(link, f"{{{SVG}}}title").text = description
-    tree.write(output / "task-radar.svg", encoding="unicode")
-    (output / "task-radar.json").write_text(json.dumps(data, indent=2) + "\n")
-    return data
+    # Five SVGs share a document. Prefix every internal ID and reference.
+    ids = {e.get("id"): f'radar-{condition}-{e.get("id")}' for e in root.iter() if e.get("id")}
+    for element in root.iter():
+        for key, value in list(element.attrib.items()):
+            if key == "id":
+                element.set(key, ids[value])
+            elif value.startswith("#") and value[1:] in ids:
+                element.set(key, "#" + ids[value[1:]])
+            elif "url(#" in value:
+                for old, new in ids.items():
+                    value = value.replace(f"url(#{old})", f"url(#{new})")
+                element.set(key, value)
+    tree.write(output / f"{filename}.svg", encoding="unicode")
+    (output / f"{filename}.json").write_text(json.dumps(data, indent=2) + "\n")
 
 
 def section(output, summary, models):
-    data = prepare(summary, models)
     esc = html.escape
-    svg = ((output / "task-radar.svg").read_text()
+    parts = ['<h2 id="task-radar">Task performance by condition</h2>',
+             '<label class="radar-control" for="radar-condition">Evaluation condition <select id="radar-condition">'
+             + ''.join(f'<option value="{key}">{esc(label)}</option>' for key, label in VIEWS.items()) + '</select></label>',
+             '<p>Groups and tasks are ordered by mean accuracy across models in the pooled view. Task order, codes and group colors stay fixed when you change conditions.</p>']
+    for condition in VIEWS:
+        data = json.loads((output / f"{stem(condition)}.json").read_text())
+        parts.append(_view_section(output, data))
+    parts.append('''<script>
+(()=>{
+  const select=document.getElementById('radar-condition');
+  const views=[...document.querySelectorAll('[data-radar-view]')];
+  const key='cds-radar-condition:'+location.pathname;
+  function show(){
+    for(const view of views)view.hidden=view.dataset.radarView!==select.value;
+    try{sessionStorage.setItem(key,select.value)}catch{}
+  }
+  try{const saved=sessionStorage.getItem(key);if([...select.options].some(o=>o.value===saved))select.value=saved}catch{}
+  select.addEventListener('change',show);show();
+})();
+</script>''')
+    return ''.join(parts)
+
+
+def _view_section(output, data):
+    esc = html.escape
+    condition, filename = data["condition"], stem(data["condition"])
+    svg = ((output / f"{filename}.svg").read_text()
            .replace('<svg ', '<svg class="task-radar-svg" ', 1)
            .replace('href="report.html#task-', 'href="#task-'))
-    parts = ['<h2 id="task-radar">All 84 tasks</h2>',
-             '<p>Each spoke is one task. Its score pools all retained conditions: 40 attempts per model, or 20 for the five tasks without a hard variant. All failures count. Each model has the same task order and 0–100% scale.</p>',
-             '<p>Groups are ordered from highest to lowest mean task accuracy across the three models; tasks use the same descending sort within each group. Every task has equal weight in the group average. Ties use the family or task ID.</p>',
+    if condition == "all":
+        description = '84 tasks scored. Each task pools 40 attempts per model, or 20 for the five tasks without a hard variant.'
+    elif condition.startswith("hard"):
+        description = '79 tasks scored, with ten attempts per task and model. The five tasks without a hard variant are N/A, not zero: their labels are gray and their points are omitted.'
+    else:
+        description = '84 tasks scored, with ten attempts per task and model.'
+    hidden = '' if condition == 'all' else ' hidden'
+    parts = [f'<section data-radar-view="{condition}" aria-label="{esc(data["condition_label"])}"{hidden}>',
+             f'<p class="radar-view-description"><strong>{esc(data["condition_label"])}</strong>. {description} All failures count.</p>',
              '<figure class="task-radar-figure"><div class="scroll">' + svg + '</div><figcaption>Colors mark task groups. Hover a code for the full name, ID and score; click it to open the existing task details. On a narrow screen, scroll horizontally to see all three panels.</figcaption></figure>',
-             '<p><a href="task-radar.svg">SVG</a> · <a href="task-radar.png">PNG</a> · <a href="task-radar.json">Task order and scores</a></p>',
-             '<details id="radar-task-key"><summary>Task key: all 84 codes, full names and IDs</summary>',
+             f'<p><a href="{filename}.svg">SVG</a> · <a href="{filename}.png">PNG</a> · <a href="{filename}.json">Task order and scores</a></p>',
+             f'<details id="radar-task-key-{condition}"><summary>Task key: all 84 codes, full names and IDs</summary>',
              '<div class="scroll"><table class="radar-key"><thead><tr><th>Code</th><th>Task</th><th>Mean accuracy</th></tr></thead>']
     for group in data["groups"]:
-        parts.append(f'<tbody><tr class="radar-key-group"><th colspan="3"><span class="radar-swatch" style="background:{group["color"]}"></span>{group["code"]} · {esc(group["name"])} · {len(group["tasks"])} tasks · {group["mean_accuracy"]:.1%}</th></tr>')
+        parts.append(f'<tbody><tr class="radar-key-group"><th colspan="3"><span class="radar-swatch" style="background:{group["color"]}"></span>{group["code"]} · {esc(group["name"])}</th></tr>')
         for task in group["tasks"]:
-            parts.append(f'<tr><th scope="row">{task["code"]}</th><td><a href="#task-{task["task_id"]}">{esc(task["title"])}</a><small><code>{esc(task["task_id"])}</code></small></td><td>{task["mean_accuracy"]:.1%}</td></tr>')
+            score = f'{task["mean_accuracy"]:.1%}' if task['mean_accuracy'] is not None else 'N/A'
+            parts.append(f'<tr><th scope="row">{task["code"]}</th><td><a href="#task-{task["task_id"]}">{esc(task["title"])}</a><small><code>{esc(task["task_id"])}</code></small></td><td>{score}</td></tr>')
         parts.append('</tbody>')
-    parts.append('</table></div></details>')
+    parts.append('</table></div></details></section>')
     return ''.join(parts)

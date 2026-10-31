@@ -4,8 +4,7 @@
     "qwen": "Qwen 3.7 Flash (high)",
     "deepinfra": "Nemotron 3.5 Lightning"
   },
-  "score": "Correct / attempted across all retained conditions for each task; all failures count.",
-  "ordering": "Descending mean task accuracy across models, first by group then within group; ties use family or task ID.",
+  "ordering": "Fixed from the pooled view: descending mean task accuracy across models, first by group then within group; ties use family or task ID.",
   "group_average": "Unweighted mean of task means within each group.",
   "groups": [
     {
@@ -2218,5 +2217,30 @@
       "angle_start": 4.961098398793882,
       "angle_end": 6.204645490839842
     }
-  ]
+  ],
+  "condition": "all",
+  "condition_label": "All conditions (pooled)",
+  "available_views": {
+    "all": "All conditions (pooled)",
+    "easy-no-tools": "Easy, no tools",
+    "hard-no-tools": "Hard, no tools",
+    "easy-tools": "Easy, Python",
+    "hard-tools": "Hard, Python"
+  },
+  "ordering_reference": "all",
+  "score": "Correct / attempted for each task; all failures count. All retained conditions are pooled within each task.",
+  "model_summaries": {
+    "luna": {
+      "task_count": 84,
+      "mean_accuracy": 0.8982142857142857
+    },
+    "qwen": {
+      "task_count": 84,
+      "mean_accuracy": 0.35119047619047616
+    },
+    "deepinfra": {
+      "task_count": 84,
+      "mean_accuracy": 0.4125
+    }
+  }
 }

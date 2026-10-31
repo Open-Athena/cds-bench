@@ -1,12 +1,22 @@
-Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen/Nemotron 3.5 Lightning evaluation**. This is an evaluation-only PR; **do not merge**.
+Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)** and **Nemotron 3.5 Lightning**, with and without offline Python. Each condition has ten examples per task: 84 easy task types and 79 hard task types. Each model has 3,260 matching completed attempts, with identical retained prompts and reference answers.
 
-**Nemotron 3.5 Lightning: 3,260/3,260 fresh attempts (complete)**. Luna and Qwen each have 3,260 completed matching attempts. Each condition has ten examples per task: 840 easy and 790 hard. Pilot responses are not reused.
+**9,780 scored attempts.** Python improves observed accuracy for all three models in both easy and hard conditions; GPT-6 Luna (high) scores highest in all four conditions. Pilot responses are not reused.
 
-[Full evaluation report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html) · [Pilot report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) · [Full per-task results](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/by-task.csv) · [Pilot per-task results](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/by-task.csv)
+Evaluation-only PR. **Do not merge.**
+
+[Full report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html) · [Per-task results (CSV)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/by-task.csv) · [Final predictions (JSON)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/results.json)
 
 The HTML reports are self-contained; download and open them in a browser.
 
-**Full evaluation results**
+**Accuracy by condition**
+
+![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=14aad78dd72a)
+
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=14aad78dd72a) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
+
+<details>
+<summary>Full results: accuracy, median time, cost and truncation</summary>
+
 
 | Model | Condition | Correct | Accuracy | Median | Cost | Truncated |
 |---|---|---:|---:|---:|---:|---:|
@@ -23,9 +33,19 @@ The HTML reports are self-contained; download and open them in a browser.
 | Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 537/840 | 63.9% | 28.3s | $1.83524 | 4 |
 | Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 397/790 | 50.3% | 40.7s | $2.37400 | 7 |
 
-The [84-task radar comparison](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) gives each model a panel with the same group colors and task order, plus a linked task-name/ID key. Scores pool the retained conditions for each task; groups and tasks are ordered by mean task accuracy across models.
+All failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.
 
-Luna and Qwen request `high` reasoning. Nemotron 3.5 Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Nemotron 3.5 Lightning conditions include only finished attempts.
+</details>
+
+**Task performance: All conditions (pooled)**
+
+![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=13ee42d4b131)
+
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=13ee42d4b131) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
+
+Each spoke pools the retained conditions for one task. Subtitles average all 84 task accuracies equally; five tasks have only easy variants. Groups and tasks share the same order across models. The [report’s condition selector and task key](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.
+
+Scores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.
 
 <details>
 <summary>Full-evaluation failures, billing and token-budget exceptions</summary>
@@ -55,7 +75,7 @@ Qwen reports usage beyond the requested 32,768-token budget for 24 attempts, up 
 
 One judgment-selected instance per task, each in easy/hard form and with/without Python. Two duplicate hard variants are omitted, leaving **30 easy + 28 hard prompts and 116 attempts per complete model**. The pilot checks accuracy, cost, latency and tool compatibility. It is too small for a definitive model ranking.
 
-The [pilot HTML report](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) gives four-condition scores, per-task predictions, provider/reasoning settings, failure categories, timing definitions and GPT-OSS compatibility checks. Partial runs, the lower LFM token budget and tool-protocol failures are kept explicit.
+[Pilot report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) · [Pilot per-task results (CSV)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/by-task.csv). The report covers provider behavior, tool compatibility, timing and failure categories. Partial runs and differences in token limits remain explicit.
 
 <details>
 <summary>Pilot results: 12 model/provider runs, with accuracy, timing and costs</summary>

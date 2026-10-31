@@ -3,6 +3,7 @@
 import argparse
 import csv
 import fcntl
+import hashlib
 import html
 import json
 import os
@@ -28,7 +29,7 @@ LABELS = ["Easy, no tools", "Hard, no tools", "Easy, Python", "Hard, Python"]
 MODELS = {"luna": "GPT-6 Luna (high)", "qwen": "Qwen 3.7 Flash (high)", "deepinfra": "Nemotron 3.5 Lightning"}
 BRANCH = "eval/luna-high-baseline"
 REPOSITORY = "Open-Athena/cds-bench"
-PR_TITLE = "CDS-bench: model pilot and full Luna/Qwen/Nemotron 3.5 Lightning evaluation"
+PR_TITLE = "CDS-bench: full baseline evaluation and model pilot"
 REPORT_PATH = str(OUTPUT.relative_to(ROOT))
 
 
@@ -156,7 +157,8 @@ def _build(raw, output, lightning_raw, deepinfra_raw):
         f"# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation\n\nNemotron 3.5 Lightning: {totals['deepinfra']['attempted']}/3,260 fresh attempts ({job['state']}). Luna and Qwen: 3,260 matched completed attempts each.\n\n"
         "Download [report.html](report.html) and open it in a browser. It is self-contained.\n\n"
         "[Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)\n\n"
-        "[84-task radar figure](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report includes clickable task codes and a full-name/ID key.\n\n"
+        "Accuracy by condition: [PNG](overall.png) · [SVG](overall.svg).\n\n"
+        "[Pooled task radar](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report selector also shows each of the four evaluation conditions. Task codes and group colors stay fixed across views, with links to the full-name/ID key and existing details.\n\n"
         "[30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.\n\n"
         "Failed Qwen request counts, timeout flags, usage, and charges are reconstructed from saved response metadata where the collector omitted them. Raw files and scores are unchanged; no requests are retried.\n"
     )
@@ -188,6 +190,8 @@ def plot(output, summaries):
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
     fig.savefig(output / "overall.png", dpi=160)
+    with matplotlib.rc_context({"svg.fonttype": "none", "svg.hashsalt": "cds-bench-overview"}):
+        fig.savefig(output / "overall.svg", metadata={"Date": None})
     plt.close(fig)
 
 
@@ -196,7 +200,14 @@ def pr_body(summary, config):
     from .tables import markdown_results, markdown_table
 
     base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{REPORT_PATH}"
+    raw_base = f"https://raw.githubusercontent.com/{REPOSITORY}/refs/heads/{BRANCH}/{REPORT_PATH}"
     pilot_base = f"https://github.com/{REPOSITORY}/blob/{BRANCH}/{PILOT_OUTPUT.relative_to(ROOT)}"
+
+    def figure(filename, title):
+        digest = hashlib.sha256((OUTPUT / f"{filename}.png").read_bytes()).hexdigest()[:12]
+        return [f"\n![{title}]({raw_base}/{filename}.png?v={digest})",
+                f"\nExports: [PNG]({raw_base}/{filename}.png?v={digest}) · [SVG]({base}/{filename}.svg)"]
+
     q, luna, deepinfra = (summary["totals"][m] for m in ["qwen", "luna", "deepinfra"])
     full_names = MODELS
     pilot_names = {
@@ -206,18 +217,25 @@ def pr_body(summary, config):
         "north-mini-code": "North Mini Code", "gpt-oss-20b": "GPT-OSS 20B",
         "gemma": "Gemma 31B", "gemma-moe": "Gemma 26B A4B", "liquid": "LFM 24B A2B",
     }
+    completed = sum(summary["totals"][model]["attempted"] for model in MODELS)
     lines = [
-        "Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen/Nemotron 3.5 Lightning evaluation**. This is an evaluation-only PR; **do not merge**.",
-        f"\n**Nemotron 3.5 Lightning: {deepinfra['attempted']:,}/3,260 fresh attempts ({summary['state'].replace('waiting-provider', 'waiting for DeepInfra')})**. Luna and Qwen each have 3,260 completed matching attempts. Each condition has ten examples per task: 840 easy and 790 hard. Pilot responses are not reused.",
-        f"\n[Full evaluation report (HTML)]({base}/report.html) · [Pilot report (HTML)]({pilot_base}/report.html) · [Full per-task results]({base}/by-task.csv) · [Pilot per-task results]({pilot_base}/by-task.csv)",
+        "Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)** and **Nemotron 3.5 Lightning**, with and without offline Python. Each condition has ten examples per task: 84 easy task types and 79 hard task types. Each model has 3,260 matching completed attempts, with identical retained prompts and reference answers.",
+        f"\n**{completed:,} scored attempts.** Python improves observed accuracy for all three models in both easy and hard conditions; GPT-6 Luna (high) scores highest in all four conditions. Pilot responses are not reused.",
+        "\nEvaluation-only PR. **Do not merge.**",
+        f"\n[Full report (HTML)]({base}/report.html) · [Per-task results (CSV)]({base}/by-task.csv) · [Final predictions (JSON)]({base}/results.json)",
         "\nThe HTML reports are self-contained; download and open them in a browser.",
-        "\n**Full evaluation results**",
+        "\n**Accuracy by condition**",
+        *figure("overall", "CDS-bench accuracy by model and evaluation condition"),
+        "\n<details>\n<summary>Full results: accuracy, median time, cost and truncation</summary>\n",
         "\n" + markdown_results([
             ((full_names[model], label), summary["conditions"][model][c], 32768)
             for model, name in MODELS.items() for c, label in zip(PLANNED, LABELS)
         ]),
-        f"\nThe [84-task radar comparison]({base}/report.html#task-radar) gives each model a panel with the same group colors and task order, plus a linked task-name/ID key. Scores pool the retained conditions for each task; groups and tasks are ordered by mean task accuracy across models.",
-        "\nLuna and Qwen request `high` reasoning. Nemotron 3.5 Lightning uses reasoning enabled without an advertised effort selector, on DeepInfra BF16 with seed omitted, with no provider fallback. All runs request 32,768 generated tokens per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures. Incomplete Nemotron 3.5 Lightning conditions include only finished attempts.",
+        "\nAll failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.\n\n</details>",
+        "\n**Task performance: All conditions (pooled)**",
+        *figure("task-radar", "CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model"),
+        f"\nEach spoke pools the retained conditions for one task. Subtitles average all 84 task accuracies equally; five tasks have only easy variants. Groups and tasks share the same order across models. The [report’s condition selector and task key]({base}/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.",
+        "\nScores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.",
         "\n<details>\n<summary>Full-evaluation failures, billing and token-budget exceptions</summary>\n",
         markdown_table(
             ["Model", "Condition", "Wrong", "Format", "Timeout", "Cap", "API"],
@@ -232,7 +250,7 @@ def pr_body(summary, config):
         "\n</details>",
         "\n**30-task pilot**",
         "\nOne judgment-selected instance per task, each in easy/hard form and with/without Python. Two duplicate hard variants are omitted, leaving **30 easy + 28 hard prompts and 116 attempts per complete model**. The pilot checks accuracy, cost, latency and tool compatibility. It is too small for a definitive model ranking.",
-        f"\nThe [pilot HTML report]({pilot_base}/report.html) gives four-condition scores, per-task predictions, provider/reasoning settings, failure categories, timing definitions and GPT-OSS compatibility checks. Partial runs, the lower LFM token budget and tool-protocol failures are kept explicit.",
+        f"\n[Pilot report (HTML)]({pilot_base}/report.html) · [Pilot per-task results (CSV)]({pilot_base}/by-task.csv). The report covers provider behavior, tool compatibility, timing and failure categories. Partial runs and differences in token limits remain explicit.",
     ]
     pilot = read(PILOT_OUTPUT / "summary.json")
     if pilot:
@@ -280,6 +298,7 @@ def render(output, summary, config, data, rows):
 body{font:15px/1.5 system-ui,sans-serif;color:#25313c;margin:0;background:white}main{max-width:1320px;margin:auto;padding:24px}h1{font-size:26px}h2{font-size:20px}a{color:#205d89}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #dce2e7;text-align:left;vertical-align:top}th{background:#f4f6f8}small,.muted{color:#64727e}small{display:block}.scroll{overflow-x:auto}details{border-top:1px solid #dce2e7;padding:10px 0}summary,.task-row{cursor:pointer}.task-row:hover{background:#f4f7f9}.task-detail{display:none}.task-detail.open{display:table-row}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto;background:#f5f7f9;padding:12px;font:12px/1.5 ui-monospace,monospace;border:1px solid #dce2e7}input,select{font:inherit;padding:6px;margin:10px 0}img{max-width:100%;height:auto}[hidden]{display:none!important}nav{margin:12px 0 20px}.good{background:#e5efe8}.bad{background:#f3e8e9}
 .indexed-table tbody+tbody{border-top:2px solid #bfc9d2}.indexed-table tbody th{background:white;font-weight:400}.indexed-table .index-group{vertical-align:middle;font-weight:600;min-width:130px;max-width:210px;border-right:1px solid #dce2e7}.indexed-table .index-item{min-width:100px;max-width:210px}.indexed-table td{white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}.indexed-table thead th:nth-child(n+3){text-align:right}
 .task-radar-svg{display:block;width:100%;height:auto;min-width:1200px}.task-radar-figure{margin:0}.task-radar-figure figcaption{color:#64727e;font-size:13px;margin-top:8px}.radar-swatch{display:inline-block;width:10px;height:10px;margin-right:8px}.radar-key td:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}.radar-key-group th{font-weight:600}
+.radar-control select{margin-left:8px}
 </style><main><h1>CDS-bench: Luna, Qwen and Nemotron 3.5 Lightning</h1><nav><a href="#overview">Overview</a> · <a href="#families">By family</a> · <a href="#task-radar">Task radars</a> · <a href="#tasks">By task</a> · <a href="#settings">Settings and data</a></nav>"""]
     q, deepinfra = (summary["totals"][m] for m in ["qwen", "deepinfra"])
     parts.append(f"<p>Full evaluation: <b>Nemotron 3.5 Lightning {deepinfra['attempted']}/3,260 ({esc(summary['state'].replace('waiting-provider', 'waiting for DeepInfra'))})</b>. Luna and Qwen each have 3,260 matching completed attempts. Each condition includes ten examples per task: 84 easy task types and 79 hard task types. All retained prompts and reference answers match byte for byte. Pilot responses are excluded.</p>")
