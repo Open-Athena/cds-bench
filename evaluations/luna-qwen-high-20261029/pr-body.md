@@ -77,10 +77,10 @@ One judgment-selected instance per task, each in easy/hard form and with/without
 
 [Pilot report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) · [Pilot per-task results (CSV)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/by-task.csv). The report covers provider behavior, tool compatibility, timing and failure categories. Partial runs and differences in token limits remain explicit.
 
-**Snowball settings exception:** 16,384 aggregate generated tokens/example and **1,800 seconds/API request**, with concurrency 60. Its original 32,768-token/300-second trial is preserved separately and excluded from the table.
+**Internal API exceptions:** both Snowball models have **67B total parameters and 2B active per token**, and use **1,800 seconds/API request**, with concurrency 60. **Snowball RC (2026.09.21) uses 16,384 aggregate tokens; Snowball v0.1 uses 32,768.** RC means release candidate. The older checkpoint’s original 32,768-token/300-second trial is preserved separately and excluded.
 
 <details>
-<summary>Pilot results: 13 model/provider runs, with accuracy, timing and costs</summary>
+<summary>Pilot results: 14 model/provider runs, with accuracy, timing and costs</summary>
 
 | Model | Condition | Correct | Accuracy | Median | Cost | Truncated |
 |---|---|---:|---:|---:|---:|---:|
@@ -96,7 +96,8 @@ One judgment-selected instance per task, each in easy/hard form and with/without
 | Gemma&nbsp;31B | Partial | 5/24 | 20.8% | 300.0s | $0.04795 | 0 |
 | Gemma&nbsp;26B&nbsp;A4B | Partial | 8/100 | 8.0% | 220.2s | $0.35711 | 6 |
 | LFM&nbsp;24B&nbsp;A2B | All&nbsp;four | 9/116 | 7.8% | 20.8s | $0.65148 | 99 |
-| Marin&nbsp;Snowball | All&nbsp;four | 16/116 | 13.8% | 154.8s | Unavailable | 61 |
+| Snowball&nbsp;RC&nbsp;(2026.09.21) | All&nbsp;four | 16/116 | 13.8% | 154.8s | Unavailable | 61 |
+| Snowball&nbsp;v0.1 | All&nbsp;four | 27/116 | 23.3% | 110.3s | Unavailable | 11 |
 | Nemotron&nbsp;3.5&nbsp;Lightning&nbsp;CoreWeave&nbsp;extra | Easy,&nbsp;no&nbsp;tools | 75/353 | 21.2% | 95.5s | $1.50838 | 134 |
 
 **All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. The CoreWeave extra row retains all 353 completed attempts from the stopped expansion, separately from its original 116-attempt pilot. Ten interrupted attempts are excluded. [Inspect the additional samples](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html#coreweave-extra). Full model names, provider routing and failure counts are in the pilot report.
@@ -105,7 +106,9 @@ LFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts
 
 Costs cover these scored subsets, excluding compatibility checks, removed duplicate-hard cases, interrupted requests and follow-up diagnostics. Missing charges remain explicit. The reports separate incorrect values, formatting failures, timeouts, token caps and API/protocol errors. Earlier ten-example GLM/Luna checks are a separate report appendix, not pooled here.
 
-**Marin Snowball** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip passed before scoring. Uses 16,384 aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [Grug-67B-A2B-Datakit-SFT-262K-2026.09.21](https://huggingface.co/open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21/tree/b8c07f7df1df65525abbfdbcd1572318ba11c42f), `open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21` at revision `b8c07f7df1df65525abbfdbcd1572318ba11c42f`. Its transport and execution checks are documented in the pilot report.
+**Snowball RC (2026.09.21)** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip was verified before scoring. Uses 16,384 aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [Grug-67B-A2B-Datakit-SFT-262K-2026.09.21](https://huggingface.co/open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21/tree/b8c07f7df1df65525abbfdbcd1572318ba11c42f), `open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21` at revision `b8c07f7df1df65525abbfdbcd1572318ba11c42f`. Its transport and execution checks are documented in the pilot report.
+
+**Snowball v0.1** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip was verified before scoring. Uses 32,768 aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [Marin-Snowball-67B-A2B-v0.1](https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3), `open-athena/Marin-Snowball-67B-A2B-v0.1` at revision `adc0078a19a4383bc998fcdb43867b3360baf5f3`. Its transport and execution checks are documented in the pilot report.
 
 </details>
 

@@ -124,11 +124,12 @@ def build(source=SOURCE, output=OUTPUT):
         assert conditions[model] == original["conditions"][model]
         sources[str((raw / "config.json").relative_to(ROOT))] = hashlib.sha256((raw / "config.json").read_bytes()).hexdigest()
     models = dict(MODELS)
-    snowball = snowball_pilot.build(output, cases, format_only_recovery)
-    if snowball:
-        model_rows, totals['snowball'], conditions['snowball'], configs['snowball'] = snowball
-        rows.extend(model_rows)
-        models['snowball'] = snowball_pilot.NAME
+    for model, definition in snowball_pilot.MODELS.items():
+        snowball = snowball_pilot.build(output, cases, format_only_recovery, model)
+        if snowball:
+            model_rows, totals[model], conditions[model], configs[model] = snowball
+            rows.extend(model_rows)
+            models[model] = definition['name']
     task_ids = [r["task_id"] for r in selected if r["variant"] == "easy"]
     source_diagnostics = read(source / "gpt-oss-reliability-summary.json")
     diagnostics = {
@@ -186,11 +187,12 @@ def build(source=SOURCE, output=OUTPUT):
         "Raw API requests, reasoning and Python programs/results remain untracked. Costs exclude preflight and interrupted requests; unknown charges are not assumed to be zero.\n\n"
         "Rebuild from the saved local pilot, with no inference:\n\n```sh\nPYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.pilot\n```\n"
     )
-    if snowball:
-        c = configs['snowball']
-        p = c['provenance']
-        with (output / 'README.md').open('a') as file:
-            file.write(f"\nMarin Snowball: [{c['full_name']}]({p['url']}), `{p['repo']}` at revision `{p['revision']}`. Uses the internal API with native thinking/tool transport, a 16,384-token aggregate budget, 1,800-second request deadline, temperature 0.7 and concurrency 60. Monetary cost is unavailable. [Pilot audit](snowball-audit.json).\n")
+    for model, definition in snowball_pilot.MODELS.items():
+        if model in configs:
+            c = configs[model]
+            p = c['provenance']
+            with (output / 'README.md').open('a') as file:
+                file.write(f"\n{c['name']}: [{c['full_name']}]({p['url']}), `{p['repo']}` at revision `{p['revision']}`. Uses the internal API with native thinking/tool transport, a {c['aggregate_completion_token_budget']:,}-token aggregate budget, 1,800-second request deadline, temperature 0.7 and concurrency 60. Monetary cost is unavailable. [Pilot audit]({definition['audit_file']}).\n")
     return summary
 
 
@@ -211,7 +213,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
         for m in MODELS
     ]
     parts.append(html_results(top))
-    parts.append('<p class="muted">Recorded cost covers only the retained completed attempts. Compatibility checks, interrupted requests, discarded duplicate-hard cases and GPT-OSS follow-ups are excluded. Missing billing records are not assumed to be zero. OpenRouter pilot requests had a 300-second deadline. Marin Snowball instead uses a <b>16,384-token aggregate budget and 1,800-second request deadline</b>; its internal API has no exposed per-request price. Unavailable cost is not zero.</p>')
+    parts.append('<p class="muted">Recorded cost covers only the retained completed attempts. Compatibility checks, interrupted requests, discarded duplicate-hard cases and GPT-OSS follow-ups are excluded. Missing billing records are not assumed to be zero. OpenRouter pilot requests had a 300-second deadline. Both internal Marin checkpoints use a <b>1,800-second request deadline</b>: Snowball RC (2026.09.21) has a <b>16,384-token</b> aggregate budget and Snowball v0.1 has <b>32,768 tokens</b>. Both are mixture-of-experts models with <b>67B total parameters and 2B active per token</b>. RC means release candidate. Neither API exposes per-request pricing. Unavailable cost is not zero.</p>')
     if summary["provider_reported_budget_overruns"]:
         parts.append('<details><summary>Provider-reported token-budget exceptions</summary><p>Budgets are requested maxima. North reports 32,791 generated tokens on one attempt, 27 above the requested 32,768. This is retained explicitly; requests and scores are unchanged.</p><pre>'+esc(json.dumps(summary["provider_reported_budget_overruns"],indent=2))+'</pre></details>')
     failures = '<table><tr><th>Model</th><th>Incorrect value</th><th>Format</th><th>Timeout</th><th>Token cap</th><th>API/protocol</th><th>Unreconciled examples</th></tr>'
@@ -246,8 +248,9 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
         'gemma': 'Stopped because it was too slow/flaky, after 24 easy/no-tools cases. No hard or scored Python condition was reached. The earlier Crusoe preflight was rate-limited; scored requests used Novita BF16.',
         'gemma-moe': 'Stopped at the user’s request because it was too slow. The first three passes completed, with only 12 hard/Python cases finished. Fifty answers failed the required format; many match the reference after limited formatting normalization. There were also five-minute timeouts and HTTP 502/504 errors. NextBit BF16 was used.',
         'liquid': 'Completed all four conditions using the approved 8,192-token aggregate budget, the endpoint’s output limit, rather than 32,768. Reasoning was enabled without an effort selector. Ninety-nine attempts exhausted that budget. All 55 emitted tool calls had valid names and JSON arguments; 47 executions succeeded and eight had program errors, mostly undefined variables in a fresh interpreter. This does not establish performance at a larger budget.',
-        'snowball': 'Uses the existing internal Marin/vLLM BF16 service rather than OpenRouter. Its Delphi chat template enables thinking; there is no verified high-effort selector. The server lacks automatic function parsing, so the client supplies the unchanged Python function via the native xml_tools template argument, parses only complete JSON tool_call blocks, and stops generation at the closing tool-call tag. Native thinking is preserved and replayed. Generated Python and final answers are not repaired. A real two-request sandboxed Python round trip passed before scoring. At the user’s request, this model uses a 16,384-token aggregate budget and 1,800-second API deadline. The eight-call limit and offline Python/NumPy environment are unchanged. The earlier 32,768-token/300-second trial is preserved separately and is excluded from these scores. Temperature is explicitly 0.7, seed 20261029; sixty examples run concurrently across all four conditions. API usage reports tokens but no monetary charges, so cost is unavailable rather than zero.',
+        'snowball': 'Snowball RC (2026.09.21), the older release candidate, uses the internal Marin/vLLM BF16 service rather than OpenRouter. Its Delphi chat template enables thinking; there is no verified high-effort selector. The server lacks automatic function parsing, so the client supplies the unchanged Python function via the native xml_tools template argument, parses only complete JSON tool_call blocks, and stops generation at the closing tool-call tag. Native thinking is preserved and replayed. Generated Python and final answers are not repaired. A real two-request sandboxed Python round trip passed before scoring. At the user’s request, this model uses a 16,384-token aggregate budget and 1,800-second API deadline. The eight-call limit and offline Python/NumPy environment are unchanged. The earlier 32,768-token/300-second trial is preserved separately and is excluded from these scores. Temperature is explicitly 0.7, seed 20261029; sixty examples run concurrently across all four conditions. API usage reports tokens but no monetary charges, so cost is unavailable rather than zero.',
     }
+    notes['snowball-v01'] = ('Uses the newer Marin-Snowball-67B-A2B-v0.1 checkpoint on the existing internal Marin/vLLM BF16 service. The same native Delphi transport, exact Python function and offline sandbox apply, with thinking enabled, temperature 0.7, seed 20261029 and concurrency 60. This pilot restores the 32,768-token aggregate budget while retaining the 1,800-second API deadline. The older Snowball RC (2026.09.21) used 16,384 tokens, so this comparison changes both checkpoint and output budget. No effort-level selector is verified. The unscored preflight executed Python and returned its correct result, but appended a stray Markdown fence; its strict formatting failure is preserved. The actual execution and returned-result delivery were verified separately without retrying or repairing that answer. Primary pilot scoring is unchanged. Costs and reasoning-only token counts are unavailable.')
     lightning = configs['nemotron-lightning']
     coreweave = totals['nemotron-lightning-coreweave']
     if configs['nemotron-lightning-coreweave']['state'] == 'complete':
@@ -282,11 +285,13 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
     for m in MODELS:
         c=configs[m]
         parts.append('<details><summary>'+esc(MODELS[m])+' · '+esc(', '.join(c['provider']['only']))+'</summary><p>'+esc(notes[m])+'</p><p><code>'+esc(c['model'])+'</code>; reasoning <code>'+esc(json.dumps(c['reasoning'],separators=(',',':')))+'</code>; no provider fallback.</p></details>')
-        if m == 'snowball':
+        if m in snowball_pilot.MODELS:
             p = c['provenance']
-            parts.append('<p>Marin Snowball provenance: <a href="'+esc(p['url'])+'">'+esc(c['full_name'])+'</a>, <code>'+esc(p['repo'])+'</code> at revision <code>'+esc(p['revision'])+'</code>. <a href="snowball-audit.json">Pilot audit</a>.</p>')
+            parts.append('<p>'+esc(MODELS[m])+' provenance: <a href="'+esc(p['url'])+'">'+esc(c['full_name'])+'</a>, <code>'+esc(p['repo'])+'</code> at revision <code>'+esc(p['revision'])+'</code>. <a href="'+snowball_pilot.MODELS[m]['audit_file']+'">Pilot audit</a>.</p>')
             a = c['tool_audit']
             parts.append(f"<p>Tool verification: {a['successful_executions']} successful Python executions, {a['program_errors']} program failures and {a['invalid_calls']} rejected calls. {a['native_protocol_failures']} attempts returned malformed native tool JSON or tags; {a['call_limit_failures']} continued calling after the limit. These remain failed attempts. Scored HTTP failures: {a['http_failures']}.</p>")
+            if a.get('incomplete_streams'):
+                parts.append(f"<p>{a['incomplete_streams']} request ended before its response stream was complete. It remains an API/connection failure, with no retry.</p>")
     parts.append('<details><summary>Formatting diagnostic; primary scores unchanged</summary><p>Only an inline Final answer: marker and one outer JSON fence are normalized. Missing markers and answer content are not repaired.</p><table><tr><th>Model</th><th>Strict correct</th><th>Additional exact matches</th></tr>')
     for m in MODELS:
         parts.append(f'<tr><td>{esc(MODELS[m])}</td><td>{totals[m]["correct"]}/{totals[m]["attempted"]}</td><td>{totals[m]["format_diagnostic_additional_exact"]}</td></tr>')
@@ -299,7 +304,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
     for t in summary['task_ids']:
         title=TASKS[t]['title']
         parts.append(f'<tr class="task-row" id="task-{t}" data-task="{t}" data-search="{esc((t+" "+title).lower())}" tabindex="0" aria-expanded="false"><td><a href="#task-{t}">{esc(title)}</a><small>{esc(t)}</small></td>'+''.join(f'<td data-condition="{c}"></td>' for c in CONDITIONS)+'<td class="toggle" aria-hidden="true">+</td></tr><tr class="task-detail"><td colspan="6"></td></tr>')
-    parts.append('</tbody></table><h2 id="settings">Settings, execution and saved data</h2><p>High reasoning was requested where supported. Gemma, North, Liquid and Nemotron Lightning expose reasoning enable/disable without an effort selector. OpenRouter pilot calls used provider-default temperature, a seed where supported (omitted on Bedrock and both Lightning runs), streaming responses and initially ten concurrent examples. North and Nemotron Ultra starts were paced for free-endpoint limits. After provider errors, io.net continued only unissued cases at concurrency three with five-second request spacing; its timing includes that scheduling change.</p><p>Marin Snowball uses native thinking and tool-call transport, temperature 0.7, seed 20261029 and concurrency 60; its checkpoint provenance and transport differences are recorded above. Python 3.12.9 + NumPy 2.5.4, no Biopython. The custom function runs locally under <code>/usr/bin/sandbox-exec</code>, with networking and process forks denied, and restricted file access. Each call starts a fresh interpreter; files persist within the example. Limits: eight Python calls/example, 30 seconds/call, 16,384 characters each of stdout/stderr. The no-tools condition supplies no functions. Web plugins are disabled. Network denial is an executor policy, not an OpenRouter parameter.</p>')
+    parts.append('</tbody></table><h2 id="settings">Settings, execution and saved data</h2><p>High reasoning was requested where supported. Gemma, North, Liquid and Nemotron Lightning expose reasoning enable/disable without an effort selector. OpenRouter pilot calls used provider-default temperature, a seed where supported (omitted on Bedrock and both Lightning runs), streaming responses and initially ten concurrent examples. North and Nemotron Ultra starts were paced for free-endpoint limits. After provider errors, io.net continued only unissued cases at concurrency three with five-second request spacing; its timing includes that scheduling change.</p><p>Both Snowball models have 67B total parameters and 2B active per token. They use native thinking and tool-call transport, temperature 0.7, seed 20261029 and concurrency 60; their checkpoint provenance, budgets and transport differences are recorded above. Python 3.12.9 + NumPy 2.5.4, no Biopython. The custom function runs locally under <code>/usr/bin/sandbox-exec</code>, with networking and process forks denied, and restricted file access. Each call starts a fresh interpreter; files persist within the example. Limits: eight Python calls/example, 30 seconds/call, 16,384 characters each of stdout/stderr. The no-tools condition supplies no functions. Web plugins are disabled. Network denial is an executor policy, not an OpenRouter parameter.</p>')
     parts.append('<details><summary>Exact Python function supplied to the models</summary><pre>'+esc(json.dumps(configs['luna']['tools'],indent=2))+'</pre></details>')
     parts.append('<details><summary>Exact request settings, provider routing and billing coverage</summary><p>Some source billing summaries also cover interrupted or removed duplicate-hard attempts; their totals are not substituted for the scored-subset costs above.</p><pre>'+esc(json.dumps(configs,indent=2))+'</pre></details>')
     parts.append('<details><summary>Earlier ten-example checks, excluded from the 30-task pilot</summary><p>Easy-only, no-tools smoke checks. GLM requested max reasoning with temperature 1.0 and top_p 0.95; Luna requested high reasoning. These earlier checks did not use the later pilot’s uniform five-minute wall deadline. All had a 32,768-token cap.</p><table><tr><th>Model / provider</th><th>Correct</th><th>Recorded cost</th><th>Median example</th><th>Token caps</th></tr>')

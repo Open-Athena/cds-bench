@@ -216,7 +216,7 @@ def pr_body(summary, config):
         "nemotron-lightning": "Nemotron 3.5 Lightning io.net", "nemotron-lightning-coreweave": "Nemotron 3.5 Lightning CoreWeave",
         "north-mini-code": "North Mini Code", "gpt-oss-20b": "GPT-OSS 20B",
         "gemma": "Gemma 31B", "gemma-moe": "Gemma 26B A4B", "liquid": "LFM 24B A2B",
-        "snowball": "Marin Snowball",
+        "snowball": "Snowball RC (2026.09.21)", "snowball-v01": "Snowball v0.1",
     }
     completed = sum(summary["totals"][model]["attempted"] for model in MODELS)
     lines = [
@@ -257,7 +257,7 @@ def pr_body(summary, config):
     if pilot:
         PILOT_MODELS = pilot['models']
         if 'snowball' in pilot['configurations']:
-            lines.append('\n**Snowball settings exception:** 16,384 aggregate generated tokens/example and **1,800 seconds/API request**, with concurrency 60. Its original 32,768-token/300-second trial is preserved separately and excluded from the table.')
+            lines.append('\n**Internal API exceptions:** both Snowball models have **67B total parameters and 2B active per token**, and use **1,800 seconds/API request**, with concurrency 60. **Snowball RC (2026.09.21) uses 16,384 aggregate tokens; Snowball v0.1 uses 32,768.** RC means release candidate. The older checkpoint’s original 32,768-token/300-second trial is preserved separately and excluded.')
         rows = []
         for model, name in PILOT_MODELS.items():
             settings = pilot["configurations"][model]
@@ -274,10 +274,11 @@ def pr_body(summary, config):
             "\nCosts cover these scored subsets, excluding compatibility checks, removed duplicate-hard cases, interrupted requests and follow-up diagnostics. Missing charges remain explicit. The reports separate incorrect values, formatting failures, timeouts, token caps and API/protocol errors. Earlier ten-example GLM/Luna checks are a separate report appendix, not pooled here.",
             "\n</details>",
         ]
-        if 'snowball' in pilot['configurations']:
-            snowball = pilot['configurations']['snowball']
-            p = snowball['provenance']
-            lines.insert(-1, f"\n**Marin Snowball** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip passed before scoring. Uses 16,384 aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [{snowball['full_name']}]({p['url']}), `{p['repo']}` at revision `{p['revision']}`. Its transport and execution checks are documented in the pilot report.")
+        for model in ['snowball', 'snowball-v01']:
+            if model in pilot['configurations']:
+                snowball = pilot['configurations'][model]
+                p = snowball['provenance']
+                lines.insert(-1, f"\n**{snowball['name']}** uses the internal Marin/vLLM API, native thinking and tool-call tags, and the same offline Python function. A real tool round trip was verified before scoring. Uses {snowball['aggregate_completion_token_budget']:,} aggregate generated tokens/example and a 1,800-second API deadline, temperature 0.7 and concurrency 60; no verified effort selector or per-request price. Full checkpoint: [{snowball['full_name']}]({p['url']}), `{p['repo']}` at revision `{p['revision']}`. Its transport and execution checks are documented in the pilot report.")
     lines += [
         "\n**Request and execution settings**",
         "\n| Setting | Value |\n|---|---|",
