@@ -1,41 +1,71 @@
-Evaluate CDS-bench without tools and with offline Python, first in a **30-task model/provider pilot**, then in a **full matched Luna/Qwen evaluation**. This is an evaluation-only PR; **do not merge**.
+Full CDS-bench baselines for **GPT-6 Luna (high)**, **Qwen 3.7 Flash (high)** and **Nemotron 3.5 Lightning**, with and without offline Python. Each condition has ten examples per task: 84 easy task types and 79 hard task types. Each model has 3,260 matching completed attempts, with identical retained prompts and reference answers.
 
-**Full evaluation: 3,260/3,260 Qwen attempts (complete)**, compared with 3,260 matching historical Luna attempts. Each condition has ten examples per task: 840 easy and 790 hard. All Qwen requests are fresh; pilot responses are not reused.
+**9,780 scored attempts.** Python improves observed accuracy for all three models in both easy and hard conditions; GPT-6 Luna (high) scores highest in all four conditions. Pilot responses are not reused.
 
-[Full evaluation report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html) · [Pilot report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) · [Full per-task results](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/by-task.csv) · [Pilot per-task results](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/by-task.csv)
+Evaluation-only PR. **Do not merge.**
+
+[Full report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html) · [Per-task results (CSV)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/by-task.csv) · [Final predictions (JSON)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/results.json)
 
 The HTML reports are self-contained; download and open them in a browser.
 
-**Full evaluation results**
+**Accuracy by condition**
+
+![CDS-bench accuracy by model and evaluation condition](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=14aad78dd72a)
+
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.png?v=14aad78dd72a) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/overall.svg)
+
+<details>
+<summary>Full results: accuracy, median time, cost and truncation</summary>
+
 
 | Model | Condition | Correct | Accuracy | Median | Cost | Truncated |
 |---|---|---:|---:|---:|---:|---:|
-| Luna | Easy,&nbsp;no&nbsp;tools | 738/840 | 87.9% | 8.6s | $0.63658 | 1 |
-| Luna | Hard,&nbsp;no&nbsp;tools | 679/790 | 85.9% | 9.5s | $0.59889 | 0 |
-| Luna | Easy,&nbsp;Python | 793/840 | 94.4% | 7.6s | $0.43532 | 0 |
-| Luna | Hard,&nbsp;Python | 710/790 | 89.9% | 8.0s | $0.39479 | 0 |
-| Qwen&nbsp;Flash | Easy,&nbsp;no&nbsp;tools | 227/840 | 27.0% | 235.3s | $3.12415 | 293 |
-| Qwen&nbsp;Flash | Hard,&nbsp;no&nbsp;tools | 199/790 | 25.2% | 250.8s | $2.99366 | 310 |
-| Qwen&nbsp;Flash | Easy,&nbsp;Python | 386/840 | 46.0% | 52.2s | $1.27409 | 13 |
-| Qwen&nbsp;Flash | Hard,&nbsp;Python | 332/790 | 42.0% | 70.6s | $1.49165 | 23 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Easy,&nbsp;no&nbsp;tools | 738/840 | 87.9% | 8.6s | $0.63658 | 1 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Hard,&nbsp;no&nbsp;tools | 679/790 | 85.9% | 9.5s | $0.59889 | 0 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Easy,&nbsp;Python | 793/840 | 94.4% | 7.6s | $0.43532 | 0 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Hard,&nbsp;Python | 710/790 | 89.9% | 8.0s | $0.39479 | 0 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Easy,&nbsp;no&nbsp;tools | 227/840 | 27.0% | 235.3s | $3.12415 | 293 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Hard,&nbsp;no&nbsp;tools | 199/790 | 25.2% | 250.8s | $2.99366 | 310 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Easy,&nbsp;Python | 386/840 | 46.0% | 52.2s | $1.27409 | 13 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Hard,&nbsp;Python | 332/790 | 42.0% | 70.6s | $1.49165 | 23 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;no&nbsp;tools | 203/840 | 24.2% | 161.5s | $2.92877 | 124 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;no&nbsp;tools | 185/790 | 23.4% | 157.4s | $3.10986 | 163 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 537/840 | 63.9% | 28.3s | $1.83524 | 4 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 397/790 | 50.3% | 40.7s | $2.37400 | 7 |
 
-Both full-evaluation models use `high` reasoning, a requested 32,768-token budget per example and a 300-second deadline per API request. All failures remain in the denominator. Median time includes tool round trips and failures; cost covers the scored attempts. **Truncated** counts token-cap failures.
+All failures remain in the denominator. Median time includes tool round trips and failures. **Truncated** counts token-cap failures; costs cover scored attempts and exclude the pilot.
+
+</details>
+
+**Task performance: All conditions (pooled)**
+
+![CDS-bench pooled task accuracy for all 84 task types, with one radar panel per model](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=13ee42d4b131)
+
+Exports: [PNG](https://raw.githubusercontent.com/Open-Athena/cds-bench/refs/heads/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.png?v=13ee42d4b131) · [SVG](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/task-radar.svg)
+
+Each spoke pools the retained conditions for one task. Subtitles average all 84 task accuracies equally; five tasks have only easy variants. Groups and tasks share the same order across models. The [report’s condition selector and task key](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/report.html#task-radar) show the four separate conditions and map codes to full task names and IDs.
+
+Scores count incorrect answers, formatting failures, timeouts, token caps and API errors as failures. Their counts and billing caveats are below.
 
 <details>
 <summary>Full-evaluation failures, billing and token-budget exceptions</summary>
 
 | Model | Condition | Wrong | Format | Timeout | Cap | API |
 |---|---|---:|---:|---:|---:|---:|
-| Luna | Easy,&nbsp;no&nbsp;tools | 90 | 3 | 8 | 1 | 0 |
-| Luna | Hard,&nbsp;no&nbsp;tools | 103 | 2 | 6 | 0 | 0 |
-| Luna | Easy,&nbsp;Python | 42 | 4 | 0 | 0 | 1 |
-| Luna | Hard,&nbsp;Python | 63 | 1 | 0 | 0 | 16 |
-| Qwen&nbsp;Flash | Easy,&nbsp;no&nbsp;tools | 72 | 198 | 17 | 293 | 33 |
-| Qwen&nbsp;Flash | Hard,&nbsp;no&nbsp;tools | 65 | 163 | 44 | 310 | 9 |
-| Qwen&nbsp;Flash | Easy,&nbsp;Python | 75 | 359 | 3 | 13 | 4 |
-| Qwen&nbsp;Flash | Hard,&nbsp;Python | 112 | 309 | 4 | 23 | 10 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Easy,&nbsp;no&nbsp;tools | 90 | 3 | 8 | 1 | 0 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Hard,&nbsp;no&nbsp;tools | 103 | 2 | 6 | 0 | 0 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Easy,&nbsp;Python | 42 | 4 | 0 | 0 | 1 |
+| GPT-6&nbsp;Luna&nbsp;(high) | Hard,&nbsp;Python | 63 | 1 | 0 | 0 | 16 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Easy,&nbsp;no&nbsp;tools | 72 | 198 | 17 | 293 | 33 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Hard,&nbsp;no&nbsp;tools | 65 | 163 | 44 | 310 | 9 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Easy,&nbsp;Python | 75 | 359 | 3 | 13 | 4 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | Hard,&nbsp;Python | 112 | 309 | 4 | 23 | 10 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;no&nbsp;tools | 251 | 139 | 86 | 124 | 37 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;no&nbsp;tools | 260 | 137 | 43 | 163 | 2 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Easy,&nbsp;Python | 87 | 194 | 3 | 4 | 15 |
+| Nemotron&nbsp;3.5&nbsp;Lightning | Hard,&nbsp;Python | 146 | 237 | 3 | 7 | 0 |
 
-Recorded charges: **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 29 Qwen attempts and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
+Recorded charges: **$10.24787 Nemotron 3.5 Lightning**, **$8.88355 Qwen**, **$2.06559 retained Luna**. Billing is incomplete for 53 Nemotron 3.5 Lightning, 29 Qwen and 16 retained Luna attempts. Unknown charges are not assumed to be zero.
 
 Qwen reports usage beyond the requested 32,768-token budget for 24 attempts, up to 64,923 tokens. The [audit](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/luna-qwen-high-20261029/audit.json) lists these exceptions. Actual provider-reported usage is not strictly matched to Luna’s requested cap.
 
@@ -45,29 +75,30 @@ Qwen reports usage beyond the requested 32,768-token budget for 24 attempts, up 
 
 One judgment-selected instance per task, each in easy/hard form and with/without Python. Two duplicate hard variants are omitted, leaving **30 easy + 28 hard prompts and 116 attempts per complete model**. The pilot checks accuracy, cost, latency and tool compatibility. It is too small for a definitive model ranking.
 
-The [pilot HTML report](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) gives four-condition scores, per-task predictions, provider/reasoning settings, failure categories, timing definitions and GPT-OSS compatibility checks. Partial runs, the lower LFM token budget and tool-protocol failures are kept explicit.
+[Pilot report (HTML)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html) · [Pilot per-task results (CSV)](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/by-task.csv). The report covers provider behavior, tool compatibility, timing and failure categories. Partial runs and differences in token limits remain explicit.
 
 <details>
 <summary>Pilot results: 12 model/provider runs, with accuracy, timing and costs</summary>
 
 | Model | Condition | Correct | Accuracy | Median | Cost | Truncated |
 |---|---|---:|---:|---:|---:|---:|
-| Luna | All&nbsp;four | 107/116 | 92.2% | 8.6s | $0.07805 | 0 |
+| GPT-6&nbsp;Luna&nbsp;(high) | All&nbsp;four | 107/116 | 92.2% | 8.6s | $0.07805 | 0 |
 | Beam&nbsp;501B&nbsp;A23B | All&nbsp;four | 99/116 | 85.3% | 6.9s | $0.62241 | 5 |
 | DeepSeek&nbsp;Flash | Partial | 93/101 | 92.1% | 13.5s | $0.12730 | 2 |
 | Nemotron&nbsp;Ultra | Partial | 69/100 | 69.0% | 130.3s | $0.00000 | 0 |
-| Lightning&nbsp;io.net | Partial | 21/81 | 25.9% | 154.7s | $0.12087 | 2 |
-| Lightning&nbsp;CoreWeave | All&nbsp;four | 45/116 | 38.8% | 45.9s | $0.46213 | 35 |
-| Qwen&nbsp;Flash | All&nbsp;four | 47/116 | 40.5% | 143.0s | $0.30059 | 16 |
+| Nemotron&nbsp;3.5&nbsp;Lightning&nbsp;io.net | Partial | 21/81 | 25.9% | 154.7s | $0.12087 | 2 |
+| Nemotron&nbsp;3.5&nbsp;Lightning&nbsp;CoreWeave | All&nbsp;four | 45/116 | 38.8% | 45.9s | $0.46213 | 35 |
+| Qwen&nbsp;3.7&nbsp;Flash&nbsp;(high) | All&nbsp;four | 47/116 | 40.5% | 143.0s | $0.30059 | 16 |
 | North&nbsp;Mini&nbsp;Code | Partial | 13/33 | 39.4% | 159.4s | $0.00000 | 1 |
 | GPT-OSS&nbsp;20B | All&nbsp;four | 37/116 | 31.9% | 26.7s | $0.35233 | 19 |
 | Gemma&nbsp;31B | Partial | 5/24 | 20.8% | 300.0s | $0.04795 | 0 |
 | Gemma&nbsp;26B&nbsp;A4B | Partial | 8/100 | 8.0% | 220.2s | $0.35711 | 6 |
 | LFM&nbsp;24B&nbsp;A2B | All&nbsp;four | 9/116 | 7.8% | 20.8s | $0.65148 | 99 |
+| Nemotron&nbsp;3.5&nbsp;Lightning&nbsp;CoreWeave&nbsp;extra | Easy,&nbsp;no&nbsp;tools | 75/353 | 21.2% | 95.5s | $1.50838 | 134 |
 
-**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. Full model names, provider routing and failure counts are in the pilot report.
+**All four** pools easy/hard with/without Python. **Partial** means the run was stopped early and pools only completed attempts across the conditions reached. These subsets are not directly comparable to complete runs. North and Gemma 31B never reached a scored Python condition. The CoreWeave extra row retains all 353 completed attempts from the stopped expansion, separately from its original 116-attempt pilot. Ten interrupted attempts are excluded. [Inspect the additional samples](https://github.com/Open-Athena/cds-bench/blob/eval/luna-high-baseline/evaluations/model-pilot-20261029/report.html#coreweave-extra). Full model names, provider routing and failure counts are in the pilot report.
 
-LFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron Lightning enable reasoning without an effort selector; the other models request `high`. Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.
+LFM used the approved **8,192-token** budget and exhausted it on 99/116 attempts. GPT-OSS/Bedrock’s tool scores include **24 API/protocol failures**; separate CoreWeave/Groq checks did not establish a reliable OpenRouter tool setup. Gemma, North, LFM and Nemotron 3.5 Lightning enable reasoning without an effort selector; the other models request `high`. Nemotron 3.5 Lightning’s io.net run was stopped at the user’s request because it was slow; a separate fresh CoreWeave BF16 run uses the same prompts and settings. Both routes have no fallback and remain separate. io.net initially used concurrency ten, then continued only unissued cases at concurrency three with five-second request spacing; all completed failures are retained.
 
 Costs cover these scored subsets, excluding compatibility checks, removed duplicate-hard cases, interrupted requests and follow-up diagnostics. Missing charges remain explicit. The reports separate incorrect values, formatting failures, timeouts, token caps and API/protocol errors. Earlier ten-example GLM/Luna checks are a separate report appendix, not pooled here.
 
@@ -77,13 +108,13 @@ Costs cover these scored subsets, excluding compatibility checks, removed duplic
 
 | Setting | Value |
 |---|---|
-| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; no fallback |
-| Full reasoning | `{"effort":"high","exclude":false}`; pilot exceptions are documented above |
+| Full models / providers | `openai/gpt-6-luna` / OpenAI; `qwen/qwen3.7-flash` / `alibaba/us-east-1`; `nvidia/nemotron-3.5-lightning` / `deepinfra/bf16`; no fallback |
+| Full reasoning | Luna/Qwen: `{"effort":"high","exclude":false}`. Nemotron 3.5 Lightning: `{"enabled":true,"exclude":false}`; no effort selector |
 | Output / timeout | 32,768 aggregate generated tokens/example (8,192 for LFM); **300 seconds/API request** |
 | Tools / web | One local Python function, `auto`; no-tools uses `tools=[]`, `tool_choice="none"`; web plugin disabled |
 | Executor | **`/usr/bin/sandbox-exec`**, `(deny network*)`; Python 3.12.9 + NumPy 2.5.4; **no Biopython** |
 | Tool limits | Eight calls/example; 30 seconds/call; fresh interpreter; files persist within example |
-| Sampling | Seed 20261029 where supported, omitted on Bedrock and both Lightning runs; provider-default temperature; initially ten concurrent examples, with free-endpoint pacing. io.net continued only unissued cases at concurrency three |
+| Sampling | Full runs use ten concurrent examples and provider-default temperature. Seed 20261029 for Luna/Qwen, omitted for Nemotron 3.5 Lightning. Pilot scheduling exceptions are in its report |
 
 <details>
 <summary>Exact Python function supplied to OpenRouter</summary>
@@ -123,39 +154,116 @@ The no-tools condition sends an empty tools array. No hosted shell or web tool i
 
 ```json
 {
-  "model": "qwen/qwen3.7-flash",
-  "max_tokens": 32768,
-  "seed": 20261029,
-  "reasoning": {
-    "effort": "high",
-    "exclude": false
-  },
-  "tool_choice": "none",
-  "tools": [],
-  "plugins": [
-    {
-      "id": "web",
-      "enabled": false
+  "luna": {
+    "model": "openai/gpt-6-luna",
+    "max_tokens": 32768,
+    "seed": 20261029,
+    "reasoning": {
+      "effort": "high",
+      "exclude": false
     },
-    {
-      "id": "response-healing",
-      "enabled": false
-    },
-    {
-      "id": "file-parser",
-      "enabled": false
-    }
-  ],
-  "provider": {
-    "only": [
-      "alibaba/us-east-1"
+    "tool_choice": "none",
+    "tools": [],
+    "plugins": [
+      {
+        "id": "web",
+        "enabled": false
+      },
+      {
+        "id": "response-healing",
+        "enabled": false
+      },
+      {
+        "id": "file-parser",
+        "enabled": false
+      }
     ],
-    "allow_fallbacks": false,
-    "require_parameters": true
+    "provider": {
+      "only": [
+        "openai"
+      ],
+      "ignore": [
+        "openai/flex",
+        "openai/fast"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
   },
-  "stream": true,
-  "stream_options": {
-    "include_usage": true
+  "qwen": {
+    "model": "qwen/qwen3.7-flash",
+    "max_tokens": 32768,
+    "seed": 20261029,
+    "reasoning": {
+      "effort": "high",
+      "exclude": false
+    },
+    "tool_choice": "none",
+    "tools": [],
+    "plugins": [
+      {
+        "id": "web",
+        "enabled": false
+      },
+      {
+        "id": "response-healing",
+        "enabled": false
+      },
+      {
+        "id": "file-parser",
+        "enabled": false
+      }
+    ],
+    "provider": {
+      "only": [
+        "alibaba/us-east-1"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "deepinfra": {
+    "model": "nvidia/nemotron-3.5-lightning",
+    "max_tokens": 32768,
+    "reasoning": {
+      "enabled": true,
+      "exclude": false
+    },
+    "tool_choice": "none",
+    "tools": [],
+    "plugins": [
+      {
+        "id": "web",
+        "enabled": false
+      },
+      {
+        "id": "response-healing",
+        "enabled": false
+      },
+      {
+        "id": "file-parser",
+        "enabled": false
+      }
+    ],
+    "provider": {
+      "only": [
+        "deepinfra/bf16"
+      ],
+      "allow_fallbacks": false,
+      "require_parameters": true
+    },
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
   }
 }
 ```

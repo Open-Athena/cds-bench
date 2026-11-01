@@ -46,3 +46,22 @@ def html_results(rows):
         for row in rows
     )
     return f'<div class="scroll"><table><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+
+
+def html_grouped_table(headers, groups):
+    """Render two row-label columns, with the first spanning each group."""
+    escape = lambda value: html.escape(str(value))
+    head = "".join(f'<th scope="col">{escape(h)}</th>' for h in headers)
+    parts = [f'<div class="scroll"><table class="indexed-table"><thead><tr>{head}</tr></thead>']
+    for name, rows in groups:
+        parts.append('<tbody>')
+        for index, row in enumerate(rows):
+            parts.append('<tr>')
+            if index == 0:
+                parts.append(f'<th class="index-group" scope="rowgroup" rowspan="{len(rows)}">{escape(name)}</th>')
+            parts.append(f'<th class="index-item" scope="row">{escape(row[0])}</th>')
+            parts.extend(f'<td>{escape(value)}</td>' for value in row[1:])
+            parts.append('</tr>')
+        parts.append('</tbody>')
+    parts.append('</table></div>')
+    return ''.join(parts)

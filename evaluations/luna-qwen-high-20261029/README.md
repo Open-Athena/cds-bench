@@ -1,10 +1,14 @@
-# Luna and Qwen3.7 Flash: full CDS-bench evaluation
+# Luna, Qwen and Nemotron 3.5 Lightning: full CDS-bench evaluation
 
-Qwen: 3260/3,260 attempts (complete). Luna: 3,260 matched historical attempts.
+Nemotron 3.5 Lightning: 3260/3,260 fresh attempts (complete). Luna and Qwen: 3,260 matched completed attempts each.
 
 Download [report.html](report.html) and open it in a browser. It is self-contained.
 
 [Summary](summary.json) · [Per-task metrics](by-task.csv) · [Final predictions](results.json) · [Settings](config.json)
+
+Accuracy by condition: [PNG](overall.png) · [SVG](overall.svg).
+
+[Pooled task radar](task-radar.svg) · [PNG](task-radar.png) · [Task order and scores](task-radar.json). The report selector also shows each of the four evaluation conditions. Task codes and group colors stay fixed across views, with links to the full-name/ID key and existing details.
 
 [30-task model/provider pilot](../model-pilot-20261029/README.md). Raw requests, reasoning, and Python traces remain local and untracked. The original Luna evaluation is preserved in `../luna-high-20261029/`.
 

@@ -2,7 +2,7 @@
 
 Download [report.html](report.html) and open it in a browser. The report is self-contained and includes model/provider settings, four-condition scores, failure categories, timing, task-level results and GPT-OSS compatibility checks.
 
-Complete runs contain 116 attempts: one instance from 30 task types, easy/hard, without tools/with offline Python, excluding two duplicate hard variants. Partial runs are marked explicitly. Scores and raw traces are unchanged. Earlier ten-example checks and GPT-OSS diagnostics are separate.
+Complete runs contain 116 attempts: one instance from 30 task types, easy/hard, without tools/with offline Python, excluding two duplicate hard variants. Partial runs are marked explicitly. The stopped CoreWeave expansion is retained as 353 additional exploratory attempts in [its own report](coreweave-extra.html), separate from the original 116-attempt pilot. Scores and raw traces are unchanged. Earlier ten-example checks and GPT-OSS diagnostics are separate.
 
 [Summary and settings](summary.json) · [Per-task outcomes](by-task.csv) · [Final predictions](results.json) · [Prompt instances](cases.json) · [GPT-OSS diagnostics](gpt-oss-diagnostics.json)
 
