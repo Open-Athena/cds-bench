@@ -17,6 +17,7 @@ from cds_bench.eval_luna.score import score_result
 from .tables import html_results, models_by_task_accuracy
 from . import pilot_extension
 from . import snowball_pilot
+from . import carbon_pilot
 
 ROOT = Path(__file__).resolve().parents[3]
 SOURCE = ROOT / "scratch/open-weights-pilot-20261029-01"
@@ -130,6 +131,11 @@ def build(source=SOURCE, output=OUTPUT):
             model_rows, totals[model], conditions[model], configs[model] = snowball
             rows.extend(model_rows)
             models[model] = definition['name']
+    carbon = carbon_pilot.build(output, cases, format_only_recovery)
+    if carbon:
+        model_rows, totals[carbon_pilot.KEY], conditions[carbon_pilot.KEY], configs[carbon_pilot.KEY] = carbon
+        rows.extend(model_rows)
+        models[carbon_pilot.KEY] = 'Carbon-X'
     models, model_means = models_by_task_accuracy(models, rows)
     task_ids = [r["task_id"] for r in selected if r["variant"] == "easy"]
     source_diagnostics = read(source / "gpt-oss-reliability-summary.json")
@@ -256,6 +262,7 @@ body{font:15px/1.5 system-ui,sans-serif;color:#25313c;background:#fff;margin:0}m
         'snowball': 'Snowball RC (2026.09.21), the older release candidate, uses the internal Marin/vLLM BF16 service rather than OpenRouter. Its Delphi chat template enables thinking; there is no verified high-effort selector. The server lacks automatic function parsing, so the client supplies the unchanged Python function via the native xml_tools template argument, parses only complete JSON tool_call blocks, and stops generation at the closing tool-call tag. Native thinking is preserved and replayed. Generated Python and final answers are not repaired. A real two-request sandboxed Python round trip passed before scoring. At the user’s request, this model uses a 16,384-token aggregate budget and 1,800-second API deadline. The eight-call limit and offline Python/NumPy environment are unchanged. The earlier 32,768-token/300-second trial is preserved separately and is excluded from these scores. Temperature is explicitly 0.7, seed 20261029; sixty examples run concurrently across all four conditions. API usage reports tokens but no monetary charges, so cost is unavailable rather than zero.',
     }
     notes['snowball-v01'] = ('Uses the newer Marin-Snowball-67B-A2B-v0.1 checkpoint on the existing internal Marin/vLLM BF16 service. The same native Delphi transport, exact Python function and offline sandbox apply, with thinking enabled, temperature 0.7, seed 20261029 and concurrency 60. This pilot restores the 32,768-token aggregate budget while retaining the 1,800-second API deadline. The older Snowball RC (2026.09.21) used 16,384 tokens, so this comparison changes both checkpoint and output budget. No effort-level selector is verified. The unscored preflight executed Python and returned its correct result, but appended a stray Markdown fence; its strict formatting failure is preserved. The actual execution and returned-result delivery were verified separately without retrying or repairing that answer. Primary pilot scoring is unchanged. Costs and reasoning-only token counts are unavailable.')
+    notes[carbon_pilot.KEY] = carbon_pilot.NOTE
     lightning = configs['nemotron-lightning']
     coreweave = totals['nemotron-lightning-coreweave']
     if configs['nemotron-lightning-coreweave']['state'] == 'complete':

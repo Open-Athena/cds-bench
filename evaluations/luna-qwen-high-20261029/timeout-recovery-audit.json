@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "selected_timeout_cases": 217,
+  "all_original_results_preserved": true,
+  "only_timeout_cases_replaced": true,
+  "first_completed_model_response_selection_verified": true,
+  "unselected_public_rows_unchanged": 12823,
+  "selected_answers_rescored": true,
+  "request_settings_and_original_prompts_verified": true,
+  "request_deadline_seconds": 900,
+  "timeouts_in_main_tables": 0,
+  "additional_attempts": 218,
+  "api_requests": 281,
+  "unique_reply_ids": 280,
+  "no_provider_switch": true,
+  "cost_includes_all_attempts": true,
+  "token_capped_replacements": 78,
+  "policy": "No overall timeout retry limit; pending timeouts are never scored failures."
+}

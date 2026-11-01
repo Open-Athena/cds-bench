@@ -6,9 +6,9 @@
     "group": "Variant effects",
     "color": "#ee6677",
     "attempted": 40,
-    "nemotron_correct": 30,
+    "nemotron_correct": 31,
     "snowball_correct": 31,
-    "x": 75.0,
+    "x": 77.5,
     "y": 77.5
   },
   {
@@ -150,9 +150,9 @@
     "group": "Sequence statistics",
     "color": "#228833",
     "attempted": 40,
-    "nemotron_correct": 22,
+    "nemotron_correct": 24,
     "snowball_correct": 24,
-    "x": 55.0,
+    "x": 60.0,
     "y": 60.0
   },
   {
@@ -198,9 +198,9 @@
     "group": "Sequence statistics",
     "color": "#228833",
     "attempted": 40,
-    "nemotron_correct": 16,
+    "nemotron_correct": 19,
     "snowball_correct": 8,
-    "x": 40.0,
+    "x": 47.5,
     "y": 20.0
   },
   {
@@ -222,9 +222,9 @@
     "group": "Overlapping frames",
     "color": "#777777",
     "attempted": 40,
-    "nemotron_correct": 23,
+    "nemotron_correct": 24,
     "snowball_correct": 15,
-    "x": 57.5,
+    "x": 60.0,
     "y": 37.5
   },
   {
@@ -318,9 +318,9 @@
     "group": "RNA operations",
     "color": "#55aacc",
     "attempted": 40,
-    "nemotron_correct": 15,
+    "nemotron_correct": 17,
     "snowball_correct": 6,
-    "x": 37.5,
+    "x": 42.5,
     "y": 15.0
   },
   {
@@ -366,9 +366,9 @@
     "group": "Protein operations",
     "color": "#b49b30",
     "attempted": 40,
-    "nemotron_correct": 27,
+    "nemotron_correct": 28,
     "snowball_correct": 11,
-    "x": 67.5,
+    "x": 70.0,
     "y": 27.5
   },
   {
@@ -390,9 +390,9 @@
     "group": "Protein operations",
     "color": "#b49b30",
     "attempted": 40,
-    "nemotron_correct": 13,
+    "nemotron_correct": 14,
     "snowball_correct": 12,
-    "x": 32.5,
+    "x": 35.0,
     "y": 30.0
   },
   {
@@ -474,9 +474,9 @@
     "group": "Construct design",
     "color": "#dd7733",
     "attempted": 40,
-    "nemotron_correct": 27,
+    "nemotron_correct": 28,
     "snowball_correct": 14,
-    "x": 67.5,
+    "x": 70.0,
     "y": 35.0
   },
   {
@@ -534,9 +534,9 @@
     "group": "Construct design",
     "color": "#dd7733",
     "attempted": 40,
-    "nemotron_correct": 11,
+    "nemotron_correct": 14,
     "snowball_correct": 6,
-    "x": 27.5,
+    "x": 35.0,
     "y": 15.0
   },
   {
@@ -546,9 +546,9 @@
     "group": "Construct design",
     "color": "#dd7733",
     "attempted": 40,
-    "nemotron_correct": 11,
+    "nemotron_correct": 12,
     "snowball_correct": 2,
-    "x": 27.5,
+    "x": 30.0,
     "y": 5.0
   },
   {
@@ -570,9 +570,9 @@
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 40,
-    "nemotron_correct": 27,
+    "nemotron_correct": 28,
     "snowball_correct": 22,
-    "x": 67.5,
+    "x": 70.0,
     "y": 55.0
   },
   {
@@ -582,9 +582,9 @@
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 40,
-    "nemotron_correct": 24,
+    "nemotron_correct": 25,
     "snowball_correct": 21,
-    "x": 60.0,
+    "x": 62.5,
     "y": 52.5
   },
   {
@@ -636,33 +636,45 @@
     "y": 12.5
   },
   {
-    "task_id": "design.rna_motif_control",
-    "title": "Control coding-RNA motifs",
+    "task_id": "design.insert_dna_motif",
+    "title": "Introduce a DNA recognition site",
     "code": "H07",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 40,
-    "nemotron_correct": 11,
-    "snowball_correct": 5,
-    "x": 27.5,
-    "y": 12.5
+    "nemotron_correct": 13,
+    "snowball_correct": 3,
+    "x": 32.5,
+    "y": 7.5
   },
   {
-    "task_id": "design.insert_dna_motif",
-    "title": "Introduce a DNA recognition site",
+    "task_id": "design.rna_motif_control",
+    "title": "Control coding-RNA motifs",
     "code": "H08",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 40,
     "nemotron_correct": 12,
-    "snowball_correct": 3,
+    "snowball_correct": 5,
     "x": 30.0,
-    "y": 7.5
+    "y": 12.5
+  },
+  {
+    "task_id": "design.synonymous_distance",
+    "title": "Rewrite with a specified number of DNA changes",
+    "code": "H09",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 40,
+    "nemotron_correct": 14,
+    "snowball_correct": 4,
+    "x": 35.0,
+    "y": 10.0
   },
   {
     "task_id": "design.guide_escape",
     "title": "Create a guide-escape control",
-    "code": "H09",
+    "code": "H10",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 40,
@@ -672,33 +684,9 @@
     "y": 5.0
   },
   {
-    "task_id": "design.synonymous_distance",
-    "title": "Rewrite with a specified number of DNA changes",
-    "code": "H10",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 40,
-    "nemotron_correct": 13,
-    "snowball_correct": 4,
-    "x": 32.5,
-    "y": 10.0
-  },
-  {
-    "task_id": "design.remove_dna_motifs",
-    "title": "Remove specified DNA motifs",
-    "code": "H11",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 40,
-    "nemotron_correct": 9,
-    "snowball_correct": 4,
-    "x": 22.5,
-    "y": 10.0
-  },
-  {
     "task_id": "design.dinucleotide_counts",
     "title": "Control RNA dinucleotide counts",
-    "code": "H12",
+    "code": "H11",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 40,
@@ -706,6 +694,18 @@
     "snowball_correct": 2,
     "x": 25.0,
     "y": 5.0
+  },
+  {
+    "task_id": "design.remove_dna_motifs",
+    "title": "Remove specified DNA motifs",
+    "code": "H12",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 40,
+    "nemotron_correct": 9,
+    "snowball_correct": 4,
+    "x": 22.5,
+    "y": 10.0
   },
   {
     "task_id": "design.break_repeats",
@@ -798,9 +798,9 @@
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 40,
-    "nemotron_correct": 26,
+    "nemotron_correct": 28,
     "snowball_correct": 21,
-    "x": 65.0,
+    "x": 70.0,
     "y": 52.5
   },
   {
@@ -822,9 +822,9 @@
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 40,
-    "nemotron_correct": 12,
+    "nemotron_correct": 13,
     "snowball_correct": 8,
-    "x": 30.0,
+    "x": 32.5,
     "y": 20.0
   },
   {
@@ -834,9 +834,9 @@
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 40,
-    "nemotron_correct": 13,
+    "nemotron_correct": 14,
     "snowball_correct": 4,
-    "x": 32.5,
+    "x": 35.0,
     "y": 10.0
   },
   {
@@ -864,9 +864,21 @@
     "y": 7.5
   },
   {
+    "task_id": "pipeline.library_and_verify",
+    "title": "Design a codon library and verify its coverage",
+    "code": "J08",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 40,
+    "nemotron_correct": 14,
+    "snowball_correct": 2,
+    "x": 35.0,
+    "y": 5.0
+  },
+  {
     "task_id": "pipeline.structure_gated_digest",
     "title": "From a pairing annotation to eligible cuts",
-    "code": "J08",
+    "code": "J09",
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 40,
@@ -876,27 +888,15 @@
     "y": 12.5
   },
   {
-    "task_id": "pipeline.library_and_verify",
-    "title": "Design a codon library and verify its coverage",
-    "code": "J09",
-    "group": "Composition tasks",
-    "color": "#332288",
-    "attempted": 40,
-    "nemotron_correct": 13,
-    "snowball_correct": 2,
-    "x": 32.5,
-    "y": 5.0
-  },
-  {
     "task_id": "joint.structure_and_codons",
     "title": "Balance an RNA structural constraint and codon preference",
     "code": "J10",
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 40,
-    "nemotron_correct": 5,
+    "nemotron_correct": 6,
     "snowball_correct": 3,
-    "x": 12.5,
+    "x": 15.0,
     "y": 7.5
   },
   {
@@ -906,9 +906,9 @@
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 40,
-    "nemotron_correct": 11,
+    "nemotron_correct": 12,
     "snowball_correct": 0,
-    "x": 27.5,
+    "x": 30.0,
     "y": 0.0
   },
   {

@@ -12,7 +12,7 @@
       "family": "variation",
       "name": "Variant effects",
       "color": "#ee6677",
-      "mean_accuracy": 0.6,
+      "mean_accuracy": 0.6041666666666666,
       "tasks": [
         {
           "task_id": "ambiguity.stop_certainty",
@@ -25,9 +25,9 @@
               "accuracy": 0.9
             },
             "deepinfra": {
-              "correct": 6,
+              "correct": 7,
               "attempted": 10,
-              "accuracy": 0.6
+              "accuracy": 0.7
             },
             "qwen": {
               "correct": 5,
@@ -40,7 +40,7 @@
               "accuracy": 0.9
             }
           },
-          "mean_accuracy": 0.725,
+          "mean_accuracy": 0.75,
           "code": "A01",
           "angle": 0.032724923474893676
         },
@@ -394,7 +394,7 @@
       "family": "measure",
       "name": "Sequence statistics",
       "color": "#228833",
-      "mean_accuracy": 0.44166666666666665,
+      "mean_accuracy": 0.45416666666666666,
       "tasks": [
         {
           "task_id": "stats.gc3_fraction",
@@ -407,9 +407,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 3,
+              "correct": 4,
               "attempted": 10,
-              "accuracy": 0.3
+              "accuracy": 0.4
             },
             "qwen": {
               "correct": 7,
@@ -422,7 +422,7 @@
               "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.6,
+          "mean_accuracy": 0.625,
           "code": "C01",
           "angle": 0.9752027195518315
         },
@@ -527,9 +527,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 3,
+              "correct": 5,
               "attempted": 10,
-              "accuracy": 0.3
+              "accuracy": 0.5
             },
             "qwen": {
               "correct": 0,
@@ -542,7 +542,7 @@
               "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.35,
+          "mean_accuracy": 0.4,
           "code": "C05",
           "angle": 1.237002107350981
         },
@@ -585,7 +585,7 @@
       "family": "overlap",
       "name": "Overlapping frames",
       "color": "#777777",
-      "mean_accuracy": 0.5,
+      "mean_accuracy": 0.5125,
       "tasks": [
         {
           "task_id": "overlap.constrained_edit",
@@ -598,9 +598,9 @@
               "accuracy": 0.8
             },
             "deepinfra": {
-              "correct": 4,
+              "correct": 5,
               "attempted": 10,
-              "accuracy": 0.4
+              "accuracy": 0.5
             },
             "qwen": {
               "correct": 5,
@@ -613,7 +613,7 @@
               "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.55,
+          "mean_accuracy": 0.575,
           "code": "D01",
           "angle": 1.4464416175903003
         },
@@ -656,7 +656,7 @@
       "family": "rna",
       "name": "RNA operations",
       "color": "#55aacc",
-      "mean_accuracy": 0.39166666666666666,
+      "mean_accuracy": 0.3972222222222222,
       "tasks": [
         {
           "task_id": "rna.structure_score",
@@ -849,9 +849,9 @@
               "accuracy": 0.7
             },
             "deepinfra": {
-              "correct": 0,
+              "correct": 2,
               "attempted": 10,
-              "accuracy": 0.0
+              "accuracy": 0.2
             },
             "qwen": {
               "correct": 0,
@@ -864,7 +864,7 @@
               "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.19999999999999998,
+          "mean_accuracy": 0.25,
           "code": "E07",
           "angle": 2.048580209528344
         },
@@ -937,7 +937,7 @@
       "family": "protein",
       "name": "Protein operations",
       "color": "#b49b30",
-      "mean_accuracy": 0.44722222222222224,
+      "mean_accuracy": 0.45,
       "tasks": [
         {
           "task_id": "protein.nglyco_sequons",
@@ -980,9 +980,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 3,
+              "correct": 4,
               "attempted": 10,
-              "accuracy": 0.3
+              "accuracy": 0.4
             },
             "qwen": {
               "correct": 5,
@@ -995,7 +995,7 @@
               "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.575,
+          "mean_accuracy": 0.6,
           "code": "F02",
           "angle": 2.3889194136672383
         },
@@ -1218,7 +1218,7 @@
       "family": "construct",
       "name": "Construct design",
       "color": "#dd7733",
-      "mean_accuracy": 0.3888888888888889,
+      "mean_accuracy": 0.4,
       "tasks": [
         {
           "task_id": "construct.tag_fusion",
@@ -1261,9 +1261,9 @@
               "accuracy": 0.9
             },
             "deepinfra": {
-              "correct": 4,
+              "correct": 5,
               "attempted": 10,
-              "accuracy": 0.4
+              "accuracy": 0.5
             },
             "qwen": {
               "correct": 2,
@@ -1276,7 +1276,7 @@
               "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.47500000000000003,
+          "mean_accuracy": 0.5,
           "code": "G02",
           "angle": 3.0565078525550695
         },
@@ -1326,9 +1326,9 @@
               "accuracy": 0.7
             },
             "qwen": {
-              "correct": 5,
+              "correct": 6,
               "attempted": 10,
-              "accuracy": 0.5
+              "accuracy": 0.6
             },
             "snowball-v01": {
               "correct": 1,
@@ -1336,7 +1336,7 @@
               "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.55,
+          "mean_accuracy": 0.575,
           "code": "G04",
           "angle": 3.187407546454644
         },
@@ -1411,9 +1411,9 @@
               "accuracy": 0.7
             },
             "deepinfra": {
-              "correct": 1,
+              "correct": 3,
               "attempted": 10,
-              "accuracy": 0.1
+              "accuracy": 0.3
             },
             "qwen": {
               "correct": 6,
@@ -1426,7 +1426,7 @@
               "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.375,
+          "mean_accuracy": 0.425,
           "code": "G07",
           "angle": 3.3837570873040064
         },
@@ -1499,7 +1499,7 @@
       "family": "redesign",
       "name": "Synonymous design",
       "color": "#aa3377",
-      "mean_accuracy": 0.3433333333333333,
+      "mean_accuracy": 0.35500000000000004,
       "tasks": [
         {
           "task_id": "design.expose_rna_window",
@@ -1512,9 +1512,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 7,
+              "correct": 8,
               "attempted": 10,
-              "accuracy": 0.7
+              "accuracy": 0.8
             },
             "qwen": {
               "correct": 7,
@@ -1527,7 +1527,7 @@
               "accuracy": 0.5
             }
           },
-          "mean_accuracy": 0.725,
+          "mean_accuracy": 0.75,
           "code": "H01",
           "angle": 3.6586464444931135
         },
@@ -1542,9 +1542,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 4,
+              "correct": 5,
               "attempted": 10,
-              "accuracy": 0.4
+              "accuracy": 0.5
             },
             "qwen": {
               "correct": 7,
@@ -1557,7 +1557,7 @@
               "accuracy": 0.3
             }
           },
-          "mean_accuracy": 0.6,
+          "mean_accuracy": 0.625,
           "code": "H02",
           "angle": 3.7240962914429008
         },
@@ -1607,9 +1607,9 @@
               "accuracy": 0.1
             },
             "qwen": {
-              "correct": 5,
+              "correct": 6,
               "attempted": 10,
-              "accuracy": 0.5
+              "accuracy": 0.6
             },
             "snowball-v01": {
               "correct": 2,
@@ -1617,7 +1617,7 @@
               "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.4,
+          "mean_accuracy": 0.425,
           "code": "H04",
           "angle": 3.8549959853424753
         },
@@ -1682,36 +1682,6 @@
           "angle": 3.98589567924205
         },
         {
-          "task_id": "design.rna_motif_control",
-          "title": "Control coding-RNA motifs",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 6,
-              "attempted": 10,
-              "accuracy": 0.6
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.25,
-          "code": "H07",
-          "angle": 4.051345526191837
-        },
-        {
           "task_id": "design.insert_dna_motif",
           "title": "Introduce a DNA recognition site",
           "family": "redesign",
@@ -1722,6 +1692,36 @@
               "accuracy": 0.8
             },
             "deepinfra": {
+              "correct": 2,
+              "attempted": 10,
+              "accuracy": 0.2
+            },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.35000000000000003,
+          "code": "H07",
+          "angle": 4.051345526191837
+        },
+        {
+          "task_id": "design.rna_motif_control",
+          "title": "Control coding-RNA motifs",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 6,
+              "attempted": 10,
+              "accuracy": 0.6
+            },
+            "deepinfra": {
               "correct": 1,
               "attempted": 10,
               "accuracy": 0.1
@@ -1737,9 +1737,39 @@
               "accuracy": 0.1
             }
           },
-          "mean_accuracy": 0.325,
+          "mean_accuracy": 0.275,
           "code": "H08",
           "angle": 4.116795373141625
+        },
+        {
+          "task_id": "design.synonymous_distance",
+          "title": "Rewrite with a specified number of DNA changes",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 7,
+              "attempted": 10,
+              "accuracy": 0.7
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 4,
+              "attempted": 10,
+              "accuracy": 0.4
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.325,
+          "code": "H09",
+          "angle": 4.182245220091412
         },
         {
           "task_id": "design.guide_escape",
@@ -1768,68 +1798,8 @@
             }
           },
           "mean_accuracy": 0.275,
-          "code": "H09",
-          "angle": 4.182245220091412
-        },
-        {
-          "task_id": "design.synonymous_distance",
-          "title": "Rewrite with a specified number of DNA changes",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 7,
-              "attempted": 10,
-              "accuracy": 0.7
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.27499999999999997,
           "code": "H10",
           "angle": 4.2476950670411995
-        },
-        {
-          "task_id": "design.remove_dna_motifs",
-          "title": "Remove specified DNA motifs",
-          "family": "redesign",
-          "models": {
-            "luna": {
-              "correct": 8,
-              "attempted": 10,
-              "accuracy": 0.8
-            },
-            "deepinfra": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            },
-            "qwen": {
-              "correct": 3,
-              "attempted": 10,
-              "accuracy": 0.3
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.325,
-          "code": "H11",
-          "angle": 4.313144913990987
         },
         {
           "task_id": "design.dinucleotide_counts",
@@ -1858,6 +1828,36 @@
             }
           },
           "mean_accuracy": 0.275,
+          "code": "H11",
+          "angle": 4.313144913990987
+        },
+        {
+          "task_id": "design.remove_dna_motifs",
+          "title": "Remove specified DNA motifs",
+          "family": "redesign",
+          "models": {
+            "luna": {
+              "correct": 8,
+              "attempted": 10,
+              "accuracy": 0.8
+            },
+            "deepinfra": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            },
+            "qwen": {
+              "correct": 3,
+              "attempted": 10,
+              "accuracy": 0.3
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.325,
           "code": "H12",
           "angle": 4.378594760940774
         },
@@ -2061,7 +2061,7 @@
       "family": "composition",
       "name": "Composition tasks",
       "color": "#332288",
-      "mean_accuracy": 0.3263157894736842,
+      "mean_accuracy": 0.3302631578947368,
       "tasks": [
         {
           "task_id": "pipeline.rna_edit_translation",
@@ -2104,9 +2104,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 6,
+              "correct": 7,
               "attempted": 10,
-              "accuracy": 0.6
+              "accuracy": 0.7
             },
             "qwen": {
               "correct": 7,
@@ -2119,7 +2119,7 @@
               "accuracy": 0.4
             }
           },
-          "mean_accuracy": 0.675,
+          "mean_accuracy": 0.7,
           "code": "J02",
           "angle": 5.059273169218563
         },
@@ -2164,9 +2164,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 2,
+              "correct": 3,
               "attempted": 10,
-              "accuracy": 0.2
+              "accuracy": 0.3
             },
             "qwen": {
               "correct": 3,
@@ -2179,7 +2179,7 @@
               "accuracy": 0.2
             }
           },
-          "mean_accuracy": 0.425,
+          "mean_accuracy": 0.45,
           "code": "J04",
           "angle": 5.190172863118137
         },
@@ -2194,9 +2194,9 @@
               "accuracy": 1.0
             },
             "deepinfra": {
-              "correct": 1,
+              "correct": 2,
               "attempted": 10,
-              "accuracy": 0.1
+              "accuracy": 0.2
             },
             "qwen": {
               "correct": 1,
@@ -2209,7 +2209,7 @@
               "accuracy": 0.0
             }
           },
-          "mean_accuracy": 0.3,
+          "mean_accuracy": 0.325,
           "code": "J05",
           "angle": 5.255622710067925
         },
@@ -2274,36 +2274,6 @@
           "angle": 5.3865224039675
         },
         {
-          "task_id": "pipeline.structure_gated_digest",
-          "title": "From a pairing annotation to eligible cuts",
-          "family": "composition",
-          "models": {
-            "luna": {
-              "correct": 9,
-              "attempted": 10,
-              "accuracy": 0.9
-            },
-            "deepinfra": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "qwen": {
-              "correct": 0,
-              "attempted": 10,
-              "accuracy": 0.0
-            },
-            "snowball-v01": {
-              "correct": 1,
-              "attempted": 10,
-              "accuracy": 0.1
-            }
-          },
-          "mean_accuracy": 0.25,
-          "code": "J08",
-          "angle": 5.451972250917287
-        },
-        {
           "task_id": "pipeline.library_and_verify",
           "title": "Design a codon library and verify its coverage",
           "family": "composition",
@@ -2330,6 +2300,36 @@
             }
           },
           "mean_accuracy": 0.35000000000000003,
+          "code": "J08",
+          "angle": 5.451972250917287
+        },
+        {
+          "task_id": "pipeline.structure_gated_digest",
+          "title": "From a pairing annotation to eligible cuts",
+          "family": "composition",
+          "models": {
+            "luna": {
+              "correct": 9,
+              "attempted": 10,
+              "accuracy": 0.9
+            },
+            "deepinfra": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "qwen": {
+              "correct": 0,
+              "attempted": 10,
+              "accuracy": 0.0
+            },
+            "snowball-v01": {
+              "correct": 1,
+              "attempted": 10,
+              "accuracy": 0.1
+            }
+          },
+          "mean_accuracy": 0.25,
           "code": "J09",
           "angle": 5.517422097867074
         },
@@ -2657,11 +2657,11 @@
     },
     "deepinfra": {
       "task_count": 84,
-      "mean_accuracy": 0.24166666666666667
+      "mean_accuracy": 0.2642857142857143
     },
     "qwen": {
       "task_count": 84,
-      "mean_accuracy": 0.2702380952380952
+      "mean_accuracy": 0.27380952380952384
     },
     "snowball-v01": {
       "task_count": 84,

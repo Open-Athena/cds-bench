@@ -1,0 +1,47 @@
+[
+  {
+    "instance_id": "pipeline.variant_peptides/03",
+    "task_id": "pipeline.variant_peptides",
+    "title": "From DNA edits to changed peptide readouts",
+    "family": "Composition tasks",
+    "condition": "easy-tools",
+    "prompt": "## Task\n\nApply the DNA edits and report which complete tryptic peptide sequences are lost and gained relative to the original CDS.\n\n## Inputs\n\nDNA inputs are 5′→3′ coding strands. Ignore whitespace between bases.\n\nCoordinates and intervals are 1-based and inclusive unless a rule states otherwise.\n\nIn an edit object, `replace` is `[first_base, last_base, new_text]`; an empty `new_text` deletes that interval. `insert_after` gives an original base boundary and `sequence` gives the inserted text. Apply all edits to the original coordinates, simultaneously.\n\n```json\n{\n  \"cds\": \"ATGGTGGGCCGGGTCTCCCAGACCGCTCTGGTAGGGGATGTGCTCATCCGTATCCTGCTGGCGGATTAG\",\n  \"edits\": [\n    {\n      \"replace\": [\n        10,\n        12,\n        \"GCA\"\n      ]\n    }\n  ]\n}\n```\n\n## Rules\n\n- Use NCBI genetic code 11 with first-stop termination.\n- Apply the supplied edits simultaneously to the original DNA coordinates.\n- Translate and completely digest both versions under `trypsin_KR_notP_v1`, with zero missed cleavages.\n- Compare peptide sequence sets, ignoring copy number.\n\n## Reference material\n\n### Initiation after DNA editing\n\nAt the first DNA codon, TTG, CTG, ATT, ATC, ATA, ATG, and GTG encode initiating M under NCBI genetic code 11. If the first edited codon is not one of these initiators, use its ordinary internal assignment.\n\n### NCBI genetic code 11: internal DNA codons\n\nEach internal DNA codon is an aligned group of three bases. The table gives its one-letter amino-acid assignment; STOP marks a stop signal.\n\n```text\nTTT=F  TTC=F  TTA=L  TTG=L\nTCT=S  TCC=S  TCA=S  TCG=S\nTAT=Y  TAC=Y  TAA=STOP  TAG=STOP\nTGT=C  TGC=C  TGA=STOP  TGG=W\nCTT=L  CTC=L  CTA=L  CTG=L\nCCT=P  CCC=P  CCA=P  CCG=P\nCAT=H  CAC=H  CAA=Q  CAG=Q\nCGT=R  CGC=R  CGA=R  CGG=R\nATT=I  ATC=I  ATA=I  ATG=M\nACT=T  ACC=T  ACA=T  ACG=T\nAAT=N  AAC=N  AAA=K  AAG=K\nAGT=S  AGC=S  AGA=R  AGG=R\nGTT=V  GTC=V  GTA=V  GTG=V\nGCT=A  GCC=A  GCA=A  GCG=A\nGAT=D  GAC=D  GAA=E  GAG=E\nGGT=G  GGC=G  GGA=G  GGG=G\n```\n\n### Trypsin cleavage specificity\n\nTrypsin cleaves after K or R, except when the next residue is P. The K or R remains on the upstream peptide.\n\n## Answer\n\n- `lost` lists distinct peptide sequences present in the original tryptic digest and absent from the edited digest. `gained` lists those present only in the edited digest.\n- Sort each list in ASCII order. Each sequence appears once; an empty difference is [].\n\nUse exactly this structure. `<…>` marks a typed value; array items and map entries repeat as needed.\n\n### Output structure\n\n```text\n{\n  \"lost\": [<amino-acid string>],\n  \"gained\": [<amino-acid string>]\n}\n```\n\nAfter any explanation, write `Final answer:` on its own line. Begin the raw JSON on the next line; it may span multiple lines and ends your response.",
+    "answer": "{\"gained\":[\"MVGAVSQTALVGDVLIR\"],\"lost\":[\"MVGR\",\"VSQTALVGDVLIR\"]}",
+    "prompt_sha256": "8a80cb82179fda58b4202607997147e3066201a8847aa4829db0c292334ccec5",
+    "nemotron_correct": 6,
+    "snowball_correct": 1,
+    "examples_per_model": 10,
+    "nemotron_outcome": "correct",
+    "snowball_outcome": "wrong"
+  },
+  {
+    "instance_id": "design.insert_dna_motif/01",
+    "task_id": "design.insert_dna_motif",
+    "title": "Introduce a DNA recognition site",
+    "family": "Synonymous design",
+    "condition": "easy-tools",
+    "prompt": "## Task\n\nIntroduce the specified DNA pattern at position `start` through synonymous changes to the CDS.\n\n## Inputs\n\nDNA inputs are 5′→3′ coding strands. Ignore whitespace between bases.\n\nCoordinates and intervals are 1-based and inclusive unless a rule states otherwise.\n\n```json\n{\n  \"cds\": \"ATGTATGAGTTCATCATTTCGTAG\",\n  \"pattern\": \"GAATTC\",\n  \"start\": 7\n}\n```\n\n## Rules\n\n- Use NCBI genetic code 11 for codon interpretation.\n- Keep the DNA length, complete encoded protein, original first codon, and terminal stop codon unchanged.\n- The literal DNA string `pattern` must begin at the supplied 1-based position `start` on the forward coding strand.\n- Other copies of that pattern elsewhere in the final CDS are allowed.\n\n## Selection\n\nAmong all sequences satisfying every condition, return the lexicographically smallest full DNA string, comparing bases in the order A<C<G<T. This is a tie-break among feasible sequences, not a minimum-edit objective.\n\n## Reference material\n\n### Synonymous codons\n\nSynonymous codons encode the same amino acid. Replacing a codon with a synonymous codon preserves that residue in the protein.\n\n### NCBI genetic code 11: internal DNA codons\n\nEach internal DNA codon is an aligned group of three bases. The table gives its one-letter amino-acid assignment; STOP marks a stop signal.\n\n```text\nTTT=F  TTC=F  TTA=L  TTG=L\nTCT=S  TCC=S  TCA=S  TCG=S\nTAT=Y  TAC=Y  TAA=STOP  TAG=STOP\nTGT=C  TGC=C  TGA=STOP  TGG=W\nCTT=L  CTC=L  CTA=L  CTG=L\nCCT=P  CCC=P  CCA=P  CCG=P\nCAT=H  CAC=H  CAA=Q  CAG=Q\nCGT=R  CGC=R  CGA=R  CGG=R\nATT=I  ATC=I  ATA=I  ATG=M\nACT=T  ACC=T  ACA=T  ACG=T\nAAT=N  AAC=N  AAA=K  AAG=K\nAGT=S  AGC=S  AGA=R  AGG=R\nGTT=V  GTC=V  GTA=V  GTG=V\nGCT=A  GCC=A  GCA=A  GCG=A\nGAT=D  GAC=D  GAA=E  GAG=E\nGGT=G  GGC=G  GGA=G  GGG=G\n```\n\n## Answer\n\n- Return one continuous uppercase DNA sequence.\n\nIf no valid result exists, return:\n\n```text\nIMPOSSIBLE\n```\n\nAfter any explanation, write `Final answer:` on its own line. Put the required value or list on the next line to finish your response.",
+    "answer": "ATGTACGAATTCATAATAAGCTAG",
+    "prompt_sha256": "cf0f5da7b1f145acf344a4104a551286f12689eec3726fdf0969be6260b959a5",
+    "nemotron_correct": 6,
+    "snowball_correct": 0,
+    "examples_per_model": 10,
+    "nemotron_outcome": "correct",
+    "snowball_outcome": "token_cap"
+  },
+  {
+    "instance_id": "rna.apply_edits/01",
+    "task_id": "rna.apply_edits",
+    "title": "Apply specified RNA edits",
+    "family": "RNA operations",
+    "condition": "easy-tools",
+    "prompt": "## Task\n\nApply the supplied edits to the CDS’s coding RNA and return the edited RNA sequence.\n\n## Inputs\n\nDNA inputs are 5′→3′ coding strands. Ignore whitespace between bases.\n\nCoordinates and intervals are 1-based and inclusive unless a rule states otherwise.\n\nIn an edit object, `replace` is `[first_base, last_base, new_text]`; an empty `new_text` deletes that interval. `insert_after` gives an original base boundary and `sequence` gives the inserted text. Apply all edits to the original coordinates, simultaneously.\n\n```json\n{\n  \"cds\": \"ATGATCAAGCAAGGCGGCACCGACCTCGTGCTCGAACTCTGA\",\n  \"rna_edits\": [\n    {\n      \"replace\": [\n        10,\n        10,\n        \"U\"\n      ]\n    }\n  ]\n}\n```\n\n## Rules\n\n- Transcribe the original CDS and apply the edit objects to that RNA, using original RNA coordinates.\n- Use the U alphabet in inserted or replacement RNA text. Do not translate the edited RNA.\n\n## Reference material\n\n### Coding DNA to RNA\n\nThe supplied DNA is the coding strand, written 5′→3′. Copy its bases in the same order, replacing each T with U to obtain the coding RNA.\n\n## Answer\n\n- Return one continuous uppercase 5′→3′ RNA sequence.\n- An empty sequence is the token EMPTY_SEQUENCE.\n\nAfter any explanation, write `Final answer:` on its own line. Put the required value or list on the next line to finish your response.",
+    "answer": "AUGAUCAAGUAAGGCGGCACCGACCUCGUGCUCGAACUCUGA",
+    "prompt_sha256": "17e7238a555f91a303d7ef118fc8779d199ef0ec5f362c1e80cc1032344a0304",
+    "nemotron_correct": 10,
+    "snowball_correct": 0,
+    "examples_per_model": 10,
+    "nemotron_outcome": "correct",
+    "snowball_outcome": "wrong"
+  }
+]

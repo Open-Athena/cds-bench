@@ -8,12 +8,12 @@
     "deepinfra": {
       "name": "Nemotron 3.5 Lightning",
       "available": 1630,
-      "called": 1544
+      "called": 1545
     },
     "qwen": {
       "name": "Qwen 3.7 Flash (high)",
       "available": 1630,
-      "called": 1470
+      "called": 1477
     },
     "snowball-v01": {
       "name": "Snowball v0.1",

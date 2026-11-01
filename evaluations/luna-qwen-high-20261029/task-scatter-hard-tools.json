@@ -486,9 +486,9 @@
     "group": "Construct design",
     "color": "#dd7733",
     "attempted": 10,
-    "nemotron_correct": 3,
+    "nemotron_correct": 4,
     "snowball_correct": 0,
-    "x": 30.0,
+    "x": 40.0,
     "y": 0.0
   },
   {
@@ -576,21 +576,9 @@
     "y": 10.0
   },
   {
-    "task_id": "design.rna_motif_control",
-    "title": "Control coding-RNA motifs",
-    "code": "H07",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 10,
-    "nemotron_correct": 4,
-    "snowball_correct": 2,
-    "x": 40.0,
-    "y": 20.0
-  },
-  {
     "task_id": "design.insert_dna_motif",
     "title": "Introduce a DNA recognition site",
-    "code": "H08",
+    "code": "H07",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -600,21 +588,21 @@
     "y": 10.0
   },
   {
-    "task_id": "design.guide_escape",
-    "title": "Create a guide-escape control",
-    "code": "H09",
+    "task_id": "design.rna_motif_control",
+    "title": "Control coding-RNA motifs",
+    "code": "H08",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
     "nemotron_correct": 4,
-    "snowball_correct": 1,
+    "snowball_correct": 2,
     "x": 40.0,
-    "y": 10.0
+    "y": 20.0
   },
   {
     "task_id": "design.synonymous_distance",
     "title": "Rewrite with a specified number of DNA changes",
-    "code": "H10",
+    "code": "H09",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -624,8 +612,20 @@
     "y": 0.0
   },
   {
-    "task_id": "design.remove_dna_motifs",
-    "title": "Remove specified DNA motifs",
+    "task_id": "design.guide_escape",
+    "title": "Create a guide-escape control",
+    "code": "H10",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 4,
+    "snowball_correct": 1,
+    "x": 40.0,
+    "y": 10.0
+  },
+  {
+    "task_id": "design.dinucleotide_counts",
+    "title": "Control RNA dinucleotide counts",
     "code": "H11",
     "group": "Synonymous design",
     "color": "#aa3377",
@@ -636,8 +636,8 @@
     "y": 10.0
   },
   {
-    "task_id": "design.dinucleotide_counts",
-    "title": "Control RNA dinucleotide counts",
+    "task_id": "design.remove_dna_motifs",
+    "title": "Remove specified DNA motifs",
     "code": "H12",
     "group": "Synonymous design",
     "color": "#aa3377",
@@ -804,8 +804,8 @@
     "y": 10.0
   },
   {
-    "task_id": "pipeline.structure_gated_digest",
-    "title": "From a pairing annotation to eligible cuts",
+    "task_id": "pipeline.library_and_verify",
+    "title": "Design a codon library and verify its coverage",
     "code": "J08",
     "group": "Composition tasks",
     "color": "#332288",
@@ -816,8 +816,8 @@
     "y": 10.0
   },
   {
-    "task_id": "pipeline.library_and_verify",
-    "title": "Design a codon library and verify its coverage",
+    "task_id": "pipeline.structure_gated_digest",
+    "title": "From a pairing annotation to eligible cuts",
     "code": "J09",
     "group": "Composition tasks",
     "color": "#332288",

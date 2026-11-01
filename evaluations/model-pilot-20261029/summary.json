@@ -13,7 +13,8 @@
     "gemma": "Gemma 4 31B",
     "snowball": "Snowball RC (2026.09.21)",
     "liquid": "LFM 2.5 24B A2B",
-    "gemma-moe": "Gemma 4 26B A4B"
+    "gemma-moe": "Gemma 4 26B A4B",
+    "carbon-x": "Carbon-X"
   },
   "model_mean_task_accuracy": {
     "luna": 0.925,
@@ -29,7 +30,8 @@
     "gemma-moe": 0.07222222222222222,
     "liquid": 0.09166666666666666,
     "snowball": 0.14166666666666666,
-    "snowball-v01": 0.24166666666666667
+    "snowball-v01": 0.24166666666666667,
+    "carbon-x": 0
   },
   "model_order_metric": "Descending mean task accuracy over completed attempts, weighting each available task equally; partial subsets remain non-comparable.",
   "planned_per_condition": {
@@ -396,6 +398,29 @@
       "unreconciled_examples": 116,
       "median_api_request_seconds": 99.0920486249961,
       "format_diagnostic_additional_exact": 5
+    },
+    "carbon-x": {
+      "attempted": 116,
+      "correct": 0,
+      "wrong": 8,
+      "format": 104,
+      "timeout": 0,
+      "token_cap": 1,
+      "error": 3,
+      "accuracy": 0.0,
+      "median_seconds": 3.486623062461149,
+      "total_example_seconds": 977.1903760381974,
+      "examples_using_python": 3,
+      "python_calls": 3,
+      "python_failures": 3,
+      "api_requests": 119,
+      "prompt_tokens": 72812,
+      "completion_tokens": 69577,
+      "reasoning_tokens": 0,
+      "cost_usd": null,
+      "unreconciled_examples": 116,
+      "median_api_request_seconds": 3.452043249970302,
+      "format_diagnostic_additional_exact": 4
     }
   },
   "conditions": {
@@ -1599,6 +1624,92 @@
         "prompt_tokens": 42045,
         "completion_tokens": 376154,
         "reasoning_tokens": null,
+        "cost_usd": null,
+        "unreconciled_examples": 28
+      }
+    },
+    "carbon-x": {
+      "easy-no-tools": {
+        "attempted": 30,
+        "correct": 0,
+        "wrong": 1,
+        "format": 28,
+        "timeout": 0,
+        "token_cap": 1,
+        "error": 0,
+        "accuracy": 0.0,
+        "median_seconds": 3.23183018702548,
+        "total_example_seconds": 537.6454965408193,
+        "examples_using_python": 0,
+        "python_calls": 0,
+        "python_failures": 0,
+        "api_requests": 30,
+        "prompt_tokens": 18911,
+        "completion_tokens": 40620,
+        "reasoning_tokens": 0,
+        "cost_usd": null,
+        "unreconciled_examples": 30
+      },
+      "hard-no-tools": {
+        "attempted": 28,
+        "correct": 0,
+        "wrong": 1,
+        "format": 27,
+        "timeout": 0,
+        "token_cap": 0,
+        "error": 0,
+        "accuracy": 0.0,
+        "median_seconds": 4.009251833485905,
+        "total_example_seconds": 130.49570374807809,
+        "examples_using_python": 0,
+        "python_calls": 0,
+        "python_failures": 0,
+        "api_requests": 28,
+        "prompt_tokens": 9781,
+        "completion_tokens": 8514,
+        "reasoning_tokens": 0,
+        "cost_usd": null,
+        "unreconciled_examples": 28
+      },
+      "easy-tools": {
+        "attempted": 30,
+        "correct": 0,
+        "wrong": 4,
+        "format": 24,
+        "timeout": 0,
+        "token_cap": 0,
+        "error": 2,
+        "accuracy": 0.0,
+        "median_seconds": 2.6653008540160954,
+        "total_example_seconds": 136.46771233237814,
+        "examples_using_python": 2,
+        "python_calls": 2,
+        "python_failures": 2,
+        "api_requests": 32,
+        "prompt_tokens": 26891,
+        "completion_tokens": 8525,
+        "reasoning_tokens": 0,
+        "cost_usd": null,
+        "unreconciled_examples": 30
+      },
+      "hard-tools": {
+        "attempted": 28,
+        "correct": 0,
+        "wrong": 2,
+        "format": 25,
+        "timeout": 0,
+        "token_cap": 0,
+        "error": 1,
+        "accuracy": 0.0,
+        "median_seconds": 3.7920700205140747,
+        "total_example_seconds": 172.5814634169219,
+        "examples_using_python": 1,
+        "python_calls": 1,
+        "python_failures": 1,
+        "api_requests": 29,
+        "prompt_tokens": 17229,
+        "completion_tokens": 11918,
+        "reasoning_tokens": 0,
         "cost_usd": null,
         "unreconciled_examples": 28
       }
@@ -3096,6 +3207,99 @@
         "incomplete_streams": 1
       },
       "preflight_note": "The real tool round trip passed. The unscored preflight answer has a trailing Markdown fence and remains a strict formatting failure. No answer repair or inference retry was performed."
+    },
+    "carbon-x": {
+      "name": "Carbon-X",
+      "model": "HuggingFaceBio/Carbon-X",
+      "full_name": "Carbon-X",
+      "provenance": {
+        "repo": "HuggingFaceBio/Carbon-X",
+        "revision": "17de89165e25c49e7de4f845d0e5d464469de359",
+        "url": "https://huggingface.co/HuggingFaceBio/Carbon-X/tree/17de89165e25c49e7de4f845d0e5d464469de359"
+      },
+      "provider": {
+        "only": [
+          "CoreWeave/vLLM"
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "enabled": false,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=false"
+      },
+      "parameters_no_tools": {
+        "model": "HuggingFaceBio/Carbon-X",
+        "max_tokens": 32768,
+        "temperature": 0.6,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "seed": 20261029,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "tools": [
+        {
+          "type": "function",
+          "function": {
+            "name": "python",
+            "description": "Execute Python 3.12.9 code with the standard library and NumPy 2.5.4. Biopython is not installed. Networking and subprocesses are disabled; only runtime files and this example's working directory are readable. Use print() to return results. Each call starts a fresh interpreter; files in the working directory persist within this example. Limits: 30 seconds per call, 16384 characters each of stdout/stderr, and at most 8 calls per example. Returns stdout, stderr, exit_code, timed_out, and output_truncated.",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Python code to execute."
+                }
+              },
+              "required": [
+                "code"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      ],
+      "backend": {
+        "kind": "vllm",
+        "version": "0.25.1",
+        "source": "upstream",
+        "precision": "bfloat16",
+        "whole_node": "H100x8",
+        "tensor_parallel_size": 1,
+        "data_parallel_size": 8,
+        "max_model_len": 40960,
+        "compilation_and_cuda_graphs": true,
+        "tool_parser": "hermes",
+        "reasoning_parser": "qwen3"
+      },
+      "aggregate_completion_token_budget": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 32,
+      "dataset_revision": "26f63e8e488022bed14e12af0f1e44d87a28e14f",
+      "state": "complete",
+      "stop_reason": null,
+      "scoring": "Original strict scorer; no error compensation applied to primary pilot scores.",
+      "tool_audit": {
+        "preflight_passed": true,
+        "malformed_scored_calls": 3,
+        "scored_python_executions": 0
+      },
+      "raw_traces": {
+        "repo": "eczech/cds-bench-pr-2-traces",
+        "revision": "89f15d025ac90e0ac1290ffe08c4b04cfbf90a84",
+        "url": "https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces/tree/main/supplements/carbon-x-pilot-20261101-01",
+        "files": 986,
+        "archive_bytes": 591911,
+        "sha256": "bf85d0499b2a82a2acbc41d379a2451665edb9388dff95d44ab45045ad53a8d7",
+        "verified": true
+      }
     }
   },
   "earlier_ten_example_checks": [

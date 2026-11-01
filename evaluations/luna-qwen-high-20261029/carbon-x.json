@@ -1,0 +1,264 @@
+{
+  "model": "Carbon-X† (relaxed formatting)",
+  "state": "complete",
+  "generated_at": "2026-11-02T04:26:14.202972+00:00",
+  "planned": 3260,
+  "completed": 3260,
+  "conditions": {
+    "easy-no-tools": {
+      "attempted": 840,
+      "correct": 71,
+      "wrong": 731,
+      "format": 30,
+      "timeout": 0,
+      "token_cap": 8,
+      "error": 0,
+      "accuracy": 0.08452380952380953,
+      "median_seconds": 3.110560250002891,
+      "total_example_seconds": 7155.236570642563,
+      "examples_using_python": 0,
+      "python_calls": 0,
+      "python_failures": 0,
+      "api_requests": 840,
+      "prompt_tokens": 523847,
+      "completion_tokens": 513442,
+      "reasoning_tokens": 0,
+      "cost_usd": null,
+      "unreconciled_examples": 840,
+      "strict_correct": 1
+    },
+    "hard-no-tools": {
+      "attempted": 790,
+      "correct": 52,
+      "wrong": 705,
+      "format": 26,
+      "timeout": 0,
+      "token_cap": 7,
+      "error": 0,
+      "accuracy": 0.06582278481012659,
+      "median_seconds": 2.9155255625373684,
+      "total_example_seconds": 6067.7612721615005,
+      "examples_using_python": 0,
+      "python_calls": 0,
+      "python_failures": 0,
+      "api_requests": 790,
+      "prompt_tokens": 270956,
+      "completion_tokens": 454824,
+      "reasoning_tokens": 0,
+      "cost_usd": null,
+      "unreconciled_examples": 790,
+      "strict_correct": 1
+    },
+    "easy-tools": {
+      "attempted": 840,
+      "correct": 55,
+      "wrong": 669,
+      "format": 49,
+      "timeout": 0,
+      "token_cap": 10,
+      "error": 57,
+      "accuracy": 0.06547619047619048,
+      "median_seconds": 3.117013645474799,
+      "total_example_seconds": 11913.015795992687,
+      "examples_using_python": 88,
+      "python_calls": 127,
+      "python_failures": 116,
+      "api_requests": 956,
+      "prompt_tokens": 894316,
+      "completion_tokens": 834694,
+      "reasoning_tokens": 0,
+      "cost_usd": null,
+      "unreconciled_examples": 840,
+      "strict_correct": 1
+    },
+    "hard-tools": {
+      "attempted": 790,
+      "correct": 44,
+      "wrong": 637,
+      "format": 54,
+      "timeout": 0,
+      "token_cap": 15,
+      "error": 40,
+      "accuracy": 0.05569620253164557,
+      "median_seconds": 3.3222411460010335,
+      "total_example_seconds": 11796.595744914608,
+      "examples_using_python": 70,
+      "python_calls": 73,
+      "python_failures": 59,
+      "api_requests": 863,
+      "prompt_tokens": 532719,
+      "completion_tokens": 827586,
+      "reasoning_tokens": 0,
+      "cost_usd": null,
+      "unreconciled_examples": 790,
+      "strict_correct": 0
+    }
+  },
+  "totals": {
+    "attempted": 3260,
+    "correct": 222,
+    "wrong": 2742,
+    "format": 159,
+    "timeout": 0,
+    "token_cap": 40,
+    "error": 97,
+    "accuracy": 0.06809815950920245,
+    "median_seconds": 3.1103010830120184,
+    "total_example_seconds": 36932.60938371136,
+    "examples_using_python": 158,
+    "python_calls": 200,
+    "python_failures": 175,
+    "api_requests": 3449,
+    "prompt_tokens": 2221838,
+    "completion_tokens": 2630546,
+    "reasoning_tokens": 0,
+    "cost_usd": null,
+    "unreconciled_examples": 3260,
+    "strict_correct": 3
+  },
+  "configuration": {
+    "model": "HuggingFaceBio/Carbon-X",
+    "model_revision": "17de89165e25c49e7de4f845d0e5d464469de359",
+    "planned": 3260,
+    "planned_per_condition": {
+      "easy-no-tools": 840,
+      "hard-no-tools": 790,
+      "easy-tools": 840,
+      "hard-tools": 790
+    },
+    "parameters_no_tools": {
+      "model": "HuggingFaceBio/Carbon-X",
+      "max_tokens": 32768,
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "seed": 20261029,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      }
+    },
+    "tools": [
+      {
+        "type": "function",
+        "function": {
+          "name": "python",
+          "description": "Execute Python 3.12.9 code with the standard library and NumPy 2.5.4. Biopython is not installed. Networking and subprocesses are disabled; only runtime files and this example's working directory are readable. Use print() to return results. Each call starts a fresh interpreter; files in the working directory persist within this example. Limits: 30 seconds per call, 16384 characters each of stdout/stderr, and at most 8 calls per example. Returns stdout, stderr, exit_code, timed_out, and output_truncated.",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Python code to execute."
+              }
+            },
+            "required": [
+              "code"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    ],
+    "tool_choice": "auto",
+    "aggregate_completion_token_budget": 32768,
+    "request_timeout_seconds": 900,
+    "max_tool_calls": 8,
+    "concurrency": 32,
+    "dataset": {
+      "repo": "open-athena/cds-bench",
+      "revision": "26f63e8e488022bed14e12af0f1e44d87a28e14f",
+      "parquet_sha256": {
+        "easy": "d756b2655e4242812045def8ff4e4485f945280e5e6af2b4a845223102b7460e",
+        "hard": "aa724480707b2132abbe8c4f21e979701866a5ada36812476e2b7bb89b6cc1fa"
+      },
+      "snapshot_sha256": "55e66d1476c6fa979beb1a4af03e07537e2c8d188f255f221312cbab004652e7"
+    },
+    "normalization": {
+      "version": "carbon-format-v1",
+      "strict_scores_also_saved": true,
+      "description": "Read a clearly labeled final answer despite capitalization, Markdown or same-line placement. Without a label, accept a complete response or a final self-contained data/code block. Remove Markdown wrappers and native DNA boundary tags. Convert JSON-shaped Python literals without execution. Preserve sequence content, numerical values, field names and list order; truncation remains failure. No reference answer is used for extraction."
+    },
+    "backend": {
+      "kind": "vllm",
+      "version": "0.25.1",
+      "dtype": "bfloat16",
+      "gpu": "H100x8",
+      "tensor_parallel_size": 1,
+      "data_parallel_size": 8,
+      "max_model_len": 40960,
+      "compilation_and_cuda_graphs": true,
+      "tool_parser": "hermes",
+      "reasoning_parser": "qwen3"
+    },
+    "tool_compatibility": "The API strict flag is omitted because xgrammar does not support the custom HybridDNATokenizer. Function, description, argument schema and sandbox match the other evaluations. No demonstration or forced execution.",
+    "execution_environment": {
+      "python": "3.12.9",
+      "numpy": "2.5.4",
+      "biopython": false,
+      "network": "macOS sandbox deny network*",
+      "subprocesses": false,
+      "tool_wall_seconds": 30,
+      "max_output_bytes_per_stream": 16384
+    },
+    "sampling": "Fresh attempts on all released cases; no pilot-response reuse, prompt changes, correctness feedback or resampling of completed answers.",
+    "transport_policy": "Incomplete or timed-out transactions are unscored. Retry with backoff or pause for service review; never convert an unresolved transaction to an incorrect answer. Malformed model-generated calls are scored protocol failures.",
+    "source_commit": "d9d25cf0d19f059c7c8ab1d1df0ad3e659afa2df",
+    "source_sha256": {
+      "src/cds_bench/eval_compare/carbon_run.py": "230987f2dae52de20977439b9ff7517f364716c2ba8cfaaab6891f2f590dff50",
+      "src/cds_bench/eval_compare/carbon_client.py": "e22adde9606decbbe067b9a8f1f514ce347c629b337a7b273bc1acce360e0bec",
+      "src/cds_bench/eval_compare/carbon_score.py": "f24ef6c299db83c9ef6ee876f04bc723c20f77bbdf9baaf9ca7a903fde4ba5af",
+      "src/cds_bench/eval_luna/trial.py": "ddd914abdb6f264a6724e659ad237a817dbf97f2a4329f3d12616c964d4759fe",
+      "src/cds_bench/eval_luna/score.py": "fa7a1eb935a8937272b6a23d75d3874747b0ae58544a00afb15b0102c1e8bfec",
+      "src/cds_bench/eval_luna/sandbox.py": "565faaf168df286eccb756579188d472d442ac3d38f5068716b3d61b780d6263"
+    }
+  },
+  "audit": {
+    "passed": true,
+    "selected_cases": 3260,
+    "planned_cases": 3260,
+    "condition_counts": {
+      "easy-no-tools": 840,
+      "easy-tools": 840,
+      "hard-no-tools": 790,
+      "hard-tools": 790
+    },
+    "attempts": 3260,
+    "unscored_attempts": 0,
+    "strict_correct": 3,
+    "relaxed_correct": 222,
+    "checks": [
+      "Frozen source hashes",
+      "Dataset prompt and reference-answer equality",
+      "One first completed answer per case; no pilot reuse",
+      "Independent strict and relaxed rescoring",
+      "Token and Python-call budgets",
+      "No unresolved transport failure scored as an incorrect answer"
+    ],
+    "native_tokenizer": {
+      "checked_prompts": 1630,
+      "prompts_with_unknown_tokens": 60,
+      "affected_task_types": {
+        "ambiguity.codon_set": 20,
+        "ambiguity.stop_certainty": 20,
+        "library.codon_products": 20
+      },
+      "served_request_token_counts_checked": 3352,
+      "served_request_token_counts_all_match": true,
+      "note": "The released native tokenizer replaces DNA chunks containing ambiguity codes with an unknown token. Inputs were not altered to avoid this behavior."
+    }
+  },
+  "trace_archive": {
+    "repo": "eczech/cds-bench-pr-2-traces",
+    "revision": "b2307f254e158ebb7b514ab8175702e4cd02f124",
+    "url": "https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces/tree/main/supplements/carbon-x-full-20261101-01",
+    "files": 26776,
+    "archive_bytes": 17509624,
+    "sha256": "37865097e095126ea527659f1f3c8e92593a92fa41a2c5c65e2cc5752a27b420",
+    "verified": true
+  }
+}

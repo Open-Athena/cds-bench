@@ -114,9 +114,9 @@
     "group": "Sequence statistics",
     "color": "#228833",
     "attempted": 10,
-    "nemotron_correct": 2,
+    "nemotron_correct": 3,
     "snowball_correct": 5,
-    "x": 20.0,
+    "x": 30.0,
     "y": 50.0
   },
   {
@@ -162,9 +162,9 @@
     "group": "Sequence statistics",
     "color": "#228833",
     "attempted": 10,
-    "nemotron_correct": 3,
+    "nemotron_correct": 4,
     "snowball_correct": 1,
-    "x": 30.0,
+    "x": 40.0,
     "y": 10.0
   },
   {
@@ -342,9 +342,9 @@
     "group": "Protein operations",
     "color": "#b49b30",
     "attempted": 10,
-    "nemotron_correct": 0,
+    "nemotron_correct": 1,
     "snowball_correct": 5,
-    "x": 0.0,
+    "x": 10.0,
     "y": 50.0
   },
   {
@@ -474,9 +474,9 @@
     "group": "Construct design",
     "color": "#dd7733",
     "attempted": 10,
-    "nemotron_correct": 3,
+    "nemotron_correct": 4,
     "snowball_correct": 1,
-    "x": 30.0,
+    "x": 40.0,
     "y": 10.0
   },
   {
@@ -576,9 +576,21 @@
     "y": 20.0
   },
   {
+    "task_id": "design.insert_dna_motif",
+    "title": "Introduce a DNA recognition site",
+    "code": "H07",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 2,
+    "snowball_correct": 1,
+    "x": 20.0,
+    "y": 10.0
+  },
+  {
     "task_id": "design.rna_motif_control",
     "title": "Control coding-RNA motifs",
-    "code": "H07",
+    "code": "H08",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -588,9 +600,9 @@
     "y": 10.0
   },
   {
-    "task_id": "design.insert_dna_motif",
-    "title": "Introduce a DNA recognition site",
-    "code": "H08",
+    "task_id": "design.synonymous_distance",
+    "title": "Rewrite with a specified number of DNA changes",
+    "code": "H09",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -602,31 +614,7 @@
   {
     "task_id": "design.guide_escape",
     "title": "Create a guide-escape control",
-    "code": "H09",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 10,
-    "nemotron_correct": 0,
-    "snowball_correct": 0,
-    "x": 0.0,
-    "y": 0.0
-  },
-  {
-    "task_id": "design.synonymous_distance",
-    "title": "Rewrite with a specified number of DNA changes",
     "code": "H10",
-    "group": "Synonymous design",
-    "color": "#aa3377",
-    "attempted": 10,
-    "nemotron_correct": 2,
-    "snowball_correct": 1,
-    "x": 20.0,
-    "y": 10.0
-  },
-  {
-    "task_id": "design.remove_dna_motifs",
-    "title": "Remove specified DNA motifs",
-    "code": "H11",
     "group": "Synonymous design",
     "color": "#aa3377",
     "attempted": 10,
@@ -638,6 +626,18 @@
   {
     "task_id": "design.dinucleotide_counts",
     "title": "Control RNA dinucleotide counts",
+    "code": "H11",
+    "group": "Synonymous design",
+    "color": "#aa3377",
+    "attempted": 10,
+    "nemotron_correct": 0,
+    "snowball_correct": 0,
+    "x": 0.0,
+    "y": 0.0
+  },
+  {
+    "task_id": "design.remove_dna_motifs",
+    "title": "Remove specified DNA motifs",
     "code": "H12",
     "group": "Synonymous design",
     "color": "#aa3377",
@@ -738,9 +738,9 @@
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 10,
-    "nemotron_correct": 5,
+    "nemotron_correct": 6,
     "snowball_correct": 5,
-    "x": 50.0,
+    "x": 60.0,
     "y": 50.0
   },
   {
@@ -804,9 +804,21 @@
     "y": 0.0
   },
   {
+    "task_id": "pipeline.library_and_verify",
+    "title": "Design a codon library and verify its coverage",
+    "code": "J08",
+    "group": "Composition tasks",
+    "color": "#332288",
+    "attempted": 10,
+    "nemotron_correct": 3,
+    "snowball_correct": 0,
+    "x": 30.0,
+    "y": 0.0
+  },
+  {
     "task_id": "pipeline.structure_gated_digest",
     "title": "From a pairing annotation to eligible cuts",
-    "code": "J08",
+    "code": "J09",
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 10,
@@ -816,27 +828,15 @@
     "y": 0.0
   },
   {
-    "task_id": "pipeline.library_and_verify",
-    "title": "Design a codon library and verify its coverage",
-    "code": "J09",
-    "group": "Composition tasks",
-    "color": "#332288",
-    "attempted": 10,
-    "nemotron_correct": 2,
-    "snowball_correct": 0,
-    "x": 20.0,
-    "y": 0.0
-  },
-  {
     "task_id": "joint.structure_and_codons",
     "title": "Balance an RNA structural constraint and codon preference",
     "code": "J10",
     "group": "Composition tasks",
     "color": "#332288",
     "attempted": 10,
-    "nemotron_correct": 0,
+    "nemotron_correct": 1,
     "snowball_correct": 1,
-    "x": 0.0,
+    "x": 10.0,
     "y": 10.0
   },
   {

@@ -6,6 +6,33 @@ with 3,260 attempts per model on the same pinned dataset and no pilot-response
 reuse. Models are displayed in descending pooled mean task accuracy.
 The Snowball runner and local watcher are documented below.
 
+## Timeout recovery
+
+The initial OpenRouter runs used a five-minute request deadline and did not retry
+timeouts. The comparison now replaces the 217 timed-out cases (14 Luna, 135
+Nemotron and 68 Qwen) with their first non-timeout result, using a 15-minute
+deadline. Providers, questions, sampling settings, token budgets and tools are
+unchanged. Completed wrong answers, formatting failures and token caps are not
+retried.
+
+```sh
+PYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.timeout_supervise
+PYTHONPATH=src .venv/bin/python -m cds_bench.eval_compare.report
+```
+
+The supervisor starts or monitors one worker per model, with ten concurrent
+examples per worker. It backs off and resumes pending timeout cases without an
+overall retry limit. Repeated timeouts never become scored failures. Worker
+batches have finite boundaries so they can pause and resume safely; those
+boundaries do not cap total retries. A provider is never switched automatically.
+
+Every attempt is saved separately under `scratch/timeout-recovery-20261101-01`.
+`timeout_results.py` selects the first non-timeout result and rebuilds the main
+comparison. It includes all attempts in cost and elapsed time, while preserving
+the selected response's token count for the per-attempt budget check. The report
+will not publish a completed recovery while any selected timeout case is pending.
+Historical run files and the pilot scores remain unchanged.
+
 ## Completed OpenRouter runs
 
 The Nemotron run evaluated `nvidia/nemotron-3.5-lightning` on `deepinfra/bf16`, with no provider fallback. It restarted all 3,260 attempts over the same pinned release used by the completed Luna/Qwen comparison. No CoreWeave or pilot responses were reused. Reasoning was enabled without an effort selector, seed was omitted, and all other request, tool and scoring settings matched the CoreWeave pilot. Each OpenRouter full run used ten concurrent examples.
@@ -54,7 +81,7 @@ During inference, the local report refreshes at least once a minute when new att
 
 Raw requests, streaming responses, reasoning, and Python programs/results remain untracked in `scratch/qwen37-flash-high-full-20261029-01`. Public final predictions, metrics, figures, exact request settings, and a self-contained HTML report go in `evaluations/luna-qwen-high-20261029`.
 
-There are no inference retries. A lock prevents duplicate drivers. Completed results are reused on restart, but interrupted requests without a result require review. Five consecutive non-timeout API errors halt scheduling. Each API request has a 300-second wall deadline; all model turns share 32,768 generated tokens per example. Eight Python executions are allowed, with a fresh interpreter and a 30-second limit per call. The macOS sandbox denies networking, subprocesses, and access to benchmark answers or credentials.
+These original drivers made no inference retries. The timeout-recovery supervisor above applies the revised policy. A lock prevents duplicate drivers. Completed results are reused on restart, but interrupted requests without a result require review. The original requests had a 300-second deadline; all model turns within an attempt share 32,768 generated tokens. Eight Python executions are allowed, with a fresh interpreter and a 30-second limit per call. The macOS sandbox denies networking, subprocesses, and access to benchmark answers or credentials.
 
 To rebuild the report or audit the finished run without new inference:
 
@@ -104,8 +131,7 @@ The validated native thinking/tool transport, temperature 0.7, seed 20261029,
 60 are retained. The scorer, Python/NumPy sandbox and eight-call limit are unchanged.
 Requests are not retried; an interrupted attempt requires review before continuing.
 The access file and credentials remain private; sanitized traces are in the public
-archive. The API exposes token usage but no
-per-request monetary price.
+archive.
 
 The local watcher refreshes the existing report and runs the completion audit:
 

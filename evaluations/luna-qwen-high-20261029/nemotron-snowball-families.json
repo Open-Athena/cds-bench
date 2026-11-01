@@ -1,0 +1,4425 @@
+{
+  "models": [
+    "deepinfra",
+    "snowball-v01"
+  ],
+  "conditions": [
+    "easy-no-tools",
+    "easy-tools"
+  ],
+  "methods": {
+    "example_test": "Exact two-sided McNemar",
+    "task_test": "Exact two-sided permutation of model labels within each whole task type",
+    "adjustment": "Holm, separately over all 20 example tests and all 20 task-type tests",
+    "threshold": 0.01,
+    "minimum_highlighted_gap_pp": 10,
+    "scope": "Post-hoc fixed-benchmark comparison; no new scoring or inference."
+  },
+  "comparisons": [
+    {
+      "condition": "easy-no-tools",
+      "family": "sequence",
+      "name": "Sequence operations",
+      "task_count": 6,
+      "examples_per_model": 60,
+      "nemotron_correct": 21,
+      "snowball_correct": 22,
+      "difference_pp": -1.6666666666666667,
+      "nemotron_only": 8,
+      "snowball_only": 9,
+      "nemotron_outcomes": {
+        "correct": 21,
+        "error": 1,
+        "format": 5,
+        "token_cap": 8,
+        "wrong": 25
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 22,
+        "error": 3,
+        "format": 15,
+        "token_cap": 8,
+        "wrong": 12
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 1,
+      "snowball_task_wins": 4,
+      "task_ties": 1,
+      "example_p": 1.0,
+      "task_p": 1.0,
+      "tasks": [
+        {
+          "task_id": "cds.translate",
+          "title": "Translate DNA to protein",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 2,
+          "difference_pp": -10.0,
+          "nemotron_only": 1,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "error": 1,
+            "format": 1,
+            "wrong": 7
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 2,
+            "token_cap": 1,
+            "wrong": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "cds.validate",
+          "title": "Validate a complete CDS",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 5,
+          "difference_pp": -20.0,
+          "nemotron_only": 1,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 2,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "coords.aa_to_nt",
+          "title": "Map residues back to DNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 9,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "coords.nt_to_codon",
+          "title": "Map a nucleotide to its codon",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 3,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "error": 2,
+            "format": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "dna.reverse_complement",
+          "title": "Reverse-complement a CDS",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 2,
+          "difference_pp": -20.0,
+          "nemotron_only": 0,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "token_cap": 7,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "error": 1,
+            "format": 2,
+            "token_cap": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "dna.transcribe",
+          "title": "Make the coding RNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 1,
+          "difference_pp": -10.0,
+          "nemotron_only": 0,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "token_cap": 1,
+            "wrong": 9
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 2,
+            "token_cap": 3,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "variation",
+      "name": "Variant effects",
+      "task_count": 6,
+      "examples_per_model": 60,
+      "nemotron_correct": 29,
+      "snowball_correct": 30,
+      "difference_pp": -1.6666666666666667,
+      "nemotron_only": 12,
+      "snowball_only": 13,
+      "nemotron_outcomes": {
+        "correct": 29,
+        "error": 1,
+        "format": 7,
+        "token_cap": 3,
+        "wrong": 20
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 30,
+        "format": 17,
+        "token_cap": 6,
+        "wrong": 7
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 3,
+      "snowball_task_wins": 3,
+      "task_ties": 0,
+      "example_p": 1.0,
+      "task_p": 1.0,
+      "tasks": [
+        {
+          "task_id": "ambiguity.codon_set",
+          "title": "Resolve an ambiguous codon",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 3,
+          "difference_pp": 30.0,
+          "nemotron_only": 5,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 7
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "ambiguity.stop_certainty",
+          "title": "Assess an ambiguous stop",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 9,
+          "difference_pp": -20.0,
+          "nemotron_only": 0,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 9,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "cds.protein_equivalence",
+          "title": "Compare encoded proteins",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 7,
+          "difference_pp": -20.0,
+          "nemotron_only": 1,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 1,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 7,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "variant.apply",
+          "title": "Apply a DNA edit script",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "token_cap": 3,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 6,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "variant.frame_status",
+          "title": "Determine frame preservation",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 4,
+          "difference_pp": 20.0,
+          "nemotron_only": 4,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 6
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "variant.protein_effect",
+          "title": "Classify a substitution effect",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 6,
+          "difference_pp": -30.0,
+          "nemotron_only": 0,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "error": 1,
+            "format": 1,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 3,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "measure",
+      "name": "Sequence statistics",
+      "task_count": 6,
+      "examples_per_model": 60,
+      "nemotron_correct": 21,
+      "snowball_correct": 14,
+      "difference_pp": 11.666666666666666,
+      "nemotron_only": 12,
+      "snowball_only": 5,
+      "nemotron_outcomes": {
+        "correct": 21,
+        "error": 2,
+        "format": 13,
+        "token_cap": 5,
+        "wrong": 19
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 14,
+        "error": 2,
+        "format": 19,
+        "token_cap": 2,
+        "wrong": 23
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 2,
+      "snowball_task_wins": 0,
+      "task_ties": 4,
+      "example_p": 0.143463134765625,
+      "task_p": 0.5,
+      "tasks": [
+        {
+          "task_id": "dna.motif_positions",
+          "title": "Find nucleotide patterns",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 7,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 6,
+            "token_cap": 2,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "stats.cai",
+          "title": "Calculate codon adaptation index",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 4,
+            "token_cap": 3,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 1,
+            "wrong": 9
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "stats.codon_counts",
+          "title": "Count sense codons",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 1,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "error": 2,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "stats.gc3_fraction",
+          "title": "Calculate third-position GC",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 4,
+          "difference_pp": 0.0,
+          "nemotron_only": 2,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "wrong": 6
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 3,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "stats.gc_fraction",
+          "title": "Calculate total GC",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 4,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 2,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 1,
+            "wrong": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "stats.gc_windows",
+          "title": "Locate GC-window violations",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 5,
+          "difference_pp": 0.0,
+          "nemotron_only": 2,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 5,
+            "error": 2,
+            "format": 1,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "protein",
+      "name": "Protein operations",
+      "task_count": 9,
+      "examples_per_model": 90,
+      "nemotron_correct": 21,
+      "snowball_correct": 29,
+      "difference_pp": -8.88888888888889,
+      "nemotron_only": 14,
+      "snowball_only": 22,
+      "nemotron_outcomes": {
+        "correct": 21,
+        "error": 4,
+        "format": 27,
+        "token_cap": 6,
+        "wrong": 32
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 29,
+        "error": 2,
+        "format": 26,
+        "token_cap": 2,
+        "wrong": 31
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 1,
+      "snowball_task_wins": 5,
+      "task_ties": 3,
+      "example_p": 0.2429849540349096,
+      "task_p": 0.1875,
+      "tasks": [
+        {
+          "task_id": "protein.charge_at_ph",
+          "title": "Calculate model charge at a pH",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 3,
+          "difference_pp": -20.0,
+          "nemotron_only": 1,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "wrong": 8
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 2,
+            "wrong": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.diagnostic_peptide",
+          "title": "Select a distinguishing peptide",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 3,
+          "difference_pp": 0.0,
+          "nemotron_only": 3,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "token_cap": 3,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.isoelectric_point",
+          "title": "Calculate the isoelectric point (pI)",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 3,
+          "difference_pp": 0.0,
+          "nemotron_only": 3,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 4,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "error": 2,
+            "format": 2,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.mean_hydropathy",
+          "title": "Calculate mean hydropathy",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 5,
+          "difference_pp": -30.0,
+          "nemotron_only": 1,
+          "snowball_only": 4,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 2,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 2,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.monoisotopic_mass",
+          "title": "Calculate peptide mass",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 3,
+          "difference_pp": -20.0,
+          "nemotron_only": 0,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 1,
+            "wrong": 7
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 3,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.motif_positions",
+          "title": "Find a supplied peptide pattern",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 5,
+          "difference_pp": -10.0,
+          "nemotron_only": 2,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "error": 1,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 2,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.nglyco_sequons",
+          "title": "Locate N-glycosylation sequons",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 4,
+          "difference_pp": 20.0,
+          "nemotron_only": 4,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 2,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.residue_counts",
+          "title": "Count amino acids",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 3,
+          "difference_pp": -20.0,
+          "nemotron_only": 0,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 4,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.trypsin_digest",
+          "title": "Digest with trypsin rules",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "error": 1,
+            "format": 9
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 6,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "rna",
+      "name": "RNA operations",
+      "task_count": 9,
+      "examples_per_model": 90,
+      "nemotron_correct": 23,
+      "snowball_correct": 19,
+      "difference_pp": 4.444444444444445,
+      "nemotron_only": 13,
+      "snowball_only": 9,
+      "nemotron_outcomes": {
+        "correct": 23,
+        "error": 5,
+        "format": 17,
+        "token_cap": 14,
+        "wrong": 31
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 19,
+        "format": 39,
+        "token_cap": 20,
+        "wrong": 12
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 5,
+      "snowball_task_wins": 3,
+      "task_ties": 1,
+      "example_p": 0.5234670639038086,
+      "task_p": 0.703125,
+      "tasks": [
+        {
+          "task_id": "rna.apply_edits",
+          "title": "Apply specified RNA edits",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 1,
+          "difference_pp": -10.0,
+          "nemotron_only": 0,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "token_cap": 1,
+            "wrong": 9
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.dotbracket_to_pairs",
+          "title": "Decode a pairing map",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 2,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "wrong": 6
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 2,
+            "wrong": 6
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.guide_hits",
+          "title": "Match an RNA guide",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 0,
+          "difference_pp": 20.0,
+          "nemotron_only": 2,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "format": 4,
+            "token_cap": 2,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 6,
+            "token_cap": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.max_pair_fold",
+          "title": "Find a maximum-pair RNA fold",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "error": 1,
+            "token_cap": 6,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "token_cap": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.motif_counts",
+          "title": "Count coding-RNA patterns",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 3,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "token_cap": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.pair_compatibility",
+          "title": "Check specified RNA pairs",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 4,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 6
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.structure_score",
+          "title": "Score a specified RNA structure",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 9,
+          "difference_pp": -40.0,
+          "nemotron_only": 0,
+          "snowball_only": 4,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "error": 1,
+            "format": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.t1_digest",
+          "title": "Digest coding RNA with RNase T1 rules",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 6,
+            "token_cap": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.translate",
+          "title": "Translate coding RNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 2,
+          "difference_pp": -20.0,
+          "nemotron_only": 0,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "token_cap": 3,
+            "wrong": 7
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 4,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "redesign",
+      "name": "Synonymous design",
+      "task_count": 15,
+      "examples_per_model": 150,
+      "nemotron_correct": 26,
+      "snowball_correct": 18,
+      "difference_pp": 5.333333333333333,
+      "nemotron_only": 19,
+      "snowball_only": 11,
+      "nemotron_outcomes": {
+        "correct": 26,
+        "error": 6,
+        "format": 6,
+        "token_cap": 47,
+        "wrong": 65
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 18,
+        "error": 4,
+        "format": 86,
+        "token_cap": 14,
+        "wrong": 28
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 6,
+      "snowball_task_wins": 1,
+      "task_ties": 8,
+      "example_p": 0.20048842206597328,
+      "task_p": 0.09375,
+      "tasks": [
+        {
+          "task_id": "design.break_repeats",
+          "title": "Break homopolymers and repeats",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "error": 2,
+            "format": 1,
+            "token_cap": 2,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 7,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.codon_allowlist",
+          "title": "Rewrite using permitted codons",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "token_cap": 1,
+            "wrong": 8
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 6,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.codon_preference",
+          "title": "Optimize supplied codon preferences",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 2,
+          "difference_pp": -10.0,
+          "nemotron_only": 1,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 4,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.codon_profile",
+          "title": "Match positional codon-preference ranges",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 1,
+            "token_cap": 4,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.dinucleotide_counts",
+          "title": "Control RNA dinucleotide counts",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 1,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "token_cap": 5,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "token_cap": 2,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.expose_rna_window",
+          "title": "Disrupt a specified local hairpin",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 5,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.gc_windows",
+          "title": "Control local GC by recoding",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 3,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 5,
+            "token_cap": 3,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.guide_escape",
+          "title": "Create a guide-escape control",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 1,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 5,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "token_cap": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.insert_dna_motif",
+          "title": "Introduce a DNA recognition site",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 1,
+            "token_cap": 2,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "error": 1,
+            "format": 5,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.pairing_repair",
+          "title": "Repair pairing synonymously",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 3,
+          "difference_pp": 20.0,
+          "nemotron_only": 4,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 6,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.remove_dna_motifs",
+          "title": "Remove specified DNA motifs",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 1,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "token_cap": 5,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "error": 1,
+            "format": 6,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.rna_motif_control",
+          "title": "Control coding-RNA motifs",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 1,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "error": 2,
+            "format": 1,
+            "token_cap": 3,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.structure_score",
+          "title": "Optimize a fixed RNA pairing score",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 1,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "token_cap": 4,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.synonymous_distance",
+          "title": "Rewrite with a specified number of DNA changes",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 1,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 3,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "error": 2,
+            "format": 4,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.variant_panel",
+          "title": "Build a controlled synonymous panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "token_cap": 6,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 5,
+            "token_cap": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "construct",
+      "name": "Construct design",
+      "task_count": 9,
+      "examples_per_model": 90,
+      "nemotron_correct": 31,
+      "snowball_correct": 19,
+      "difference_pp": 13.333333333333334,
+      "nemotron_only": 22,
+      "snowball_only": 10,
+      "nemotron_outcomes": {
+        "correct": 31,
+        "error": 8,
+        "format": 7,
+        "token_cap": 9,
+        "wrong": 35
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 19,
+        "error": 2,
+        "format": 45,
+        "token_cap": 2,
+        "wrong": 22
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 6,
+      "snowball_task_wins": 1,
+      "task_ties": 2,
+      "example_p": 0.050102459732443094,
+      "task_p": 0.140625,
+      "tasks": [
+        {
+          "task_id": "construct.edit_aware_encoding",
+          "title": "Design an RNA-editing-dependent product",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 1,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "error": 2,
+            "format": 1,
+            "token_cap": 2,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.inframe_deletion",
+          "title": "Delete a protein interval",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 2,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "error": 2,
+            "format": 2,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.join_modules",
+          "title": "Join coding modules",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 4,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 4,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.minimal_aa_edit",
+          "title": "Encode a requested amino-acid substitution",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 2,
+          "difference_pp": 10.0,
+          "nemotron_only": 3,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "wrong": 7
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 6,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.remove_peptide_motif",
+          "title": "Remove a protein motif",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "token_cap": 3,
+            "wrong": 6
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 4,
+            "wrong": 6
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.tag_fusion",
+          "title": "Build a tagged protein CDS",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 6,
+          "difference_pp": 0.0,
+          "nemotron_only": 3,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "error": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 2,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.tev_products",
+          "title": "Derive TEV-cleaved products",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "error": 2,
+            "token_cap": 2,
+            "wrong": 6
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 7,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "library.codon_products",
+          "title": "Enumerate a degenerate codon library",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 3,
+          "difference_pp": -20.0,
+          "nemotron_only": 1,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "error": 3,
+            "format": 6
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 6,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "library.design_codon",
+          "title": "Design a focused degenerate codon",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 1,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 0.5010245973244309,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "assay",
+      "name": "Assay design",
+      "task_count": 3,
+      "examples_per_model": 30,
+      "nemotron_correct": 2,
+      "snowball_correct": 2,
+      "difference_pp": 0.0,
+      "nemotron_only": 2,
+      "snowball_only": 2,
+      "nemotron_outcomes": {
+        "correct": 2,
+        "error": 3,
+        "format": 5,
+        "token_cap": 14,
+        "wrong": 6
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 2,
+        "error": 1,
+        "format": 9,
+        "token_cap": 16,
+        "wrong": 2
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 1,
+      "snowball_task_wins": 1,
+      "task_ties": 1,
+      "example_p": 1.0,
+      "task_p": 1.0,
+      "tasks": [
+        {
+          "task_id": "assay.min_probe_panel",
+          "title": "Distinguish CDSs with a probe panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 1,
+            "token_cap": 6,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "error": 1,
+            "format": 1,
+            "token_cap": 8
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "assay.primer_pair",
+          "title": "Choose CDS-internal PCR primers",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 3,
+            "format": 3,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "assay.select_rna_probe",
+          "title": "Select a CDS-specific RNA probe",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 1,
+          "difference_pp": -10.0,
+          "nemotron_only": 0,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "format": 1,
+            "token_cap": 8,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 2,
+            "token_cap": 6,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "overlap",
+      "name": "Overlapping frames",
+      "task_count": 2,
+      "examples_per_model": 20,
+      "nemotron_correct": 12,
+      "snowball_correct": 6,
+      "difference_pp": 30.0,
+      "nemotron_only": 11,
+      "snowball_only": 5,
+      "nemotron_outcomes": {
+        "correct": 12,
+        "format": 3,
+        "token_cap": 1,
+        "wrong": 4
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 6,
+        "format": 12,
+        "wrong": 2
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 1,
+      "snowball_task_wins": 0,
+      "task_ties": 1,
+      "example_p": 0.210113525390625,
+      "task_p": 1.0,
+      "tasks": [
+        {
+          "task_id": "overlap.compare_products",
+          "title": "Evaluate a change in two frames",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 1,
+          "difference_pp": 60.0,
+          "nemotron_only": 7,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "overlap.constrained_edit",
+          "title": "Change one frame, preserve the other",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 5,
+          "difference_pp": 0.0,
+          "nemotron_only": 4,
+          "snowball_only": 4,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 5
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-no-tools",
+      "family": "composition",
+      "name": "Composition tasks",
+      "task_count": 19,
+      "examples_per_model": 190,
+      "nemotron_correct": 36,
+      "snowball_correct": 20,
+      "difference_pp": 8.421052631578947,
+      "nemotron_only": 23,
+      "snowball_only": 7,
+      "nemotron_outcomes": {
+        "correct": 36,
+        "error": 7,
+        "format": 67,
+        "token_cap": 39,
+        "wrong": 41
+      },
+      "nemotron_tool_users": 0,
+      "snowball_outcomes": {
+        "correct": 20,
+        "error": 3,
+        "format": 114,
+        "token_cap": 39,
+        "wrong": 14
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 11,
+      "snowball_task_wins": 2,
+      "task_ties": 6,
+      "example_p": 0.005222879350185394,
+      "task_p": 0.009765625,
+      "tasks": [
+        {
+          "task_id": "joint.clone_ready_cds",
+          "title": "Remove cloning sites while controlling GC",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "format": 1,
+            "token_cap": 5,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "token_cap": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "joint.protein_edit_and_cloning",
+          "title": "Encode a protein change and remove cloning sites",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 2,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "error": 1,
+            "token_cap": 2,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "joint.structure_and_codons",
+          "title": "Balance an RNA structural constraint and codon preference",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 1,
+          "difference_pp": -10.0,
+          "nemotron_only": 0,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "format": 1,
+            "token_cap": 6,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.controlled_panel",
+          "title": "Build and audit a controlled synonymous panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "error": 1,
+            "format": 3,
+            "token_cap": 3,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 5,
+            "token_cap": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.diagnostic_digest",
+          "title": "From CDS panel to a diagnostic peptide",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 2,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 1,
+            "token_cap": 1,
+            "wrong": 5
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.edit_dependent_product",
+          "title": "Design and verify an RNA-editing-dependent product",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 0,
+          "difference_pp": 20.0,
+          "nemotron_only": 2,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 1,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.fusion_junction",
+          "title": "Assemble coding modules and locate junction motifs",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "token_cap": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "error": 1,
+            "format": 8,
+            "token_cap": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.library_and_verify",
+          "title": "Design a codon library and verify its coverage",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 1,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "format": 6
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.motif_to_dna",
+          "title": "From peptide motif to encoding DNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 0,
+          "difference_pp": 20.0,
+          "nemotron_only": 2,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 2,
+            "format": 4,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.overlap_edit_verify",
+          "title": "Edit one frame and audit both products",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 1,
+          "difference_pp": 20.0,
+          "nemotron_only": 2,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "error": 1,
+            "format": 4,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 9
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.protein_properties",
+          "title": "From CDS to defined protein measurements",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.repair_and_verify",
+          "title": "Repair RNA pairs and verify the protein",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 4,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 5,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.rna_edit_digest",
+          "title": "From specified RNA edits to RNA fragments",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 5,
+            "token_cap": 2,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 7,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.rna_edit_translation",
+          "title": "From specified RNA edits to protein",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 7,
+          "difference_pp": 10.0,
+          "nemotron_only": 3,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 7,
+            "format": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.rna_probe_panel",
+          "title": "From CDS collection to a minimal measurement panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 1,
+            "token_cap": 7,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 1,
+            "token_cap": 9
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.structure_gated_digest",
+          "title": "From a pairing annotation to eligible cuts",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 1,
+          "difference_pp": -10.0,
+          "nemotron_only": 0,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "error": 1,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "token_cap": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.tag_cleave_mass",
+          "title": "Build a tagged construct, cleave it, measure products",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 7,
+            "token_cap": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.target_and_escape",
+          "title": "Choose an RNA probe and a matched escape control",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 2,
+            "token_cap": 7,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "format": 1,
+            "token_cap": 9
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.variant_peptides",
+          "title": "From DNA edits to changed peptide readouts",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 7,
+            "token_cap": 3
+          },
+          "nemotron_tool_users": 0,
+          "snowball_outcomes": {
+            "error": 2,
+            "format": 5,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 0.05745167285203934,
+      "task_p_holm": 0.15625,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "sequence",
+      "name": "Sequence operations",
+      "task_count": 6,
+      "examples_per_model": 60,
+      "nemotron_correct": 51,
+      "snowball_correct": 25,
+      "difference_pp": 43.333333333333336,
+      "nemotron_only": 29,
+      "snowball_only": 3,
+      "nemotron_outcomes": {
+        "correct": 51,
+        "error": 1,
+        "format": 5,
+        "wrong": 3
+      },
+      "nemotron_tool_users": 59,
+      "snowball_outcomes": {
+        "correct": 25,
+        "format": 19,
+        "token_cap": 2,
+        "wrong": 14
+      },
+      "snowball_tool_users": 21,
+      "nemotron_task_wins": 5,
+      "snowball_task_wins": 0,
+      "task_ties": 1,
+      "example_p": 2.5560148060321808e-06,
+      "task_p": 0.0625,
+      "tasks": [
+        {
+          "task_id": "cds.translate",
+          "title": "Translate DNA to protein",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 3,
+          "difference_pp": 70.0,
+          "nemotron_only": 7,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 2,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "cds.validate",
+          "title": "Validate a complete CDS",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 6,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "coords.aa_to_nt",
+          "title": "Map residues back to DNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 6,
+          "difference_pp": 0.0,
+          "nemotron_only": 2,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "error": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "snowball_tool_users": 6
+        },
+        {
+          "task_id": "coords.nt_to_codon",
+          "title": "Map a nucleotide to its codon",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 2,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 5
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 6,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "dna.reverse_complement",
+          "title": "Reverse-complement a CDS",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 6,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 2,
+            "wrong": 2
+          },
+          "snowball_tool_users": 7
+        },
+        {
+          "task_id": "dna.transcribe",
+          "title": "Make the coding RNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 2,
+          "difference_pp": 80.0,
+          "nemotron_only": 8,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 1,
+            "token_cap": 1,
+            "wrong": 6
+          },
+          "snowball_tool_users": 3
+        }
+      ],
+      "example_p_holm": 3.834022209048271e-05,
+      "task_p_holm": 0.875,
+      "large_example_gap": true,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "variation",
+      "name": "Variant effects",
+      "task_count": 6,
+      "examples_per_model": 60,
+      "nemotron_correct": 46,
+      "snowball_correct": 26,
+      "difference_pp": 33.333333333333336,
+      "nemotron_only": 27,
+      "snowball_only": 7,
+      "nemotron_outcomes": {
+        "correct": 46,
+        "format": 11,
+        "wrong": 3
+      },
+      "nemotron_tool_users": 56,
+      "snowball_outcomes": {
+        "correct": 26,
+        "format": 22,
+        "token_cap": 2,
+        "wrong": 10
+      },
+      "snowball_tool_users": 11,
+      "nemotron_task_wins": 5,
+      "snowball_task_wins": 1,
+      "task_ties": 0,
+      "example_p": 0.0008213953115046024,
+      "task_p": 0.09375,
+      "tasks": [
+        {
+          "task_id": "ambiguity.codon_set",
+          "title": "Resolve an ambiguous codon",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 3,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 5,
+            "wrong": 2
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "ambiguity.stop_certainty",
+          "title": "Assess an ambiguous stop",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 5,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "cds.protein_equivalence",
+          "title": "Compare encoded proteins",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 6,
+          "difference_pp": 20.0,
+          "nemotron_only": 2,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 6,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "snowball_tool_users": 4
+        },
+        {
+          "task_id": "variant.apply",
+          "title": "Apply a DNA edit script",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 2,
+          "difference_pp": 80.0,
+          "nemotron_only": 8,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "variant.frame_status",
+          "title": "Determine frame preservation",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 2,
+          "difference_pp": 40.0,
+          "nemotron_only": 6,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 8
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "variant.protein_effect",
+          "title": "Classify a substitution effect",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 8,
+          "difference_pp": -20.0,
+          "nemotron_only": 2,
+          "snowball_only": 4,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "snowball_tool_users": 1
+        }
+      ],
+      "example_p_holm": 0.011499534361064434,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "measure",
+      "name": "Sequence statistics",
+      "task_count": 6,
+      "examples_per_model": 60,
+      "nemotron_correct": 41,
+      "snowball_correct": 24,
+      "difference_pp": 28.333333333333332,
+      "nemotron_only": 22,
+      "snowball_only": 5,
+      "nemotron_outcomes": {
+        "correct": 41,
+        "error": 2,
+        "format": 14,
+        "wrong": 3
+      },
+      "nemotron_tool_users": 57,
+      "snowball_outcomes": {
+        "correct": 24,
+        "error": 1,
+        "format": 27,
+        "token_cap": 3,
+        "wrong": 5
+      },
+      "snowball_tool_users": 20,
+      "nemotron_task_wins": 4,
+      "snowball_task_wins": 1,
+      "task_ties": 1,
+      "example_p": 0.0015137195587158203,
+      "task_p": 0.125,
+      "tasks": [
+        {
+          "task_id": "dna.motif_positions",
+          "title": "Find nucleotide patterns",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 2,
+          "difference_pp": -10.0,
+          "nemotron_only": 1,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 9
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "stats.cai",
+          "title": "Calculate codon adaptation index",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 3,
+          "difference_pp": 50.0,
+          "nemotron_only": 6,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "error": 2
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "snowball_tool_users": 4
+        },
+        {
+          "task_id": "stats.codon_counts",
+          "title": "Count sense codons",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 2,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 4,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 6,
+            "wrong": 2
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "stats.gc3_fraction",
+          "title": "Calculate third-position GC",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 8,
+          "difference_pp": 0.0,
+          "nemotron_only": 2,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "stats.gc_fraction",
+          "title": "Calculate total GC",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 3,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 3,
+            "error": 1,
+            "format": 6
+          },
+          "snowball_tool_users": 7
+        },
+        {
+          "task_id": "stats.gc_windows",
+          "title": "Locate GC-window violations",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 6,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 3,
+            "wrong": 1
+          },
+          "snowball_tool_users": 2
+        }
+      ],
+      "example_p_holm": 0.019678354263305664,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "protein",
+      "name": "Protein operations",
+      "task_count": 9,
+      "examples_per_model": 90,
+      "nemotron_correct": 63,
+      "snowball_correct": 24,
+      "difference_pp": 43.333333333333336,
+      "nemotron_only": 45,
+      "snowball_only": 6,
+      "nemotron_outcomes": {
+        "correct": 63,
+        "error": 3,
+        "format": 20,
+        "wrong": 4
+      },
+      "nemotron_tool_users": 83,
+      "snowball_outcomes": {
+        "correct": 24,
+        "error": 1,
+        "format": 33,
+        "token_cap": 2,
+        "wrong": 30
+      },
+      "snowball_tool_users": 12,
+      "nemotron_task_wins": 9,
+      "snowball_task_wins": 0,
+      "task_ties": 0,
+      "example_p": 1.8323628836469652e-08,
+      "task_p": 0.00390625,
+      "tasks": [
+        {
+          "task_id": "protein.charge_at_ph",
+          "title": "Calculate model charge at a pH",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 1,
+          "difference_pp": 70.0,
+          "nemotron_only": 7,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.diagnostic_peptide",
+          "title": "Select a distinguishing peptide",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 3,
+          "difference_pp": 40.0,
+          "nemotron_only": 5,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 3
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 2,
+            "wrong": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.isoelectric_point",
+          "title": "Calculate the isoelectric point (pI)",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 3,
+          "difference_pp": 50.0,
+          "nemotron_only": 6,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 3,
+            "wrong": 4
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "protein.mean_hydropathy",
+          "title": "Calculate mean hydropathy",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 1,
+          "difference_pp": 80.0,
+          "nemotron_only": 8,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "error": 1
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.monoisotopic_mass",
+          "title": "Calculate peptide mass",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 4,
+          "difference_pp": 40.0,
+          "nemotron_only": 5,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "error": 2
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 4,
+            "error": 1,
+            "format": 2,
+            "wrong": 3
+          },
+          "snowball_tool_users": 4
+        },
+        {
+          "task_id": "protein.motif_positions",
+          "title": "Find a supplied peptide pattern",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 4,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 2,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 2,
+            "wrong": 4
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "protein.nglyco_sequons",
+          "title": "Locate N-glycosylation sequons",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 6,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 8,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 1,
+            "wrong": 3
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "protein.residue_counts",
+          "title": "Count amino acids",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 1,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 7
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "protein.trypsin_digest",
+          "title": "Digest with trypsin rules",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 1,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 5,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "snowball_tool_users": 1
+        }
+      ],
+      "example_p_holm": 3.115016902199841e-07,
+      "task_p_holm": 0.0703125,
+      "large_example_gap": true,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "rna",
+      "name": "RNA operations",
+      "task_count": 9,
+      "examples_per_model": 90,
+      "nemotron_correct": 69,
+      "snowball_correct": 24,
+      "difference_pp": 50.0,
+      "nemotron_only": 48,
+      "snowball_only": 3,
+      "nemotron_outcomes": {
+        "correct": 69,
+        "error": 2,
+        "format": 16,
+        "wrong": 3
+      },
+      "nemotron_tool_users": 88,
+      "snowball_outcomes": {
+        "correct": 24,
+        "error": 2,
+        "format": 36,
+        "token_cap": 13,
+        "wrong": 15
+      },
+      "snowball_tool_users": 14,
+      "nemotron_task_wins": 9,
+      "snowball_task_wins": 0,
+      "task_ties": 0,
+      "example_p": 1.9674928353197174e-11,
+      "task_p": 0.00390625,
+      "tasks": [
+        {
+          "task_id": "rna.apply_edits",
+          "title": "Apply specified RNA edits",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 0,
+          "difference_pp": 100.0,
+          "nemotron_only": 10,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "error": 1,
+            "format": 3,
+            "wrong": 6
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "rna.dotbracket_to_pairs",
+          "title": "Decode a pairing map",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 8,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "rna.guide_hits",
+          "title": "Match an RNA guide",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 2,
+          "difference_pp": 40.0,
+          "nemotron_only": 5,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "error": 2,
+            "format": 2
+          },
+          "nemotron_tool_users": 8,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 4,
+            "token_cap": 4
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "rna.max_pair_fold",
+          "title": "Find a maximum-pair RNA fold",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 0,
+          "difference_pp": 20.0,
+          "nemotron_only": 2,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "format": 7,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 3,
+            "token_cap": 5,
+            "wrong": 2
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "rna.motif_counts",
+          "title": "Count coding-RNA patterns",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 2,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "error": 1,
+            "format": 5,
+            "token_cap": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "rna.pair_compatibility",
+          "title": "Check specified RNA pairs",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 4,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 4,
+            "wrong": 2
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "rna.structure_score",
+          "title": "Score a specified RNA structure",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 6,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "rna.t1_digest",
+          "title": "Digest coding RNA with RNase T1 rules",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 1,
+          "difference_pp": 40.0,
+          "nemotron_only": 5,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 4,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "token_cap": 1,
+            "wrong": 1
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "rna.translate",
+          "title": "Translate coding RNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 1,
+          "difference_pp": 80.0,
+          "nemotron_only": 8,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 4,
+            "token_cap": 1,
+            "wrong": 4
+          },
+          "snowball_tool_users": 3
+        }
+      ],
+      "example_p_holm": 3.738236387107463e-10,
+      "task_p_holm": 0.0703125,
+      "large_example_gap": true,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "redesign",
+      "name": "Synonymous design",
+      "task_count": 15,
+      "examples_per_model": 150,
+      "nemotron_correct": 82,
+      "snowball_correct": 33,
+      "difference_pp": 32.666666666666664,
+      "nemotron_only": 57,
+      "snowball_only": 8,
+      "nemotron_outcomes": {
+        "correct": 82,
+        "error": 3,
+        "format": 29,
+        "token_cap": 1,
+        "wrong": 35
+      },
+      "nemotron_tool_users": 131,
+      "snowball_outcomes": {
+        "correct": 33,
+        "format": 57,
+        "token_cap": 18,
+        "wrong": 42
+      },
+      "snowball_tool_users": 10,
+      "nemotron_task_wins": 13,
+      "snowball_task_wins": 1,
+      "task_ties": 1,
+      "example_p": 3.1632431884368734e-10,
+      "task_p": 0.0003662109375,
+      "tasks": [
+        {
+          "task_id": "design.break_repeats",
+          "title": "Break homopolymers and repeats",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 3,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 1,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 4,
+            "wrong": 3
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "design.codon_allowlist",
+          "title": "Rewrite using permitted codons",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 3,
+          "difference_pp": 40.0,
+          "nemotron_only": 5,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 4,
+            "wrong": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.codon_preference",
+          "title": "Optimize supplied codon preferences",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 3,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "format": 4,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 3,
+            "token_cap": 2,
+            "wrong": 2
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "design.codon_profile",
+          "title": "Match positional codon-preference ranges",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 1,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "wrong": 3
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "design.dinucleotide_counts",
+          "title": "Control RNA dinucleotide counts",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 0,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 5,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 2,
+            "token_cap": 2,
+            "wrong": 6
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "design.expose_rna_window",
+          "title": "Disrupt a specified local hairpin",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 6,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "error": 1,
+            "format": 1
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 3,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.gc_windows",
+          "title": "Control local GC by recoding",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 2,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 3,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "design.guide_escape",
+          "title": "Create a guide-escape control",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 0,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "format": 5,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 6,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "design.insert_dna_motif",
+          "title": "Introduce a DNA recognition site",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 0,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "format": 4,
+            "token_cap": 2,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.pairing_repair",
+          "title": "Repair pairing synonymously",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 9,
+          "difference_pp": -10.0,
+          "nemotron_only": 1,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 6,
+          "snowball_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.remove_dna_motifs",
+          "title": "Remove specified DNA motifs",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 2,
+          "difference_pp": 0.0,
+          "nemotron_only": 1,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "error": 1,
+            "format": 3,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 4,
+            "wrong": 4
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.rna_motif_control",
+          "title": "Control coding-RNA motifs",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 1,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "token_cap": 2,
+            "wrong": 2
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "design.structure_score",
+          "title": "Optimize a fixed RNA pairing score",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 0,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "error": 1,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "format": 2,
+            "token_cap": 2,
+            "wrong": 6
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "design.synonymous_distance",
+          "title": "Rewrite with a specified number of DNA changes",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 2,
+          "difference_pp": 50.0,
+          "nemotron_only": 6,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "design.variant_panel",
+          "title": "Build a controlled synonymous panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 1,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 4,
+            "wrong": 3
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 3,
+            "token_cap": 5,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 5.693837739186372e-09,
+      "task_p_holm": 0.0069580078125,
+      "large_example_gap": true,
+      "large_task_gap": true
+    },
+    {
+      "condition": "easy-tools",
+      "family": "construct",
+      "name": "Construct design",
+      "task_count": 9,
+      "examples_per_model": 90,
+      "nemotron_correct": 63,
+      "snowball_correct": 25,
+      "difference_pp": 42.22222222222222,
+      "nemotron_only": 44,
+      "snowball_only": 6,
+      "nemotron_outcomes": {
+        "correct": 63,
+        "format": 10,
+        "token_cap": 3,
+        "wrong": 14
+      },
+      "nemotron_tool_users": 87,
+      "snowball_outcomes": {
+        "correct": 25,
+        "error": 1,
+        "format": 30,
+        "token_cap": 3,
+        "wrong": 31
+      },
+      "snowball_tool_users": 18,
+      "nemotron_task_wins": 7,
+      "snowball_task_wins": 0,
+      "task_ties": 2,
+      "example_p": 3.243740565039843e-08,
+      "task_p": 0.015625,
+      "tasks": [
+        {
+          "task_id": "construct.edit_aware_encoding",
+          "title": "Design an RNA-editing-dependent product",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 2,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 1,
+            "token_cap": 3,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "wrong": 3
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "construct.inframe_deletion",
+          "title": "Delete a protein interval",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 3,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 3,
+            "wrong": 4
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "construct.join_modules",
+          "title": "Join coding modules",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 4,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 2,
+            "wrong": 4
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "construct.minimal_aa_edit",
+          "title": "Encode a requested amino-acid substitution",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 4,
+          "difference_pp": 30.0,
+          "nemotron_only": 5,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 2,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 2,
+            "wrong": 4
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "construct.remove_peptide_motif",
+          "title": "Remove a protein motif",
+          "examples_per_model": 10,
+          "nemotron_correct": 0,
+          "snowball_correct": 0,
+          "difference_pp": 0.0,
+          "nemotron_only": 0,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "format": 1,
+            "wrong": 9
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "error": 1,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "construct.tag_fusion",
+          "title": "Build a tagged protein CDS",
+          "examples_per_model": 10,
+          "nemotron_correct": 10,
+          "snowball_correct": 4,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 10
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 4,
+            "format": 4,
+            "wrong": 2
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "construct.tev_products",
+          "title": "Derive TEV-cleaved products",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 1,
+          "difference_pp": 70.0,
+          "nemotron_only": 7,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 3,
+            "token_cap": 1,
+            "wrong": 5
+          },
+          "snowball_tool_users": 5
+        },
+        {
+          "task_id": "library.codon_products",
+          "title": "Enumerate a degenerate codon library",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 6,
+          "difference_pp": 0.0,
+          "nemotron_only": 3,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 6,
+            "format": 3,
+            "wrong": 1
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "library.design_codon",
+          "title": "Design a focused degenerate codon",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 1,
+          "difference_pp": 70.0,
+          "nemotron_only": 7,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "token_cap": 1,
+            "wrong": 3
+          },
+          "snowball_tool_users": 1
+        }
+      ],
+      "example_p_holm": 5.189984904063749e-07,
+      "task_p_holm": 0.234375,
+      "large_example_gap": true,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "assay",
+      "name": "Assay design",
+      "task_count": 3,
+      "examples_per_model": 30,
+      "nemotron_correct": 14,
+      "snowball_correct": 3,
+      "difference_pp": 36.666666666666664,
+      "nemotron_only": 12,
+      "snowball_only": 1,
+      "nemotron_outcomes": {
+        "correct": 14,
+        "format": 12,
+        "wrong": 4
+      },
+      "nemotron_tool_users": 30,
+      "snowball_outcomes": {
+        "correct": 3,
+        "format": 15,
+        "token_cap": 11,
+        "wrong": 1
+      },
+      "snowball_tool_users": 1,
+      "nemotron_task_wins": 3,
+      "snowball_task_wins": 0,
+      "task_ties": 0,
+      "example_p": 0.00341796875,
+      "task_p": 0.25,
+      "tasks": [
+        {
+          "task_id": "assay.min_probe_panel",
+          "title": "Distinguish CDSs with a probe panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 0,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 3,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 5,
+            "token_cap": 5
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "assay.primer_pair",
+          "title": "Choose CDS-internal PCR primers",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 1,
+          "difference_pp": 20.0,
+          "nemotron_only": 3,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 7
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 5,
+            "token_cap": 4
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "assay.select_rna_probe",
+          "title": "Select a CDS-specific RNA probe",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 2,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 2,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 5,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 0.041015625,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "overlap",
+      "name": "Overlapping frames",
+      "task_count": 2,
+      "examples_per_model": 20,
+      "nemotron_correct": 14,
+      "snowball_correct": 10,
+      "difference_pp": 20.0,
+      "nemotron_only": 7,
+      "snowball_only": 3,
+      "nemotron_outcomes": {
+        "correct": 14,
+        "format": 4,
+        "wrong": 2
+      },
+      "nemotron_tool_users": 15,
+      "snowball_outcomes": {
+        "correct": 10,
+        "format": 6,
+        "token_cap": 1,
+        "wrong": 3
+      },
+      "snowball_tool_users": 0,
+      "nemotron_task_wins": 2,
+      "snowball_task_wins": 0,
+      "task_ties": 0,
+      "example_p": 0.34375,
+      "task_p": 0.5,
+      "tasks": [
+        {
+          "task_id": "overlap.compare_products",
+          "title": "Evaluate a change in two frames",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 5,
+          "difference_pp": 10.0,
+          "nemotron_only": 3,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 3,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 8,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 4,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "overlap.constrained_edit",
+          "title": "Change one frame, preserve the other",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 5,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 1,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "correct": 5,
+            "format": 2,
+            "token_cap": 1,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        }
+      ],
+      "example_p_holm": 1.0,
+      "task_p_holm": 1.0,
+      "large_example_gap": false,
+      "large_task_gap": false
+    },
+    {
+      "condition": "easy-tools",
+      "family": "composition",
+      "name": "Composition tasks",
+      "task_count": 19,
+      "examples_per_model": 190,
+      "nemotron_correct": 95,
+      "snowball_correct": 27,
+      "difference_pp": 35.78947368421053,
+      "nemotron_only": 79,
+      "snowball_only": 11,
+      "nemotron_outcomes": {
+        "correct": 95,
+        "error": 4,
+        "format": 75,
+        "wrong": 16
+      },
+      "nemotron_tool_users": 181,
+      "snowball_outcomes": {
+        "correct": 27,
+        "error": 1,
+        "format": 110,
+        "token_cap": 36,
+        "wrong": 16
+      },
+      "snowball_tool_users": 12,
+      "nemotron_task_wins": 18,
+      "snowball_task_wins": 1,
+      "task_ties": 0,
+      "example_p": 7.773760769513266e-14,
+      "task_p": 2.6702880859375e-05,
+      "tasks": [
+        {
+          "task_id": "joint.clone_ready_cds",
+          "title": "Remove cloning sites while controlling GC",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 1,
+          "difference_pp": 40.0,
+          "nemotron_only": 5,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 1,
+            "wrong": 4
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 1,
+            "token_cap": 5,
+            "wrong": 3
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "joint.protein_edit_and_cloning",
+          "title": "Encode a protein change and remove cloning sites",
+          "examples_per_model": 10,
+          "nemotron_correct": 9,
+          "snowball_correct": 0,
+          "difference_pp": 90.0,
+          "nemotron_only": 9,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 9,
+            "format": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 9,
+            "token_cap": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "joint.structure_and_codons",
+          "title": "Balance an RNA structural constraint and codon preference",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 0,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "error": 2,
+            "format": 1,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 7,
+          "snowball_outcomes": {
+            "format": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.controlled_panel",
+          "title": "Build and audit a controlled synonymous panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 7,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 3,
+            "token_cap": 6,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.diagnostic_digest",
+          "title": "From CDS panel to a diagnostic peptide",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 2,
+          "difference_pp": 60.0,
+          "nemotron_only": 6,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "format": 2
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 3,
+            "wrong": 5
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "pipeline.edit_dependent_product",
+          "title": "Design and verify an RNA-editing-dependent product",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 1,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.fusion_junction",
+          "title": "Assemble coding modules and locate junction motifs",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 0,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 5
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 9,
+            "token_cap": 1
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "pipeline.library_and_verify",
+          "title": "Design a codon library and verify its coverage",
+          "examples_per_model": 10,
+          "nemotron_correct": 5,
+          "snowball_correct": 0,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 5,
+            "format": 5
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "format": 9,
+            "wrong": 1
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.motif_to_dna",
+          "title": "From peptide motif to encoding DNA",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 1,
+          "difference_pp": 50.0,
+          "nemotron_only": 5,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 1,
+            "error": 1,
+            "format": 6,
+            "wrong": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.overlap_edit_verify",
+          "title": "Edit one frame and audit both products",
+          "examples_per_model": 10,
+          "nemotron_correct": 7,
+          "snowball_correct": 2,
+          "difference_pp": 50.0,
+          "nemotron_only": 6,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 7,
+            "format": 3
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 2,
+            "format": 8
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.protein_properties",
+          "title": "From CDS to defined protein measurements",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 0,
+          "difference_pp": 40.0,
+          "nemotron_only": 4,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "format": 4,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.repair_and_verify",
+          "title": "Repair RNA pairs and verify the protein",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 7,
+          "difference_pp": 10.0,
+          "nemotron_only": 3,
+          "snowball_only": 2,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "wrong": 2
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 7,
+            "format": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.rna_edit_digest",
+          "title": "From specified RNA edits to RNA fragments",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 1,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "format": 8
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 6,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 2
+        },
+        {
+          "task_id": "pipeline.rna_edit_translation",
+          "title": "From specified RNA edits to protein",
+          "examples_per_model": 10,
+          "nemotron_correct": 8,
+          "snowball_correct": 7,
+          "difference_pp": 10.0,
+          "nemotron_only": 2,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 8,
+            "error": 2
+          },
+          "nemotron_tool_users": 9,
+          "snowball_outcomes": {
+            "correct": 7,
+            "format": 3
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.rna_probe_panel",
+          "title": "From CDS collection to a minimal measurement panel",
+          "examples_per_model": 10,
+          "nemotron_correct": 4,
+          "snowball_correct": 1,
+          "difference_pp": 30.0,
+          "nemotron_only": 4,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 4,
+            "format": 5,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 2,
+            "token_cap": 7
+          },
+          "snowball_tool_users": 1
+        },
+        {
+          "task_id": "pipeline.structure_gated_digest",
+          "title": "From a pairing annotation to eligible cuts",
+          "examples_per_model": 10,
+          "nemotron_correct": 2,
+          "snowball_correct": 3,
+          "difference_pp": -10.0,
+          "nemotron_only": 2,
+          "snowball_only": 3,
+          "nemotron_outcomes": {
+            "correct": 2,
+            "format": 7,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 3,
+            "format": 4,
+            "token_cap": 2,
+            "wrong": 1
+          },
+          "snowball_tool_users": 3
+        },
+        {
+          "task_id": "pipeline.tag_cleave_mass",
+          "title": "Build a tagged construct, cleave it, measure products",
+          "examples_per_model": 10,
+          "nemotron_correct": 3,
+          "snowball_correct": 0,
+          "difference_pp": 30.0,
+          "nemotron_only": 3,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 3,
+            "format": 6,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "format": 8,
+            "token_cap": 2
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.target_and_escape",
+          "title": "Choose an RNA probe and a matched escape control",
+          "examples_per_model": 10,
+          "nemotron_correct": 1,
+          "snowball_correct": 0,
+          "difference_pp": 10.0,
+          "nemotron_only": 1,
+          "snowball_only": 0,
+          "nemotron_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "wrong": 1
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "token_cap": 10
+          },
+          "snowball_tool_users": 0
+        },
+        {
+          "task_id": "pipeline.variant_peptides",
+          "title": "From DNA edits to changed peptide readouts",
+          "examples_per_model": 10,
+          "nemotron_correct": 6,
+          "snowball_correct": 1,
+          "difference_pp": 50.0,
+          "nemotron_only": 6,
+          "snowball_only": 1,
+          "nemotron_outcomes": {
+            "correct": 6,
+            "format": 4
+          },
+          "nemotron_tool_users": 10,
+          "snowball_outcomes": {
+            "correct": 1,
+            "format": 8,
+            "wrong": 1
+          },
+          "snowball_tool_users": 2
+        }
+      ],
+      "example_p_holm": 1.5547521539026531e-12,
+      "task_p_holm": 0.0005340576171875,
+      "large_example_gap": true,
+      "large_task_gap": true
+    }
+  ],
+  "predictions_sha256": "fc7eb7699c4d2a7362b69d0b5690db53dfdf37b361df8ac7d956ac03e3bc4cdb"
+}

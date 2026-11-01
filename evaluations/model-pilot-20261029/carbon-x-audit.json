@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "attempts": 116,
+  "unchanged_prompts_and_answers": true,
+  "independently_rescored": true,
+  "stream_termination_and_usage_verified": true,
+  "completion_token_budget_verified": true,
+  "python_tool_round_trip_verified": true,
+  "eczech_batch_ownership_verified": true,
+  "unresolved_timeouts": 0,
+  "malformed_model_calls_rejected_on_replay": 3,
+  "all_116_served_prompt_token_counts_verified": true,
+  "gpu_jobs_terminal": true,
+  "local_report_checked": true,
+  "original_strict_scores_verified": true,
+  "raw_traces": {
+    "repo": "eczech/cds-bench-pr-2-traces",
+    "revision": "89f15d025ac90e0ac1290ffe08c4b04cfbf90a84",
+    "url": "https://huggingface.co/datasets/eczech/cds-bench-pr-2-traces/tree/main/supplements/carbon-x-pilot-20261101-01",
+    "files": 986,
+    "archive_bytes": 591911,
+    "sha256": "bf85d0499b2a82a2acbc41d379a2451665edb9388dff95d44ab45045ad53a8d7",
+    "verified": true
+  },
+  "source_sha256": {
+    "config.json": "afc8af30d80fc405b634ae7892dcb77cf4b6382e2ecd38ed7e08fc975e283930",
+    "results.json": "a393254503b8dd5d334eb552358ba61d83695cc8cb801ca11767e345ecc8e384",
+    "selected.json": "f11af6d87231f58df0686dcbf2e70d2bf0ca86c17efbef5c22b1ff00fa10cea6"
+  }
+}

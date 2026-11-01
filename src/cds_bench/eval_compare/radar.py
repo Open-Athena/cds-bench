@@ -129,14 +129,21 @@ def _plot_view(output, data):
     filename = stem(condition)
     groups = data["groups"]
     tasks = [t for group in groups for t in group["tasks"]]
+    # Keep codes and relative task order across views. Tasks with no results
+    # in this condition (the five easy-only tasks in hard views) have no axis.
+    plotted = [task for task in tasks
+               if any(score['accuracy'] is not None for score in task['models'].values())]
+    plotted_ids = {task['task_id'] for task in plotted}
     gap = 1.2
-    unit = 2 * math.pi / (len(tasks) + gap * len(groups))
-    cursor, angles = 0, []
+    unit = 2 * math.pi / (len(plotted) + gap * len(groups))
+    cursor = 0
     for group in groups:
         group["angle_start"] = cursor * unit
         for task in group["tasks"]:
+            if task['task_id'] not in plotted_ids:
+                task['angle'] = None
+                continue
             task["angle"] = (cursor + 0.5) * unit
-            angles.append(task["angle"])
             cursor += 1
         group["angle_end"] = cursor * unit
         cursor += gap
@@ -173,6 +180,8 @@ def _plot_view(output, data):
                 for angle in [start, end]:
                     ax.plot([angle, angle], [0, 1.06], color="#cbd3da", linewidth=0.6, zorder=0)
                 for task in group["tasks"]:
+                    if task['task_id'] not in plotted_ids:
+                        continue
                     angle = task["angle"]
                     ax.plot([angle, angle], [0, 1], color="#dce2e7", linewidth=0.3, zorder=0)
                     value = task["models"][model]["accuracy"]
@@ -187,10 +196,24 @@ def _plot_view(output, data):
                                     rotation=rotation, rotation_mode="anchor", ha="center", va="center")
                     label.set_gid(f'radar-label-{model}-{task["task_id"]}')
                     label.set_url(f'#task-{task["task_id"]}')
-            values = [t["models"][model]["accuracy"] for t in tasks]
+
+                members = [task for task in group['tasks'] if task['task_id'] in plotted_ids]
+                theta = np.array([task['angle'] for task in members])
+                scores = np.array([task['models'][model]['accuracy'] for task in members], dtype=float)
+                if members:
+                    # Fill down to the center within one group only. A single
+                    # ax.fill polygon with NaNs can close across missing values
+                    # and shade unrelated sectors.
+                    area = ax.fill_between(theta, 0, scores, where=np.isfinite(scores),
+                                           color=group['color'], alpha=0.08, linewidth=0, zorder=2)
+                    area.set_gid(f'radar-area-{model}-{group["family"]}')
+            values = [t["models"][model]["accuracy"] for t in plotted]
             contour = [v if v is not None else np.nan for v in values]
-            ax.plot(angles + [angles[0] + 2 * math.pi], contour + contour[:1], color="#344554", linewidth=1.1, zorder=4)
-            ax.fill(angles + [angles[0] + 2 * math.pi], contour + contour[:1], color="#344554", alpha=0.055, zorder=2)
+            if plotted:
+                theta = [task['angle'] for task in plotted]
+                line, = ax.plot(theta + [theta[0] + 2 * math.pi], contour + contour[:1],
+                                color="#344554", linewidth=1.1, zorder=4)
+                line.set_gid(f'radar-contour-{model}')
             center = (ax.get_position().x0 + ax.get_position().x1) / 2
             title_y = 0.967 if rows==1 else ax.get_position().y1+0.045
             subtitle_y = 0.925 if rows==1 else ax.get_position().y1+0.017
@@ -207,10 +230,12 @@ def _plot_view(output, data):
         handles = [handles[i] for column in range(5) for i in range(column, len(handles), 5)]
         fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.045), ncol=5,
                    frameon=False, fontsize=9.5, handlelength=0.9, columnspacing=1.8)
-        count = next(iter(data["model_summaries"].values()))["task_count"]
-        partial = any(t['models'][m]['attempted']<max(r['attempted'] for r in t['models'].values()) for t in tasks for m in models)
-        footer = (f'{data["condition_label"]} · completed attempts only · fixed pooled task order · 0–100% scale'
-                  + (" · gray labels and gaps indicate N/A" if count<84 or partial else ""))
+        omitted = len(tasks) - len(plotted)
+        missing = any(task['models'][model]['accuracy'] is None for task in plotted for model in models)
+        omitted_label = 'easy-only task types omitted' if condition.startswith('hard') else 'task types without results omitted'
+        footer = (f'{data["condition_label"]} · {len(plotted)} task types · fixed task order · 0–100% scale'
+                  + (f' · {omitted} {omitted_label}' if omitted else '')
+                  + (' · gray labels indicate unavailable results' if missing else ''))
         fig.text(0.5, 0.016, footer,
                  ha="center", fontsize=9, color="#64727e")
         fig.savefig(output / f"{filename}.png", dpi=200, facecolor="white")
@@ -224,7 +249,7 @@ def _plot_view(output, data):
     root = tree.getroot()
     root.set("role", "group")
     root.set("data-radar-condition", condition)
-    root.set("aria-label", f'{data["condition_label"]}: 84 task axes, completed attempts only, with one radar panel per model and linked task codes')
+    root.set("aria-label", f'{data["condition_label"]}: {len(plotted)} task axes, with one radar panel per model and linked task codes')
     lookup = {t["task_id"]: t for t in tasks}
     for element in root.iter(f"{{{SVG}}}g"):
         identity = element.get("id", "")
@@ -294,7 +319,7 @@ def _view_section(output, data):
     if condition == "all":
         description = '84 task types. A completed model pools 40 attempts per task, or 20 for the five tasks without a hard variant.'
     elif condition.startswith("hard"):
-        description = '79 retained task types, with ten attempts per task for a completed model. The five tasks without a hard variant are N/A, not zero: their labels are gray and their points are omitted.'
+        description = '79 task types, with ten attempts per task for a completed model. The five easy-only task types are omitted from the plots.'
     else:
         description = '84 task types, with ten attempts per task for a completed model.'
     if partial:
@@ -302,7 +327,7 @@ def _view_section(output, data):
     hidden = '' if condition == 'all' else ' hidden'
     parts = [f'<section data-radar-view="{condition}" aria-label="{esc(data["condition_label"])}"{hidden}>',
              f'<p class="radar-view-description"><strong>{esc(data["condition_label"])}</strong>. {description} All failures count.</p>',
-             '<figure class="task-radar-figure"><div class="scroll">' + svg + '</div><figcaption>Colors mark task groups. Hover a code for the full name, ID and score; click it to open the existing task details. On a narrow screen, scroll horizontally to see all panels.</figcaption></figure>',
+             '<figure class="task-radar-figure"><div class="scroll">' + svg + '</div><figcaption>Colors mark task groups; each group is shaded separately. Hover a code for the full name, ID and score; click it to open the existing task details. On a narrow screen, scroll horizontally to see all panels.</figcaption></figure>',
              f'<p><a href="{filename}.svg">SVG</a> · <a href="{filename}.png">PNG</a> · <a href="{filename}.json">Task order and scores</a></p>',
              f'<details id="radar-task-key-{condition}"><summary>Task key: all 84 codes, full names and IDs</summary>',
              '<div class="scroll"><table class="radar-key"><thead><tr><th>Code</th><th>Task</th><th>Mean accuracy</th></tr></thead>']

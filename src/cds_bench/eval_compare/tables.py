@@ -21,7 +21,7 @@ HEADERS = [
     "Model / condition", "Correct / finished", "Accuracy", "Median / example",
     "Recorded cost", "Token budget", "Timeouts", "Token caps", "Format", "API/protocol",
 ]
-PR_HEADERS = ["Model", "Condition", "Correct", "Accuracy", "Median", "Cost", "Truncated"]
+PR_HEADERS = ["Model", "Condition", "Correct", "Accuracy", "Median", "Cost", "Timeout", "Truncated"]
 
 
 def cells(label, metric, budget):
@@ -46,9 +46,11 @@ def markdown_table(headers, rows):
     return "\n".join(lines)
 
 
-def markdown_results(rows):
-    return markdown_table(PR_HEADERS, [
-        [model, condition, *cells("", metric, budget)[1:5], metric["token_cap"]]
+def markdown_results(rows, *, include_timeout=True):
+    headers = PR_HEADERS if include_timeout else [h for h in PR_HEADERS if h != "Timeout"]
+    return markdown_table(headers, [
+        [model, condition, *cells("", metric, budget)[1:5],
+         *([metric["timeout"]] if include_timeout else []), metric["token_cap"]]
         for (model, condition), metric, budget in rows
     ])
 

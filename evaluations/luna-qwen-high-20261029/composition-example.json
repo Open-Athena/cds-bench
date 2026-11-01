@@ -1,0 +1,89 @@
+{
+  "instance_id": "pipeline.variant_peptides/03",
+  "task_id": "pipeline.variant_peptides",
+  "title": "From DNA edits to changed peptide readouts",
+  "inputs": {
+    "cds": "ATGGTGGGCCGGGTCTCCCAGACCGCTCTGGTAGGGGATGTGCTCATCCGTATCCTGCTGGCGGATTAG",
+    "edits": [
+      {
+        "replace": [
+          10,
+          12,
+          "GCA"
+        ]
+      }
+    ]
+  },
+  "edited_cds": "ATGGTGGGCGCAGTCTCCCAGACCGCTCTGGTAGGGGATGTGCTCATCCGTATCCTGCTGGCGGATTAG",
+  "proteins": [
+    "MVGRVSQTALVGDVLIRILLAD",
+    "MVGAVSQTALVGDVLIRILLAD"
+  ],
+  "digests": [
+    [
+      "MVGR",
+      "VSQTALVGDVLIR",
+      "ILLAD"
+    ],
+    [
+      "MVGAVSQTALVGDVLIR",
+      "ILLAD"
+    ]
+  ],
+  "answer": {
+    "lost": [
+      "MVGR",
+      "VSQTALVGDVLIR"
+    ],
+    "gained": [
+      "MVGAVSQTALVGDVLIR"
+    ]
+  },
+  "family_metrics": {
+    "condition": "easy-tools",
+    "family": "composition",
+    "name": "Composition tasks",
+    "task_count": 19,
+    "examples_per_model": 190,
+    "nemotron_correct": 95,
+    "snowball_correct": 27,
+    "difference_pp": 35.78947368421053,
+    "nemotron_only": 79,
+    "snowball_only": 11,
+    "nemotron_outcomes": {
+      "correct": 95,
+      "error": 4,
+      "format": 75,
+      "wrong": 16
+    },
+    "nemotron_tool_users": 181,
+    "snowball_outcomes": {
+      "correct": 27,
+      "error": 1,
+      "format": 110,
+      "token_cap": 36,
+      "wrong": 16
+    },
+    "snowball_tool_users": 12,
+    "nemotron_task_wins": 18,
+    "snowball_task_wins": 1,
+    "task_ties": 0,
+    "example_p": 7.773760769513266e-14,
+    "task_p": 2.6702880859375e-05,
+    "example_p_holm": 1.5547521539026531e-12,
+    "task_p_holm": 0.0005340576171875,
+    "large_example_gap": true,
+    "large_task_gap": true
+  },
+  "task_metrics": {
+    "deepinfra": {
+      "correct": 6,
+      "attempted": 10
+    },
+    "snowball-v01": {
+      "correct": 1,
+      "attempted": 10
+    }
+  },
+  "prompt_sha256": "8a80cb82179fda58b4202607997147e3066201a8847aa4829db0c292334ccec5"
+}
