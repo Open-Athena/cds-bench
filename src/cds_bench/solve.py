@@ -33,7 +33,7 @@ def RNA(sequence):
 
 
 def rc(sequence):
-    return clean(sequence).translate(str.maketrans("ACGTU", "TGCAA"))[::-1]
+    return clean(sequence).translate(str.maketrans("ACGTRYSWKMBDHVNU", "TGCAYRSWMKVHDBNA"))[::-1]
 
 
 def rcr(sequence):
@@ -71,6 +71,16 @@ def hits(s, p):
     return [i + 1 for i in range(len(s) - len(p) + 1) if s[i : i + len(p)] == p]
 
 
+def dna_pattern_hits(sequence, pattern):
+    """One-based starts of overlapping matches to an IUPAC DNA pattern."""
+    allowed = [set(IUPACData.ambiguous_dna_values[symbol]) for symbol in pattern]
+    return [
+        i + 1
+        for i in range(len(sequence) - len(pattern) + 1)
+        if all(base in permitted for base, permitted in zip(sequence[i:], allowed))
+    ]
+
+
 def dist(a, b):
     assert len(a) == len(b)
     return sum((x != y for x, y in zip(a, b)))
@@ -97,7 +107,7 @@ def has_forbidden_motif(sequence, inputs):
     patterns = set(inputs["forbidden_patterns"])
     if inputs["strand_mode"] == "both":
         patterns |= {rc(p) for p in patterns}
-    return any(pattern in sequence for pattern in patterns)
+    return any(dna_pattern_hits(sequence, pattern) for pattern in patterns)
 
 
 def edit(s, edits):
@@ -370,9 +380,9 @@ def solve(k, x):
         return rounded(math.prod(vals) ** (1 / len(vals)), 6)
     if k == "dna.motif_positions":
         pattern = x["pattern"]
-        matches = [(i, "+") for i in hits(c, pattern)]
+        matches = [(i, "+") for i in dna_pattern_hits(c, pattern)]
         if x["strand_mode"] == "both" and rc(pattern) != pattern:
-            matches += [(i, "-") for i in hits(c, rc(pattern))]
+            matches += [(i, "-") for i in dna_pattern_hits(c, rc(pattern))]
         return [
             {"start": i, "end": i + len(pattern) - 1, "strand": strand}
             for i, strand in sorted(matches)

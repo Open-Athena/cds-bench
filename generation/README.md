@@ -99,3 +99,13 @@ python generation/revisions/apply_mass_constants.py --output ./build/mass-revisi
 [Revision manifest](revisions/2026-11-02-mass-constants.json) records the exact
 constants, source and output checksums, affected task types, and answer correction.
 The same manifest and script are included in the HF dataset's `prompt-revisions/`.
+
+## Solver regression checks
+
+```sh
+uv run python -m unittest discover -s tests
+```
+
+The IUPAC checks cover all 3,375 three-symbol patterns, ambiguous reverse
+complements, overlapping and strand-specific hits, palindrome handling, and
+ambiguous forbidden-motif counterexamples for the three affected design tasks.
