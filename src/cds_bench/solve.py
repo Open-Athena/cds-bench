@@ -17,6 +17,7 @@ from itertools import combinations, product
 from Bio.Data import CodonTable, IUPACData
 
 from .catalog import SPEC
+from .mass import RESIDUE_MASSES as masses, WATER_MASS
 
 code = CodonTable.unambiguous_dna_by_id[11]
 bases = "ACGT"
@@ -260,7 +261,7 @@ def rounded(n, places):
 
 
 def mass(p):
-    return rounded(sum((masses[a] for a in p)) + Decimal("18.010565"), 4)
+    return rounded(sum((masses[a] for a in p)) + WATER_MASS, 4)
 
 
 def charge(p, ph, pka):
@@ -774,7 +775,5 @@ def expected(text):
         return text
 
 
-_mass_block = re.search(r'id="ref-mass".*?<pre>(.*?)</pre>', SPEC, re.S).group(1)
-masses = {k: Decimal(v) for k, v in re.findall(r"([A-Z])=(\d+\.\d+)", _mass_block)}
 _hydro_block = re.search(r'id="ref-hydro".*?<pre>(.*?)</pre>', SPEC, re.S).group(1)
 hydro = {k: Decimal(v) for k, v in re.findall(r"([A-Z])=(-?\d+(?:\.\d+)?)", _hydro_block)}

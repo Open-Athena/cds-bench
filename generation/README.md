@@ -74,3 +74,28 @@ To publish after reviewing the generated release:
 ```sh
 uv run python -m cds_bench.publish
 ```
+
+## Mass-constant revision (2 November 2026)
+
+The mass convention uses fixed isotope central values to derive incorporated
+residue masses and water without rounding. Both prompt variants contain the five
+isotope constants; easy prompts additionally contain the derived residue table.
+Source attribution, retrieval date, and derivation notes belong to the
+[reference bank](https://openathena.ai/cds-bench#ref-mass), outside model prompts.
+The solver derives the same values in `src/cds_bench/mass.py`.
+
+The original release manifest remains a historical snapshot. The published HF
+revision changes 60 prompts across the three mass-bearing task types and changes
+the answer to `protein.monoisotopic_mass/10` in both variants from 1375.7130 to
+1375.7129. It preserves all inputs, IDs, other answers, and the current 840 easy /
+790 hard split sizes. The prior answer-instruction revision is retained.
+
+To reproduce this revision from its pinned public source data, using pyarrow 26.0.0:
+
+```sh
+python generation/revisions/apply_mass_constants.py --output ./build/mass-revision
+```
+
+[Revision manifest](revisions/2026-11-02-mass-constants.json) records the exact
+constants, source and output checksums, affected task types, and answer correction.
+The same manifest and script are included in the HF dataset's `prompt-revisions/`.
