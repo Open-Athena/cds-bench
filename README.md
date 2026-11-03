@@ -1,5 +1,7 @@
 # CDS-bench
 
+[![Hugging Face dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-ffd21e)](https://huggingface.co/datasets/open-athena/cds-bench)
+
 CDS-bench evaluates procedural reasoning and constrained design on coding DNA
 sequences, including translation, edits, RNA and protein operations, and sequence
 design. It has 65 individual task types and 19 composition task types that combine
