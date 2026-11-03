@@ -18,10 +18,9 @@ definitions, examples and scoring, the
 
 The [strict scorer](src/cds_bench/scoring.py) and
 [Python executor](src/cds_bench/python_executor.py) were introduced for the
-30-task pilot described in
-[Baseline evaluation and model pilot results](https://github.com/Open-Athena/cds-bench/pull/2)
-(PR #2), then reused for the full evaluations. Both are independent of the
-inference API. Install with `uv sync --locked`.
+model evaluations described in
+[Baseline evaluation results](https://github.com/Open-Athena/cds-bench/pull/2)
+(PR #2). Both are independent of the inference API. Install with `uv sync --locked`.
 
 The scorer is platform independent. It accepts a dataset row and a complete
 assistant response, including the standalone `Final answer:` marker. It applies
