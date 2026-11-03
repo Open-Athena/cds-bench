@@ -17,13 +17,15 @@ definitions, examples and scoring, the
 ## Evaluation utilities
 
 The [strict scorer](src/cds_bench/scoring.py) and
-[macOS Python executor](src/cds_bench/python_executor.py) are extracted from the
-[model evaluations in PR #2](https://github.com/Open-Athena/cds-bench/pull/2).
-They work independently of the inference API. Install with `uv sync --locked`.
+[Python executor](src/cds_bench/python_executor.py) were introduced for the
+30-task pilot described in
+[Baseline evaluation and model pilot results](https://github.com/Open-Athena/cds-bench/pull/2)
+(PR #2), then reused for the full evaluations. Both are independent of the
+inference API. Install with `uv sync --locked`.
 
-The scorer accepts a dataset row and a complete assistant response, including
-the standalone `Final answer:` marker. It applies the specification's formatting
-normalizations; token-limit completions fail.
+The scorer is platform independent. It accepts a dataset row and a complete
+assistant response, including the standalone `Final answer:` marker. It applies
+the specification's formatting normalizations; token-limit completions fail.
 
 ```python
 from cds_bench.scoring import score_result
@@ -32,9 +34,11 @@ case = {"answer": "AUGGCU", "output_format": "scalar"}  # Or a complete dataset 
 assert score_result(case, "Final answer:\nAUG GCU", finish="stop")["passed"]
 ```
 
-The executor requires `/usr/bin/sandbox-exec`, denies networking and process
-forks, and restricts file access. Each call uses a fresh interpreter; use a
-separate working directory per example. Reproduce PR #2's tool environment with:
+The executor reproduces PR #2's local macOS tool environment. It requires
+`/usr/bin/sandbox-exec`, a macOS-specific utility, and does not run on Linux or
+Windows. The sandbox denies networking and process forks, and restricts file
+access. Each call uses a fresh interpreter; use a separate working directory per
+example. Recreate that environment with:
 
 ```sh
 uv venv --python 3.12.9 build/python-runtime
