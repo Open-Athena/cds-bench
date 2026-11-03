@@ -1,14 +1,15 @@
 # CDS-bench
 
 CDS-bench evaluates procedural reasoning and constrained design on coding DNA
-sequences: 65 individual task types and 19 composition task types (84 total),
-covering translation, edits, RNA and protein operations, and sequence design.
+sequences, including translation, edits, RNA and protein operations, and sequence
+design. It has 65 individual task types and 19 composition task types that combine
+these procedures, for 84 task types in total.
 
 The [benchmark specification](https://openathena.ai/cds-bench/) contains task
 definitions, examples, and scoring rules. The
 [open-athena/cds-bench](https://huggingface.co/datasets/open-athena/cds-bench)
-dataset has `easy` and `hard` splits: easy prompts supply biological reference
-material; hard prompts assume that knowledge for the same question and answer.
+dataset has `easy` and `hard` splits. Easy prompts supply biological reference
+material, while hard prompts assume that knowledge for the same question and answer.
 Five task types are easy-only.
 
 ## Scoring
