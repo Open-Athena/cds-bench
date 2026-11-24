@@ -1,0 +1,422 @@
+{
+  "ambiguity.codon_set": [
+    "ambiguity.codon_set/06",
+    "ambiguity.codon_set/01",
+    "ambiguity.codon_set/09"
+  ],
+  "ambiguity.stop_certainty": [
+    "ambiguity.stop_certainty/02",
+    "ambiguity.stop_certainty/05",
+    "ambiguity.stop_certainty/09"
+  ],
+  "assay.min_probe_panel": [
+    "assay.min_probe_panel/08",
+    "assay.min_probe_panel/06",
+    "assay.min_probe_panel/05"
+  ],
+  "assay.primer_pair": [
+    "assay.primer_pair/03",
+    "assay.primer_pair/04",
+    "assay.primer_pair/05"
+  ],
+  "assay.select_rna_probe": [
+    "assay.select_rna_probe/04",
+    "assay.select_rna_probe/02",
+    "assay.select_rna_probe/01"
+  ],
+  "cds.protein_equivalence": [
+    "cds.protein_equivalence/02",
+    "cds.protein_equivalence/10",
+    "cds.protein_equivalence/08"
+  ],
+  "cds.translate": [
+    "cds.translate/02",
+    "cds.translate/10",
+    "cds.translate/09"
+  ],
+  "cds.validate": [
+    "cds.validate/02",
+    "cds.validate/05",
+    "cds.validate/07"
+  ],
+  "construct.edit_aware_encoding": [
+    "construct.edit_aware_encoding/01",
+    "construct.edit_aware_encoding/09",
+    "construct.edit_aware_encoding/05"
+  ],
+  "construct.inframe_deletion": [
+    "construct.inframe_deletion/06",
+    "construct.inframe_deletion/03",
+    "construct.inframe_deletion/02"
+  ],
+  "construct.join_modules": [
+    "construct.join_modules/04",
+    "construct.join_modules/10",
+    "construct.join_modules/05"
+  ],
+  "construct.minimal_aa_edit": [
+    "construct.minimal_aa_edit/03",
+    "construct.minimal_aa_edit/05",
+    "construct.minimal_aa_edit/01"
+  ],
+  "construct.remove_peptide_motif": [
+    "construct.remove_peptide_motif/06",
+    "construct.remove_peptide_motif/09",
+    "construct.remove_peptide_motif/07"
+  ],
+  "construct.tag_fusion": [
+    "construct.tag_fusion/02",
+    "construct.tag_fusion/09",
+    "construct.tag_fusion/07"
+  ],
+  "construct.tev_products": [
+    "construct.tev_products/02",
+    "construct.tev_products/01",
+    "construct.tev_products/10"
+  ],
+  "coords.aa_to_nt": [
+    "coords.aa_to_nt/10",
+    "coords.aa_to_nt/08",
+    "coords.aa_to_nt/05"
+  ],
+  "coords.nt_to_codon": [
+    "coords.nt_to_codon/05",
+    "coords.nt_to_codon/07",
+    "coords.nt_to_codon/06"
+  ],
+  "design.break_repeats": [
+    "design.break_repeats/07",
+    "design.break_repeats/10",
+    "design.break_repeats/09"
+  ],
+  "design.codon_allowlist": [
+    "design.codon_allowlist/05",
+    "design.codon_allowlist/01",
+    "design.codon_allowlist/10"
+  ],
+  "design.codon_preference": [
+    "design.codon_preference/05",
+    "design.codon_preference/07",
+    "design.codon_preference/10"
+  ],
+  "design.codon_profile": [
+    "design.codon_profile/03",
+    "design.codon_profile/10",
+    "design.codon_profile/09"
+  ],
+  "design.dinucleotide_counts": [
+    "design.dinucleotide_counts/04",
+    "design.dinucleotide_counts/02",
+    "design.dinucleotide_counts/09"
+  ],
+  "design.expose_rna_window": [
+    "design.expose_rna_window/05",
+    "design.expose_rna_window/10",
+    "design.expose_rna_window/06"
+  ],
+  "design.gc_windows": [
+    "design.gc_windows/02",
+    "design.gc_windows/07",
+    "design.gc_windows/01"
+  ],
+  "design.guide_escape": [
+    "design.guide_escape/06",
+    "design.guide_escape/03",
+    "design.guide_escape/02"
+  ],
+  "design.insert_dna_motif": [
+    "design.insert_dna_motif/08",
+    "design.insert_dna_motif/03",
+    "design.insert_dna_motif/07"
+  ],
+  "design.pairing_repair": [
+    "design.pairing_repair/04",
+    "design.pairing_repair/06",
+    "design.pairing_repair/08"
+  ],
+  "design.remove_dna_motifs": [
+    "design.remove_dna_motifs/06",
+    "design.remove_dna_motifs/03",
+    "design.remove_dna_motifs/10"
+  ],
+  "design.rna_motif_control": [
+    "design.rna_motif_control/03",
+    "design.rna_motif_control/07",
+    "design.rna_motif_control/09"
+  ],
+  "design.structure_score": [
+    "design.structure_score/10",
+    "design.structure_score/09",
+    "design.structure_score/04"
+  ],
+  "design.synonymous_distance": [
+    "design.synonymous_distance/09",
+    "design.synonymous_distance/04",
+    "design.synonymous_distance/07"
+  ],
+  "design.variant_panel": [
+    "design.variant_panel/09",
+    "design.variant_panel/06",
+    "design.variant_panel/03"
+  ],
+  "dna.motif_positions": [
+    "dna.motif_positions/08",
+    "dna.motif_positions/05",
+    "dna.motif_positions/02"
+  ],
+  "dna.reverse_complement": [
+    "dna.reverse_complement/02",
+    "dna.reverse_complement/04",
+    "dna.reverse_complement/05"
+  ],
+  "dna.transcribe": [
+    "dna.transcribe/05",
+    "dna.transcribe/07",
+    "dna.transcribe/06"
+  ],
+  "joint.clone_ready_cds": [
+    "joint.clone_ready_cds/01",
+    "joint.clone_ready_cds/08",
+    "joint.clone_ready_cds/10"
+  ],
+  "joint.protein_edit_and_cloning": [
+    "joint.protein_edit_and_cloning/07",
+    "joint.protein_edit_and_cloning/02",
+    "joint.protein_edit_and_cloning/10"
+  ],
+  "joint.structure_and_codons": [
+    "joint.structure_and_codons/08",
+    "joint.structure_and_codons/01",
+    "joint.structure_and_codons/07"
+  ],
+  "library.codon_products": [
+    "library.codon_products/01",
+    "library.codon_products/09",
+    "library.codon_products/04"
+  ],
+  "library.design_codon": [
+    "library.design_codon/02",
+    "library.design_codon/09",
+    "library.design_codon/01"
+  ],
+  "overlap.compare_products": [
+    "overlap.compare_products/06",
+    "overlap.compare_products/09",
+    "overlap.compare_products/08"
+  ],
+  "overlap.constrained_edit": [
+    "overlap.constrained_edit/05",
+    "overlap.constrained_edit/04",
+    "overlap.constrained_edit/08"
+  ],
+  "pipeline.controlled_panel": [
+    "pipeline.controlled_panel/02",
+    "pipeline.controlled_panel/07",
+    "pipeline.controlled_panel/04"
+  ],
+  "pipeline.diagnostic_digest": [
+    "pipeline.diagnostic_digest/02",
+    "pipeline.diagnostic_digest/10",
+    "pipeline.diagnostic_digest/01"
+  ],
+  "pipeline.edit_dependent_product": [
+    "pipeline.edit_dependent_product/09",
+    "pipeline.edit_dependent_product/02",
+    "pipeline.edit_dependent_product/08"
+  ],
+  "pipeline.fusion_junction": [
+    "pipeline.fusion_junction/08",
+    "pipeline.fusion_junction/03",
+    "pipeline.fusion_junction/10"
+  ],
+  "pipeline.library_and_verify": [
+    "pipeline.library_and_verify/09",
+    "pipeline.library_and_verify/06",
+    "pipeline.library_and_verify/05"
+  ],
+  "pipeline.motif_to_dna": [
+    "pipeline.motif_to_dna/10",
+    "pipeline.motif_to_dna/05",
+    "pipeline.motif_to_dna/02"
+  ],
+  "pipeline.overlap_edit_verify": [
+    "pipeline.overlap_edit_verify/04",
+    "pipeline.overlap_edit_verify/05",
+    "pipeline.overlap_edit_verify/09"
+  ],
+  "pipeline.protein_properties": [
+    "pipeline.protein_properties/10",
+    "pipeline.protein_properties/07",
+    "pipeline.protein_properties/08"
+  ],
+  "pipeline.repair_and_verify": [
+    "pipeline.repair_and_verify/02",
+    "pipeline.repair_and_verify/07",
+    "pipeline.repair_and_verify/06"
+  ],
+  "pipeline.rna_edit_digest": [
+    "pipeline.rna_edit_digest/03",
+    "pipeline.rna_edit_digest/08",
+    "pipeline.rna_edit_digest/06"
+  ],
+  "pipeline.rna_edit_translation": [
+    "pipeline.rna_edit_translation/06",
+    "pipeline.rna_edit_translation/10",
+    "pipeline.rna_edit_translation/04"
+  ],
+  "pipeline.rna_probe_panel": [
+    "pipeline.rna_probe_panel/06",
+    "pipeline.rna_probe_panel/03",
+    "pipeline.rna_probe_panel/05"
+  ],
+  "pipeline.structure_gated_digest": [
+    "pipeline.structure_gated_digest/01",
+    "pipeline.structure_gated_digest/07",
+    "pipeline.structure_gated_digest/02"
+  ],
+  "pipeline.tag_cleave_mass": [
+    "pipeline.tag_cleave_mass/09",
+    "pipeline.tag_cleave_mass/04",
+    "pipeline.tag_cleave_mass/06"
+  ],
+  "pipeline.target_and_escape": [
+    "pipeline.target_and_escape/05",
+    "pipeline.target_and_escape/10",
+    "pipeline.target_and_escape/06"
+  ],
+  "pipeline.variant_peptides": [
+    "pipeline.variant_peptides/06",
+    "pipeline.variant_peptides/02",
+    "pipeline.variant_peptides/10"
+  ],
+  "protein.charge_at_ph": [
+    "protein.charge_at_ph/10",
+    "protein.charge_at_ph/05",
+    "protein.charge_at_ph/07"
+  ],
+  "protein.diagnostic_peptide": [
+    "protein.diagnostic_peptide/04",
+    "protein.diagnostic_peptide/01",
+    "protein.diagnostic_peptide/06"
+  ],
+  "protein.isoelectric_point": [
+    "protein.isoelectric_point/04",
+    "protein.isoelectric_point/07",
+    "protein.isoelectric_point/08"
+  ],
+  "protein.mean_hydropathy": [
+    "protein.mean_hydropathy/03",
+    "protein.mean_hydropathy/02",
+    "protein.mean_hydropathy/01"
+  ],
+  "protein.monoisotopic_mass": [
+    "protein.monoisotopic_mass/03",
+    "protein.monoisotopic_mass/09",
+    "protein.monoisotopic_mass/05"
+  ],
+  "protein.motif_positions": [
+    "protein.motif_positions/02",
+    "protein.motif_positions/10",
+    "protein.motif_positions/05"
+  ],
+  "protein.nglyco_sequons": [
+    "protein.nglyco_sequons/07",
+    "protein.nglyco_sequons/01",
+    "protein.nglyco_sequons/09"
+  ],
+  "protein.residue_counts": [
+    "protein.residue_counts/01",
+    "protein.residue_counts/03",
+    "protein.residue_counts/10"
+  ],
+  "protein.trypsin_digest": [
+    "protein.trypsin_digest/01",
+    "protein.trypsin_digest/10",
+    "protein.trypsin_digest/07"
+  ],
+  "rna.apply_edits": [
+    "rna.apply_edits/02",
+    "rna.apply_edits/06",
+    "rna.apply_edits/05"
+  ],
+  "rna.dotbracket_to_pairs": [
+    "rna.dotbracket_to_pairs/01",
+    "rna.dotbracket_to_pairs/02",
+    "rna.dotbracket_to_pairs/10"
+  ],
+  "rna.guide_hits": [
+    "rna.guide_hits/05",
+    "rna.guide_hits/10",
+    "rna.guide_hits/04"
+  ],
+  "rna.max_pair_fold": [
+    "rna.max_pair_fold/05",
+    "rna.max_pair_fold/10",
+    "rna.max_pair_fold/09"
+  ],
+  "rna.motif_counts": [
+    "rna.motif_counts/10",
+    "rna.motif_counts/01",
+    "rna.motif_counts/07"
+  ],
+  "rna.pair_compatibility": [
+    "rna.pair_compatibility/07",
+    "rna.pair_compatibility/06",
+    "rna.pair_compatibility/01"
+  ],
+  "rna.structure_score": [
+    "rna.structure_score/05",
+    "rna.structure_score/03",
+    "rna.structure_score/02"
+  ],
+  "rna.t1_digest": [
+    "rna.t1_digest/04",
+    "rna.t1_digest/09",
+    "rna.t1_digest/10"
+  ],
+  "rna.translate": [
+    "rna.translate/05",
+    "rna.translate/10",
+    "rna.translate/03"
+  ],
+  "stats.cai": [
+    "stats.cai/01",
+    "stats.cai/03",
+    "stats.cai/09"
+  ],
+  "stats.codon_counts": [
+    "stats.codon_counts/09",
+    "stats.codon_counts/10",
+    "stats.codon_counts/05"
+  ],
+  "stats.gc3_fraction": [
+    "stats.gc3_fraction/03",
+    "stats.gc3_fraction/04",
+    "stats.gc3_fraction/10"
+  ],
+  "stats.gc_fraction": [
+    "stats.gc_fraction/03",
+    "stats.gc_fraction/09",
+    "stats.gc_fraction/06"
+  ],
+  "stats.gc_windows": [
+    "stats.gc_windows/10",
+    "stats.gc_windows/04",
+    "stats.gc_windows/01"
+  ],
+  "variant.apply": [
+    "variant.apply/10",
+    "variant.apply/03",
+    "variant.apply/09"
+  ],
+  "variant.frame_status": [
+    "variant.frame_status/09",
+    "variant.frame_status/03",
+    "variant.frame_status/04"
+  ],
+  "variant.protein_effect": [
+    "variant.protein_effect/02",
+    "variant.protein_effect/04",
+    "variant.protein_effect/10"
+  ]
+}

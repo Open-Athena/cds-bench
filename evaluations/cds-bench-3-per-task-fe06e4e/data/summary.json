@@ -1,0 +1,716 @@
+{
+  "subset_name": "CDS-bench 3/task @ fe06e4e",
+  "dataset": {
+    "dataset": "open-athena/cds-bench",
+    "revision": "fe06e4ecce4efa5236e461a55b466c835f5110dc",
+    "subset_name": "CDS-bench 3/task @ fe06e4e",
+    "sampling_seed": 20261124,
+    "selection_method": "Three instance IDs sampled without replacement per task using a task-specific SHA256-derived random seed. Matching IDs across variants and models. Selection order determines balanced rounds.",
+    "easy_task_types": 84,
+    "hard_task_types": 79,
+    "easy_prompts": 252,
+    "hard_prompts": 237,
+    "evaluations_per_model": 978,
+    "models": 7,
+    "total_evaluations": 6846,
+    "parquet_sha256": {
+      "easy": "434285267e5a6ae5c3a6873199ae3e9b206a4e7f4450d1dfdbd9da022429a5fb",
+      "hard": "aa163729637e1eef3f46017436a2c51b159712310445c8f507abe525fa34b75d"
+    }
+  },
+  "models": [
+    {
+      "key": "inkling-2-small",
+      "name": "Inkling 2 Small",
+      "provider": "Cloudflare",
+      "model": "thinkingmachines/inkling-2-small",
+      "endpoint": "cloudflare",
+      "correct": [
+        234,
+        217,
+        249,
+        229
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 929,
+      "total_n": 978,
+      "percentages": [
+        92.85714285714286,
+        91.56118143459915,
+        98.80952380952381,
+        96.62447257383967
+      ],
+      "overall_percentage": 94.98977505112474,
+      "python_difference_pp": 5.521472392638037,
+      "cost_by_condition_usd": [
+        2.6884725199999995,
+        2.453768539999998,
+        1.07330182,
+        1.125295740000001
+      ],
+      "cost_usd": 7.340838619999999,
+      "cost_status": "recorded",
+      "full_eval_estimate_usd": 24.46946206666666,
+      "median_seconds": 16.27043089608196,
+      "p90_seconds": 77.26198713737544,
+      "sum_example_seconds": 28560.457924130606,
+      "outcomes": {
+        "correct": 929,
+        "wrong": 16,
+        "token_cap": 26,
+        "format": 7
+      },
+      "examples_using_python": 487,
+      "python_available_cases": 489,
+      "python_calls": 1167,
+      "python_failures": 142,
+      "prior_attempts": 31,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "thinkingmachines/inkling-2-small",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "cloudflare"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "detail": ""
+    },
+    {
+      "key": "luna",
+      "name": "GPT-6 Luna (high)",
+      "provider": "OpenAI",
+      "model": "openai/gpt-6-luna",
+      "endpoint": "openai",
+      "correct": [
+        211,
+        212,
+        237,
+        221
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 881,
+      "total_n": 978,
+      "percentages": [
+        83.73015873015873,
+        89.45147679324894,
+        94.04761904761905,
+        93.24894514767932
+      ],
+      "overall_percentage": 90.08179959100204,
+      "python_difference_pp": 7.157464212678937,
+      "cost_by_condition_usd": [
+        0.2027773600000001,
+        0.2149461000000001,
+        0.1346147150000001,
+        0.12424807999999997
+      ],
+      "cost_usd": 0.6765862550000002,
+      "cost_status": "recorded",
+      "full_eval_estimate_usd": 2.2552875166666673,
+      "median_seconds": 7.481421041418798,
+      "p90_seconds": 20.886420658323914,
+      "sum_example_seconds": 11790.264666381525,
+      "outcomes": {
+        "correct": 881,
+        "wrong": 91,
+        "format": 2,
+        "token_cap": 4
+      },
+      "examples_using_python": 319,
+      "python_available_cases": 489,
+      "python_calls": 425,
+      "python_failures": 11,
+      "prior_attempts": 12,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "openai/gpt-6-luna",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "openai"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true,
+          "ignore": [
+            "openai/flex",
+            "openai/fast"
+          ]
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "detail": ""
+    },
+    {
+      "key": "nemotron-3-super",
+      "name": "Nemotron 3 Super 120B A12B",
+      "provider": "DeepInfra Priority / BF16",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "endpoint": "deepinfra/bf16/priority",
+      "correct": [
+        114,
+        111,
+        205,
+        165
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 595,
+      "total_n": 978,
+      "percentages": [
+        45.23809523809524,
+        46.835443037974684,
+        81.34920634920636,
+        69.62025316455696
+      ],
+      "overall_percentage": 60.83844580777096,
+      "python_difference_pp": 29.652351738241308,
+      "cost_by_condition_usd": [
+        1.889076804,
+        2.0858517969999997,
+        0.9947586519999995,
+        1.3817738159999988
+      ],
+      "cost_usd": 6.351461068999998,
+      "cost_status": "recorded",
+      "full_eval_estimate_usd": 21.171536896666662,
+      "median_seconds": 36.40737425012048,
+      "p90_seconds": 168.1381689741276,
+      "sum_example_seconds": 57707.61036137375,
+      "outcomes": {
+        "format": 125,
+        "correct": 595,
+        "wrong": 176,
+        "token_cap": 82
+      },
+      "examples_using_python": 484,
+      "python_available_cases": 489,
+      "python_calls": 1577,
+      "python_failures": 115,
+      "prior_attempts": 11,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "deepinfra/bf16/priority"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "detail": ""
+    },
+    {
+      "key": "glm-5.3-flash-wafer",
+      "name": "GLM 5.3 Flash",
+      "provider": "Morph FP8 → Wafer US NVFP4",
+      "model": "z-ai/glm-5.3-flash",
+      "endpoint": "wafer/us",
+      "correct": [
+        148,
+        147,
+        133,
+        130
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 558,
+      "total_n": 978,
+      "percentages": [
+        58.73015873015873,
+        62.0253164556962,
+        52.77777777777778,
+        54.85232067510549
+      ],
+      "overall_percentage": 57.05521472392638,
+      "python_difference_pp": -6.543967280163599,
+      "cost_by_condition_usd": [
+        0.268036287,
+        0.25298850000000006,
+        0.14979358199999995,
+        0.11920850299999998
+      ],
+      "cost_usd": 0.790026872,
+      "cost_status": "recorded",
+      "full_eval_estimate_usd": 2.6334229066666666,
+      "median_seconds": 11.610849978984334,
+      "p90_seconds": 83.24638589194512,
+      "sum_example_seconds": 28044.06536049838,
+      "outcomes": {
+        "correct": 558,
+        "wrong": 186,
+        "format": 233,
+        "token_cap": 1
+      },
+      "examples_using_python": 377,
+      "python_available_cases": 489,
+      "python_calls": 538,
+      "python_failures": 63,
+      "prior_attempts": 7,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "z-ai/glm-5.3-flash",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "wafer/us"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "detail": ""
+    },
+    {
+      "key": "qwen38-27b",
+      "name": "Qwen 3.8 27B (high)",
+      "provider": "Wafer / FP8",
+      "model": "qwen/qwen3.8-27b",
+      "endpoint": "wafer/fp8",
+      "correct": [
+        101,
+        90,
+        169,
+        141
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 501,
+      "total_n": 978,
+      "percentages": [
+        40.07936507936508,
+        37.9746835443038,
+        67.06349206349206,
+        59.49367088607595
+      ],
+      "overall_percentage": 51.22699386503067,
+      "python_difference_pp": 24.335378323108383,
+      "cost_by_condition_usd": [
+        3.1291972799999987,
+        3.3774334599999998,
+        2.474040056000005,
+        3.132699803999999
+      ],
+      "cost_usd": 12.113370600000003,
+      "cost_status": "recorded",
+      "full_eval_estimate_usd": 40.37790200000001,
+      "median_seconds": 14.137507228995673,
+      "p90_seconds": 60.506188241299256,
+      "sum_example_seconds": 25117.796021426562,
+      "outcomes": {
+        "correct": 501,
+        "format": 219,
+        "wrong": 246,
+        "token_cap": 12
+      },
+      "examples_using_python": 443,
+      "python_available_cases": 489,
+      "python_calls": 900,
+      "python_failures": 130,
+      "prior_attempts": 18,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "qwen/qwen3.8-27b",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "wafer/fp8"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "detail": ""
+    },
+    {
+      "key": "gemma4-31b-it",
+      "name": "Gemma 4 31B",
+      "provider": "Modal",
+      "model": "google/gemma-4-31b-it",
+      "endpoint": "modal",
+      "correct": [
+        112,
+        108,
+        139,
+        129
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 488,
+      "total_n": 978,
+      "percentages": [
+        44.44444444444444,
+        45.56962025316456,
+        55.15873015873016,
+        54.43037974683544
+      ],
+      "overall_percentage": 49.897750511247445,
+      "python_difference_pp": 9.815950920245399,
+      "cost_by_condition_usd": [
+        0.22571932000000008,
+        0.1904071200000001,
+        0.5480238000000002,
+        0.4978186199999998
+      ],
+      "cost_usd": 1.4619688600000003,
+      "cost_status": "recorded",
+      "full_eval_estimate_usd": 4.873229533333334,
+      "median_seconds": 22.252484083524905,
+      "p90_seconds": 47.82397395893931,
+      "sum_example_seconds": 26737.17236893787,
+      "outcomes": {
+        "correct": 488,
+        "wrong": 186,
+        "format": 290,
+        "token_cap": 14
+      },
+      "examples_using_python": 165,
+      "python_available_cases": 489,
+      "python_calls": 327,
+      "python_failures": 10,
+      "prior_attempts": 190,
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "google/gemma-4-31b-it",
+        "max_tokens": 32768,
+        "reasoning": {
+          "enabled": true,
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "modal"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "detail": ""
+    },
+    {
+      "key": "mochi",
+      "name": "Mochi SFT 400407",
+      "provider": "Marin internal API",
+      "model": "hero-sft-step400407",
+      "endpoint": null,
+      "correct": [
+        123,
+        116,
+        141,
+        106
+      ],
+      "n": [
+        252,
+        237,
+        252,
+        237
+      ],
+      "total_correct": 486,
+      "total_n": 978,
+      "percentages": [
+        48.80952380952381,
+        48.9451476793249,
+        55.95238095238095,
+        44.72573839662447
+      ],
+      "overall_percentage": 49.693251533742334,
+      "python_difference_pp": 1.6359918200408998,
+      "cost_by_condition_usd": null,
+      "cost_usd": null,
+      "cost_status": "unpriced",
+      "full_eval_estimate_usd": null,
+      "median_seconds": 110.55350427108351,
+      "p90_seconds": 682.3714062206215,
+      "sum_example_seconds": 222547.88711410016,
+      "outcomes": {
+        "correct": 486,
+        "format": 274,
+        "wrong": 60,
+        "error": 26,
+        "token_cap": 132
+      },
+      "examples_using_python": 467,
+      "python_available_cases": 489,
+      "python_calls": 1468,
+      "python_failures": 208,
+      "prior_attempts": 70,
+      "reasoning": {
+        "enabled": true
+      },
+      "token_cap": 32768,
+      "parameters_no_tools": {
+        "model": "hero-sft-step400407",
+        "max_tokens": 32768,
+        "temperature": 0.7,
+        "seed": 20261029,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": "Delphi thinking and XML calls; chat_template_kwargs.enable_thinking=true; tool schemas in chat_template_kwargs.xml_tools; stop at </tool_call>; skip_special_tokens=false",
+      "concurrency": 60,
+      "request_timeout_seconds": 1800,
+      "detail": ""
+    }
+  ],
+  "models_included": 7,
+  "total_evaluations": 6846,
+  "conditions": [
+    "easy-no-tools",
+    "hard-no-tools",
+    "easy-tools",
+    "hard-tools"
+  ],
+  "strict_scoring": true,
+  "full_cost_method": "Each condition has three examples per task; multiply observed evaluation charges by 10/3 for the ten-example full dataset.",
+  "cost_source": "OpenRouter generation billing, falling back to the explicit streamed usage.cost when a billing record is unavailable.",
+  "billing": {
+    "combined": {
+      "identified_requests": 11034,
+      "unknown_cost_requests": 0,
+      "known_cost_usd": 28.736158672,
+      "responses_without_generation_id": 228
+    },
+    "preflight_and_provider_checks": {
+      "identified_requests": 30,
+      "unknown_cost_requests": 0,
+      "known_cost_usd": 0.0019063959999999999,
+      "responses_without_generation_id": 8
+    },
+    "evaluation": {
+      "identified_requests": 11004,
+      "unknown_cost_requests": 0,
+      "known_cost_usd": 28.734252276,
+      "responses_without_generation_id": 220
+    },
+    "web_searches": 0,
+    "web_fetches": 0
+  },
+  "budget_accounting": {
+    "cap_usd": 50,
+    "request_admission_cap_usd": 45,
+    "recorded_charges_including_checks_usd": 28.736158672,
+    "conservative_reservations_without_generation_billing_usd": 1.2491466603,
+    "requests_covered_by_remaining_reservations": 34,
+    "recorded_charges_plus_remaining_reservations_usd": 29.985305332299998,
+    "note": "Conservative reservations remain for rejected, unidentified or interrupted connections without a generation billing record. Cost figures show recorded charges."
+  }
+}

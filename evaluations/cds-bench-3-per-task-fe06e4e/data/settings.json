@@ -1,0 +1,367 @@
+{
+  "dataset_revision": "fe06e4ecce4efa5236e461a55b466c835f5110dc",
+  "subset_name": "CDS-bench 3/task @ fe06e4e",
+  "selection_method": "Three instance IDs sampled without replacement per task using a task-specific SHA256-derived random seed. Matching IDs across variants and models. Selection order determines balanced rounds.",
+  "sampling_seed": 20261124,
+  "python_tool": [
+    {
+      "type": "function",
+      "function": {
+        "name": "python",
+        "description": "Execute Python 3.12.9 code with the standard library and NumPy 2.5.4. Biopython is not installed. Networking and subprocesses are disabled; only runtime files and this example's working directory are readable. Use print() to return results. Each call starts a fresh interpreter; files in the working directory persist within this example. Limits: 30 seconds per call, 16384 characters each of stdout/stderr, and at most 8 calls per example. Returns stdout, stderr, exit_code, timed_out, and output_truncated.",
+        "strict": true,
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Python code to execute."
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "execution": {
+    "networking": false,
+    "subprocesses": false,
+    "python": "3.12.9",
+    "numpy": "2.5.4",
+    "biopython": false,
+    "max_executions": 8,
+    "seconds_per_execution": 30,
+    "fresh_interpreter_per_call": true
+  },
+  "models": [
+    {
+      "name": "Inkling 2 Small",
+      "model": "thinkingmachines/inkling-2-small",
+      "provider": "Cloudflare",
+      "endpoint": "cloudflare",
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "parameters_no_tools": {
+        "model": "thinkingmachines/inkling-2-small",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "cloudflare"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null
+    },
+    {
+      "name": "GPT-6 Luna (high)",
+      "model": "openai/gpt-6-luna",
+      "provider": "OpenAI",
+      "endpoint": "openai",
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "parameters_no_tools": {
+        "model": "openai/gpt-6-luna",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "openai"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true,
+          "ignore": [
+            "openai/flex",
+            "openai/fast"
+          ]
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null
+    },
+    {
+      "name": "Nemotron 3 Super 120B A12B",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "provider": "DeepInfra Priority / BF16",
+      "endpoint": "deepinfra/bf16/priority",
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "parameters_no_tools": {
+        "model": "nvidia/nemotron-3-super-120b-a12b",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "deepinfra/bf16/priority"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null
+    },
+    {
+      "name": "GLM 5.3 Flash",
+      "model": "z-ai/glm-5.3-flash",
+      "provider": "Morph FP8 → Wafer US NVFP4",
+      "endpoint": "wafer/us",
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "parameters_no_tools": {
+        "model": "z-ai/glm-5.3-flash",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "wafer/us"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null
+    },
+    {
+      "name": "Qwen 3.8 27B (high)",
+      "model": "qwen/qwen3.8-27b",
+      "provider": "Wafer / FP8",
+      "endpoint": "wafer/fp8",
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "parameters_no_tools": {
+        "model": "qwen/qwen3.8-27b",
+        "max_tokens": 32768,
+        "seed": 20261029,
+        "reasoning": {
+          "effort": "high",
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "wafer/fp8"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null
+    },
+    {
+      "name": "Gemma 4 31B",
+      "model": "google/gemma-4-31b-it",
+      "provider": "Modal",
+      "endpoint": "modal",
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "token_cap": 32768,
+      "concurrency": 10,
+      "request_timeout_seconds": 900,
+      "parameters_no_tools": {
+        "model": "google/gemma-4-31b-it",
+        "max_tokens": 32768,
+        "reasoning": {
+          "enabled": true,
+          "exclude": false
+        },
+        "tool_choice": "none",
+        "tools": [],
+        "plugins": [
+          {
+            "id": "web",
+            "enabled": false
+          },
+          {
+            "id": "response-healing",
+            "enabled": false
+          },
+          {
+            "id": "file-parser",
+            "enabled": false
+          }
+        ],
+        "provider": {
+          "only": [
+            "modal"
+          ],
+          "allow_fallbacks": false,
+          "require_parameters": true
+        },
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": null
+    },
+    {
+      "name": "Mochi SFT 400407",
+      "model": "hero-sft-step400407",
+      "provider": "Marin internal API",
+      "endpoint": null,
+      "reasoning": {
+        "enabled": true
+      },
+      "token_cap": 32768,
+      "concurrency": 60,
+      "request_timeout_seconds": 1800,
+      "parameters_no_tools": {
+        "model": "hero-sft-step400407",
+        "max_tokens": 32768,
+        "temperature": 0.7,
+        "seed": 20261029,
+        "stream": true,
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "native_transport": "Delphi thinking and XML calls; chat_template_kwargs.enable_thinking=true; tool schemas in chat_template_kwargs.xml_tools; stop at </tool_call>; skip_special_tokens=false"
+    }
+  ]
+}
