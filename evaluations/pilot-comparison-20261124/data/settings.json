@@ -227,6 +227,35 @@
       "native_transport": null
     },
     {
+      "name": "Gemma 4 31B",
+      "model": "google/gemma-4-31b-it",
+      "provider": "Modal",
+      "provider_route": {
+        "only": [
+          "modal"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": null,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
       "name": "Nemotron 3 Super 120B A12B",
       "model": "nvidia/nemotron-3-super-120b-a12b",
       "provider": "DeepInfra Priority / BF16",

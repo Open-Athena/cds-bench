@@ -490,6 +490,82 @@
       "detail": ""
     },
     {
+      "key": "gemma4-31b-it",
+      "name": "Gemma 4 31B",
+      "provider": "Modal",
+      "cohort": "Nov24",
+      "correct": [
+        18,
+        13,
+        18,
+        17
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 66,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.027371799999999998,
+        0.02674224,
+        0.0705345,
+        0.05612898
+      ],
+      "cost_usd": 0.18077752,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 5.079528678571429,
+      "median_seconds": 21.726256271009333,
+      "p90_seconds": 38.45787466643378,
+      "sum_example_seconds": 2655.921355883358,
+      "outcomes": {
+        "correct": 66,
+        "wrong": 16,
+        "format": 32,
+        "timeout": 0,
+        "token_cap": 2,
+        "error": 0
+      },
+      "examples_using_python": 22,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "google/gemma-4-31b-it",
+      "sampling": {
+        "temperature": null,
+        "seed": null,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "modal"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        60.0,
+        46.42857142857143,
+        60.0,
+        60.714285714285715
+      ],
+      "overall_percentage": 56.89655172413793,
+      "no_tools_percentage": 53.44827586206897,
+      "python_percentage": 60.3448275862069,
+      "python_difference_pp": 6.896551724137929,
+      "detail": ""
+    },
+    {
       "key": "nemotron-3-super",
       "name": "Nemotron 3 Super 120B A12B",
       "provider": "DeepInfra Priority / BF16",
@@ -1255,8 +1331,8 @@
     }
   ],
   "strict_scoring": true,
-  "models_included": 16,
-  "total_pilot_cases": 1856,
+  "models_included": 17,
+  "total_pilot_cases": 1972,
   "full_cost_method": "Sum pilot condition cost / pilot condition count * full condition count; 840 easy and 790 hard examples, each without tools and with Python.",
   "scope": "Pilot results only. No full-evaluation response or measured full-evaluation cost is included.",
   "source_pr": {
@@ -1267,6 +1343,12 @@
     "evaluations/model-pilot-20261029/cases.json": "5f4e5069070c7de20e2b5ed2678e5655d81b64b1acb2fd98775c751343a5ce07",
     "evaluations/model-pilot-20261029/results.json": "40278a11ccc3cfc5c9b0457d19747597d8a7e5a811f56733fb132b213153befe",
     "evaluations/model-pilot-20261029/summary.json": "555b33e6fd2718542d3040e4693708abcba74598b36d1d6669ac5d41aeb32012",
+    "scratch/gemma4-31b-it-pilot-20261124-01/dataset-verification.json": "00ddb46125b078de5e043a16a6ad48e5e8e619f203eaf2bb6c8415df94bd7732",
+    "scratch/gemma4-31b-it-pilot-20261124-01/models/gemma4-31b-it/audit.json": "60334d90ff6cd74338a79bd2708e38ece6e8e5a7586b3efb707a40af6aa3ca74",
+    "scratch/gemma4-31b-it-pilot-20261124-01/models/gemma4-31b-it/billing-summary.json": "29f410f026a05f5683ac72bbeb68d1a4136c2fc44153d76c65354e4c2b5533e9",
+    "scratch/gemma4-31b-it-pilot-20261124-01/models/gemma4-31b-it/config.json": "23052759a924d9b2445a4808bee154539556d26ea6e0a3502a79c894854de6b1",
+    "scratch/gemma4-31b-it-pilot-20261124-01/models/gemma4-31b-it/results.json": "4ef96a9b066dc0775cbfc1f3e80a23fb709d461663e624dcf1158dc9dfbe51fe",
+    "scratch/gemma4-31b-it-pilot-20261124-01/selected.json": "f11af6d87231f58df0686dcbf2e70d2bf0ca86c17efbef5c22b1ff00fa10cea6",
     "scratch/mochi-sft-400407-pilot-20261118-01/config.json": "c95791d6de6c7f70b6b8910ebaa30d44eade0ea63ebac6c8478b91b0f79854f4",
     "scratch/mochi-sft-400407-pilot-20261118-01/results.json": "fd36544831f1b3a3bce6beeb1512893d429cfec272f6f9c50360d1826df163b4",
     "scratch/mochi-sft-400407-pilot-20261118-01/summary.json": "f050640cd81b32c345d79264eec5cea4e1cc1236ab8b7432c2f5fbba87c6ceed",

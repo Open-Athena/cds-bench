@@ -1,5 +1,5 @@
 {
-  "models": 16,
+  "models": 17,
   "order": "Priced models first, projected cost descending; unpriced models retain performance order.",
   "model_order": [
     "command-a-plus",
@@ -13,6 +13,7 @@
     "gpt-oss-20b",
     "qwen-flash",
     "glm-5.3-flash-near-ai",
+    "gemma4-31b-it",
     "luna",
     "mochi",
     "snowball-v01",
