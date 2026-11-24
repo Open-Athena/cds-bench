@@ -1,0 +1,1210 @@
+{
+  "dataset": {
+    "repo": "open-athena/cds-bench",
+    "revision": "26f63e8e488022bed14e12af0f1e44d87a28e14f",
+    "pilot_cases_per_condition": {
+      "easy-no-tools": 30,
+      "hard-no-tools": 28,
+      "easy-tools": 30,
+      "hard-tools": 28
+    },
+    "full_cases_per_condition": {
+      "easy-no-tools": 840,
+      "hard-no-tools": 790,
+      "easy-tools": 840,
+      "hard-tools": 790
+    }
+  },
+  "models": [
+    {
+      "key": "luna",
+      "name": "GPT-6 Luna (high)",
+      "provider": "OpenAI",
+      "cohort": "PR2",
+      "correct": [
+        27,
+        25,
+        29,
+        26
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 107,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.031414175,
+        0.0169248,
+        0.014923249999999999,
+        0.014785125
+      ],
+      "cost_usd": 0.07804735,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 2.1921207839285715,
+      "median_seconds": 8.589962687459774,
+      "p90_seconds": 21.60045372901368,
+      "sum_example_seconds": 1854.476223123027,
+      "outcomes": {
+        "correct": 107,
+        "wrong": 8,
+        "format": 0,
+        "timeout": 1,
+        "token_cap": 0,
+        "error": 0
+      },
+      "examples_using_python": 39,
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "openai/gpt-6-luna",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "openai"
+        ],
+        "ignore": [
+          "openai/flex",
+          "openai/fast"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        90.0,
+        89.28571428571429,
+        96.66666666666667,
+        92.85714285714286
+      ],
+      "overall_percentage": 92.24137931034483,
+      "no_tools_percentage": 89.65517241379311,
+      "python_percentage": 94.82758620689656,
+      "python_difference_pp": 5.172413793103445,
+      "detail": ""
+    },
+    {
+      "key": "mistral-large-4",
+      "name": "Mistral Large 4",
+      "provider": "Mistral / ZDR",
+      "cohort": "Nov24",
+      "correct": [
+        27,
+        26,
+        28,
+        25
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 106,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.66198398,
+        0.69630274,
+        0.23765476,
+        0.23766428
+      ],
+      "cost_usd": 1.83360576,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 51.541097070000006,
+      "median_seconds": 52.48585072904825,
+      "p90_seconds": 242.18677233345807,
+      "sum_example_seconds": 10526.113162835129,
+      "outcomes": {
+        "correct": 106,
+        "wrong": 2,
+        "format": 4,
+        "timeout": 0,
+        "token_cap": 4,
+        "error": 0
+      },
+      "examples_using_python": 38,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "mistralai/mistral-large-4-0",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "mistral/zdr"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        90.0,
+        92.85714285714286,
+        93.33333333333333,
+        89.28571428571429
+      ],
+      "overall_percentage": 91.37931034482759,
+      "no_tools_percentage": 91.37931034482759,
+      "python_percentage": 91.37931034482759,
+      "python_difference_pp": 0.0,
+      "detail": ""
+    },
+    {
+      "key": "inkling-2-small",
+      "name": "Inkling 2 Small",
+      "provider": "Cloudflare",
+      "cohort": "Nov24",
+      "correct": [
+        26,
+        24,
+        29,
+        25
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 104,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.26030032000000003,
+        0.2706206,
+        0.11707716,
+        0.1332331
+      ],
+      "cost_usd": 0.78123118,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 21.96101311857143,
+      "median_seconds": 11.62944114592392,
+      "p90_seconds": 50.04437625000719,
+      "sum_example_seconds": 2367.117151913466,
+      "outcomes": {
+        "correct": 104,
+        "wrong": 2,
+        "format": 6,
+        "timeout": 0,
+        "token_cap": 4,
+        "error": 0
+      },
+      "examples_using_python": 57,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "thinkingmachines/inkling-2-small",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "cloudflare"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        86.66666666666667,
+        85.71428571428571,
+        96.66666666666667,
+        89.28571428571429
+      ],
+      "overall_percentage": 89.65517241379311,
+      "no_tools_percentage": 86.20689655172414,
+      "python_percentage": 93.10344827586206,
+      "python_difference_pp": 6.896551724137922,
+      "detail": ""
+    },
+    {
+      "key": "beam",
+      "name": "Beam 1.0 501B A23B",
+      "provider": "Nebius / FP4",
+      "cohort": "PR2",
+      "correct": [
+        25,
+        23,
+        27,
+        24
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 99,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.1608685,
+        0.15580460000000002,
+        0.12764695,
+        0.1780902
+      ],
+      "cost_usd": 0.62241025,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 17.499035885714285,
+      "median_seconds": 6.91104670803179,
+      "p90_seconds": 25.159028020483674,
+      "sum_example_seconds": 1391.174263838504,
+      "outcomes": {
+        "correct": 99,
+        "wrong": 6,
+        "format": 6,
+        "timeout": 0,
+        "token_cap": 5,
+        "error": 0
+      },
+      "examples_using_python": 56,
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "reflection/beam-1.0-501b-a23b",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "nebius/fp4"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true,
+        "quantizations": [
+          "fp4"
+        ]
+      },
+      "percentages": [
+        83.33333333333333,
+        82.14285714285714,
+        90.0,
+        85.71428571428571
+      ],
+      "overall_percentage": 85.34482758620689,
+      "no_tools_percentage": 82.75862068965517,
+      "python_percentage": 87.93103448275862,
+      "python_difference_pp": 5.172413793103445,
+      "detail": ""
+    },
+    {
+      "key": "command-a-plus",
+      "name": "Command A+",
+      "provider": "Cohere / FP8",
+      "cohort": "Nov24",
+      "correct": [
+        15,
+        13,
+        25,
+        19
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 72,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.7584261,
+        0.7858461,
+        0.5132382,
+        0.5807718
+      ],
+      "cost_usd": 2.6382822,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 74.16474829285714,
+      "median_seconds": 67.68708839546889,
+      "p90_seconds": 180.79166854149662,
+      "sum_example_seconds": 10168.825063871685,
+      "outcomes": {
+        "correct": 72,
+        "wrong": 11,
+        "format": 8,
+        "timeout": 0,
+        "token_cap": 25,
+        "error": 0
+      },
+      "examples_using_python": 35,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "cohere/command-a-plus",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "cohere/fp8"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        50.0,
+        46.42857142857143,
+        83.33333333333333,
+        67.85714285714286
+      ],
+      "overall_percentage": 62.06896551724138,
+      "no_tools_percentage": 48.275862068965516,
+      "python_percentage": 75.86206896551724,
+      "python_difference_pp": 27.586206896551722,
+      "detail": ""
+    },
+    {
+      "key": "glm-5.3-flash-near-ai",
+      "name": "GLM 5.3 Flash",
+      "provider": "Morph \u2192 Near AI / FP8",
+      "cohort": "Nov24",
+      "correct": [
+        19,
+        15,
+        16,
+        17
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 67,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.09923101,
+        0.10776472,
+        0.023619267,
+        0.034856006
+      ],
+      "cost_usd": 0.265471003,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 7.463749668142857,
+      "median_seconds": 24.72547354164999,
+      "p90_seconds": 232.03113145846874,
+      "sum_example_seconds": 8113.442530876026,
+      "outcomes": {
+        "correct": 67,
+        "wrong": 20,
+        "format": 27,
+        "timeout": 0,
+        "token_cap": 2,
+        "error": 0
+      },
+      "examples_using_python": 43,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "z-ai/glm-5.3-flash",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "phases": [
+          {
+            "only": [
+              "morph/fp8"
+            ],
+            "completed_cases": 23
+          },
+          {
+            "only": [
+              "near-ai/fp8"
+            ],
+            "completed_cases": 93
+          }
+        ],
+        "allow_fallbacks": false
+      },
+      "percentages": [
+        63.333333333333336,
+        53.57142857142857,
+        53.333333333333336,
+        60.714285714285715
+      ],
+      "overall_percentage": 57.758620689655174,
+      "no_tools_percentage": 58.62068965517241,
+      "python_percentage": 56.89655172413793,
+      "python_difference_pp": -1.724137931034484,
+      "detail": ""
+    },
+    {
+      "key": "nemotron-3-super",
+      "name": "Nemotron 3 Super 120B A12B",
+      "provider": "DeepInfra Priority / BF16",
+      "cohort": "Nov24",
+      "correct": [
+        10,
+        11,
+        24,
+        20
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 65,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.23306287,
+        0.231735481,
+        0.126013281,
+        0.149571006
+      ],
+      "cost_usd": 0.740382638,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 20.81242239692857,
+      "median_seconds": 44.041165978997014,
+      "p90_seconds": 222.88461718696635,
+      "sum_example_seconds": 8985.64316828968,
+      "outcomes": {
+        "correct": 65,
+        "wrong": 21,
+        "format": 19,
+        "timeout": 0,
+        "token_cap": 11,
+        "error": 0
+      },
+      "examples_using_python": 58,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "deepinfra/bf16/priority"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        33.333333333333336,
+        39.285714285714285,
+        80.0,
+        71.42857142857143
+      ],
+      "overall_percentage": 56.03448275862069,
+      "no_tools_percentage": 36.206896551724135,
+      "python_percentage": 75.86206896551724,
+      "python_difference_pp": 39.6551724137931,
+      "detail": ""
+    },
+    {
+      "key": "mochi",
+      "name": "Mochi SFT 400407",
+      "provider": "Marin internal API",
+      "cohort": "Mochi",
+      "correct": [
+        15,
+        13,
+        19,
+        14
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 61,
+      "total_n": 116,
+      "cost_by_condition_usd": null,
+      "cost_usd": null,
+      "cost_status": "unpriced",
+      "full_eval_estimate_usd": null,
+      "median_seconds": 209.15589064598316,
+      "p90_seconds": 751.6135337500018,
+      "sum_example_seconds": 35509.615870123846,
+      "outcomes": {
+        "correct": 61,
+        "wrong": 2,
+        "format": 34,
+        "timeout": 0,
+        "token_cap": 16,
+        "error": 3
+      },
+      "examples_using_python": 55,
+      "token_cap": 32768,
+      "request_timeout_seconds": 1800,
+      "concurrency": 60,
+      "reasoning": {
+        "enabled": true,
+        "effort": null
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "Mochi SFT 400407",
+      "sampling": {
+        "temperature": 0.7,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "Marin internal API"
+        ]
+      },
+      "percentages": [
+        50.0,
+        46.42857142857143,
+        63.333333333333336,
+        50.0
+      ],
+      "overall_percentage": 52.58620689655172,
+      "no_tools_percentage": 48.275862068965516,
+      "python_percentage": 56.89655172413793,
+      "python_difference_pp": 8.620689655172413,
+      "detail": "",
+      "native_transport": "Delphi thinking and XML tool calls, matching the historical Snowball adapter"
+    },
+    {
+      "key": "qwen-flash",
+      "name": "Qwen 3.7 Flash (high)",
+      "provider": "Alibaba / US",
+      "cohort": "PR2",
+      "correct": [
+        9,
+        9,
+        16,
+        13
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 47,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.104544951,
+        0.09746134299999999,
+        0.051825249999999996,
+        0.046763373000000004
+      ],
+      "cost_usd": 0.30059491699999996,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 8.447562972285715,
+      "median_seconds": 142.9588445624977,
+      "p90_seconds": 285.5137056034873,
+      "sum_example_seconds": 17455.07343182742,
+      "outcomes": {
+        "correct": 47,
+        "wrong": 11,
+        "format": 36,
+        "timeout": 6,
+        "token_cap": 16,
+        "error": 0
+      },
+      "examples_using_python": 47,
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0.0,
+      "model": "qwen/qwen3.7-flash",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "alibaba/us-east-1"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        30.0,
+        32.142857142857146,
+        53.333333333333336,
+        46.42857142857143
+      ],
+      "overall_percentage": 40.51724137931034,
+      "no_tools_percentage": 31.03448275862069,
+      "python_percentage": 50.0,
+      "python_difference_pp": 18.96551724137931,
+      "detail": ""
+    },
+    {
+      "key": "nemotron-lightning-coreweave",
+      "name": "Nemotron 3.5 Lightning",
+      "provider": "CoreWeave / BF16",
+      "cohort": "PR2",
+      "correct": [
+        7,
+        4,
+        19,
+        15
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 45,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.14640402,
+        0.16217881,
+        0.06429505,
+        0.08924794
+      ],
+      "cost_usd": 0.46212582,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 12.993400120714286,
+      "median_seconds": 45.889742249506526,
+      "p90_seconds": 125.23385679151397,
+      "sum_example_seconds": 7476.309295159008,
+      "outcomes": {
+        "correct": 45,
+        "wrong": 15,
+        "format": 21,
+        "timeout": 0,
+        "token_cap": 35,
+        "error": 0
+      },
+      "examples_using_python": 52,
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0.0,
+      "model": "nvidia/nemotron-3.5-lightning",
+      "sampling": {
+        "temperature": null,
+        "seed": null,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "coreweave/bf16"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        23.333333333333332,
+        14.285714285714286,
+        63.333333333333336,
+        53.57142857142857
+      ],
+      "overall_percentage": 38.793103448275865,
+      "no_tools_percentage": 18.96551724137931,
+      "python_percentage": 58.62068965517241,
+      "python_difference_pp": 39.6551724137931,
+      "detail": ""
+    },
+    {
+      "key": "gpt-oss-20b",
+      "name": "GPT-OSS 20B",
+      "provider": "Amazon Bedrock",
+      "cohort": "PR2",
+      "correct": [
+        15,
+        11,
+        7,
+        4
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 37,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.08027569,
+        0.08706965,
+        0.07533049,
+        0.10965327
+      ],
+      "cost_usd": 0.3523291,
+      "cost_status": "lower_bound",
+      "full_eval_estimate_usd": 9.90736971142857,
+      "median_seconds": 26.721269333007513,
+      "p90_seconds": 73.68813995851087,
+      "sum_example_seconds": 3812.3137259541545,
+      "outcomes": {
+        "correct": 37,
+        "wrong": 14,
+        "format": 22,
+        "timeout": 0,
+        "token_cap": 19,
+        "error": 24
+      },
+      "examples_using_python": 46,
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0.0,
+      "model": "openai/gpt-oss-20b",
+      "sampling": {
+        "temperature": null,
+        "seed": null,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "amazon-bedrock"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        50.0,
+        39.285714285714285,
+        23.333333333333332,
+        14.285714285714286
+      ],
+      "overall_percentage": 31.896551724137932,
+      "no_tools_percentage": 44.827586206896555,
+      "python_percentage": 18.96551724137931,
+      "python_difference_pp": -25.862068965517246,
+      "detail": ""
+    },
+    {
+      "key": "snowball-v01",
+      "name": "Snowball v0.1",
+      "provider": "Marin internal API",
+      "cohort": "PR2",
+      "correct": [
+        7,
+        5,
+        7,
+        8
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 27,
+      "total_n": 116,
+      "cost_by_condition_usd": null,
+      "cost_usd": null,
+      "cost_status": "unpriced",
+      "full_eval_estimate_usd": null,
+      "median_seconds": 110.26830508350395,
+      "p90_seconds": 291.666743249516,
+      "sum_example_seconds": 15618.763222877751,
+      "outcomes": {
+        "correct": 27,
+        "wrong": 17,
+        "format": 60,
+        "timeout": 0,
+        "token_cap": 11,
+        "error": 1
+      },
+      "examples_using_python": 5,
+      "token_cap": 32768,
+      "request_timeout_seconds": 1800,
+      "concurrency": 60,
+      "reasoning": {
+        "enabled": true,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=true"
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "open-athena/Marin-Snowball-67B-A2B-v0.1",
+      "sampling": {
+        "temperature": 0.7,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": {
+        "repo": "open-athena/Marin-Snowball-67B-A2B-v0.1",
+        "revision": "adc0078a19a4383bc998fcdb43867b3360baf5f3",
+        "url": "https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3"
+      },
+      "provider_route": {
+        "only": [
+          "Marin internal API"
+        ],
+        "allow_fallbacks": false
+      },
+      "percentages": [
+        23.333333333333332,
+        17.857142857142858,
+        23.333333333333332,
+        28.571428571428573
+      ],
+      "overall_percentage": 23.275862068965516,
+      "no_tools_percentage": 20.689655172413794,
+      "python_percentage": 25.862068965517242,
+      "python_difference_pp": 5.172413793103448,
+      "detail": ""
+    },
+    {
+      "key": "snowball",
+      "name": "Snowball RC (2026.09.21)",
+      "provider": "Marin internal API",
+      "cohort": "PR2",
+      "correct": [
+        1,
+        3,
+        7,
+        5
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 16,
+      "total_n": 116,
+      "cost_by_condition_usd": null,
+      "cost_usd": null,
+      "cost_status": "unpriced",
+      "full_eval_estimate_usd": null,
+      "median_seconds": 154.75088972898084,
+      "p90_seconds": 193.6699547705066,
+      "sum_example_seconds": 15552.038951375056,
+      "outcomes": {
+        "correct": 16,
+        "wrong": 3,
+        "format": 26,
+        "timeout": 0,
+        "token_cap": 61,
+        "error": 10
+      },
+      "examples_using_python": 52,
+      "token_cap": 16384,
+      "request_timeout_seconds": 1800,
+      "concurrency": 60,
+      "reasoning": {
+        "enabled": true,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=true"
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21",
+      "sampling": {
+        "temperature": 0.7,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": {
+        "repo": "open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21",
+        "revision": "b8c07f7df1df65525abbfdbcd1572318ba11c42f",
+        "url": "https://huggingface.co/open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21/tree/b8c07f7df1df65525abbfdbcd1572318ba11c42f"
+      },
+      "provider_route": {
+        "only": [
+          "Marin internal API"
+        ],
+        "allow_fallbacks": false
+      },
+      "percentages": [
+        3.3333333333333335,
+        10.714285714285714,
+        23.333333333333332,
+        17.857142857142858
+      ],
+      "overall_percentage": 13.793103448275861,
+      "no_tools_percentage": 6.896551724137931,
+      "python_percentage": 20.689655172413794,
+      "python_difference_pp": 13.793103448275863,
+      "detail": "16,384-token cap"
+    },
+    {
+      "key": "liquid",
+      "name": "LFM 2.5 24B A2B",
+      "provider": "Liquid / FP8",
+      "cohort": "PR2",
+      "correct": [
+        3,
+        1,
+        3,
+        2
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 9,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.1661203,
+        0.1578364,
+        0.1661948,
+        0.1613263
+      ],
+      "cost_usd": 0.6514778,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 18.309770407142857,
+      "median_seconds": 20.776403896015836,
+      "p90_seconds": 24.052536521485308,
+      "sum_example_seconds": 2331.066280461964,
+      "outcomes": {
+        "correct": 9,
+        "wrong": 3,
+        "format": 5,
+        "timeout": 0,
+        "token_cap": 99,
+        "error": 0
+      },
+      "examples_using_python": 24,
+      "token_cap": 8192,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0.0,
+      "model": "liquid/lfm-2.5-24b-a2b",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "only": [
+          "liquid/fp8"
+        ],
+        "quantizations": [
+          "fp8"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "percentages": [
+        10.0,
+        3.5714285714285716,
+        10.0,
+        7.142857142857143
+      ],
+      "overall_percentage": 7.758620689655173,
+      "no_tools_percentage": 6.896551724137931,
+      "python_percentage": 8.620689655172415,
+      "python_difference_pp": 1.724137931034484,
+      "detail": "8,192-token cap"
+    },
+    {
+      "key": "carbon-x",
+      "name": "Carbon-X",
+      "provider": "CoreWeave / vLLM",
+      "cohort": "PR2",
+      "correct": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 0,
+      "total_n": 116,
+      "cost_by_condition_usd": null,
+      "cost_usd": null,
+      "cost_status": "unpriced",
+      "full_eval_estimate_usd": null,
+      "median_seconds": 3.486623062461149,
+      "p90_seconds": 12.056094374449458,
+      "sum_example_seconds": 977.1903760381974,
+      "outcomes": {
+        "correct": 0,
+        "wrong": 8,
+        "format": 104,
+        "timeout": 0,
+        "token_cap": 1,
+        "error": 3
+      },
+      "examples_using_python": 3,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 32,
+      "reasoning": {
+        "enabled": false,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=false"
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "HuggingFaceBio/Carbon-X",
+      "sampling": {
+        "temperature": 0.6,
+        "seed": 20261029,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0
+      },
+      "provenance": {
+        "repo": "HuggingFaceBio/Carbon-X",
+        "revision": "17de89165e25c49e7de4f845d0e5d464469de359",
+        "url": "https://huggingface.co/HuggingFaceBio/Carbon-X/tree/17de89165e25c49e7de4f845d0e5d464469de359"
+      },
+      "provider_route": {
+        "only": [
+          "CoreWeave/vLLM"
+        ],
+        "allow_fallbacks": false
+      },
+      "percentages": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "overall_percentage": 0.0,
+      "no_tools_percentage": 0.0,
+      "python_percentage": 0.0,
+      "python_difference_pp": 0.0,
+      "detail": ""
+    }
+  ],
+  "strict_scoring": true,
+  "models_included": 15,
+  "total_pilot_cases": 1740,
+  "full_cost_method": "Sum pilot condition cost / pilot condition count * full condition count; 840 easy and 790 hard examples, each without tools and with Python.",
+  "scope": "Pilot results only. No full-evaluation response or measured full-evaluation cost is included.",
+  "source_pr": {
+    "url": "https://github.com/Open-Athena/cds-bench/pull/2",
+    "head_sha": "142b87444f7e066c41ef82dbd1634137636a23e7"
+  },
+  "source_sha256": {
+    "evaluations/model-pilot-20261029/cases.json": "5f4e5069070c7de20e2b5ed2678e5655d81b64b1acb2fd98775c751343a5ce07",
+    "evaluations/model-pilot-20261029/results.json": "40278a11ccc3cfc5c9b0457d19747597d8a7e5a811f56733fb132b213153befe",
+    "evaluations/model-pilot-20261029/summary.json": "555b33e6fd2718542d3040e4693708abcba74598b36d1d6669ac5d41aeb32012",
+    "scratch/mochi-sft-400407-pilot-20261118-01/config.json": "c95791d6de6c7f70b6b8910ebaa30d44eade0ea63ebac6c8478b91b0f79854f4",
+    "scratch/mochi-sft-400407-pilot-20261118-01/results.json": "fd36544831f1b3a3bce6beeb1512893d429cfec272f6f9c50360d1826df163b4",
+    "scratch/mochi-sft-400407-pilot-20261118-01/summary.json": "f050640cd81b32c345d79264eec5cea4e1cc1236ab8b7432c2f5fbba87c6ceed",
+    "scratch/openrouter-pilot-20261124-01/comparison.json": "22fb4c9371d53075b50abcd0f3b670abe4891cbea471464d5bef3300feaeb51f",
+    "scratch/openrouter-pilot-20261124-01/models/command-a-plus/audit.json": "5616ee8b7b0ec21c5919689031d68b840b0b6d17a8ee45c82e4a2e713ccee0a1",
+    "scratch/openrouter-pilot-20261124-01/models/command-a-plus/billing-summary.json": "dcc6d7d8bfc7af6ff25ed0249faac6805c899c5f0cbc5021cd72fa9992e095b6",
+    "scratch/openrouter-pilot-20261124-01/models/command-a-plus/config.json": "e1a059dd40304bdfa59fa4210d3f3b0f635330a3e32b936a99bb7f9d00c752af",
+    "scratch/openrouter-pilot-20261124-01/models/command-a-plus/results.json": "e6429a1164a46ead593fc749693bdfbc0aa28547a1cb8625d5f9666bb0fdac59",
+    "scratch/openrouter-pilot-20261124-01/models/glm-5.3-flash-near-ai/audit.json": "611a3468f9df9fae8bb71c6f4bf2a736977dfec2071a4df9624dd9f06245e247",
+    "scratch/openrouter-pilot-20261124-01/models/glm-5.3-flash-near-ai/billing-summary.json": "b8a1f5657a09dcb8351ff323ddb06b6d0e6b7cc310c0da7b826838250ae566f8",
+    "scratch/openrouter-pilot-20261124-01/models/glm-5.3-flash-near-ai/config.json": "a2de163c52103434af69d62456f6cfa5ea6c6b146a81db4312cf239651d344a3",
+    "scratch/openrouter-pilot-20261124-01/models/glm-5.3-flash-near-ai/results.json": "db5de230258b8153733f584a2f537a42d786d80579eed4060a17a817541506af",
+    "scratch/openrouter-pilot-20261124-01/models/inkling-2-small/audit.json": "9f067e9390f3672b11b57a81643ba248cf59c388a9896edfc2d58af4b76c3c49",
+    "scratch/openrouter-pilot-20261124-01/models/inkling-2-small/billing-summary.json": "f8a47da115178a464d23585acc05ea97d71172b8dc9073e49487d5fcb0113cc6",
+    "scratch/openrouter-pilot-20261124-01/models/inkling-2-small/config.json": "8b3b14255a027cae55aaf3ad946a7d0b7d79b16d1ec78d0a4c172a08f610339b",
+    "scratch/openrouter-pilot-20261124-01/models/inkling-2-small/results.json": "c33b6cadc93155c2773e189ca4ac0780c916298488f0af5426235c33f2eb8994",
+    "scratch/openrouter-pilot-20261124-01/models/mistral-large-4/audit.json": "75d2d55edaef34d9827aded9a4fb8a2ba62b3995075f8eb4df04862e0e4c77a6",
+    "scratch/openrouter-pilot-20261124-01/models/mistral-large-4/billing-summary.json": "e79890574b5ae58fa15c44eed361530b88b2ea921905bf6f82ccb6d84f127e6e",
+    "scratch/openrouter-pilot-20261124-01/models/mistral-large-4/config.json": "713a7e0c0cc7bd0977f02f775dd721e293273f41370c97eb26b3f0e863f70e57",
+    "scratch/openrouter-pilot-20261124-01/models/mistral-large-4/results.json": "73a809f5be0db01afa5f89042e76343ed67881aa71861f15cd20cbf555abc770",
+    "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/audit.json": "79dfdaa1491e37dc0aa710c25aadcfd0a0de0217b5400e7f761cc824e1973615",
+    "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/billing-summary.json": "ad6b572e48beb207a3edb44307c88f623bb7562952e87ac304669b09e448766d",
+    "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/config.json": "cfa3294a68029be1a9366ede95127d6e36c15a1174d4dd524b508da5a713d90b",
+    "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/results.json": "d7039f251db31850faac59f87bebc406e25d1839293023056409a39a1d7d4f96",
+    "scratch/openrouter-pilot-20261124-01/selected.json": "f11af6d87231f58df0686dcbf2e70d2bf0ca86c17efbef5c22b1ff00fa10cea6"
+  }
+}

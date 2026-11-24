@@ -1,0 +1,14 @@
+{
+  "models": 15,
+  "condition_cells": 60,
+  "cases_per_model": 116,
+  "mochi_rank": 8,
+  "mochi_correct": 61,
+  "mochi_accuracy": 52.58620689655172,
+  "mochi_python_difference_pp": 8.620689655172413,
+  "figures": [
+    "performance.png",
+    "performance.svg",
+    "performance.pdf"
+  ]
+}

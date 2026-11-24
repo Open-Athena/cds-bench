@@ -1,0 +1,504 @@
+{
+  "dataset_revision": "26f63e8e488022bed14e12af0f1e44d87a28e14f",
+  "python_tool": [
+    {
+      "type": "function",
+      "function": {
+        "name": "python",
+        "description": "Execute Python 3.12.9 code with the standard library and NumPy 2.5.4. Biopython is not installed. Networking and subprocesses are disabled; only runtime files and this example's working directory are readable. Use print() to return results. Each call starts a fresh interpreter; files in the working directory persist within this example. Limits: 30 seconds per call, 16384 characters each of stdout/stderr, and at most 8 calls per example. Returns stdout, stderr, exit_code, timed_out, and output_truncated.",
+        "strict": true,
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Python code to execute."
+            }
+          },
+          "required": [
+            "code"
+          ],
+          "additionalProperties": false
+        }
+      }
+    }
+  ],
+  "execution": {
+    "python": "3.12.9",
+    "numpy": "2.5.4",
+    "biopython": false,
+    "network": false,
+    "subprocesses": false,
+    "isolation": "macOS /usr/bin/sandbox-exec",
+    "seconds_per_execution": 30,
+    "max_executions": 8,
+    "fresh_interpreter_per_call": true
+  },
+  "models": [
+    {
+      "name": "GPT-6 Luna (high)",
+      "model": "openai/gpt-6-luna",
+      "provider": "OpenAI",
+      "provider_route": {
+        "only": [
+          "openai"
+        ],
+        "ignore": [
+          "openai/flex",
+          "openai/fast"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Mistral Large 4",
+      "model": "mistralai/mistral-large-4-0",
+      "provider": "Mistral / ZDR",
+      "provider_route": {
+        "only": [
+          "mistral/zdr"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Inkling 2 Small",
+      "model": "thinkingmachines/inkling-2-small",
+      "provider": "Cloudflare",
+      "provider_route": {
+        "only": [
+          "cloudflare"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Beam 1.0 501B A23B",
+      "model": "reflection/beam-1.0-501b-a23b",
+      "provider": "Nebius / FP4",
+      "provider_route": {
+        "only": [
+          "nebius/fp4"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true,
+        "quantizations": [
+          "fp4"
+        ]
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Command A+",
+      "model": "cohere/command-a-plus",
+      "provider": "Cohere / FP8",
+      "provider_route": {
+        "only": [
+          "cohere/fp8"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "GLM 5.3 Flash",
+      "model": "z-ai/glm-5.3-flash",
+      "provider": "Morph \u2192 Near AI / FP8",
+      "provider_route": {
+        "phases": [
+          {
+            "only": [
+              "morph/fp8"
+            ],
+            "completed_cases": 23
+          },
+          {
+            "only": [
+              "near-ai/fp8"
+            ],
+            "completed_cases": 93
+          }
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Nemotron 3 Super 120B A12B",
+      "model": "nvidia/nemotron-3-super-120b-a12b",
+      "provider": "DeepInfra Priority / BF16",
+      "provider_route": {
+        "only": [
+          "deepinfra/bf16/priority"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Mochi SFT 400407",
+      "model": "Mochi SFT 400407",
+      "provider": "Marin internal API",
+      "provider_route": {
+        "only": [
+          "Marin internal API"
+        ]
+      },
+      "reasoning": {
+        "enabled": true,
+        "effort": null
+      },
+      "sampling": {
+        "temperature": 0.7,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 1800,
+      "concurrency": 60,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": "Delphi thinking and XML tool calls, matching the historical Snowball adapter"
+    },
+    {
+      "name": "Qwen 3.7 Flash (high)",
+      "model": "qwen/qwen3.7-flash",
+      "provider": "Alibaba / US",
+      "provider_route": {
+        "only": [
+          "alibaba/us-east-1"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0.0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Nemotron 3.5 Lightning",
+      "model": "nvidia/nemotron-3.5-lightning",
+      "provider": "CoreWeave / BF16",
+      "provider_route": {
+        "only": [
+          "coreweave/bf16"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": null,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0.0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "GPT-OSS 20B",
+      "model": "openai/gpt-oss-20b",
+      "provider": "Amazon Bedrock",
+      "provider_route": {
+        "only": [
+          "amazon-bedrock"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": null,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0.0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Snowball v0.1",
+      "model": "open-athena/Marin-Snowball-67B-A2B-v0.1",
+      "provider": "Marin internal API",
+      "provider_route": {
+        "only": [
+          "Marin internal API"
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "enabled": true,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=true"
+      },
+      "sampling": {
+        "temperature": 0.7,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 1800,
+      "concurrency": 60,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": {
+        "repo": "open-athena/Marin-Snowball-67B-A2B-v0.1",
+        "revision": "adc0078a19a4383bc998fcdb43867b3360baf5f3",
+        "url": "https://huggingface.co/open-athena/Marin-Snowball-67B-A2B-v0.1/tree/adc0078a19a4383bc998fcdb43867b3360baf5f3"
+      },
+      "native_transport": null
+    },
+    {
+      "name": "Snowball RC (2026.09.21)",
+      "model": "open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21",
+      "provider": "Marin internal API",
+      "provider_route": {
+        "only": [
+          "Marin internal API"
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "enabled": true,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=true"
+      },
+      "sampling": {
+        "temperature": 0.7,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 16384,
+      "request_timeout_seconds": 1800,
+      "concurrency": 60,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": {
+        "repo": "open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21",
+        "revision": "b8c07f7df1df65525abbfdbcd1572318ba11c42f",
+        "url": "https://huggingface.co/open-athena/Grug-67B-A2B-Datakit-SFT-262K-2026.09.21/tree/b8c07f7df1df65525abbfdbcd1572318ba11c42f"
+      },
+      "native_transport": null
+    },
+    {
+      "name": "LFM 2.5 24B A2B",
+      "model": "liquid/lfm-2.5-24b-a2b",
+      "provider": "Liquid / FP8",
+      "provider_route": {
+        "only": [
+          "liquid/fp8"
+        ],
+        "quantizations": [
+          "fp8"
+        ],
+        "allow_fallbacks": false,
+        "require_parameters": true
+      },
+      "reasoning": {
+        "enabled": true,
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 8192,
+      "request_timeout_seconds": 300,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0.0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
+      "name": "Carbon-X",
+      "model": "HuggingFaceBio/Carbon-X",
+      "provider": "CoreWeave / vLLM",
+      "provider_route": {
+        "only": [
+          "CoreWeave/vLLM"
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "enabled": false,
+        "effort": null,
+        "mechanism": "chat_template_kwargs.enable_thinking=false"
+      },
+      "sampling": {
+        "temperature": 0.6,
+        "seed": 20261029,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 32,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": {
+        "repo": "HuggingFaceBio/Carbon-X",
+        "revision": "17de89165e25c49e7de4f845d0e5d464469de359",
+        "url": "https://huggingface.co/HuggingFaceBio/Carbon-X/tree/17de89165e25c49e7de4f845d0e5d464469de359"
+      },
+      "native_transport": null
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "models": 15,
+  "order": "Priced models first, projected cost descending; unpriced models retain performance order.",
+  "model_order": [
+    "command-a-plus",
+    "mistral-large-4",
+    "inkling-2-small",
+    "nemotron-3-super",
+    "liquid",
+    "beam",
+    "nemotron-lightning-coreweave",
+    "gpt-oss-20b",
+    "qwen-flash",
+    "glm-5.3-flash-near-ai",
+    "luna",
+    "mochi",
+    "snowball-v01",
+    "snowball",
+    "carbon-x"
+  ],
+  "unpriced_models": 4,
+  "lower_bound_models": 1,
+  "clipped_text": []
+}
