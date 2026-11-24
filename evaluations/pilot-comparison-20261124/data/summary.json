@@ -636,6 +636,92 @@
       "native_transport": "Delphi thinking and XML tool calls, matching the historical Snowball adapter"
     },
     {
+      "key": "qwen38-27b",
+      "name": "Qwen 3.8 27B (high)",
+      "provider": "Cerebras FP16 \u2192 Wafer FP8",
+      "cohort": "Nov24",
+      "correct": [
+        12,
+        11,
+        20,
+        18
+      ],
+      "n": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "total_correct": 61,
+      "total_n": 116,
+      "cost_by_condition_usd": [
+        0.39802323,
+        0.39754788,
+        0.31408022,
+        0.606270836
+      ],
+      "cost_usd": 1.715922166,
+      "cost_status": "complete",
+      "full_eval_estimate_usd": 48.260924658571426,
+      "median_seconds": 15.692480520927347,
+      "p90_seconds": 69.31807395850774,
+      "sum_example_seconds": 3168.8667086341884,
+      "outcomes": {
+        "correct": 61,
+        "wrong": 27,
+        "format": 25,
+        "timeout": 0,
+        "token_cap": 3,
+        "error": 0
+      },
+      "examples_using_python": 45,
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "minimum_request_spacing_seconds": 0,
+      "model": "qwen/qwen3.8-27b",
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "provenance": null,
+      "provider_route": {
+        "phases": [
+          {
+            "only": [
+              "cerebras/fp16"
+            ],
+            "completed_cases": 10
+          },
+          {
+            "only": [
+              "wafer/fp8"
+            ],
+            "completed_cases": 106
+          }
+        ],
+        "allow_fallbacks": false
+      },
+      "percentages": [
+        40.0,
+        39.285714285714285,
+        66.66666666666667,
+        64.28571428571429
+      ],
+      "overall_percentage": 52.58620689655172,
+      "no_tools_percentage": 39.6551724137931,
+      "python_percentage": 65.51724137931035,
+      "python_difference_pp": 25.862068965517246,
+      "detail": ""
+    },
+    {
       "key": "qwen-flash",
       "name": "Qwen 3.7 Flash (high)",
       "provider": "Alibaba / US",
@@ -1169,8 +1255,8 @@
     }
   ],
   "strict_scoring": true,
-  "models_included": 15,
-  "total_pilot_cases": 1740,
+  "models_included": 16,
+  "total_pilot_cases": 1856,
   "full_cost_method": "Sum pilot condition cost / pilot condition count * full condition count; 840 easy and 790 hard examples, each without tools and with Python.",
   "scope": "Pilot results only. No full-evaluation response or measured full-evaluation cost is included.",
   "source_pr": {
@@ -1205,6 +1291,15 @@
     "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/billing-summary.json": "ad6b572e48beb207a3edb44307c88f623bb7562952e87ac304669b09e448766d",
     "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/config.json": "cfa3294a68029be1a9366ede95127d6e36c15a1174d4dd524b508da5a713d90b",
     "scratch/openrouter-pilot-20261124-01/models/nemotron-3-super/results.json": "d7039f251db31850faac59f87bebc406e25d1839293023056409a39a1d7d4f96",
-    "scratch/openrouter-pilot-20261124-01/selected.json": "f11af6d87231f58df0686dcbf2e70d2bf0ca86c17efbef5c22b1ff00fa10cea6"
+    "scratch/openrouter-pilot-20261124-01/selected.json": "f11af6d87231f58df0686dcbf2e70d2bf0ca86c17efbef5c22b1ff00fa10cea6",
+    "scratch/qwen38-27b-pilot-20261124-01/dataset-verification.json": "00ddb46125b078de5e043a16a6ad48e5e8e619f203eaf2bb6c8415df94bd7732",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b/config.json": "b657741110024fad9bd96f4a07cd45b0592dc5710cea2446e18a0eb994f3d41e",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b/provider-transition.json": "6e88b845c5cf92430f848c4d8568aa5ff02e92565878cbf5d07291abd5abd926",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b/results.json": "e74e0f5133c1f2fd5a993b5db1780bf7caa920e66de5ad0e73b1a1988fabba59",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b-wafer/audit.json": "4f4b518e58372344169a845f14b7b1fc712e7e4aec3174491ce8e57d7670ef71",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b-wafer/billing-summary.json": "f8fc758b2824ba2c4610c875d015aaa53f52676c4d96aa4d70775af72d4eb954",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b-wafer/config.json": "9f1a9d22bfeaf39ab8b1f85c47333ab49478a8d5d9e087ffa70bc2c8ce760f1b",
+    "scratch/qwen38-27b-pilot-20261124-01/models/qwen38-27b-wafer/results.json": "2b75787ea6da23707bb31b55e7e0bf7a731ccd7c3b983ed37a892afbff971c80",
+    "scratch/qwen38-27b-pilot-20261124-01/selected.json": "f11af6d87231f58df0686dcbf2e70d2bf0ca86c17efbef5c22b1ff00fa10cea6"
   }
 }

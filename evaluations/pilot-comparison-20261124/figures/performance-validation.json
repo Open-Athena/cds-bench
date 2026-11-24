@@ -1,6 +1,6 @@
 {
-  "models": 15,
-  "condition_cells": 60,
+  "models": 16,
+  "condition_cells": 64,
   "cases_per_model": 116,
   "mochi_rank": 8,
   "mochi_correct": 61,

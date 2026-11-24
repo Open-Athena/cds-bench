@@ -283,6 +283,45 @@
       "native_transport": "Delphi thinking and XML tool calls, matching the historical Snowball adapter"
     },
     {
+      "name": "Qwen 3.8 27B (high)",
+      "model": "qwen/qwen3.8-27b",
+      "provider": "Cerebras FP16 \u2192 Wafer FP8",
+      "provider_route": {
+        "phases": [
+          {
+            "only": [
+              "cerebras/fp16"
+            ],
+            "completed_cases": 10
+          },
+          {
+            "only": [
+              "wafer/fp8"
+            ],
+            "completed_cases": 106
+          }
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "effort": "high",
+        "exclude": false
+      },
+      "sampling": {
+        "temperature": null,
+        "seed": 20261029,
+        "top_p": null,
+        "top_k": null,
+        "min_p": null
+      },
+      "token_cap": 32768,
+      "request_timeout_seconds": 900,
+      "concurrency": 10,
+      "minimum_request_spacing_seconds": 0,
+      "provenance": null,
+      "native_transport": null
+    },
+    {
       "name": "Qwen 3.7 Flash (high)",
       "model": "qwen/qwen3.7-flash",
       "provider": "Alibaba / US",

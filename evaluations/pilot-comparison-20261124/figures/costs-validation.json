@@ -1,9 +1,10 @@
 {
-  "models": 15,
+  "models": 16,
   "order": "Priced models first, projected cost descending; unpriced models retain performance order.",
   "model_order": [
     "command-a-plus",
     "mistral-large-4",
+    "qwen38-27b",
     "inkling-2-small",
     "nemotron-3-super",
     "liquid",
